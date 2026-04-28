@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -18,7 +20,10 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://epmlite.com"),
-  title: "EPM Lite — AI-native financial planning",
+  title: {
+    default: "EPM Lite — AI-native financial planning",
+    template: "%s · EPM Lite",
+  },
   description:
     "Forecast in minutes, not weeks. Built for finance teams who want plain-English answers, not 12-tab spreadsheets.",
   openGraph: {
@@ -27,7 +32,6 @@ export const metadata: Metadata = {
       "Close the books in days. Forecast in minutes. AI-native FP&A for finance leaders tired of Excel gymnastics.",
     url: "https://epmlite.com",
     siteName: "EPM Lite",
-    // TODO: drop a real 1200x630 PNG at public/og-image.png before launch.
     images: ["/og-image.png"],
     locale: "en_US",
     type: "website",
@@ -35,8 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "EPM Lite — AI-native financial planning",
-    description:
-      "Close the books in days. Forecast in minutes.",
+    description: "Close the books in days. Forecast in minutes.",
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
@@ -48,7 +51,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${jetbrainsMono.variable}`}>
       <body className="font-body bg-surface-0 text-slate-900 antialiased">
-        {children}
+        <Nav />
+        <main className="pt-16">{children}</main>
+        <Footer />
       </body>
     </html>
   );

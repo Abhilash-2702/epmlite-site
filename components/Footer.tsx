@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { Mail } from "lucide-react";
+import Logo from "@/components/Logo";
 import { DEMO_EMAIL } from "@/lib/constants";
 
 // lucide-react v1 dropped brand icons; inline these to avoid extra deps.
@@ -17,21 +19,27 @@ function TwitterIcon({ className = "" }: { className?: string }) {
   );
 }
 
-const cols = [
+type Col = {
+  title: string;
+  links: { label: string; href: string; external?: boolean }[];
+};
+
+const cols: Col[] = [
   {
     title: "Product",
     links: [
-      { label: "Features", href: "#features" },
-      { label: "Pricing", href: "#pricing" },
-      { label: "FAQ", href: "#faq" },
+      { label: "Products & Platforms", href: "/products" },
+      { label: "Pricing", href: "/#pricing" },
+      { label: "FAQ", href: "/#faq" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About", href: "#" },
-      { label: "Blog", href: "#" },
-      { label: "Contact", href: `mailto:${DEMO_EMAIL}` },
+      { label: "Who We Are", href: "/about" },
+      { label: "Partners", href: "/partners" },
+      { label: "Careers", href: "/careers" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
@@ -50,7 +58,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-14">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
           <div className="col-span-2">
-            <p className="font-display font-bold text-2xl text-white">EPM Lite</p>
+            <Logo monochrome href={null} />
             <p className="mt-3 text-sm text-slate-400 max-w-xs">
               AI-native financial planning. Forecast in minutes, not weeks.
             </p>
@@ -87,9 +95,12 @@ export default function Footer() {
               <ul className="mt-4 space-y-2.5">
                 {c.links.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} className="text-sm text-slate-400 hover:text-white transition-colors">
+                    <Link
+                      href={l.href}
+                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                    >
                       {l.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -99,7 +110,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-6 border-t border-sidebar-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} EPM Lite. All rights reserved.</p>
-          <p>Built in 2026 · Made for finance teams that move fast.</p>
+          <p>Built for finance teams that move fast.</p>
         </div>
       </div>
     </footer>

@@ -1,14 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Zap,
-  Check,
-  Activity,
-  FileEdit,
-} from "lucide-react";
+import { ArrowRight, Zap, Check, Activity, FileEdit } from "lucide-react";
 import { DEMO_MAILTO } from "@/lib/constants";
+import VideoOrMockup from "@/components/animated/VideoOrMockup";
+import LiveChat from "@/components/animated/LiveChat";
 
 const microFeatures = [
   {
@@ -63,63 +59,17 @@ export default function ChatShowcase() {
         </motion.div>
 
         <div className="mt-12 grid lg:grid-cols-2 gap-8 items-start">
-          {/* LEFT — chat thread */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
-            className="rounded-2xl bg-white border border-surface-200 shadow-elevated p-5 lg:p-6"
           >
-            {/* User message */}
-            <div className="flex justify-end mb-4">
-              <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-brand-500 text-white px-4 py-2.5 text-sm">
-                What&apos;s our runway if revenue drops 30%?
-              </div>
-            </div>
-
-            {/* Bot message */}
-            <div className="flex justify-start mb-4">
-              <div className="max-w-[90%] rounded-2xl rounded-bl-sm bg-surface-50 border border-surface-200 px-4 py-3">
-                <ul className="space-y-1 mb-3 text-xs font-mono text-slate-400">
-                  <li>→ Ran what_if_preview on revenue −30% across all entities</li>
-                  <li>→ Pulled CF_OPS history + linear-regression forecast</li>
-                  <li>→ Subtracted CA_CASH baseline</li>
-                </ul>
-                <p className="font-display text-base text-slate-900 font-semibold">
-                  Result: ~7 months at the current burn rate.
-                </p>
-                <p className="font-display text-sm text-slate-600 mt-1">
-                  Best case: 9 months (if marketing cuts 40%). Worst case: 4 months (if AR collection slips).
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <button className="rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700 text-xs font-semibold px-3 py-1.5 transition-colors">
-                    Show waterfall card
-                  </button>
-                  <button className="rounded-lg bg-surface-100 hover:bg-surface-200 text-slate-700 text-xs font-semibold px-3 py-1.5 transition-colors">
-                    Save as scenario
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Follow-up user */}
-            <div className="flex justify-end">
-              <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-brand-500 text-white px-4 py-2.5 text-sm">
-                Save it as &quot;Recession Q3&quot;.
-              </div>
-            </div>
-
-            {/* Input row */}
-            <div className="mt-5 flex items-center gap-2 rounded-xl border border-surface-200 bg-surface-50 px-3 py-2">
-              <span className="text-slate-400 text-sm">Ask anything…</span>
-              <span className="ml-auto inline-flex items-center justify-center w-7 h-7 rounded-lg bg-brand-500 text-white">
-                <ArrowRight className="w-4 h-4" />
-              </span>
-            </div>
+            <VideoOrMockup videoSrc="/videos/ai-chat.mp4" ariaLabel="EPM Lite AI chat live demo">
+              <LiveChat />
+            </VideoOrMockup>
           </motion.div>
 
-          {/* RIGHT — micro features */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -144,7 +94,6 @@ export default function ChatShowcase() {
           </motion.div>
         </div>
 
-        {/* Example prompts */}
         <div className="mt-10 rounded-2xl bg-white border border-surface-200 p-6 lg:p-8">
           <p className="text-sm font-semibold text-slate-700 mb-4">
             Real prompts the chat handles today:
