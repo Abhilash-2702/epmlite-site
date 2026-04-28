@@ -32,7 +32,7 @@ export const metadata: Metadata = {
       "Close the books in days. Forecast in minutes. AI-native FP&A for finance leaders tired of Excel gymnastics.",
     url: "https://epmlite.com",
     siteName: "EPM Lite",
-    images: ["/og-image.png"],
+    // OG image is generated dynamically by app/opengraph-image.tsx
     locale: "en_US",
     type: "website",
   },
@@ -40,7 +40,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "EPM Lite — AI-native financial planning",
     description: "Close the books in days. Forecast in minutes.",
-    images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
 };
