@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-hero {
+    background:
+      radial-gradient(ellipse at top right, rgba(46, 111, 255, 0.10), transparent 55%),
+      radial-gradient(ellipse at bottom left, rgba(139, 92, 246, 0.08), transparent 55%),
+      linear-gradient(180deg, #ffffff 0%, #eef5ff 100%);
+  }
+
+  .gradient-cta {
+    background: linear-gradient(135deg, #133de1 0%, #182f8f 60%, #131f57 100%);
+  }
+}
