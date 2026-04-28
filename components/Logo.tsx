@@ -2,16 +2,16 @@ import Link from "next/link";
 
 type Size = "sm" | "md" | "lg";
 
-const dims: Record<Size, { box: number; text: string; gap: string }> = {
-  sm: { box: 28, text: "text-lg", gap: "gap-2" },
-  md: { box: 32, text: "text-xl", gap: "gap-2.5" },
-  lg: { box: 44, text: "text-2xl", gap: "gap-3" },
+const dims: Record<Size, { text: string; dot: string; square: string; gap: string }> = {
+  sm: { text: "text-lg", dot: "mx-1",   square: "w-1.5 h-1.5 ml-1.5", gap: "gap-0" },
+  md: { text: "text-xl", dot: "mx-1",   square: "w-2 h-2 ml-1.5",     gap: "gap-0" },
+  lg: { text: "text-3xl", dot: "mx-1.5", square: "w-2.5 h-2.5 ml-2",  gap: "gap-0" },
 };
 
 /**
- * EPM Lite mark — "E-Arrow":
- * the "E" (for EPM) is the mark itself; its top stroke ascends into an
- * AI-spark arrow. Conveys finance + intelligence + growth in a single glyph.
+ * EPM Lite wordmark. Type-only — Mercury / Brex aesthetic.
+ *   EPM · Lite ▪
+ * Brand-blue (or brand-400 on dark bg) interpunct + trailing emerald square.
  */
 export default function Logo({
   size = "md",
@@ -25,43 +25,21 @@ export default function Logo({
   className?: string;
 }) {
   const d = dims[size];
-  const bg = monochrome ? "#ffffff" : "#2e6fff";
-  const fg = monochrome ? "#2e6fff" : "#ffffff";
-  const dot = "#10b981";
-  const wordmarkClass = monochrome ? "text-white" : "text-slate-900";
+  const wordClass = monochrome ? "text-white" : "text-slate-900";
+  const dotClass = monochrome ? "text-brand-400" : "text-brand-600";
 
   const inner = (
-    <span className={`inline-flex items-center ${d.gap} ${className}`}>
-      <svg
-        viewBox="0 0 64 64"
-        width={d.box}
-        height={d.box}
-        aria-hidden="true"
-        className="shrink-0"
-      >
-        <rect width="64" height="64" rx="14" fill={bg} />
-        {/* E body */}
-        <rect x="14" y="14" width="6" height="36" rx="1.5" fill={fg} />
-        <rect x="14" y="14" width="22" height="6" rx="1.5" fill={fg} />
-        <rect x="14" y="29" width="18" height="5" rx="1.5" fill={fg} />
-        <rect x="14" y="44" width="22" height="6" rx="1.5" fill={fg} />
-        {/* Top stroke continues as a rising chart arrow */}
-        <path
-          d="M36 17 L46 11 L52 14"
-          stroke={fg}
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-        {/* AI spark at the tip */}
-        <circle cx="52" cy="14" r="4" fill={dot} />
-      </svg>
+    <span
+      className={`inline-flex items-baseline font-display font-bold tracking-tight ${d.text} ${wordClass} ${d.gap} ${className}`}
+    >
+      EPM
+      <span className={`${dotClass} ${d.dot}`} aria-hidden="true">·</span>
+      Lite
       <span
-        className={`font-display font-bold tracking-tight ${d.text} ${wordmarkClass}`}
-      >
-        EPM Lite
-      </span>
+        className={`inline-block rounded-sm bg-accent-emerald ${d.square}`}
+        style={{ alignSelf: "center" }}
+        aria-hidden="true"
+      />
     </span>
   );
 

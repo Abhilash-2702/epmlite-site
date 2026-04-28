@@ -5,10 +5,9 @@ export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
 /**
- * App icon (favicon at all standard sizes). Renders the E-Arrow mark.
- * Next.js automatically generates appropriate <link rel="icon"> tags.
- * For 16px display the OS / browser scales this down — the chunky strokes
- * survive the scale.
+ * App icon — "EL" monogram on a brand-blue rounded square.
+ * The site uses a wordmark for its primary brand; this monogram is the
+ * compact form for favicons, app icons, social avatars.
  */
 export default function Icon() {
   return new ImageResponse(
@@ -22,24 +21,14 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          position: "relative",
+          color: "white",
+          fontWeight: 800,
+          fontSize: 36,
+          letterSpacing: "-0.06em",
+          fontFamily: "sans-serif",
         }}
       >
-        <svg width="64" height="64" viewBox="0 0 64 64">
-          <rect x="14" y="14" width="6" height="36" rx="1.5" fill="#ffffff" />
-          <rect x="14" y="14" width="22" height="6" rx="1.5" fill="#ffffff" />
-          <rect x="14" y="29" width="18" height="5" rx="1.5" fill="#ffffff" />
-          <rect x="14" y="44" width="22" height="6" rx="1.5" fill="#ffffff" />
-          <path
-            d="M36 17 L46 11 L52 14"
-            stroke="#ffffff"
-            strokeWidth="5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-          <circle cx="52" cy="14" r="4" fill="#10b981" />
-        </svg>
+        EL
       </div>
     ),
     { ...size }

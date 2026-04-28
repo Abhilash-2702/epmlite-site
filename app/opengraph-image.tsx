@@ -51,55 +51,32 @@ export default async function OGImage() {
           }}
         />
 
-        {/* Top: logo + wordmark */}
+        {/* Top: wordmark only — Mercury/Brex aesthetic */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "16px",
             zIndex: 1,
+            fontSize: "44px",
+            fontWeight: 800,
+            letterSpacing: "-0.04em",
+            color: "#ffffff",
           }}
         >
-          <div
+          <span style={{ display: "flex" }}>EPM</span>
+          <span style={{ display: "flex", color: "#5694ff", margin: "0 8px" }}>·</span>
+          <span style={{ display: "flex" }}>Lite</span>
+          <span
             style={{
-              width: "56px",
-              height: "56px",
-              borderRadius: "14px",
-              background: "#2e6fff",
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 6px 20px rgba(0,0,0,0.25)",
+              width: "16px",
+              height: "16px",
+              background: "#10b981",
+              borderRadius: "3px",
+              marginLeft: "12px",
+              alignSelf: "center",
             }}
-          >
-            <svg width="44" height="44" viewBox="0 0 64 64">
-              {/* E body */}
-              <rect x="14" y="14" width="6" height="36" rx="1.5" fill="#ffffff" />
-              <rect x="14" y="14" width="22" height="6" rx="1.5" fill="#ffffff" />
-              <rect x="14" y="29" width="18" height="5" rx="1.5" fill="#ffffff" />
-              <rect x="14" y="44" width="22" height="6" rx="1.5" fill="#ffffff" />
-              {/* Arrow extension */}
-              <path
-                d="M36 17 L46 11 L52 14"
-                stroke="#ffffff"
-                strokeWidth="5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
-              <circle cx="52" cy="14" r="4" fill="#10b981" />
-            </svg>
-          </div>
-          <div
-            style={{
-              fontSize: "32px",
-              fontWeight: 800,
-              letterSpacing: "-0.02em",
-              display: "flex",
-            }}
-          >
-            EPM Lite
-          </div>
+          />
         </div>
 
         {/* Center: tagline */}
