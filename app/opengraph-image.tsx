@@ -72,16 +72,22 @@ export default async function OGImage() {
               boxShadow: "0 6px 20px rgba(0,0,0,0.25)",
             }}
           >
-            <svg width="38" height="38" viewBox="0 0 32 32">
+            <svg width="44" height="44" viewBox="0 0 64 64">
+              {/* E body */}
+              <rect x="14" y="14" width="6" height="36" rx="1.5" fill="#ffffff" />
+              <rect x="14" y="14" width="22" height="6" rx="1.5" fill="#ffffff" />
+              <rect x="14" y="29" width="18" height="5" rx="1.5" fill="#ffffff" />
+              <rect x="14" y="44" width="22" height="6" rx="1.5" fill="#ffffff" />
+              {/* Arrow extension */}
               <path
-                d="M7 22 L13 16 L17 18 L25 9"
+                d="M36 17 L46 11 L52 14"
                 stroke="#ffffff"
-                strokeWidth="3"
+                strokeWidth="5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 fill="none"
               />
-              <circle cx="25" cy="9" r="3" fill="#10b981" />
+              <circle cx="52" cy="14" r="4" fill="#10b981" />
             </svg>
           </div>
           <div
