@@ -5,56 +5,126 @@ import { useSearchParams } from "next/navigation";
 import { ArrowRight, Check } from "lucide-react";
 import { DEMO_MAILTO } from "@/lib/constants";
 
+type Step = "email" | "profile" | "ok";
+
+const ROLES = ["CFO / VP Finance", "FP&A manager / analyst", "Founder / CEO", "Other"];
+const TEAM_SIZES = ["1 (just me)", "2–5", "6–15", "16+"];
+const CURRENT_TOOLS = ["Excel only", "Excel + BI", "Anaplan / Adaptive", "Other EPM tool"];
+
 function CTAForm() {
   const params = useSearchParams();
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState(""); // honeypot
-  const [status, setStatus] = useState<"idle" | "submitting" | "ok" | "error">("idle");
+  const [role, setRole] = useState<string>("");
+  const [teamSize, setTeamSize] = useState<string>("");
+  const [currentTool, setCurrentTool] = useState<string>("");
+  const [step, setStep] = useState<Step>("email");
+  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function onSubmit(e: FormEvent) {
+  async function postLead(extra: Record<string, unknown> = {}) {
+    return fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        website,
+        referrer: typeof document !== "undefined" ? document.referrer : "",
+        utm_source: params.get("utm_source") ?? undefined,
+        utm_medium: params.get("utm_medium") ?? undefined,
+        utm_campaign: params.get("utm_campaign") ?? undefined,
+        ...extra,
+      }),
+    });
+  }
+
+  async function onEmailSubmit(e: FormEvent) {
     e.preventDefault();
-    setStatus("submitting");
+    setSubmitting(true);
     setError(null);
     try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          website,
-          referrer: typeof document !== "undefined" ? document.referrer : "",
-          utm_source: params.get("utm_source") ?? undefined,
-          utm_medium: params.get("utm_medium") ?? undefined,
-          utm_campaign: params.get("utm_campaign") ?? undefined,
-        }),
-      });
+      const res = await postLead({ stage: "step-1-email" });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         setError(data.error ?? "Something went wrong.");
-        setStatus("error");
         return;
       }
-      setStatus("ok");
+      setStep("profile");
     } catch {
       setError("Network error. Try again?");
-      setStatus("error");
+    } finally {
+      setSubmitting(false);
     }
   }
 
-  if (status === "ok") {
+  async function onProfileSubmit(e: FormEvent) {
+    e.preventDefault();
+    setSubmitting(true);
+    try {
+      await postLead({ stage: "step-2-profile", role, teamSize, currentTool });
+    } catch {
+      // Optimistic: user already gave us their email; don't block on this.
+    } finally {
+      setSubmitting(false);
+      setStep("ok");
+    }
+  }
+
+  if (step === "ok") {
     return (
-      <div className="rounded-xl bg-white/10 border border-white/20 p-5 text-white flex items-center gap-3">
-        <Check className="w-5 h-5 text-accent-emerald shrink-0" />
-        <p className="text-sm">
-          Thanks — we&apos;ll be in touch within 1 business day.
+      <div className="rounded-xl bg-white/10 border border-white/20 p-5 text-white">
+        <div className="flex items-center gap-3 mb-2">
+          <Check className="w-5 h-5 text-accent-emerald shrink-0" />
+          <p className="font-semibold">Thanks — we&apos;ll be in touch within 1 business day.</p>
+        </div>
+        <p className="text-sm text-white/80">
+          We&apos;ll route this based on what you told us. While you wait — try the{" "}
+          <a href="/demo" className="underline underline-offset-2 hover:no-underline font-semibold">
+            live demo
+          </a>{" "}
+          on sample data.
         </p>
       </div>
     );
   }
 
+  if (step === "profile") {
+    return (
+      <form onSubmit={onProfileSubmit} className="space-y-4">
+        <p className="text-sm text-white/80">
+          Got it — <strong>{email}</strong>. Three quick questions so we can route you to the right person.
+        </p>
+        <Choice label="Your role" value={role} onChange={setRole} options={ROLES} />
+        <Choice label="Team size" value={teamSize} onChange={setTeamSize} options={TEAM_SIZES} />
+        <Choice
+          label="Current FP&A tool"
+          value={currentTool}
+          onChange={setCurrentTool}
+          options={CURRENT_TOOLS}
+        />
+        <div className="flex flex-wrap gap-3">
+          <button
+            type="submit"
+            disabled={submitting}
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white hover:bg-brand-50 disabled:opacity-60 text-brand-700 font-semibold px-5 py-3 transition-colors"
+          >
+            {submitting ? "Sending…" : "Done"}
+            {!submitting && <ArrowRight className="w-4 h-4" />}
+          </button>
+          <button
+            type="button"
+            onClick={() => setStep("ok")}
+            className="text-sm text-white/70 hover:text-white underline underline-offset-2"
+          >
+            Skip — submit just the email
+          </button>
+        </div>
+      </form>
+    );
+  }
+
   return (
-    <form onSubmit={onSubmit} className="space-y-3">
+    <form onSubmit={onEmailSubmit} className="space-y-3">
       <div className="flex flex-col sm:flex-row gap-3">
         <input
           type="email"
@@ -64,7 +134,7 @@ function CTAForm() {
           placeholder="you@company.com"
           className="flex-1 rounded-xl bg-white/10 border border-white/20 placeholder:text-white/50 text-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white/40 focus:border-transparent"
         />
-        {/* honeypot — hidden from humans, bots fill it */}
+        {/* honeypot — hidden from humans, real spam-bot fill */}
         <input
           type="text"
           name="website"
@@ -77,16 +147,55 @@ function CTAForm() {
         />
         <button
           type="submit"
-          disabled={status === "submitting"}
+          disabled={submitting}
           className="inline-flex items-center justify-center gap-2 rounded-xl bg-white hover:bg-brand-50 disabled:opacity-60 disabled:cursor-not-allowed text-brand-700 font-semibold px-5 py-3 transition-colors"
         >
-          {status === "submitting" ? "Sending…" : "Get early access"}
-          {status !== "submitting" && <ArrowRight className="w-4 h-4" />}
+          {submitting ? "Sending…" : "Get early access"}
+          {!submitting && <ArrowRight className="w-4 h-4" />}
         </button>
       </div>
       {error && <p className="text-sm text-rose-200">{error}</p>}
       <p className="text-xs text-white/70">No credit card required. We&apos;ll never share your email.</p>
     </form>
+  );
+}
+
+function Choice({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  options: string[];
+}) {
+  return (
+    <div>
+      <label className="block text-xs font-semibold uppercase tracking-wider text-white/70 mb-2">
+        {label}
+      </label>
+      <div className="flex flex-wrap gap-2">
+        {options.map((o) => {
+          const active = value === o;
+          return (
+            <button
+              key={o}
+              type="button"
+              onClick={() => onChange(o)}
+              className={`rounded-full border text-sm px-3 py-1.5 transition-colors ${
+                active
+                  ? "bg-white text-brand-700 border-white"
+                  : "bg-white/5 border-white/20 text-white hover:bg-white/15"
+              }`}
+            >
+              {o}
+            </button>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

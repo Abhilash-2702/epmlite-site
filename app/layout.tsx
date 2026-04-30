@@ -4,6 +4,8 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import StickyCTA from "@/components/StickyCTA";
+import ChatBubble from "@/components/ChatBubble";
+import ExitIntent from "@/components/ExitIntent";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -55,6 +57,8 @@ export default function RootLayout({
         <main className="pt-16">{children}</main>
         <Footer />
         <StickyCTA />
+        <ChatBubble />
+        <ExitIntent />
       </body>
     </html>
   );

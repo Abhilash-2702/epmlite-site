@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import Logo from "@/components/Logo";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import { DEMO_EMAIL } from "@/lib/constants";
 
 // lucide-react v1 dropped brand icons; inline these to avoid extra deps.
@@ -30,13 +31,26 @@ const cols: Col[] = [
     links: [
       { label: "Products & Platforms", href: "/products" },
       { label: "Live demo", href: "/demo" },
+      { label: "ROI calculator", href: "/calculator" },
       { label: "Pricing", href: "/#pricing" },
-      { label: "FAQ", href: "/#faq" },
+      { label: "Roadmap", href: "/roadmap" },
+      { label: "Changelog", href: "/changelog" },
     ],
   },
   {
-    title: "Compare",
+    title: "Solutions",
     links: [
+      { label: "For SaaS", href: "/for/saas" },
+      { label: "For consulting", href: "/for/consulting" },
+      { label: "For hardware", href: "/for/hardware" },
+      { label: "For services", href: "/for/services" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "Blog", href: "/blog" },
+      { label: "FP&A starter pack", href: "/resources" },
       { label: "vs Anaplan", href: "/vs/anaplan" },
       { label: "vs Adaptive", href: "/vs/adaptive" },
       { label: "vs Excel", href: "/vs/excel" },
@@ -51,26 +65,21 @@ const cols: Col[] = [
       { label: "Contact", href: "/contact" },
     ],
   },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy", href: "#" },
-      { label: "Terms", href: "#" },
-      { label: "Security", href: "#" },
-    ],
-  },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-sidebar text-slate-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
-          <div className="col-span-2">
+        <div className="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-7 gap-8">
+          <div className="col-span-2 lg:col-span-3">
             <Logo monochrome href={null} />
             <p className="mt-3 text-sm text-slate-400 max-w-xs">
               AI-native financial planning. Forecast in minutes, not weeks.
             </p>
+            <div className="mt-5 max-w-sm">
+              <NewsletterSignup variant="footer" />
+            </div>
             <div className="mt-5 flex items-center gap-3">
               <a
                 href={`mailto:${DEMO_EMAIL}`}

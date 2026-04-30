@@ -37,15 +37,18 @@ export default function AboutPage() {
           <p className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">
             Who we are
           </p>
-          <h1 className="font-display font-bold text-4xl lg:text-5xl text-slate-900 tracking-tight text-balance">
-            Built by an FP&amp;A operator. For FP&amp;A operators.
+          <h1 className="font-display font-bold text-4xl lg:text-6xl text-slate-900 tracking-tight text-balance leading-[1.05]">
+            The FP&amp;A platform we couldn&apos;t buy.
+            <br />
+            <span className="text-brand-600">So we built it.</span>
           </h1>
           <p className="mt-6 text-lg text-slate-600 leading-relaxed">
-            EPM Lite started because closing the books took us 11 days, the variance pack took 40
-            hours, and every board meeting needed a fresh &ldquo;why is this off?&rdquo; investigation. The
-            existing tools — Excel, Adaptive, Anaplan — each solved part of the problem and made
-            another part worse. We wanted one tool with the full picture and an AI layer that
-            answered questions in plain English. So we built it.
+            We&apos;d spent enough Sundays reconciling the close, enough Mondays explaining
+            why EBITDA was off, enough Tuesdays rebuilding the variance pack one broken
+            VLOOKUP at a time. The tools we evaluated — Excel, Anaplan, Adaptive — each
+            fixed one thing and broke two others. We wanted the close in days, the
+            variance pack in minutes, and an AI agent that read AND wrote the cube
+            safely. Nothing on the market did all three. So we built it.
 
           </p>
         </div>
