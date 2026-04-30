@@ -29,8 +29,17 @@ const cols: Col[] = [
     title: "Product",
     links: [
       { label: "Products & Platforms", href: "/products" },
+      { label: "Live demo", href: "/demo" },
       { label: "Pricing", href: "/#pricing" },
       { label: "FAQ", href: "/#faq" },
+    ],
+  },
+  {
+    title: "Compare",
+    links: [
+      { label: "vs Anaplan", href: "/vs/anaplan" },
+      { label: "vs Adaptive", href: "/vs/adaptive" },
+      { label: "vs Excel", href: "/vs/excel" },
     ],
   },
   {
@@ -56,7 +65,7 @@ export default function Footer() {
   return (
     <footer className="bg-sidebar text-slate-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
           <div className="col-span-2">
             <Logo monochrome href={null} />
             <p className="mt-3 text-sm text-slate-400 max-w-xs">

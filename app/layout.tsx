@@ -3,6 +3,7 @@ import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import StickyCTA from "@/components/StickyCTA";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default function RootLayout({
         <Nav />
         <main className="pt-16">{children}</main>
         <Footer />
+        <StickyCTA />
       </body>
     </html>
   );

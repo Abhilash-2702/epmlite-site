@@ -24,7 +24,7 @@ const steps = [
     n: "03",
     title: "Decide",
     body:
-      "Ask in plain English. The bot drafts the answer, runs the forecast, and shows the variance. Audit trail captures every change with who/when/before-after.",
+      "Ask in plain English. The agent drafts the answer, runs the forecast, and shows the variance. Audit trail captures every change with who/when/before-after.",
     Icon: Sparkles,
     accent: "text-accent-emerald bg-emerald-50",
   },

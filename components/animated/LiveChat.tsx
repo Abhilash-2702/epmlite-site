@@ -113,7 +113,7 @@ export default function LiveChat() {
         </div>
       </div>
 
-      {/* Bot response */}
+      {/* Agent response */}
       {(toolIdx > 0 || answerVisible) && (
         <div className="flex justify-start mb-4">
           <div className="max-w-[90%] rounded-2xl rounded-bl-sm bg-surface-50 border border-surface-200 px-4 py-3">

@@ -5,6 +5,7 @@ import WhatIfBand from "@/components/WhatIfBand";
 import FeatureGrid from "@/components/FeatureGrid";
 import ChatShowcase from "@/components/ChatShowcase";
 import DriverFormulaBand from "@/components/DriverFormulaBand";
+import CaseStudyBand from "@/components/CaseStudyBand";
 import Security from "@/components/Security";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
@@ -20,6 +21,7 @@ export default function Home() {
       <FeatureGrid />
       <ChatShowcase />
       <DriverFormulaBand />
+      <CaseStudyBand />
       <Security />
       <Pricing />
       <FAQ />

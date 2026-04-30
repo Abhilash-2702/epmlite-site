@@ -17,7 +17,7 @@ const cards = [
     title: "Role-based access",
     headline: "Four roles, clean boundaries.",
     body:
-      "super_admin · admin · planner · viewer. The chatbot respects the same permissions (e.g. user management is super_admin-gated).",
+      "super_admin · admin · planner · viewer. The agent respects the same permissions (e.g. user management is super_admin-gated).",
     tone: "text-brand-600 bg-brand-50",
   },
   {
@@ -33,7 +33,7 @@ const cards = [
     title: "Drafts before commits",
     headline: "No silent writes from the AI.",
     body:
-      "Every chatbot write produces a confirmation card. The user clicks Post; the backend re-validates; commit happens. Nothing auto-mutates the database.",
+      "Every agent write produces a confirmation card. The user clicks Post; the backend re-validates; commit happens. Nothing auto-mutates the database.",
     tone: "text-accent-emerald bg-emerald-50",
   },
 ];
