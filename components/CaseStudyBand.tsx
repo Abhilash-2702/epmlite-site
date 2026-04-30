@@ -27,7 +27,7 @@ const profile = {
 
 export default function CaseStudyBand() {
   return (
-    <section className="bg-white py-20 lg:py-24 border-t border-surface-200">
+    <section className="bg-white py-12 lg:py-14 border-t border-surface-200">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

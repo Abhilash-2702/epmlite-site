@@ -74,7 +74,7 @@ const tiers: Tier[] = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="bg-surface-50 py-20 lg:py-28">
+    <section id="pricing" className="bg-surface-50 py-12 lg:py-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

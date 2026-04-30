@@ -29,7 +29,7 @@ const profiles = [
 export default function CareersPage() {
   return (
     <>
-      <section className="bg-white pt-12 pb-12 lg:pt-20 lg:pb-16 border-b border-surface-200">
+      <section className="bg-white pt-10 pb-8 lg:pt-14 lg:pb-10 border-b border-surface-200">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <p className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">
             Careers
@@ -45,7 +45,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="bg-surface-50 py-16 lg:py-20">
+      <section className="bg-surface-50 py-10 lg:py-14">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="font-display font-bold text-2xl lg:text-3xl text-slate-900 mb-8">
             Profiles we&apos;d love to meet

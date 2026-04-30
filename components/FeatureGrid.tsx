@@ -64,7 +64,7 @@ const features = [
 
 export default function FeatureGrid() {
   return (
-    <section id="features" className="bg-white py-20 lg:py-28">
+    <section id="features" className="bg-white py-12 lg:py-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

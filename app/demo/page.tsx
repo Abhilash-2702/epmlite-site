@@ -42,7 +42,7 @@ export default function DemoPage() {
       </section>
 
       {/* CTA */}
-      <section className="gradient-cta py-16 text-white">
+      <section className="gradient-cta py-12 text-white">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="font-display font-bold text-3xl lg:text-4xl tracking-tight">
             Now run it on your data.

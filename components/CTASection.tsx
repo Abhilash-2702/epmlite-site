@@ -92,7 +92,7 @@ function CTAForm() {
 
 export default function CTASection() {
   return (
-    <section className="gradient-cta py-20 lg:py-28 text-white">
+    <section className="gradient-cta py-12 lg:py-16 text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <h2 className="font-display font-bold text-3xl lg:text-5xl tracking-tight text-balance">

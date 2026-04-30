@@ -32,7 +32,7 @@ const beliefs = [
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-white pt-12 pb-16 lg:pt-20 lg:pb-20 border-b border-surface-200">
+      <section className="bg-white pt-10 pb-10 lg:pt-14 lg:pb-12 border-b border-surface-200">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <p className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">
             Who we are
@@ -51,7 +51,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-surface-50 py-16 lg:py-20">
+      <section className="bg-surface-50 py-10 lg:py-14">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="font-display font-bold text-2xl lg:text-3xl text-slate-900 mb-8">
             What we believe
@@ -73,7 +73,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16 lg:py-20 border-t border-surface-200">
+      <section className="bg-white py-10 lg:py-14 border-t border-surface-200">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="font-display font-bold text-2xl lg:text-3xl text-slate-900 mb-6">
             What we&apos;ve built so far

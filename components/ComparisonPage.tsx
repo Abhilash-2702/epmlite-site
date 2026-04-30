@@ -35,7 +35,7 @@ export default function ComparisonPage(props: ComparisonProps) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-white pt-12 pb-12 lg:pt-16 lg:pb-14 border-b border-surface-200">
+      <section className="bg-white pt-10 pb-8 lg:pt-14 lg:pb-10 border-b border-surface-200">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <p className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">
             {props.kicker}
@@ -65,7 +65,7 @@ export default function ComparisonPage(props: ComparisonProps) {
       </section>
 
       {/* Side-by-side table */}
-      <section className="bg-surface-50 py-16 lg:py-20">
+      <section className="bg-surface-50 py-10 lg:py-14">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <h2 className="font-display font-bold text-2xl lg:text-3xl text-slate-900 mb-8">
             Side-by-side
@@ -141,7 +141,7 @@ export default function ComparisonPage(props: ComparisonProps) {
       </section>
 
       {/* Differentiator cards */}
-      <section className="bg-white py-16 lg:py-20 border-t border-surface-200">
+      <section className="bg-white py-10 lg:py-14 border-t border-surface-200">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <h2 className="font-display font-bold text-2xl lg:text-3xl text-slate-900 mb-8">
             Where EPM Lite is different
@@ -167,7 +167,7 @@ export default function ComparisonPage(props: ComparisonProps) {
       </section>
 
       {/* Who is each for */}
-      <section className="bg-surface-50 py-16 lg:py-20 border-t border-surface-200">
+      <section className="bg-surface-50 py-10 lg:py-14 border-t border-surface-200">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <h2 className="font-display font-bold text-2xl lg:text-3xl text-slate-900 mb-8">
             Who each one is actually for
@@ -190,7 +190,7 @@ export default function ComparisonPage(props: ComparisonProps) {
       </section>
 
       {/* Bottom CTA */}
-      <section className="gradient-cta py-16 text-white">
+      <section className="gradient-cta py-12 text-white">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="font-display font-bold text-3xl lg:text-4xl tracking-tight">
             {props.ctaPrompt}

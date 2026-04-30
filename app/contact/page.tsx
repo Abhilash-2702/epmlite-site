@@ -26,7 +26,7 @@ const faq = [
 
 export default function ContactPage() {
   return (
-    <section className="bg-white py-16 lg:py-24">
+    <section className="bg-white py-10 lg:py-14">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl mb-12">
           <p className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">
