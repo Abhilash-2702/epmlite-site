@@ -34,7 +34,6 @@ const cols: Col[] = [
       { label: "ROI calculator", href: "/calculator" },
       { label: "Pricing", href: "/#pricing" },
       { label: "Roadmap", href: "/roadmap" },
-      { label: "Changelog", href: "/changelog" },
     ],
   },
   {
