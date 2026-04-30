@@ -1,16 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, PlayCircle, Briefcase, BarChart3, Rocket } from "lucide-react";
 import Link from "next/link";
 import { DEMO_MAILTO } from "@/lib/constants";
 import VideoOrMockup from "@/components/animated/VideoOrMockup";
 import LiveDashboard from "@/components/animated/LiveDashboard";
+import { usePersona, type Persona } from "@/components/PersonaContext";
 
-type Audience = "cfo" | "fpa" | "founder";
-
-const AUDIENCES: { id: Audience; label: string; Icon: typeof Briefcase; subhead: string }[] = [
+const AUDIENCES: { id: Persona; label: string; Icon: typeof Briefcase; subhead: string }[] = [
   {
     id: "cfo",
     label: "CFO",
@@ -53,27 +51,26 @@ const switchingFrom = [
 ];
 
 export default function Hero() {
-  const [audience, setAudience] = useState<Audience>("fpa");
-  const subhead = AUDIENCES.find((a) => a.id === audience)?.subhead ?? AUDIENCES[1].subhead;
+  const { persona, setPersona } = usePersona();
+  const subhead = AUDIENCES.find((a) => a.id === persona)?.subhead ?? AUDIENCES[1].subhead;
 
   return (
     <section className="relative gradient-hero overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-10 pb-12 lg:pt-16 lg:pb-14 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        {/* LEFT — copy */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="relative z-10"
         >
-          {/* Use-case toggle (C) */}
+          {/* Persona toggle */}
           <div className="inline-flex items-center gap-1 rounded-full bg-white/80 backdrop-blur border border-surface-200 p-1 mb-5">
             {AUDIENCES.map((a) => {
-              const active = a.id === audience;
+              const active = a.id === persona;
               return (
                 <button
                   key={a.id}
-                  onClick={() => setAudience(a.id)}
+                  onClick={() => setPersona(a.id)}
                   className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
                     active
                       ? "bg-brand-500 text-white shadow-card"
@@ -88,7 +85,6 @@ export default function Hero() {
             })}
           </div>
 
-          {/* Bigger AI-native FP&A treatment */}
           <div className="inline-flex items-center gap-2.5 rounded-full bg-brand-100 text-brand-700 px-5 py-2.5 text-base lg:text-lg font-bold tracking-tight mb-6">
             <Sparkles className="w-5 h-5" strokeWidth={2.5} />
             AI-native FP&amp;A
@@ -99,7 +95,7 @@ export default function Hero() {
             <span className="text-brand-600">Forecast in minutes.</span>
           </h1>
           <motion.p
-            key={audience}
+            key={persona}
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.25 }}
@@ -122,7 +118,6 @@ export default function Hero() {
               Book a 15-min demo
             </a>
           </div>
-          {/* Video walkthrough slot (I) — placeholder until founder records the voiceover */}
           <Link
             href="/demo"
             className="mt-4 inline-flex items-center gap-2 text-sm text-slate-500 hover:text-brand-600 transition-colors"
@@ -132,7 +127,6 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        {/* RIGHT — animated dashboard */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -147,7 +141,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Switching-from + capability stats band */}
       <div className="border-t border-surface-200 bg-white/60 backdrop-blur">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 lg:py-6">
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2 text-sm">

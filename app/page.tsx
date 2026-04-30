@@ -1,4 +1,6 @@
 import Hero from "@/components/Hero";
+import PersonaPanel, { ShowFor } from "@/components/PersonaPanel";
+import { PersonaProvider } from "@/components/PersonaContext";
 import Pain from "@/components/Pain";
 import How from "@/components/How";
 import WhatIfBand from "@/components/WhatIfBand";
@@ -13,19 +15,26 @@ import CTASection from "@/components/CTASection";
 
 export default function Home() {
   return (
-    <>
+    <PersonaProvider>
       <Hero />
+      <PersonaPanel />
       <Pain />
       <How />
       <WhatIfBand />
       <FeatureGrid />
       <ChatShowcase />
-      <DriverFormulaBand />
+      {/* Driver formulas only for FP&A + Founder. CFOs don't write formulas — they ratify. */}
+      <ShowFor personas={["fpa", "founder"]}>
+        <DriverFormulaBand />
+      </ShowFor>
       <CaseStudyBand />
-      <Security />
+      {/* Security details mostly matter to CFOs. FP&A + Founder see a summary in PersonaPanel already. */}
+      <ShowFor personas={["cfo", "fpa"]}>
+        <Security />
+      </ShowFor>
       <Pricing />
       <FAQ />
       <CTASection />
-    </>
+    </PersonaProvider>
   );
 }

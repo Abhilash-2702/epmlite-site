@@ -1,19 +1,44 @@
 "use client";
 
 import { useState } from "react";
-import { LayoutDashboard, Sparkles, FlaskConical, TrendingUp } from "lucide-react";
+import {
+  LayoutDashboard,
+  Sparkles,
+  FlaskConical,
+  TrendingUp,
+  FileSpreadsheet,
+  GitBranch,
+  Bell,
+  History,
+} from "lucide-react";
 import DemoDashboard from "./DemoDashboard";
 import DemoChat from "./DemoChat";
 import DemoWhatIf from "./DemoWhatIf";
 import DemoForecast from "./DemoForecast";
+import DemoReports from "./DemoReports";
+import DemoDrivers from "./DemoDrivers";
+import DemoAlerts from "./DemoAlerts";
+import DemoAudit from "./DemoAudit";
 
-type Tab = "dashboard" | "chat" | "whatif" | "forecast";
+type Tab =
+  | "dashboard"
+  | "reports"
+  | "chat"
+  | "whatif"
+  | "forecast"
+  | "drivers"
+  | "alerts"
+  | "audit";
 
-const TABS: { id: Tab; label: string; Icon: typeof LayoutDashboard }[] = [
-  { id: "dashboard", label: "Dashboard", Icon: LayoutDashboard },
-  { id: "chat", label: "AI Chat", Icon: Sparkles },
-  { id: "whatif", label: "What-If", Icon: FlaskConical },
-  { id: "forecast", label: "Forecasting", Icon: TrendingUp },
+const TABS: { id: Tab; label: string; Icon: typeof LayoutDashboard; group: 1 | 2 }[] = [
+  { id: "dashboard", label: "Dashboard",   Icon: LayoutDashboard, group: 1 },
+  { id: "reports",   label: "Reports",     Icon: FileSpreadsheet, group: 1 },
+  { id: "chat",      label: "AI Chat",     Icon: Sparkles,        group: 1 },
+  { id: "whatif",    label: "What-If",     Icon: FlaskConical,    group: 1 },
+  { id: "forecast",  label: "Forecasting", Icon: TrendingUp,      group: 2 },
+  { id: "drivers",   label: "Drivers",     Icon: GitBranch,       group: 2 },
+  { id: "alerts",    label: "Alerts",      Icon: Bell,            group: 2 },
+  { id: "audit",     label: "Audit",       Icon: History,         group: 2 },
 ];
 
 export default function DemoConsole() {
@@ -43,7 +68,7 @@ export default function DemoConsole() {
             <button
               key={t.id}
               onClick={() => setTab(t.id)}
-              className={`relative inline-flex items-center gap-2 px-5 py-3 text-sm font-medium transition-colors whitespace-nowrap ${
+              className={`relative inline-flex items-center gap-2 px-4 lg:px-5 py-3 text-sm font-medium transition-colors whitespace-nowrap ${
                 active
                   ? "text-brand-600"
                   : "text-slate-600 hover:text-brand-600 hover:bg-surface-50"
@@ -60,11 +85,15 @@ export default function DemoConsole() {
       </div>
 
       {/* Tab content */}
-      <div className="p-5 lg:p-8 bg-surface-50 min-h-[520px]">
+      <div className="p-5 lg:p-8 bg-surface-50 min-h-[560px]">
         {tab === "dashboard" && <DemoDashboard />}
-        {tab === "chat" && <DemoChat />}
-        {tab === "whatif" && <DemoWhatIf />}
-        {tab === "forecast" && <DemoForecast />}
+        {tab === "reports"   && <DemoReports />}
+        {tab === "chat"      && <DemoChat />}
+        {tab === "whatif"    && <DemoWhatIf />}
+        {tab === "forecast"  && <DemoForecast />}
+        {tab === "drivers"   && <DemoDrivers />}
+        {tab === "alerts"    && <DemoAlerts />}
+        {tab === "audit"     && <DemoAudit />}
       </div>
     </div>
   );

@@ -97,9 +97,24 @@ export default function Nav() {
     };
   }, []);
 
-  const isLinkActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+  const isLinkActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  // An item is active only if its base path (before any #anchor) actually
+  // matches the current pathname. Items like `/#pricing` resolve to base `/`
+  // — those should NOT mark the group as active when the user is on a
+  // different route.
+  const baseOf = (href: string) => href.split("#")[0] || "";
+  const isItemActive = (href: string) => {
+    const base = baseOf(href);
+    if (!base || base === "/") return pathname === "/";
+    return pathname.startsWith(base);
+  };
   const isGroupActive = (items: Item[]) =>
-    items.some((i) => i.href !== "/" && pathname.startsWith(i.href.split("#")[0] || "/"));
+    items.some((i) => {
+      const base = baseOf(i.href);
+      if (!base || base === "/") return false; // anchor-on-home, never a "group" highlight
+      return pathname.startsWith(base);
+    });
 
   return (
     <header
@@ -154,7 +169,7 @@ export default function Nav() {
                   <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-[420px] rounded-2xl bg-white border border-surface-200 shadow-elevated p-2 animate-in fade-in slide-in-from-top-1 duration-150">
                     <ul>
                       {entry.items.map((item) => {
-                        const itemActive = pathname.startsWith(item.href.split("#")[0] || "/");
+                        const itemActive = isItemActive(item.href);
                         return (
                           <li key={item.href}>
                             <Link
@@ -244,7 +259,7 @@ export default function Nav() {
                   {isOpen && (
                     <ul className="ml-2 pl-3 my-1 space-y-0.5 border-l-2 border-brand-100">
                       {entry.items.map((item) => {
-                        const itemActive = pathname.startsWith(item.href.split("#")[0] || "/");
+                        const itemActive = isItemActive(item.href);
                         return (
                           <li key={item.href}>
                             <Link
