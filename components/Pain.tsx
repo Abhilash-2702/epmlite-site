@@ -65,9 +65,8 @@ export default function Pain() {
           ))}
         </div>
 
-        <p className="mt-10 text-sm text-slate-500 italic max-w-2xl">
-          Capital is expensive. Forecasting cycles need to be shorter. CFOs are being asked weekly
-          questions that used to be quarterly.
+        <p className="mt-10 text-sm text-slate-500 italic max-w-3xl">
+          Capital is expensive — and CFOs are being asked weekly the questions they used to answer quarterly.
         </p>
       </div>
     </section>
