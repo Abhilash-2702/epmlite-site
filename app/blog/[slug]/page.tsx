@@ -5,6 +5,7 @@ import { ArrowLeft, Clock, ArrowRight } from "lucide-react";
 import { POSTS } from "@/lib/posts";
 import PostBody from "@/components/PostBody";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import { BlogPostingSchema } from "@/components/StructuredData";
 
 export function generateStaticParams() {
   return POSTS.map((p) => ({ slug: p.slug }));
@@ -27,6 +28,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
+      <BlogPostingSchema
+        slug={post.slug}
+        title={post.title}
+        description={post.description}
+        date={post.date}
+      />
       <article className="bg-white pt-8 pb-10 lg:pt-12 lg:pb-14 border-b border-surface-200">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <Link
