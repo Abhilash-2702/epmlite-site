@@ -87,7 +87,7 @@ export default function Hero() {
 
           <div className="inline-flex items-center gap-2.5 rounded-full bg-brand-100 text-brand-700 px-5 py-2.5 text-base lg:text-lg font-bold tracking-tight mb-6">
             <Sparkles className="w-5 h-5" strokeWidth={2.5} />
-            AI-native FP&amp;A
+            Agentic FP&amp;A Platform
           </div>
           <h1 className="font-display font-bold tracking-tight text-slate-900 text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-balance">
             Close in 4 days, not 12.

@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { TrendingUp, Trophy } from "lucide-react";
+import { useShouldAnimate } from "@/components/animated/hooks";
 
 const ALGOS = [
   { name: "Linear", r2: 0.78 },
@@ -16,12 +17,13 @@ const STEP_MS = 700;
 const HOLD_MS = 2500;
 
 export default function LiveForecast() {
-  const reduced = useReducedMotion();
-  const [step, setStep] = useState(reduced ? ALGOS.length : 0);
-  const [showWinner, setShowWinner] = useState(reduced);
+  const animate = useShouldAnimate();
+  const frozen = !animate;
+  const [step, setStep] = useState(frozen ? ALGOS.length : 0);
+  const [showWinner, setShowWinner] = useState(frozen);
 
   useEffect(() => {
-    if (reduced) return;
+    if (frozen) return;
     let alive = true;
     const timers: ReturnType<typeof setTimeout>[] = [];
 
@@ -47,7 +49,7 @@ export default function LiveForecast() {
       alive = false;
       timers.forEach(clearTimeout);
     };
-  }, [reduced]);
+  }, [frozen]);
 
   const winnerIdx = ALGOS.reduce((best, a, i, arr) => (a.r2 > arr[best].r2 ? i : best), 0);
 

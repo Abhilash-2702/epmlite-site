@@ -1,20 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { GitBranch, Check } from "lucide-react";
+import { useShouldAnimate } from "@/components/animated/hooks";
 
 const FORMULA = "SALARIES_ENG = HEADCOUNT_ENG × -10000";
 const TYPING_MS = 50;
 
 export default function LiveDriverFormula() {
-  const reduced = useReducedMotion();
-  const [typed, setTyped] = useState(reduced ? FORMULA : "");
-  const [committed, setCommitted] = useState(reduced);
-  const [hc, setHc] = useState(reduced ? 12 : 9);
+  const animate = useShouldAnimate();
+  const frozen = !animate;
+  const [typed, setTyped] = useState(frozen ? FORMULA : "");
+  const [committed, setCommitted] = useState(frozen);
+  const [hc, setHc] = useState(frozen ? 12 : 9);
 
   useEffect(() => {
-    if (reduced) return;
+    if (frozen) return;
     let alive = true;
     const timers: ReturnType<typeof setTimeout>[] = [];
 
@@ -50,7 +52,7 @@ export default function LiveDriverFormula() {
       alive = false;
       timers.forEach(clearTimeout);
     };
-  }, [reduced]);
+  }, [frozen]);
 
   const salaries = hc * -10000;
 
@@ -74,7 +76,7 @@ export default function LiveDriverFormula() {
         </div>
         <div className="font-mono text-sm text-slate-900 min-h-[20px]">
           {typed}
-          {!reduced && !committed && (
+          {!frozen && !committed && (
             <motion.span
               className="ml-0.5 inline-block w-px h-4 bg-slate-700 align-middle"
               animate={{ opacity: [1, 0] }}

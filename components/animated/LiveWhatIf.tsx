@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { FlaskConical } from "lucide-react";
+import { useShouldAnimate } from "@/components/animated/hooks";
 
 const KPIS = [
   { label: "Revenue", base: 4.2, suffix: "M", prefix: "$", precision: 2 },
@@ -12,11 +13,12 @@ const KPIS = [
 ];
 
 export default function LiveWhatIf() {
-  const reduced = useReducedMotion();
-  const [pct, setPct] = useState(reduced ? -30 : 0);
+  const animate = useShouldAnimate();
+  const frozen = !animate;
+  const [pct, setPct] = useState(frozen ? -30 : 0);
 
   useEffect(() => {
-    if (reduced) return;
+    if (frozen) return;
     let direction = -1;
     const id = setInterval(() => {
       setPct((p) => {
@@ -37,7 +39,7 @@ export default function LiveWhatIf() {
       });
     }, 120);
     return () => clearInterval(id);
-  }, [reduced]);
+  }, [frozen]);
 
   // Scale base values by the % drop applied to revenue.
   const factor = 1 + pct / 100;

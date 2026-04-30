@@ -3,9 +3,7 @@ import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import StickyCTA from "@/components/StickyCTA";
-import ChatBubble from "@/components/ChatBubble";
-import ExitIntent from "@/components/ExitIntent";
+import DeferredWidgets from "@/components/DeferredWidgets";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -32,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "EPM Lite — AI-native financial planning",
     description:
-      "Close the books in days. Forecast in minutes. AI-native FP&A for finance leaders tired of Excel gymnastics.",
+      "Close the books in days. Forecast in minutes. The agentic FP&A platform for finance leaders tired of Excel gymnastics.",
     url: "https://epmlite.com",
     siteName: "EPM Lite",
     // OG image is generated dynamically by app/opengraph-image.tsx
@@ -56,9 +54,7 @@ export default function RootLayout({
         <Nav />
         <main className="pt-16">{children}</main>
         <Footer />
-        <StickyCTA />
-        <ChatBubble />
-        <ExitIntent />
+        <DeferredWidgets />
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles,
   TrendingUp,
@@ -10,6 +10,7 @@ import {
   Layers,
   MousePointer2,
 } from "lucide-react";
+import { useShouldAnimate } from "@/components/animated/hooks";
 
 const KPI_CYCLE = 8;       // seconds — cursor + KPI ring loop
 const CHART_CYCLE_MS = 7000; // ms — chart variant cycle
@@ -59,17 +60,19 @@ const VARIANTS: Variant[] = [
 ];
 
 export default function LiveDashboard() {
-  const reduced = useReducedMotion();
-  const cycle = reduced ? 0 : KPI_CYCLE;
+  const animate = useShouldAnimate(); // false on mobile → freeze on a stable frame
+  const cycle = animate ? KPI_CYCLE : 0;
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
-    if (reduced) return;
+    // Only run the chart cycler on desktop with motion enabled. On mobile we
+    // freeze on the line variant — saves repeat layout/paint cost on slow CPUs.
+    if (!animate) return;
     const id = setInterval(() => {
       setIdx((i) => (i + 1) % VARIANTS.length);
     }, CHART_CYCLE_MS);
     return () => clearInterval(id);
-  }, [reduced]);
+  }, [animate]);
 
   const v = VARIANTS[idx];
 
@@ -98,7 +101,7 @@ export default function LiveDashboard() {
           <KPI label="EBITDA" value="$890k" delta="▼ 2%" tone="rose" />
           <KPI label="Runway" value="14 mo" delta="—" tone="slate" />
 
-          {!reduced && (
+          {animate && (
             <motion.div
               className="absolute pointer-events-none"
               initial={{ x: "85%", y: "120%", opacity: 0 }}
@@ -136,7 +139,7 @@ export default function LiveDashboard() {
               </span>
               <span className="text-xs text-slate-400">{v.caption}</span>
             </div>
-            <v.Chart animate={!reduced} />
+            <v.Chart animate={animate} />
           </motion.div>
         </AnimatePresence>
 

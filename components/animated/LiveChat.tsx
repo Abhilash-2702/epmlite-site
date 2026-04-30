@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useShouldAnimate } from "@/components/animated/hooks";
 
 const QUESTION = "What's our runway if revenue drops 30%?";
 const TOOL_LINES = [
@@ -19,17 +20,18 @@ const PAUSE_MS = 600;
 const HOLD_MS = 4500;
 
 export default function LiveChat() {
-  const reduced = useReducedMotion();
+  const animate = useShouldAnimate();
+  const frozen = !animate; // freeze on completed state when on mobile or reduced-motion
   const [phase, setPhase] = useState<"typing" | "tools" | "answer" | "actions" | "hold">(
-    reduced ? "actions" : "typing"
+    frozen ? "actions" : "typing"
   );
-  const [typed, setTyped] = useState(reduced ? QUESTION : "");
-  const [toolIdx, setToolIdx] = useState(reduced ? TOOL_LINES.length : 0);
-  const [answerVisible, setAnswerVisible] = useState(reduced);
-  const [actionsVisible, setActionsVisible] = useState(reduced);
+  const [typed, setTyped] = useState(frozen ? QUESTION : "");
+  const [toolIdx, setToolIdx] = useState(frozen ? TOOL_LINES.length : 0);
+  const [answerVisible, setAnswerVisible] = useState(frozen);
+  const [actionsVisible, setActionsVisible] = useState(frozen);
 
   useEffect(() => {
-    if (reduced) return;
+    if (frozen) return;
     const timers: ReturnType<typeof setTimeout>[] = [];
     let alive = true;
 
@@ -86,7 +88,7 @@ export default function LiveChat() {
       alive = false;
       timers.forEach(clearTimeout);
     };
-  }, [reduced]);
+  }, [frozen]);
 
   return (
     <div className="rounded-2xl bg-white border border-surface-200 shadow-elevated p-5 lg:p-6">
@@ -103,7 +105,7 @@ export default function LiveChat() {
       <div className="flex justify-end mb-4">
         <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-brand-500 text-white px-4 py-2.5 text-sm min-h-[40px] inline-flex items-center">
           {typed}
-          {!reduced && phase === "typing" && (
+          {!frozen && phase === "typing" && (
             <motion.span
               className="ml-0.5 inline-block w-px h-4 bg-white"
               animate={{ opacity: [1, 0] }}

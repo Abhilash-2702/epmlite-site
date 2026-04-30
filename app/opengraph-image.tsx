@@ -112,7 +112,7 @@ export default async function OGImage() {
                 display: "flex",
               }}
             />
-            AI-native FP&amp;A
+            Agentic FP&amp;A Platform
           </div>
           <div
             style={{
