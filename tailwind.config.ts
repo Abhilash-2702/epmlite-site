@@ -42,6 +42,21 @@ const config: Config = {
           100: "#f1f5f9",
           200: "#e2e8f0",
         },
+        /**
+         * Theme tokens — values come from CSS variables defined in globals.css
+         * under :root and [data-persona="..."]. Switch persona → colors swap
+         * automatically across every component using these classes.
+         */
+        theme: {
+          accent:        "rgb(var(--theme-accent) / <alpha-value>)",
+          "accent-hover":"rgb(var(--theme-accent-hover) / <alpha-value>)",
+          "accent-soft": "rgb(var(--theme-accent-soft) / <alpha-value>)",
+          "accent-deep": "rgb(var(--theme-accent-deep) / <alpha-value>)",
+          spark:         "var(--theme-spark)",
+          "spark-soft":  "var(--theme-spark-soft)",
+          "text-on":     "var(--theme-text-on)",
+          emphasis:      "var(--theme-text-emphasis)",
+        },
       },
       fontFamily: {
         display: ["var(--font-dm-sans)", "system-ui", "sans-serif"],

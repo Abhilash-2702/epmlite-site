@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import WhoAmICard from "@/components/WhoAmICard";
 import PersonaPanel, { ShowFor } from "@/components/PersonaPanel";
 import { PersonaProvider } from "@/components/PersonaContext";
 import Pain from "@/components/Pain";
@@ -16,6 +17,7 @@ import CTASection from "@/components/CTASection";
 export default function Home() {
   return (
     <PersonaProvider>
+      <WhoAmICard />
       <Hero />
       <PersonaPanel />
       <Pain />

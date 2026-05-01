@@ -6,19 +6,98 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Theme system — 3 personas, 3 palettes.
+   Tokens are RGB triplets (so Tailwind opacity modifiers work via
+   rgb(var(--theme-accent) / <alpha-value>)) plus a few raw hex tokens
+   for things that don't need alpha (gradients, sparks).
+
+   Default = ocean (FP&A). data-persona overrides scope the whole tree.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root,
+[data-persona="fpa"] {
+  /* Ocean — analytical, balanced, current brand */
+  --theme-accent:        46 111 255;     /* brand-500 */
+  --theme-accent-hover:  26 82 245;      /* brand-600 */
+  --theme-accent-soft:   217 232 255;    /* brand-100 */
+  --theme-accent-deep:   19 61 225;      /* brand-700 */
+  --theme-spark:         #10b981;        /* emerald accent */
+  --theme-spark-soft:    #d1fae5;
+  --theme-text-on:       #ffffff;        /* text on accent bg */
+  --theme-text-emphasis: #1a52f5;        /* H1 second-line color */
+  --theme-grad-from:     #ffffff;
+  --theme-grad-to:       #eef5ff;
+  --theme-grad-spot1:    rgba(46, 111, 255, 0.10);
+  --theme-grad-spot2:    rgba(139, 92, 246, 0.08);
+  --theme-cta-from:      #133de1;
+  --theme-cta-via:       #182f8f;
+  --theme-cta-to:        #131f57;
+  --theme-name:          "Ocean";
+}
+
+[data-persona="cfo"] {
+  /* Slate-Gold — sophisticated, audit-grade, board-ready */
+  --theme-accent:        180 130 30;     /* gold (warmer than amber-500) */
+  --theme-accent-hover:  140 100 18;
+  --theme-accent-soft:   254 243 199;    /* amber-100 */
+  --theme-accent-deep:   146 64 14;      /* amber-800 */
+  --theme-spark:         #d97706;        /* amber-600 spark */
+  --theme-spark-soft:    #fef3c7;
+  --theme-text-on:       #ffffff;
+  --theme-text-emphasis: #b45309;        /* gold-tinted H1 second line */
+  --theme-grad-from:     #ffffff;
+  --theme-grad-to:       #f1f5f9;        /* slate-100 */
+  --theme-grad-spot1:    rgba(15, 23, 42, 0.06);   /* slate ambient */
+  --theme-grad-spot2:    rgba(180, 130, 30, 0.10); /* gold ambient */
+  --theme-cta-from:      #1e293b;        /* slate-800 */
+  --theme-cta-via:       #0f172a;        /* slate-900 */
+  --theme-cta-to:        #020617;        /* slate-950 */
+  --theme-name:          "Slate · Gold";
+}
+
+[data-persona="founder"] {
+  /* Emerald-Violet — energetic, growth, motion */
+  --theme-accent:        16 185 129;     /* emerald-500 */
+  --theme-accent-hover:  5 150 105;      /* emerald-600 */
+  --theme-accent-soft:   209 250 229;    /* emerald-100 */
+  --theme-accent-deep:   6 95 70;        /* emerald-800 */
+  --theme-spark:         #8b5cf6;        /* violet-500 spark */
+  --theme-spark-soft:    #ede9fe;
+  --theme-text-on:       #ffffff;
+  --theme-text-emphasis: #059669;        /* emerald-tinted H1 */
+  --theme-grad-from:     #ffffff;
+  --theme-grad-to:       #ecfdf5;        /* emerald-50 */
+  --theme-grad-spot1:    rgba(16, 185, 129, 0.10);
+  --theme-grad-spot2:    rgba(139, 92, 246, 0.10);
+  --theme-cta-from:      #047857;        /* emerald-700 */
+  --theme-cta-via:       #5b21b6;        /* violet-800 */
+  --theme-cta-to:        #2e1065;        /* violet-950 */
+  --theme-name:          "Emerald · Violet";
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 
+  /* Hero gradient — uses theme tokens so it changes per persona */
   .gradient-hero {
     background:
-      radial-gradient(ellipse at top right, rgba(46, 111, 255, 0.10), transparent 55%),
-      radial-gradient(ellipse at bottom left, rgba(139, 92, 246, 0.08), transparent 55%),
-      linear-gradient(180deg, #ffffff 0%, #eef5ff 100%);
+      radial-gradient(ellipse at top right, var(--theme-grad-spot1), transparent 55%),
+      radial-gradient(ellipse at bottom left, var(--theme-grad-spot2), transparent 55%),
+      linear-gradient(180deg, var(--theme-grad-from) 0%, var(--theme-grad-to) 100%);
+    transition: background 0.6s ease;
   }
 
+  /* CTA gradient (used on big dark CTA bands) */
   .gradient-cta {
-    background: linear-gradient(135deg, #133de1 0%, #182f8f 60%, #131f57 100%);
+    background: linear-gradient(135deg, var(--theme-cta-from) 0%, var(--theme-cta-via) 60%, var(--theme-cta-to) 100%);
+    transition: background 0.6s ease;
   }
+}
+
+/* Smooth crossfade when persona changes */
+[data-persona] {
+  transition: background-color 0.4s ease;
 }

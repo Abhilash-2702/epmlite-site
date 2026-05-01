@@ -2,8 +2,11 @@
 
 import { useState, FormEvent, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { DEMO_MAILTO } from "@/lib/constants";
+import { usePersona } from "@/components/PersonaContext";
+import { PERSONA_CONTENT } from "@/lib/persona-content";
 
 type Step = "email" | "profile" | "ok";
 
@@ -200,19 +203,27 @@ function Choice({
 }
 
 export default function CTASection() {
+  const { persona } = usePersona();
+  const c = PERSONA_CONTENT[persona];
+
   return (
     <section className="gradient-cta py-12 lg:py-16 text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 className="font-display font-bold text-3xl lg:text-5xl tracking-tight text-balance">
-            Stop fighting Excel.
-            <br />
-            Start asking questions.
-          </h2>
-          <p className="mt-5 text-lg text-white/80 max-w-xl">
-            Get a 15-minute walkthrough on your own data. No slides, no sales script — just the AI
-            chat live with your numbers.
-          </p>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={persona}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h2 className="font-display font-bold text-3xl lg:text-5xl tracking-tight text-balance whitespace-pre-line">
+                {c.ctaHeadline}
+              </h2>
+              <p className="mt-5 text-lg text-white/80 max-w-xl">{c.ctaSub}</p>
+            </motion.div>
+          </AnimatePresence>
           <div className="mt-8 max-w-lg">
             <Suspense fallback={null}>
               <CTAForm />
@@ -227,7 +238,8 @@ export default function CTASection() {
             </p>
             <a
               href={DEMO_MAILTO}
-              className="mt-3 inline-flex items-center gap-2 rounded-xl bg-white hover:bg-brand-50 text-brand-700 font-semibold px-6 py-3.5 transition-colors text-base"
+              className="mt-3 inline-flex items-center gap-2 rounded-xl bg-white hover:bg-brand-50 font-semibold px-6 py-3.5 transition-colors text-base"
+              style={{ color: "var(--theme-text-emphasis)" }}
             >
               Book a 15-min demo
               <ArrowRight className="w-4 h-4" />

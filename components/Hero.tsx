@@ -1,42 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Sparkles, PlayCircle, Briefcase, BarChart3, Rocket } from "lucide-react";
 import Link from "next/link";
-import { DEMO_MAILTO } from "@/lib/constants";
 import VideoOrMockup from "@/components/animated/VideoOrMockup";
 import LiveDashboard from "@/components/animated/LiveDashboard";
 import { usePersona, type Persona } from "@/components/PersonaContext";
+import { PERSONA_CONTENT } from "@/lib/persona-content";
 
-const AUDIENCES: { id: Persona; label: string; Icon: typeof Briefcase; subhead: string }[] = [
-  {
-    id: "cfo",
-    label: "CFO",
-    Icon: Briefcase,
-    subhead:
-      "Plain-English answers to the questions your board is asking weekly. Audit-grade trail on every change. Pre-IPO ready on day one.",
-  },
-  {
-    id: "fpa",
-    label: "FP&A",
-    Icon: BarChart3,
-    subhead:
-      "For finance teams tired of Excel gymnastics. 35+ AI tools, 15 forecast algorithms, and a plain-English agent that drafts every change before it commits.",
-  },
-  {
-    id: "founder",
-    label: "Founder",
-    Icon: Rocket,
-    subhead:
-      "Get monthly reports in hours, not days. Stress-test runway and hiring scenarios live. Built so a non-finance founder can self-serve — no model-builder team required.",
-  },
-];
-
-const stats = [
-  { stat: "35+", label: "AI tools" },
-  { stat: "15", label: "Forecast algorithms" },
-  { stat: "4 days", label: "for monthly reports (vs 12)" },
-];
+const ICONS: Record<Persona, typeof Briefcase> = {
+  cfo: Briefcase,
+  fpa: BarChart3,
+  founder: Rocket,
+};
+const LABELS: Record<Persona, string> = {
+  cfo: "CFO",
+  fpa: "FP&A",
+  founder: "Founder",
+};
 
 const switchingFrom = [
   "Anaplan",
@@ -52,7 +33,7 @@ const switchingFrom = [
 
 export default function Hero() {
   const { persona, setPersona } = usePersona();
-  const subhead = AUDIENCES.find((a) => a.id === persona)?.subhead ?? AUDIENCES[1].subhead;
+  const c = PERSONA_CONTENT[persona];
 
   return (
     <section className="relative gradient-hero overflow-hidden">
@@ -63,64 +44,71 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           className="relative z-10"
         >
-          {/* Persona toggle */}
+          {/* Persistent persona chip toggle (always visible after initial WhoAmICard pick) */}
           <div className="inline-flex items-center gap-1 rounded-full bg-white/80 backdrop-blur border border-surface-200 p-1 mb-5">
-            {AUDIENCES.map((a) => {
-              const active = a.id === persona;
+            {(Object.keys(LABELS) as Persona[]).map((p) => {
+              const active = p === persona;
+              const Icon = ICONS[p];
               return (
                 <button
-                  key={a.id}
-                  onClick={() => setPersona(a.id)}
-                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
+                  key={p}
+                  onClick={() => setPersona(p)}
+                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
                     active
-                      ? "bg-brand-500 text-white shadow-card"
-                      : "text-slate-600 hover:text-brand-600"
+                      ? "bg-theme-accent text-white shadow-card"
+                      : "text-slate-600 hover:text-theme-accent"
                   }`}
                   aria-pressed={active}
                 >
-                  <a.Icon className="w-3.5 h-3.5" />
-                  {a.label}
+                  <Icon className="w-3.5 h-3.5" />
+                  {LABELS[p]}
                 </button>
               );
             })}
           </div>
 
-          <div className="inline-flex items-center gap-2.5 rounded-full bg-brand-100 text-brand-700 px-5 py-2.5 text-base lg:text-lg font-bold tracking-tight mb-6">
+          <div className="inline-flex items-center gap-2.5 rounded-full bg-theme-accent-soft text-theme-accent-deep px-5 py-2.5 text-base lg:text-lg font-bold tracking-tight mb-6">
             <Sparkles className="w-5 h-5" strokeWidth={2.5} />
             Agentic FP&amp;A Platform
           </div>
-          <h1 className="font-display font-bold tracking-tight text-slate-900 text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-balance">
-            Reports in days, not weeks.
-            <br />
-            <span className="text-brand-600">Forecasts in minutes.</span>
-          </h1>
-          <motion.p
-            key={persona}
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25 }}
-            className="mt-6 text-lg text-slate-600 leading-relaxed max-w-xl"
-          >
-            {subhead}
-          </motion.p>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={persona}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h1 className="font-display font-bold tracking-tight text-slate-900 text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-balance">
+                {c.heroH1Line1}
+                <br />
+                <span style={{ color: "var(--theme-text-emphasis)" }}>{c.heroH1Line2}</span>
+              </h1>
+              <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-xl">
+                {c.heroSubhead}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
             <Link
-              href="/demo"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-3.5 transition-colors shadow-card hover:shadow-card-hover"
+              href={c.heroPrimaryCTA.href}
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-theme-accent hover:bg-theme-accent-hover text-white font-semibold px-6 py-3.5 transition-colors shadow-card hover:shadow-card-hover"
             >
-              Try the live demo
+              {c.heroPrimaryCTA.label}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href={DEMO_MAILTO}
+              href={c.heroSecondaryCTA.href}
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-white hover:bg-surface-50 text-slate-900 font-semibold px-6 py-3.5 border border-surface-200 transition-colors"
             >
-              Book a 15-min demo
+              {c.heroSecondaryCTA.label}
             </a>
           </div>
           <Link
             href="/demo"
-            className="mt-4 inline-flex items-center gap-2 text-sm text-slate-500 hover:text-brand-600 transition-colors"
+            className="mt-4 inline-flex items-center gap-2 text-sm text-slate-500 hover:text-theme-accent transition-colors"
           >
             <PlayCircle className="w-4 h-4" />
             Watch a 60-second walkthrough
@@ -159,18 +147,30 @@ export default function Hero() {
             </span>
           </div>
 
-          <ul className="mt-4 lg:mt-5 grid grid-cols-3 gap-4 lg:gap-12 lg:flex lg:items-center lg:justify-start">
-            {stats.map((s) => (
-              <li key={s.label} className="flex items-baseline gap-2.5">
-                <span className="font-display font-bold text-2xl lg:text-3xl text-brand-600 tabular-nums leading-none">
-                  {s.stat}
-                </span>
-                <span className="text-xs lg:text-sm text-slate-500 leading-tight">
-                  {s.label}
-                </span>
-              </li>
-            ))}
-          </ul>
+          <AnimatePresence mode="wait">
+            <motion.ul
+              key={persona}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.3 }}
+              className="mt-4 lg:mt-5 grid grid-cols-3 gap-4 lg:gap-12 lg:flex lg:items-center lg:justify-start"
+            >
+              {c.stats.map((s) => (
+                <li key={s.label} className="flex items-baseline gap-2.5">
+                  <span
+                    className="font-display font-bold text-2xl lg:text-3xl tabular-nums leading-none"
+                    style={{ color: "var(--theme-text-emphasis)" }}
+                  >
+                    {s.stat}
+                  </span>
+                  <span className="text-xs lg:text-sm text-slate-500 leading-tight">
+                    {s.label}
+                  </span>
+                </li>
+              ))}
+            </motion.ul>
+          </AnimatePresence>
         </div>
       </div>
     </section>

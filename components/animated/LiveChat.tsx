@@ -5,30 +5,60 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useShouldAnimate } from "@/components/animated/hooks";
 
-const QUESTION = "What's our runway if revenue drops 30%?";
-const TOOL_LINES = [
+const DEFAULT_QUESTION = "What's our runway if revenue drops 30%?";
+const DEFAULT_TOOL_LINES = [
   "→ Ran what_if_preview on revenue −30% across all entities",
   "→ Pulled CF_OPS history + linear-regression forecast",
   "→ Subtracted CA_CASH baseline",
 ];
-const ANSWER_HEAD = "Result: ~7 months at the current burn rate.";
-const ANSWER_BODY =
+const DEFAULT_ANSWER_HEAD = "Result: ~7 months at the current burn rate.";
+const DEFAULT_ANSWER_BODY =
   "Best case: 9 months (if marketing cuts 40%). Worst case: 4 months (if AR collection slips).";
 
 const TYPING_MS = 50;
 const PAUSE_MS = 600;
 const HOLD_MS = 4500;
 
-export default function LiveChat() {
+type Props = {
+  question?: string;
+  toolLines?: string[];
+  answerHead?: string;
+  answerBody?: string;
+};
+
+export default function LiveChat({
+  question = DEFAULT_QUESTION,
+  toolLines = DEFAULT_TOOL_LINES,
+  answerHead = DEFAULT_ANSWER_HEAD,
+  answerBody = DEFAULT_ANSWER_BODY,
+}: Props = {}) {
   const animate = useShouldAnimate();
   const frozen = !animate; // freeze on completed state when on mobile or reduced-motion
   const [phase, setPhase] = useState<"typing" | "tools" | "answer" | "actions" | "hold">(
     frozen ? "actions" : "typing"
   );
-  const [typed, setTyped] = useState(frozen ? QUESTION : "");
-  const [toolIdx, setToolIdx] = useState(frozen ? TOOL_LINES.length : 0);
+  const [typed, setTyped] = useState(frozen ? question : "");
+  const [toolIdx, setToolIdx] = useState(frozen ? toolLines.length : 0);
   const [answerVisible, setAnswerVisible] = useState(frozen);
   const [actionsVisible, setActionsVisible] = useState(frozen);
+
+  // When question/answer change (persona swap), reset to start
+  useEffect(() => {
+    if (frozen) {
+      setTyped(question);
+      setToolIdx(toolLines.length);
+      setAnswerVisible(true);
+      setActionsVisible(true);
+      setPhase("actions");
+    } else {
+      setTyped("");
+      setToolIdx(0);
+      setAnswerVisible(false);
+      setActionsVisible(false);
+      setPhase("typing");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [question]);
 
   useEffect(() => {
     if (frozen) return;
@@ -47,8 +77,8 @@ export default function LiveChat() {
 
     const runTyping = (i: number) => {
       if (!alive) return;
-      if (i <= QUESTION.length) {
-        setTyped(QUESTION.slice(0, i));
+      if (i <= question.length) {
+        setTyped(question.slice(0, i));
         timers.push(setTimeout(() => runTyping(i + 1), TYPING_MS));
       } else {
         timers.push(setTimeout(() => runTools(0), PAUSE_MS));
@@ -58,7 +88,7 @@ export default function LiveChat() {
     const runTools = (i: number) => {
       if (!alive) return;
       setPhase("tools");
-      if (i <= TOOL_LINES.length) {
+      if (i <= toolLines.length) {
         setToolIdx(i);
         timers.push(setTimeout(() => runTools(i + 1), 700));
       } else {
@@ -103,7 +133,7 @@ export default function LiveChat() {
 
       {/* User typing bubble */}
       <div className="flex justify-end mb-4">
-        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-brand-500 text-white px-4 py-2.5 text-sm min-h-[40px] inline-flex items-center">
+        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-theme-accent text-white px-4 py-2.5 text-sm min-h-[40px] inline-flex items-center">
           {typed}
           {!frozen && phase === "typing" && (
             <motion.span
@@ -120,7 +150,7 @@ export default function LiveChat() {
         <div className="flex justify-start mb-4">
           <div className="max-w-[90%] rounded-2xl rounded-bl-sm bg-surface-50 border border-surface-200 px-4 py-3">
             <ul className="space-y-1 mb-3 text-xs font-mono text-slate-500">
-              {TOOL_LINES.map((line, i) => (
+              {toolLines.map((line, i) => (
                 <motion.li
                   key={i}
                   initial={{ opacity: 0, x: -6 }}
@@ -142,7 +172,7 @@ export default function LiveChat() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4 }}
                 >
-                  {ANSWER_HEAD}
+                  {answerHead}
                 </motion.p>
                 <motion.p
                   className="font-display text-sm text-slate-600 mt-1"
@@ -150,7 +180,7 @@ export default function LiveChat() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.15 }}
                 >
-                  {ANSWER_BODY}
+                  {answerBody}
                 </motion.p>
                 {actionsVisible && (
                   <motion.div
