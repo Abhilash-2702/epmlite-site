@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import DeferredWidgets from "@/components/DeferredWidgets";
 import { SiteStructuredData } from "@/components/StructuredData";
+import Analytics from "@/components/Analytics";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -83,6 +84,7 @@ export default function RootLayout({
         <main className="pt-16">{children}</main>
         <Footer />
         <DeferredWidgets />
+        <Analytics />
       </body>
     </html>
   );
