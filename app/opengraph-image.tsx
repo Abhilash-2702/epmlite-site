@@ -124,9 +124,9 @@ export default async function OGImage() {
               flexDirection: "column",
             }}
           >
-            <div style={{ display: "flex" }}>Close the books in days.</div>
+            <div style={{ display: "flex" }}>Reports in days, not weeks.</div>
             <div style={{ display: "flex", color: "#8cbaff" }}>
-              Forecast in minutes.
+              Forecasts in minutes.
             </div>
           </div>
           <div

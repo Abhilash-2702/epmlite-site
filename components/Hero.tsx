@@ -28,14 +28,14 @@ const AUDIENCES: { id: Persona; label: string; Icon: typeof Briefcase; subhead: 
     label: "Founder",
     Icon: Rocket,
     subhead:
-      "Cut your close from days to hours. Run runway scenarios in real time. Built so a non-FP&A founder can self-serve — no model-builder team required.",
+      "Get monthly reports in hours, not days. Stress-test runway and hiring scenarios live. Built so a non-finance founder can self-serve — no model-builder team required.",
   },
 ];
 
 const stats = [
   { stat: "35+", label: "AI tools" },
   { stat: "15", label: "Forecast algorithms" },
-  { stat: "4 days", label: "vs 12-day close" },
+  { stat: "4 days", label: "for monthly reports (vs 12)" },
 ];
 
 const switchingFrom = [
@@ -90,9 +90,9 @@ export default function Hero() {
             Agentic FP&amp;A Platform
           </div>
           <h1 className="font-display font-bold tracking-tight text-slate-900 text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-balance">
-            Close in 4 days, not 12.
+            Reports in days, not weeks.
             <br />
-            <span className="text-brand-600">Forecast in minutes.</span>
+            <span className="text-brand-600">Forecasts in minutes.</span>
           </h1>
           <motion.p
             key={persona}
