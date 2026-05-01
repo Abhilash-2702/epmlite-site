@@ -32,7 +32,7 @@ const switchingFrom = [
 ];
 
 export default function Hero() {
-  const { persona, setPersona } = usePersona();
+  const { persona, setPersona, hasPicked } = usePersona();
   const c = PERSONA_CONTENT[persona];
 
   return (
@@ -44,28 +44,32 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           className="relative z-10"
         >
-          {/* Persistent persona chip toggle (always visible after initial WhoAmICard pick) */}
-          <div className="inline-flex items-center gap-1 rounded-full bg-white/80 backdrop-blur border border-surface-200 p-1 mb-5">
-            {(Object.keys(LABELS) as Persona[]).map((p) => {
-              const active = p === persona;
-              const Icon = ICONS[p];
-              return (
-                <button
-                  key={p}
-                  onClick={() => setPersona(p)}
-                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
-                    active
-                      ? "bg-theme-accent text-white shadow-card"
-                      : "text-slate-600 hover:text-theme-accent"
-                  }`}
-                  aria-pressed={active}
-                >
-                  <Icon className="w-3.5 h-3.5" />
-                  {LABELS[p]}
-                </button>
-              );
-            })}
-          </div>
+          {/* Persona chip toggle — only shown AFTER the user has picked.
+              On first visit, the big WhoAmICard above handles selection,
+              so the chip would be redundant duplicate UI. */}
+          {hasPicked && (
+            <div className="inline-flex items-center gap-1 rounded-full bg-white/80 backdrop-blur border border-surface-200 p-1 mb-5">
+              {(Object.keys(LABELS) as Persona[]).map((p) => {
+                const active = p === persona;
+                const Icon = ICONS[p];
+                return (
+                  <button
+                    key={p}
+                    onClick={() => setPersona(p)}
+                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
+                      active
+                        ? "bg-theme-accent text-white shadow-card"
+                        : "text-slate-600 hover:text-theme-accent"
+                    }`}
+                    aria-pressed={active}
+                  >
+                    <Icon className="w-3.5 h-3.5" />
+                    {LABELS[p]}
+                  </button>
+                );
+              })}
+            </div>
+          )}
 
           <div className="inline-flex items-center gap-2.5 rounded-full bg-theme-accent-soft text-theme-accent-deep px-5 py-2.5 text-base lg:text-lg font-bold tracking-tight mb-6">
             <Sparkles className="w-5 h-5" strokeWidth={2.5} />

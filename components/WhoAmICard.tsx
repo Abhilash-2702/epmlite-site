@@ -71,7 +71,7 @@ export default function WhoAmICard() {
                   Who are you here as?
                 </p>
                 <h2 className="font-display font-bold text-xl lg:text-2xl text-slate-900 tracking-tight">
-                  Pick your view — the page below adapts to the questions you actually ask.
+                  Pick your view.
                 </h2>
               </div>
             </div>
