@@ -10,6 +10,21 @@
 
 import type { Persona } from "@/components/PersonaContext";
 
+export type DashboardKpi = {
+  label: string;
+  value: string;
+  delta: string;
+  tone: "emerald" | "rose" | "slate";
+  highlight?: boolean;
+};
+
+export type DashboardChart = {
+  id: "line" | "bar" | "donut" | "area";
+  title: string;
+  caption: string;
+  prompt: string;
+};
+
 export type PersonaContent = {
   // Hero
   heroH1Line1: string;
@@ -20,6 +35,11 @@ export type PersonaContent = {
 
   // Capability stats strip in hero
   stats: { stat: string; label: string }[];
+
+  // Animated dashboard mockup (in hero, right side)
+  dashboardKpis: DashboardKpi[]; // exactly 4
+  dashboardCharts: DashboardChart[]; // exactly 4 — line/bar/donut/area in this order
+  dashboardLabel: string; // window-chrome subtitle, e.g. "executive dashboard"
 
   // Pain section (4 cards)
   painKicker: string;
@@ -71,6 +91,19 @@ const FPA: PersonaContent = {
     { stat: "35+", label: "AI tools" },
     { stat: "15", label: "Forecast algorithms" },
     { stat: "4 days", label: "for monthly reports (vs 12)" },
+  ],
+  dashboardLabel: "executive dashboard",
+  dashboardKpis: [
+    { label: "Revenue",      value: "$4.2M",  delta: "▲ 12%",   tone: "emerald", highlight: true },
+    { label: "Gross Profit", value: "68%",    delta: "▲ 3 pts", tone: "emerald" },
+    { label: "EBITDA",       value: "$890k",  delta: "▼ 2%",    tone: "rose" },
+    { label: "Runway",       value: "14 mo",  delta: "—",       tone: "slate" },
+  ],
+  dashboardCharts: [
+    { id: "line",  title: "Revenue · last 12 months",     caption: "vs Budget",        prompt: "What's our runway if revenue drops 30%?" },
+    { id: "bar",   title: "Cost structure · this month",  caption: "5 OpEx categories",prompt: "Why is S&M 18% over plan this month?" },
+    { id: "donut", title: "Revenue mix · YTD",            caption: "$4.2M total",      prompt: "What's our subscription concentration risk?" },
+    { id: "area",  title: "Revenue by product · 12 months", caption: "3 product lines",prompt: "How is Product B trending vs forecast?" },
   ],
   painKicker: "The problem",
   painHeadline: "Your team spends 60% of the month rebuilding the same spreadsheet.",
@@ -143,6 +176,19 @@ const CFO: PersonaContent = {
     { stat: "90 min", label: "for the variance pack (vs 40 hr)" },
     { stat: "Day 1", label: "pre-IPO ready" },
   ],
+  dashboardLabel: "CFO board view",
+  dashboardKpis: [
+    { label: "EBITDA Margin",   value: "21%",     delta: "▲ 4 pts",  tone: "emerald", highlight: true },
+    { label: "Vs Budget",        value: "+37%",    delta: "▲ favorable", tone: "emerald" },
+    { label: "Days to Close",    value: "4 days",  delta: "▼ 8 days", tone: "emerald" },
+    { label: "Audit Trail",      value: "100%",    delta: "—",        tone: "slate" },
+  ],
+  dashboardCharts: [
+    { id: "line",  title: "EBITDA · last 12 months",          caption: "vs Budget",            prompt: "Generate the variance commentary on EBITDA" },
+    { id: "bar",   title: "Top 5 movers · this month",         caption: "by financial impact",  prompt: "Which OpEx line drove the most variance?" },
+    { id: "donut", title: "Audit log · this month",            caption: "by table",             prompt: "Show me all formula changes this quarter" },
+    { id: "area",  title: "Forecast accuracy · 12 months",     caption: "3 algorithms compared",prompt: "Why did our re-forecast miss in March?" },
+  ],
   painKicker: "The CFO's reality",
   painHeadline: "The board asks weekly questions you used to answer quarterly.",
   painSub: "And the auditor wants to know who changed the COGS assumption.",
@@ -213,6 +259,19 @@ const FOUNDER: PersonaContent = {
     { stat: "60 sec", label: "to a runway answer" },
     { stat: "0", label: "FP&A hires required" },
     { stat: "30 min", label: "to draft the board pack" },
+  ],
+  dashboardLabel: "founder console",
+  dashboardKpis: [
+    { label: "Runway",   value: "14 mo",     delta: "▲ 2 mo",  tone: "emerald", highlight: true },
+    { label: "Cash",     value: "$8.5M",     delta: "—",       tone: "slate" },
+    { label: "Burn",     value: "$480k/mo",  delta: "▼ 5%",    tone: "emerald" },
+    { label: "MRR",      value: "$350k",     delta: "▲ 18%",   tone: "emerald" },
+  ],
+  dashboardCharts: [
+    { id: "line",  title: "Cash trajectory · 12 months",         caption: "actual vs plan",     prompt: "What's runway if we hire 5 engineers in Q3?" },
+    { id: "bar",   title: "Burn by category · this month",        caption: "where is it going?", prompt: "Where can we cut to extend runway 3 months?" },
+    { id: "donut", title: "MRR by product · current",             caption: "$350k total",        prompt: "What's our customer concentration risk?" },
+    { id: "area",  title: "ARR cohorts · last 12 months",         caption: "by signup quarter",  prompt: "How are our Q1 cohorts retaining vs Q2?" },
   ],
   painKicker: "The founder's reality",
   painHeadline: "You're the FP&A team. And the marketing team. And the hiring team.",

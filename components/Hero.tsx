@@ -19,18 +19,6 @@ const LABELS: Record<Persona, string> = {
   founder: "Founder",
 };
 
-const switchingFrom = [
-  "Anaplan",
-  "Adaptive",
-  "Oracle EPM",
-  "OneStream",
-  "SAP BPC",
-  "Microsoft BI",
-  "Vena",
-  "Cube",
-  "Excel",
-];
-
 export default function Hero() {
   const { persona, setPersona, hasPicked } = usePersona();
   const c = PERSONA_CONTENT[persona];
@@ -135,22 +123,6 @@ export default function Hero() {
 
       <div className="border-t border-surface-200 bg-white/60 backdrop-blur">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 lg:py-6">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2 text-sm">
-            <span className="font-semibold text-slate-700 shrink-0">
-              Built for teams switching from
-            </span>
-            <span className="flex flex-wrap items-baseline gap-x-2 gap-y-1 font-mono text-slate-600">
-              {switchingFrom.map((name, i) => (
-                <span key={name} className="inline-flex items-baseline">
-                  {name}
-                  {i < switchingFrom.length - 1 && (
-                    <span className="ml-2 text-surface-200">·</span>
-                  )}
-                </span>
-              ))}
-            </span>
-          </div>
-
           <AnimatePresence mode="wait">
             <motion.ul
               key={persona}
@@ -158,7 +130,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.3 }}
-              className="mt-4 lg:mt-5 grid grid-cols-3 gap-4 lg:gap-12 lg:flex lg:items-center lg:justify-start"
+              className="grid grid-cols-3 gap-4 lg:gap-12 lg:flex lg:items-center lg:justify-start"
             >
               {c.stats.map((s) => (
                 <li key={s.label} className="flex items-baseline gap-2.5">

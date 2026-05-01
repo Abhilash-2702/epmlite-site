@@ -11,70 +11,44 @@ import {
   MousePointer2,
 } from "lucide-react";
 import { useShouldAnimate } from "@/components/animated/hooks";
+import { usePersona } from "@/components/PersonaContext";
+import { PERSONA_CONTENT } from "@/lib/persona-content";
 
 const KPI_CYCLE = 8;       // seconds — cursor + KPI ring loop
 const CHART_CYCLE_MS = 7000; // ms — chart variant cycle
 
-type Variant = {
-  id: string;
-  Icon: typeof TrendingUp;
-  title: string;
-  caption: string;
-  prompt: string;
-  Chart: React.FC<{ animate: boolean }>;
-};
-
-const VARIANTS: Variant[] = [
-  {
-    id: "line",
-    Icon: TrendingUp,
-    title: "Revenue · last 12 months",
-    caption: "vs Budget",
-    prompt: "What's our runway if revenue drops 30%?",
-    Chart: LineChart,
-  },
-  {
-    id: "bar",
-    Icon: BarChart3,
-    title: "Cost structure · this month",
-    caption: "5 OpEx categories",
-    prompt: "Why is S&M 18% over plan this month?",
-    Chart: BarChartView,
-  },
-  {
-    id: "donut",
-    Icon: PieIcon,
-    title: "Revenue mix · YTD",
-    caption: "$4.2M total",
-    prompt: "What's our subscription concentration risk?",
-    Chart: DonutChart,
-  },
-  {
-    id: "area",
-    Icon: Layers,
-    title: "Revenue by product · 12 months",
-    caption: "3 product lines",
-    prompt: "How is Product B trending vs forecast?",
-    Chart: StackedAreaChart,
-  },
-];
+const CHART_REGISTRY = {
+  line:  { Icon: TrendingUp, Component: LineChart },
+  bar:   { Icon: BarChart3,  Component: BarChartView },
+  donut: { Icon: PieIcon,    Component: DonutChart },
+  area:  { Icon: Layers,     Component: StackedAreaChart },
+} as const;
 
 export default function LiveDashboard() {
   const animate = useShouldAnimate(); // false on mobile → freeze on a stable frame
   const cycle = animate ? KPI_CYCLE : 0;
   const [idx, setIdx] = useState(0);
+  const { persona } = usePersona();
+  const c = PERSONA_CONTENT[persona];
+
+  // Reset to chart 0 when persona changes — the cycler restarts cleanly
+  useEffect(() => {
+    setIdx(0);
+  }, [persona]);
 
   useEffect(() => {
     // Only run the chart cycler on desktop with motion enabled. On mobile we
     // freeze on the line variant — saves repeat layout/paint cost on slow CPUs.
     if (!animate) return;
     const id = setInterval(() => {
-      setIdx((i) => (i + 1) % VARIANTS.length);
+      setIdx((i) => (i + 1) % c.dashboardCharts.length);
     }, CHART_CYCLE_MS);
     return () => clearInterval(id);
-  }, [animate]);
+  }, [animate, c.dashboardCharts.length]);
 
-  const v = VARIANTS[idx];
+  const v = c.dashboardCharts[idx] ?? c.dashboardCharts[0];
+  const ChartIcon = CHART_REGISTRY[v.id].Icon;
+  const ChartComponent = CHART_REGISTRY[v.id].Component;
 
   return (
     <div className="relative">
@@ -86,7 +60,7 @@ export default function LiveDashboard() {
           <span className="w-2.5 h-2.5 rounded-full bg-amber-300" />
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-300" />
           <span className="ml-3 text-xs text-slate-400 font-mono">
-            epm-lite · executive dashboard
+            epm-lite · {c.dashboardLabel}
           </span>
           <span className="ml-auto inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-accent-emerald bg-emerald-50 px-2 py-0.5 rounded-full">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-emerald animate-pulse" />
@@ -94,14 +68,28 @@ export default function LiveDashboard() {
           </span>
         </div>
 
-        {/* KPI grid with staggered fade + cursor focus on Revenue */}
-        <div className="relative grid grid-cols-2 gap-3 mb-4">
-          <KPI label="Revenue" value="$4.2M" delta="▲ 12%" tone="emerald" highlight />
-          <KPI label="Gross Profit" value="68%" delta="▲ 3 pts" tone="emerald" />
-          <KPI label="EBITDA" value="$890k" delta="▼ 2%" tone="rose" />
-          <KPI label="Runway" value="14 mo" delta="—" tone="slate" />
+        {/* KPI grid — driven by persona content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={persona + "-kpis"}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.3 }}
+            className="relative grid grid-cols-2 gap-3 mb-4"
+          >
+            {c.dashboardKpis.map((k) => (
+              <KPI
+                key={k.label}
+                label={k.label}
+                value={k.value}
+                delta={k.delta}
+                tone={k.tone}
+                highlight={k.highlight}
+              />
+            ))}
 
-          {animate && (
+            {animate && (
             <motion.div
               className="absolute pointer-events-none"
               initial={{ x: "85%", y: "120%", opacity: 0 }}
@@ -120,12 +108,13 @@ export default function LiveDashboard() {
               <MousePointer2 className="w-5 h-5 text-slate-700 drop-shadow" fill="white" />
             </motion.div>
           )}
-        </div>
+          </motion.div>
+        </AnimatePresence>
 
         {/* Chart card — cycles between line/bar/donut/area */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={v.id}
+            key={persona + "-" + v.id}
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
@@ -134,19 +123,19 @@ export default function LiveDashboard() {
           >
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
-                <v.Icon className="w-3.5 h-3.5 text-brand-500" />
+                <ChartIcon className="w-3.5 h-3.5 text-theme-accent" />
                 {v.title}
               </span>
               <span className="text-xs text-slate-400">{v.caption}</span>
             </div>
-            <v.Chart animate={animate} />
+            <ChartComponent animate={animate} />
           </motion.div>
         </AnimatePresence>
 
         {/* Chat prompt that swaps with the chart variant */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={v.id + "-prompt"}
+            key={persona + "-" + v.id + "-prompt"}
             initial={{ opacity: 0, y: 2 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -2 }}
