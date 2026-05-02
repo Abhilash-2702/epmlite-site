@@ -81,8 +81,8 @@ export type PersonaContent = {
 };
 
 const FPA: PersonaContent = {
-  heroH1Line1: "Reports in days, not weeks.",
-  heroH1Line2: "Forecasts in minutes.",
+  heroH1Line1: "Skip the spreadsheet grind,",
+  heroH1Line2: "Forecast in minutes.",
   heroSubhead:
     "For finance teams tired of Excel gymnastics. 35+ AI tools, 15 forecast algorithms, and a plain-English agent that drafts every change before it commits.",
   heroPrimaryCTA: { label: "Try the live demo", href: "/demo" },
@@ -165,8 +165,8 @@ const FPA: PersonaContent = {
 };
 
 const CFO: PersonaContent = {
-  heroH1Line1: "Board-ready by Monday.",
-  heroH1Line2: "Audit-grade, every change.",
+  heroH1Line1: "Board-meeting ready,",
+  heroH1Line2: "Any minute.",
   heroSubhead:
     "Plain-English answers to the questions your board is asking weekly. Pre-IPO due-diligence ready on day one. Every chat-driven write is drafted, reviewed, and audit-trailed.",
   heroPrimaryCTA: { label: "See it on your data", href: "/demo" },
