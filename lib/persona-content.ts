@@ -90,7 +90,7 @@ const FPA: PersonaContent = {
   stats: [
     { stat: "35+", label: "AI tools" },
     { stat: "15", label: "Forecast algorithms" },
-    { stat: "4 days", label: "for monthly reports (vs 12)" },
+    { stat: "4 days", label: "for monthly close (vs 12)" },
   ],
   dashboardLabel: "executive dashboard",
   dashboardKpis: [
