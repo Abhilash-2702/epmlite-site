@@ -7,7 +7,7 @@ import { DEMO_MAILTO } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "ROI Calculator",
   description:
-    "Quantify the time and money your finance team would save with EPM Lite. Drag four sliders, see the answer in dollars.",
+    "Quantify the time and money your finance team would save with NashOS. Drag four sliders, see the answer in dollars.",
 };
 
 export default function CalculatorPage() {
@@ -23,7 +23,7 @@ export default function CalculatorPage() {
           </h1>
           <p className="mt-5 text-lg text-slate-600 max-w-3xl">
             Four sliders. One number in dollars. Adjust to your team — we&apos;ll show you what
-            the close + variance pack ritual costs annually, and what EPM Lite would save.
+            the close + variance pack ritual costs annually, and what NashOS would save.
           </p>
         </div>
       </section>

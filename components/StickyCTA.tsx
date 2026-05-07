@@ -67,7 +67,7 @@ export default function StickyCTA() {
         </span>
         <div className="flex-1 min-w-0">
           <p className="text-sm font-semibold truncate">
-            See EPM Lite live on your data.
+            See NashOS live on your data.
           </p>
           <p className="hidden sm:block text-xs text-white/70">
             15-minute walkthrough. No slides, no sales script.

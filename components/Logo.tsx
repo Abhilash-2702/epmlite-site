@@ -9,8 +9,8 @@ const dims: Record<Size, { text: string; dot: string; square: string; gap: strin
 };
 
 /**
- * EPM Lite wordmark. Type-only — Mercury / Brex aesthetic.
- *   EPM · Lite ▪
+ * NashOS wordmark. Type-only — Mercury / Brex aesthetic.
+ *   Nash · OS ▪
  * Brand-blue (or brand-400 on dark bg) interpunct + trailing emerald square.
  */
 export default function Logo({
@@ -32,9 +32,9 @@ export default function Logo({
     <span
       className={`inline-flex items-baseline font-display font-bold tracking-tight ${d.text} ${wordClass} ${d.gap} ${className}`}
     >
-      EPM
+      Nash
       <span className={`${dotClass} ${d.dot}`} aria-hidden="true">·</span>
-      Lite
+      OS
       <span
         className={`inline-block rounded-sm bg-accent-emerald ${d.square}`}
         style={{ alignSelf: "center" }}
@@ -45,7 +45,7 @@ export default function Logo({
 
   if (href === null) return inner;
   return (
-    <Link href={href} aria-label="EPM Lite — home" className="inline-flex">
+    <Link href={href} aria-label="NashOS — home" className="inline-flex">
       {inner}
     </Link>
   );

@@ -18,7 +18,7 @@ const DEFAULTS: Inputs = {
   fpaSalaryK: 140,
 };
 
-// EPM Lite target performance
+// NashOS target performance
 const EPM_CLOSE_DAYS = 4;
 const EPM_VARIANCE_PACK_HOURS = 1.5;
 
@@ -115,7 +115,7 @@ export default function RoiCalculator() {
         {/* RESULTS */}
         <div className="p-6 lg:p-8 bg-gradient-to-br from-brand-700 to-brand-900 text-white flex flex-col justify-center">
           <p className="text-sm font-semibold text-brand-200 uppercase tracking-wider mb-2">
-            With EPM Lite, your team would save
+            With NashOS, your team would save
           </p>
           <motion.div
             key={Math.round(result.dollarsSaved)}
@@ -149,7 +149,7 @@ export default function RoiCalculator() {
 
           <div className="mt-6 pt-6 border-t border-white/10 text-xs text-brand-200 leading-relaxed">
             <Sparkles className="w-3.5 h-3.5 inline-block mr-1 -mt-0.5" />
-            Math: 12 closes/yr · 8h working day. EPM Lite targets: 4-day close, 90-min variance pack.
+            Math: 12 closes/yr · 8h working day. NashOS targets: 4-day close, 90-min variance pack.
             Real customers may see different numbers — book a demo for a tighter estimate.
           </div>
         </div>

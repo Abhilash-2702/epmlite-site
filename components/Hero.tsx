@@ -61,7 +61,7 @@ export default function Hero() {
 
           <div className="inline-flex items-center gap-2.5 rounded-full bg-theme-accent-soft text-theme-accent-deep px-5 py-2.5 text-base lg:text-lg font-bold tracking-tight mb-6">
             <Sparkles className="w-5 h-5" strokeWidth={2.5} />
-            Agentic FP&amp;A Platform
+            Agentic Finance
           </div>
 
           <AnimatePresence mode="wait">
@@ -114,7 +114,7 @@ export default function Hero() {
         >
           <VideoOrMockup
             videoSrc="/videos/dashboard.mp4"
-            ariaLabel="EPM Lite executive dashboard live demo"
+            ariaLabel="NashOS executive dashboard live demo"
           >
             <LiveDashboard />
           </VideoOrMockup>

@@ -46,7 +46,7 @@ export default function ChatShowcase() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <VideoOrMockup videoSrc="/videos/ai-chat.mp4" ariaLabel="EPM Lite AI chat live demo">
+                <VideoOrMockup videoSrc="/videos/ai-chat.mp4" ariaLabel="NashOS AI chat live demo">
                   <LiveChat
                     question={c.chatExchange.user}
                     toolLines={c.chatExchange.toolLines}

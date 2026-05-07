@@ -60,7 +60,7 @@ export default function LiveDashboard() {
           <span className="w-2.5 h-2.5 rounded-full bg-amber-300" />
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-300" />
           <span className="ml-3 text-xs text-slate-400 font-mono">
-            epm-lite · {c.dashboardLabel}
+            nashos · {c.dashboardLabel}
           </span>
           <span className="ml-auto inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-accent-emerald bg-emerald-50 px-2 py-0.5 rounded-full">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-emerald animate-pulse" />

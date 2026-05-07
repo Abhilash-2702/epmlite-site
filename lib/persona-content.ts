@@ -86,7 +86,7 @@ const FPA: PersonaContent = {
   heroSubhead:
     "For finance teams tired of Excel gymnastics. 35+ AI tools, 15 forecast algorithms, and a plain-English agent that drafts every change before it commits.",
   heroPrimaryCTA: { label: "Try the live demo", href: "/demo" },
-  heroSecondaryCTA: { label: "Book a 15-min demo", href: "mailto:admin@epmlite.com?subject=EPM%20Lite%20demo" },
+  heroSecondaryCTA: { label: "Book a 15-min demo", href: "mailto:admin@nashos.ai?subject=NashOS%20demo" },
   stats: [
     { stat: "35+", label: "AI tools" },
     { stat: "15", label: "Forecast algorithms" },
@@ -170,7 +170,7 @@ const CFO: PersonaContent = {
   heroSubhead:
     "Plain-English answers to the questions your board is asking weekly. Pre-IPO due-diligence ready on day one. Every chat-driven write is drafted, reviewed, and audit-trailed.",
   heroPrimaryCTA: { label: "See it on your data", href: "/demo" },
-  heroSecondaryCTA: { label: "Book a CFO walkthrough", href: "mailto:admin@epmlite.com?subject=EPM%20Lite%20CFO%20walkthrough" },
+  heroSecondaryCTA: { label: "Book a CFO walkthrough", href: "mailto:admin@nashos.ai?subject=NashOS%20CFO%20walkthrough" },
   stats: [
     { stat: "100%", label: "audit-trailed mutations" },
     { stat: "90 min", label: "for the variance pack (vs 40 hr)" },
@@ -238,7 +238,7 @@ const CFO: PersonaContent = {
     "Run the board-ready P&L for review",
   ],
   faq: [
-    { q: "Is EPM Lite pre-IPO ready?", a: "Day one. Every dim/fact/formula/user/exchange-rate mutation is logged with before/after JSON, actor, timestamp. RBAC at the API layer. Draft-before-commit on every chat write. SOC 2 Type 1 in progress (timeline available under NDA)." },
+    { q: "Is NashOS pre-IPO ready?", a: "Day one. Every dim/fact/formula/user/exchange-rate mutation is logged with before/after JSON, actor, timestamp. RBAC at the API layer. Draft-before-commit on every chat write. SOC 2 Type 1 in progress (timeline available under NDA)." },
     { q: "Can the AI auto-commit financial changes?", a: "No. Every write produces a draft card. The user (or an approver, on Enterprise) clicks Post. The backend re-validates the draft on commit. The LLM never gets database credentials." },
     { q: "How do you handle multi-entity consolidation?", a: "Native to the 9-dim cube — Entity is one of the dimensions. Inter-company eliminations are formulas, not workbook tabs. Multi-currency translation runs at the cube layer with FX rates pulled per period." },
     { q: "What's the Enterprise tier?", a: "Self-host or single-tenant cloud, SSO (SAML/OIDC), custom connectors (Oracle, SAP, NetSuite), dedicated success engineer, SLA, white-label. Pricing scales with ACV — talk to us." },
@@ -254,7 +254,7 @@ const FOUNDER: PersonaContent = {
   heroSubhead:
     "Get monthly reports in hours, not days. Stress-test runway, hiring, and burn live. Built so a non-finance founder can self-serve — no model-builder team, no FP&A hire required.",
   heroPrimaryCTA: { label: "Try the live demo", href: "/demo" },
-  heroSecondaryCTA: { label: "Book a founder walkthrough", href: "mailto:admin@epmlite.com?subject=EPM%20Lite%20founder%20walkthrough" },
+  heroSecondaryCTA: { label: "Book a founder walkthrough", href: "mailto:admin@nashos.ai?subject=NashOS%20founder%20walkthrough" },
   stats: [
     { stat: "60 sec", label: "to a runway answer" },
     { stat: "0", label: "FP&A hires required" },
@@ -283,7 +283,7 @@ const FOUNDER: PersonaContent = {
     { headline: "AI tools that don't know your numbers", body: "ChatGPT can't answer 'what's my runway' because it doesn't see your cash, your burn, or your forward bookings." },
   ],
   painSummary:
-    "Until you have the budget for an FP&A hire, EPM Lite is the FP&A hire.",
+    "Until you have the budget for an FP&A hire, NashOS is the FP&A hire.",
   howKicker: "How it works",
   howHeadline: "Three steps. No FP&A degree required.",
   howSteps: [
@@ -302,7 +302,7 @@ const FOUNDER: PersonaContent = {
     { iconKey: "FlaskConical",   title: "What-If Scenarios",      headline: "Drag the slider, see the impact.", body: "Revenue down 30%? Marketing cut 40%? Hire pause? See cash, EBITDA, and runway react in real time." },
     { iconKey: "PieChart",       title: "Cash Flow Visibility",  headline: "Where every dollar goes.",    body: "Sources + uses + ending cash on a single page. Updated daily from your connectors. No spreadsheet to maintain." },
   ],
-  chatKicker: "The founder's copilot",
+  chatKicker: "The founder's AI Agent",
   chatHeadline: "The questions that used to cost you a day.",
   chatSub: "Now they take 60 seconds. The agent reads your cube, runs the math, drafts the answer.",
   chatExchange: {
@@ -322,9 +322,9 @@ const FOUNDER: PersonaContent = {
     "Draft the board update for this month",
   ],
   faq: [
-    { q: "Do I need a finance background?", a: "No. EPM Lite is designed for non-finance founders. The agent handles the formulas; you handle the assumptions. If you can describe a hiring plan in English, you can run a runway model." },
+    { q: "Do I need a finance background?", a: "No. NashOS is designed for non-finance founders. The agent handles the formulas; you handle the assumptions. If you can describe a hiring plan in English, you can run a runway model." },
     { q: "Does it integrate with Stripe and QuickBooks?", a: "Stripe via REST today. QuickBooks via CSV today, native connector on the near-term roadmap (Q3 2026). Bank feeds via Plaid coming Q4." },
-    { q: "When should I hire an FP&A person?", a: "When ARR crosses ~$5-10M and you're closing books > 8 days. Until then, EPM Lite + a part-time controller is enough. Honest answer: we'd rather you stay self-serve as long as possible." },
+    { q: "When should I hire an FP&A person?", a: "When ARR crosses ~$5-10M and you're closing books > 8 days. Until then, NashOS + a part-time controller is enough. Honest answer: we'd rather you stay self-serve as long as possible." },
     { q: "Pricing for early-stage founders?", a: "Starter at $99/mo covers 3 users + 1 entity — enough for a pre-Series-A founder. Pre-seed and non-profit get 50% off Starter; just email us." },
     { q: "Is my financial data safe?", a: "Multi-tenant cloud uses workspace row-level isolation. Self-host puts the database entirely in your environment. The LLM never sees raw fact tables — only the messages and tool results from your chat." },
   ],

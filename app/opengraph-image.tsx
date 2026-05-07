@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "EPM Lite — AI-native financial planning";
+export const alt = "NashOS — AI-native financial planning";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -63,9 +63,9 @@ export default async function OGImage() {
             color: "#ffffff",
           }}
         >
-          <span style={{ display: "flex" }}>EPM</span>
+          <span style={{ display: "flex" }}>Nash</span>
           <span style={{ display: "flex", color: "#5694ff", margin: "0 8px" }}>·</span>
-          <span style={{ display: "flex" }}>Lite</span>
+          <span style={{ display: "flex" }}>OS</span>
           <span
             style={{
               display: "flex",
@@ -112,7 +112,7 @@ export default async function OGImage() {
                 display: "flex",
               }}
             />
-            Agentic FP&amp;A Platform
+            Agentic Finance
           </div>
           <div
             style={{
@@ -163,7 +163,7 @@ export default async function OGImage() {
               display: "flex",
             }}
           >
-            epmlite.com
+            nashos.ai
           </div>
           <div
             style={{

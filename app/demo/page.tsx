@@ -7,7 +7,7 @@ import DemoConsole from "@/components/demo/DemoConsole";
 export const metadata: Metadata = {
   title: "Live demo",
   description:
-    "Touch the EPM Lite product with sample data. No signup. Click around the dashboard, ask the AI agent a question, run a what-if.",
+    "Touch the NashOS product with sample data. No signup. Click around the dashboard, ask the AI agent a question, run a what-if.",
 };
 
 export default function DemoPage() {
@@ -23,7 +23,7 @@ export default function DemoPage() {
             Touch the product. No signup.
           </h1>
           <p className="mt-4 text-lg text-slate-600 max-w-3xl leading-relaxed">
-            This is a working slice of EPM Lite running on sample data from a $50M ARR SaaS.
+            This is a working slice of NashOS running on sample data from a $50M ARR SaaS.
             Click around the dashboard, ask the agent a question, and run a what-if. When
             you&apos;re ready, book a real walkthrough on your data.
           </p>

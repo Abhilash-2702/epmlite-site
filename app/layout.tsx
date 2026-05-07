@@ -22,11 +22,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://epmlite.com"),
+  metadataBase: new URL("https://nashos.ai"),
   title: {
     default:
-      "EPM Lite — Agentic FP&A Platform | Reports in days, forecasts in minutes",
-    template: "%s · EPM Lite",
+      "NashOS — Agentic Finance | Reports in days, forecasts in minutes",
+    template: "%s · NashOS",
   },
   description:
     "The agentic FP&A platform for modern finance teams. Get monthly reports in days, run 15 forecast algorithms, and ask AI agents in plain English. Built for teams switching from Anaplan, Adaptive, Oracle EPM, OneStream, SAP BPC, Vena, Cube, or Excel.",
@@ -46,18 +46,18 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "EPM Lite — Agentic FP&A Platform",
+    title: "NashOS — Agentic Finance",
     description:
       "Reports in days, not weeks. Forecasts in minutes. The agentic FP&A platform for modern finance teams.",
-    url: "https://epmlite.com",
-    siteName: "EPM Lite",
+    url: "https://nashos.ai",
+    siteName: "NashOS",
     // OG image is generated dynamically by app/opengraph-image.tsx
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "EPM Lite — Agentic FP&A Platform",
+    title: "NashOS — Agentic Finance",
     description: "Reports in days, not weeks. Forecasts in minutes.",
   },
   robots: {

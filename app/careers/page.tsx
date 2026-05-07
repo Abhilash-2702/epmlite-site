@@ -38,7 +38,7 @@ export default function CareersPage() {
             We&apos;re not posting jobs yet.
           </h1>
           <p className="mt-6 text-lg text-slate-600 leading-relaxed">
-            EPM Lite is early-stage. Headcount plans are honest: small, deliberate, and we&apos;d
+            NashOS is early-stage. Headcount plans are honest: small, deliberate, and we&apos;d
             rather meet the right person before posting a JD than the other way around. If any of
             the profiles below sounds like you, drop a line.
           </p>
@@ -71,7 +71,7 @@ export default function CareersPage() {
               </p>
             </div>
             <a
-              href={`mailto:${DEMO_EMAIL}?subject=Hello%20%E2%80%94%20EPM%20Lite%20careers`}
+              href={`mailto:${DEMO_EMAIL}?subject=Hello%20%E2%80%94%20NashOS%20careers`}
               className="inline-flex items-center gap-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold px-5 py-3 shadow-card"
             >
               Write us

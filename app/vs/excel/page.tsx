@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ComparisonPage, { type CompareRow, type CompareCard } from "@/components/ComparisonPage";
 
 export const metadata: Metadata = {
-  title: "EPM Lite vs Excel",
+  title: "NashOS vs Excel",
   description:
     "When the spreadsheet stack stops scaling. AI-native FP&A with full audit trail, 15 forecast algorithms, multi-entity consolidation — for $99/mo.",
 };
@@ -23,15 +23,15 @@ const rows: CompareRow[] = [
 const diffCards: CompareCard[] = [
   {
     headline: "Excel doesn't break. Until it does.",
-    body: "Three months of growth, one acquisition, or one new entity later — and the workbook starts crashing, the consolidation breaks, and one bad =SUM() ruins the variance pack. We've all lived this. EPM Lite is what you migrate to when the spreadsheet stops scaling.",
+    body: "Three months of growth, one acquisition, or one new entity later — and the workbook starts crashing, the consolidation breaks, and one bad =SUM() ruins the variance pack. We've all lived this. NashOS is what you migrate to when the spreadsheet stops scaling.",
   },
   {
     headline: "Auditability that survives an audit",
-    body: "OneDrive version history tells you when something changed. It does not tell you what specifically, who, why, or how it propagated downstream. EPM Lite captures every mutation with before/after JSON, actor, timestamp — filterable and queryable forever.",
+    body: "OneDrive version history tells you when something changed. It does not tell you what specifically, who, why, or how it propagated downstream. NashOS captures every mutation with before/after JSON, actor, timestamp — filterable and queryable forever.",
   },
   {
-    headline: "Copilot reads. EPM Lite writes (safely).",
-    body: "Excel Copilot can summarize a range. The EPM Lite agent reads AND writes — \"hire 3 engineers and show the impact\" updates the plan, with a draft confirmation before commit. No silent edits. Full audit trail. Reversible.",
+    headline: "Copilot reads. NashOS writes (safely).",
+    body: "Excel Copilot can summarize a range. The NashOS agent reads AND writes — \"hire 3 engineers and show the impact\" updates the plan, with a draft confirmation before commit. No silent edits. Full audit trail. Reversible.",
   },
   {
     headline: "Variance investigation in 30 seconds",
@@ -43,9 +43,9 @@ export default function VsExcelPage() {
   return (
     <ComparisonPage
       rivalName="Excel"
-      kicker="EPM LITE VS EXCEL"
+      kicker="NASHOS VS EXCEL"
       headline="When the spreadsheet stack stops scaling."
-      subhead="70% of mid-market finance teams still run on Excel. It works — until headcount, entities, or board cadence breaks it. EPM Lite is the AI-native upgrade for teams that have outgrown the spreadsheet but can't justify Anaplan."
+      subhead="70% of mid-market finance teams still run on Excel. It works — until headcount, entities, or board cadence breaks it. NashOS is the AI-native upgrade for teams that have outgrown the spreadsheet but can't justify Anaplan."
       rows={rows}
       diffCards={diffCards}
       whoIsItFor={{

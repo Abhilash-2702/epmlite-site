@@ -31,7 +31,7 @@ const PROFILES: Record<"cfo" | "fpa" | "founder", Profile> = {
       { label: "Audit-trail coverage",        value: "Spreadsheet history" },
       { label: "Pre-IPO due-diligence ready", value: "12 months out" },
     ],
-    afterLabel: "EPM Lite",
+    afterLabel: "NashOS",
     after: [
       { label: "Variance pack prep",         value: "90 minutes" },
       { label: "Time to board-ready",         value: "2 business days" },
@@ -52,12 +52,12 @@ const PROFILES: Record<"cfo" | "fpa" | "founder", Profile> = {
       { label: "Re-forecast frequency",  value: "Quarterly" },
       { label: "Tools in the stack",     value: "Excel + 3 BI tools" },
     ],
-    afterLabel: "EPM Lite",
+    afterLabel: "NashOS",
     after: [
       { label: "Close cycle",            value: "4 days" },
       { label: "Variance pack prep",     value: "90 minutes" },
       { label: "Re-forecast frequency",  value: "Weekly + on-demand" },
-      { label: "Tools in the stack",     value: "EPM Lite" },
+      { label: "Tools in the stack",     value: "NashOS" },
     ],
   },
   founder: {
@@ -65,7 +65,7 @@ const PROFILES: Record<"cfo" | "fpa" | "founder", Profile> = {
     headline: "Run runway scenarios mid-meeting. Without an FP&A hire.",
     type: "Series A SaaS · 22 people · founder-CEO running finance",
     quote:
-      "I don't have an FP&A hire yet, and I won't for two more rounds. EPM Lite means I can answer the runway question on a board call without saying 'let me get back to you.'",
+      "I don't have an FP&A hire yet, and I won't for two more rounds. NashOS means I can answer the runway question on a board call without saying 'let me get back to you.'",
     beforeLabel: "Excel + Notion + Stripe export",
     before: [
       { label: "Time to runway answer",    value: "3 hours of formula building" },
@@ -73,7 +73,7 @@ const PROFILES: Record<"cfo" | "fpa" | "founder", Profile> = {
       { label: "Board pack prep",          value: "1.5 days every month" },
       { label: "Confidence on the number", value: "70%, brittle formulas" },
     ],
-    afterLabel: "EPM Lite",
+    afterLabel: "NashOS",
     after: [
       { label: "Time to runway answer",    value: "60 seconds in chat" },
       { label: "Hiring scenario impact",   value: "Auto-recomputed" },

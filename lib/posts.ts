@@ -37,7 +37,7 @@ The journal entries are the part that's already automated. Everything around the
 
 ## What the 4-day close actually looks like
 
-We targeted 4 days when we built EPM Lite, and the math is not magic. Three things compound:
+We targeted 4 days when we built NashOS, and the math is not magic. Three things compound:
 
 - **Connectors pull continuously, not at month-end.** Trial balance lands in the cube on day 1, not day 5. Reconciliation lives in the cube, not in a Slack thread.
 - **The agent writes the variance pack.** Top movers ranked by financial impact. Commentary auto-drafted from the cube + a prompt template. CFO edits, doesn't write from scratch.
@@ -116,7 +116,7 @@ In two of three cases, you have an actionable upgrade. The third tells you to st
 
 ## The five-minute version
 
-EPM Lite ships [15 algorithms](/products) you can compare side-by-side with one click. R²/RMSE/MAE/MAPE on every run. The audit takes about 90 seconds when you're not doing the math by hand.
+NashOS ships [15 algorithms](/products) you can compare side-by-side with one click. R²/RMSE/MAE/MAPE on every run. The audit takes about 90 seconds when you're not doing the math by hand.
 
 > The point isn't to use the most algorithms. It's to never pick one without comparing. Linear-by-default is the silent killer of forecast accuracy.
 

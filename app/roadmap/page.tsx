@@ -5,7 +5,7 @@ import { DEMO_MAILTO } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Roadmap",
   description:
-    "What's coming next at EPM Lite — Now, Next, and Later. Public, honest, no fake dates.",
+    "What's coming next at NashOS — Now, Next, and Later. Public, honest, no fake dates.",
 };
 
 type Item = { title: string; body: string };

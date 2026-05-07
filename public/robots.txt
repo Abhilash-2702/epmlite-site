@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://epmlite.com/sitemap.xml
+Sitemap: https://nashos.ai/sitemap.xml

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ComparisonPage, { type CompareRow, type CompareCard } from "@/components/ComparisonPage";
 
 export const metadata: Metadata = {
-  title: "EPM Lite vs Anaplan",
+  title: "NashOS vs Anaplan",
   description:
     "AI-native FP&A in hours, not 6-month Anaplan implementations. 35+ tools, 15 forecast algorithms, $99/mo.",
 };
@@ -23,11 +23,11 @@ const rows: CompareRow[] = [
 const diffCards: CompareCard[] = [
   {
     headline: "AI is the foundation, not a feature",
-    body: "Anaplan's chat sits on top of a model-builder paradigm from 2010. EPM Lite was designed around LLM tool-use from day one — the chat is how you read AND write to the cube.",
+    body: "Anaplan's chat sits on top of a model-builder paradigm from 2010. NashOS was designed around LLM tool-use from day one — the chat is how you read AND write to the cube.",
   },
   {
     headline: "Implementation tax = 0",
-    body: "Anaplan needs trained model builders and 6+ months. EPM Lite is set up by your finance lead in an afternoon. The same week you sign, you have variance reporting.",
+    body: "Anaplan needs trained model builders and 6+ months. NashOS is set up by your finance lead in an afternoon. The same week you sign, you have variance reporting.",
   },
   {
     headline: "15 forecast algorithms shipped on day 1",
@@ -43,9 +43,9 @@ export default function VsAnaplanPage() {
   return (
     <ComparisonPage
       rivalName="Anaplan"
-      kicker="EPM LITE VS ANAPLAN"
+      kicker="NASHOS VS ANAPLAN"
       headline="The Anaplan model — without the 6-month implementation."
-      subhead="Anaplan is excellent for Fortune 500s with full BPM teams. For everyone else, the implementation tax is the killer. EPM Lite gives you AI-native planning, drivers, and forecasting at mid-market price — live in your environment in hours."
+      subhead="Anaplan is excellent for Fortune 500s with full BPM teams. For everyone else, the implementation tax is the killer. NashOS gives you AI-native planning, drivers, and forecasting at mid-market price — live in your environment in hours."
       rows={rows}
       diffCards={diffCards}
       whoIsItFor={{

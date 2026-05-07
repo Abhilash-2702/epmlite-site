@@ -7,7 +7,7 @@ import { FaqSchema, BreadcrumbSchema } from "@/components/StructuredData";
 export const metadata: Metadata = {
   title: "Financial Close Software — Close in 4 Days, Not 12",
   description:
-    "Faster financial close software. EPM Lite collapses an 11-day month-end close to 4 days using an agentic AI layer, 15 forecast algorithms, and a 9-dim cube. Built for finance teams switching from Anaplan, Adaptive, Oracle EPM, OneStream, or Excel.",
+    "Faster financial close software. NashOS collapses an 11-day month-end close to 4 days using an agentic AI layer, 15 forecast algorithms, and a 9-dim cube. Built for finance teams switching from Anaplan, Adaptive, Oracle EPM, OneStream, or Excel.",
   keywords: [
     "financial close software",
     "faster close",
@@ -23,17 +23,17 @@ const FAQ_ITEMS = [
   {
     question: "What is financial close software?",
     answer:
-      "Financial close software automates the month-end and quarter-end close — pulling trial balance from your ERP, reconciling across entities, generating P&L / Balance Sheet / Cash Flow, and assembling the variance pack for the board. EPM Lite adds an agentic AI layer that drafts variance commentary, runs forecasts, and answers plain-English questions about the cube — cutting an 11-day close to 4.",
+      "Financial close software automates the month-end and quarter-end close — pulling trial balance from your ERP, reconciling across entities, generating P&L / Balance Sheet / Cash Flow, and assembling the variance pack for the board. NashOS adds an agentic AI layer that drafts variance commentary, runs forecasts, and answers plain-English questions about the cube — cutting an 11-day close to 4.",
   },
   {
     question: "How can I close my books faster?",
     answer:
-      "The 11-day close has three bottlenecks: (1) waiting for trial balance and reconciliation, (2) building the variance pack from scratch every period, (3) hand-writing commentary on the top movers. EPM Lite collapses each: continuous connectors land trial balance on day one, the agent ranks top movers by financial impact and drafts the commentary, and the audit trail replaces the 'who changed what' Slack thread. Result: 4-day close cycle, 90-minute variance pack.",
+      "The 11-day close has three bottlenecks: (1) waiting for trial balance and reconciliation, (2) building the variance pack from scratch every period, (3) hand-writing commentary on the top movers. NashOS collapses each: continuous connectors land trial balance on day one, the agent ranks top movers by financial impact and drafts the commentary, and the audit trail replaces the 'who changed what' Slack thread. Result: 4-day close cycle, 90-minute variance pack.",
   },
   {
-    question: "Is EPM Lite an alternative to Anaplan, Adaptive, or Oracle EPM?",
+    question: "Is NashOS an alternative to Anaplan, Adaptive, or Oracle EPM?",
     answer:
-      "Yes — EPM Lite is built for finance teams that want the planning + close + reporting capability of Anaplan or Workday Adaptive Planning without the $150k+ ACV and 6-month rollout. Implementation is days, not months. Pricing starts at $99/mo. Side-by-side comparisons available at /vs/anaplan, /vs/adaptive, and /vs/excel.",
+      "Yes — NashOS is built for finance teams that want the planning + close + reporting capability of Anaplan or Workday Adaptive Planning without the $150k+ ACV and 6-month rollout. Implementation is days, not months. Pricing starts at $99/mo. Side-by-side comparisons available at /vs/anaplan, /vs/adaptive, and /vs/excel.",
   },
   {
     question: "Does it integrate with NetSuite or QuickBooks?",
@@ -108,7 +108,7 @@ export default function FinancialCloseSoftwarePage() {
             <span className="text-brand-600">not 12.</span>
           </h1>
           <p className="mt-5 text-lg text-slate-600 leading-relaxed max-w-3xl">
-            EPM Lite is the agentic FP&amp;A platform built for finance teams tired of an 11-day
+            NashOS is the agentic FP&amp;A platform built for finance teams tired of an 11-day
             close. Continuous connectors, an AI agent that drafts variance commentary, and a
             9-dimension cube replace the spreadsheet sprawl.
           </p>
@@ -163,7 +163,7 @@ export default function FinancialCloseSoftwarePage() {
           </h2>
           <p className="mt-3 text-lg text-slate-600 max-w-3xl">
             Most close-cycle pain isn&apos;t the journal entries. It&apos;s the 7 days of human
-            reconciliation either side. EPM Lite collapses each layer.
+            reconciliation either side. NashOS collapses each layer.
           </p>
           <div className="mt-8 grid sm:grid-cols-2 gap-5">
             {PILLARS.map((p) => (
@@ -200,7 +200,7 @@ export default function FinancialCloseSoftwarePage() {
               </thead>
               <tbody className="divide-y divide-surface-200">
                 <tr className="bg-emerald-50/40">
-                  <td className="px-5 py-3 font-semibold text-slate-900">EPM Lite</td>
+                  <td className="px-5 py-3 font-semibold text-slate-900">NashOS</td>
                   <td className="px-5 py-3 text-accent-emerald font-semibold">4 days</td>
                   <td className="px-5 py-3 text-accent-emerald font-semibold">Hours, not months</td>
                   <td className="px-5 py-3">$99 / mo</td>

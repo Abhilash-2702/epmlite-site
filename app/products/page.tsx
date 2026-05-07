@@ -72,7 +72,7 @@ const ai: Pillar[] = [
   {
     Icon: Sparkles,
     title: "AI Chat",
-    headline: "Plain-English finance copilot.",
+    headline: "Plain-English AI Agent.",
     body:
       "35+ tools cover ~99% of manual app actions. Ask: \"What's our runway?\" \"Hire 3 engineers and show the impact.\" \"Update JPY rate to 150.\" Every write produces a draft card. User clicks Post; backend re-validates; commit happens. Nothing the LLM says auto-mutates the database.",
     tone: "text-accent-emerald bg-emerald-50",
@@ -123,7 +123,7 @@ export default function ProductsPage() {
             Products &amp; Platforms
           </p>
           <h1 className="font-display font-bold text-4xl lg:text-5xl text-slate-900 tracking-tight text-balance">
-            Nine pillars. One cube. One AI copilot.
+            Nine pillars. One cube. One AI Agent.
           </h1>
           <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-3xl">
             Everything an FP&amp;A team needs in one product, organized around how finance actually

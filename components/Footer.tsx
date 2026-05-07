@@ -126,7 +126,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-sidebar-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} EPM Lite. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} NashOS. All rights reserved.</p>
           <p>Built for finance teams that move fast.</p>
         </div>
       </div>

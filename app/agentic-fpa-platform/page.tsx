@@ -5,9 +5,9 @@ import { DEMO_MAILTO } from "@/lib/constants";
 import { FaqSchema, BreadcrumbSchema } from "@/components/StructuredData";
 
 export const metadata: Metadata = {
-  title: "Agentic FP&A Platform — AI Agents for Financial Planning",
+  title: "Agentic Finance — AI Agents for Financial Planning",
   description:
-    "EPM Lite is the agentic FP&A platform built around AI agents — not retrofitted with a chatbot. 35+ tools, 15 forecast algorithms, draft-before-commit safety, full audit trail. The agentic alternative to Anaplan, Adaptive, and Excel.",
+    "NashOS is the agentic FP&A platform built around AI agents — not retrofitted with a chatbot. 35+ tools, 15 forecast algorithms, draft-before-commit safety, full audit trail. The agentic alternative to Anaplan, Adaptive, and Excel.",
   keywords: [
     "agentic FP&A platform",
     "agentic FP&A",
@@ -25,12 +25,12 @@ const FAQ_ITEMS = [
   {
     question: "What is an agentic FP&A platform?",
     answer:
-      "An agentic FP&A platform uses AI agents — software that can chain multiple tool calls, read and write financial data with permissions, and complete multi-step finance tasks autonomously — rather than just chatbot UIs bolted onto a legacy planning tool. EPM Lite was built around agents from day one: the agent has 35+ tools covering ~99% of manual app actions, every write produces a draft for human review, and every action is audit-trailed.",
+      "An agentic FP&A platform uses AI agents — software that can chain multiple tool calls, read and write financial data with permissions, and complete multi-step finance tasks autonomously — rather than just chatbot UIs bolted onto a legacy planning tool. NashOS was built around agents from day one: the agent has 35+ tools covering ~99% of manual app actions, every write produces a draft for human review, and every action is audit-trailed.",
   },
   {
     question: "How is this different from a chatbot in Anaplan or Adaptive?",
     answer:
-      "Legacy planning tools added a chatbot bolt-on after the fact — the chatbot can answer questions but the planning model wasn't built for tool-using agents. EPM Lite reversed the design: every primitive (cube schema, RBAC, draft queue, audit trail) is designed for an agent to operate within safely. The agent can plan, forecast, draft writes, run scenarios, and commit changes — not just summarize what's already there.",
+      "Legacy planning tools added a chatbot bolt-on after the fact — the chatbot can answer questions but the planning model wasn't built for tool-using agents. NashOS reversed the design: every primitive (cube schema, RBAC, draft queue, audit trail) is designed for an agent to operate within safely. The agent can plan, forecast, draft writes, run scenarios, and commit changes — not just summarize what's already there.",
   },
   {
     question: "Is the agent safe? What stops it from messing up my financial data?",
@@ -38,7 +38,7 @@ const FAQ_ITEMS = [
       "Three safeguards. (1) Draft-before-commit: every chat-driven write produces a draft card the user must Post. The LLM never auto-mutates the database. (2) Server-side authentication: every tool call runs with the calling user's permissions; the LLM never gets credentials. (3) Audit trail: every mutation logged with actor, timestamp, and before/after JSON. You can prove what happened.",
   },
   {
-    question: "Which LLMs does EPM Lite use?",
+    question: "Which LLMs does NashOS use?",
     answer:
       "Both Gemini 2.5-flash (default) and Claude Haiku 4.5 are supported, swappable via environment variable. Prompt caching keeps API costs around $0.40/user/month at typical usage. The LLM is configurable per workspace.",
   },
@@ -94,7 +94,7 @@ export default function AgenticFpaPlatformPage() {
       <BreadcrumbSchema
         trail={[
           { name: "Home", url: "/" },
-          { name: "Agentic FP&A Platform", url: "/agentic-fpa-platform" },
+          { name: "Agentic Finance", url: "/agentic-fpa-platform" },
         ]}
       />
       <FaqSchema items={FAQ_ITEMS} />
@@ -102,7 +102,7 @@ export default function AgenticFpaPlatformPage() {
       <section className="bg-white pt-10 pb-8 lg:pt-14 lg:pb-10 border-b border-surface-200">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <p className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">
-            Agentic FP&amp;A Platform
+            Agentic Finance
           </p>
           <h1 className="font-display font-bold text-4xl lg:text-6xl text-slate-900 tracking-tight text-balance leading-[1.05]">
             Built for AI agents.
@@ -110,7 +110,7 @@ export default function AgenticFpaPlatformPage() {
             <span className="text-brand-600">Not retrofitted with a chatbot.</span>
           </h1>
           <p className="mt-5 text-lg text-slate-600 leading-relaxed max-w-3xl">
-            EPM Lite is the FP&amp;A platform designed around tool-using AI agents from day one.
+            NashOS is the FP&amp;A platform designed around tool-using AI agents from day one.
             35+ agent tools cover ~99% of manual app actions. Every write is drafted, every action
             audit-trailed. The agentic alternative to Anaplan, Adaptive, and Excel.
           </p>
@@ -138,7 +138,7 @@ export default function AgenticFpaPlatformPage() {
             What an agentic platform actually means
           </h2>
           <p className="mt-3 text-lg text-slate-600 max-w-3xl">
-            Most &quot;AI in FP&amp;A&quot; today is a chatbot bolted onto a 2015 planning tool. EPM Lite
+            Most &quot;AI in FP&amp;A&quot; today is a chatbot bolted onto a 2015 planning tool. NashOS
             inverted the design: the agent is the primary interface, traditional grids are the
             fallback. 35+ tools across four categories.
           </p>
@@ -166,7 +166,7 @@ export default function AgenticFpaPlatformPage() {
             Safety primitives
           </h2>
           <p className="mt-3 text-lg text-slate-600 max-w-3xl">
-            An agent that can write to your financials needs to be safe by default. EPM Lite&apos;s
+            An agent that can write to your financials needs to be safe by default. NashOS&apos;s
             entire write surface is gated behind these four primitives.
           </p>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">

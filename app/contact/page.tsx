@@ -6,7 +6,7 @@ import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Send us a note, book a 15-min demo, or write directly to admin@epmlite.com.",
+  description: "Send us a note, book a 15-min demo, or write directly to admin@nashos.ai.",
 };
 
 const faq = [

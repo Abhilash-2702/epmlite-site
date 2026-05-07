@@ -50,11 +50,11 @@ export async function POST(req: Request) {
   };
 
   const key = process.env.RESEND_API_KEY;
-  const to = process.env.LEAD_TO_EMAIL ?? "admin@epmlite.com";
+  const to = process.env.LEAD_TO_EMAIL ?? "admin@nashos.ai";
   // Resend requires a verified sender domain. Default to their onboarding sender
-  // until epmlite.com is verified in the Resend dashboard; then set
-  // LEAD_FROM_EMAIL=leads@epmlite.com (or similar) in Vercel env vars.
-  const from = process.env.LEAD_FROM_EMAIL ?? "EPM Lite <onboarding@resend.dev>";
+  // until nashos.ai is verified in the Resend dashboard; then set
+  // LEAD_FROM_EMAIL=leads@nashos.ai (or similar) in Vercel env vars.
+  const from = process.env.LEAD_FROM_EMAIL ?? "NashOS <onboarding@resend.dev>";
 
   if (key) {
     const r = await fetch("https://api.resend.com/emails", {
@@ -66,7 +66,7 @@ export async function POST(req: Request) {
       body: JSON.stringify({
         from,
         to,
-        subject: `New EPM Lite lead — ${email}`,
+        subject: `New NashOS lead — ${email}`,
         text: JSON.stringify(meta, null, 2),
       }),
     });

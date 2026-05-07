@@ -4,7 +4,7 @@ import { Sparkles, Wrench, Plus } from "lucide-react";
 export const metadata: Metadata = {
   title: "Changelog",
   description:
-    "Everything shipped at EPM Lite — by week. We're shipping in days, not months. Watch the pace.",
+    "Everything shipped at NashOS — by week. We're shipping in days, not months. Watch the pace.",
 };
 
 type Tag = "feature" | "improvement" | "fix";
@@ -52,14 +52,14 @@ const ENTRIES: Entry[] = [
       { tag: "feature", text: "5 new pages: /about, /partners, /products, /careers, /contact." },
       { tag: "feature", text: "5 animated product mockups: dashboard, AI chat, what-if slider, forecast comparison, driver formula." },
       { tag: "feature", text: "Ribbon nav with active-route highlighting and mobile hamburger drawer." },
-      { tag: "improvement", text: "Wordmark logo: EPM·Lite with brand-blue interpunct + emerald accent square." },
+      { tag: "improvement", text: "Wordmark logo: Nash·OS with brand-blue interpunct + emerald accent square." },
       { tag: "improvement", text: "Sitemap, robots.txt, dynamic OG image at /opengraph-image." },
     ],
   },
   {
     date: "2026-04-27",
     version: "v0.1 · launch",
-    title: "Marketing site goes live at epmlite.com",
+    title: "Marketing site goes live at nashos.ai",
     items: [
       { tag: "feature", text: "Initial scaffold: Next.js 14 + Tailwind + Framer Motion." },
       { tag: "feature", text: "Lead-capture API at /api/lead with rate limit + honeypot." },

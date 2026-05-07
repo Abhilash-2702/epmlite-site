@@ -78,7 +78,7 @@ export default function ComparisonPage(props: ComparisonProps) {
                     Capability
                   </th>
                   <th className="text-left text-xs font-semibold uppercase tracking-wider text-brand-600 px-4 py-3">
-                    EPM Lite
+                    NashOS
                   </th>
                   <th className="text-left text-xs font-semibold uppercase tracking-wider text-slate-500 px-4 py-3">
                     {rivalShort}
@@ -144,7 +144,7 @@ export default function ComparisonPage(props: ComparisonProps) {
       <section className="bg-white py-10 lg:py-14 border-t border-surface-200">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <h2 className="font-display font-bold text-2xl lg:text-3xl text-slate-900 mb-8">
-            Where EPM Lite is different
+            Where NashOS is different
           </h2>
           <div className="grid md:grid-cols-2 gap-5">
             {props.diffCards.map((c, i) => (
@@ -175,7 +175,7 @@ export default function ComparisonPage(props: ComparisonProps) {
           <div className="grid md:grid-cols-2 gap-5">
             <div className="rounded-2xl bg-white border border-brand-200 p-6 shadow-card">
               <p className="text-xs font-semibold text-brand-600 uppercase tracking-wider">
-                Pick EPM Lite if
+                Pick NashOS if
               </p>
               <p className="mt-2 text-base text-slate-700 leading-relaxed">{props.whoIsItFor.epm}</p>
             </div>

@@ -128,7 +128,7 @@ export default function LiveChat({
           <span className="w-1.5 h-1.5 rounded-full bg-accent-emerald animate-pulse" />
           Live demo
         </span>
-        <span className="text-xs text-slate-400 font-mono">epm-lite · ai chat</span>
+        <span className="text-xs text-slate-400 font-mono">nashos · ai chat</span>
       </div>
 
       {/* User typing bubble */}

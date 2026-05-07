@@ -22,7 +22,7 @@ const INDUSTRIES: Industry[] = [
     hookLine: "FP&A for SaaS founders running on ARR.",
     headline: "Plan ARR cohorts, churn, and runway in the same view.",
     subhead:
-      "Most SaaS finance stacks split between an FP&A tool, a BI tool, and a Stripe export. EPM Lite collapses them — driver-based ARR projections, cohort retention curves, and a runway calculator that updates when you toggle hiring.",
+      "Most SaaS finance stacks split between an FP&A tool, a BI tool, and a Stripe export. NashOS collapses them — driver-based ARR projections, cohort retention curves, and a runway calculator that updates when you toggle hiring.",
     metricsToTrack: [
       "MRR / ARR (committed, ramped, ending)",
       "Net + gross dollar retention by cohort",
@@ -45,7 +45,7 @@ const INDUSTRIES: Industry[] = [
     hookLine: "FP&A for consulting firms running on utilization.",
     headline: "Project margin × utilization × bench, in one cube.",
     subhead:
-      "Consulting finance is two problems: forecasting utilization (which is people math) and forecasting project margin (which is ratio math). Most stacks give you one or the other. EPM Lite gives you both, with the agent computing realization and recovery on every project on demand.",
+      "Consulting finance is two problems: forecasting utilization (which is people math) and forecasting project margin (which is ratio math). Most stacks give you one or the other. NashOS gives you both, with the agent computing realization and recovery on every project on demand.",
     metricsToTrack: [
       "Utilization % (target vs actual, by practice and by consultant)",
       "Realization rate (billable / standard) and recovery rate",
@@ -68,7 +68,7 @@ const INDUSTRIES: Industry[] = [
     hookLine: "FP&A for hardware companies tracking margin to the unit.",
     headline: "Unit economics, BOM, COGS — drilled all the way down.",
     subhead:
-      "Hardware finance lives at the intersection of unit economics, supply chain, and capacity planning. EPM Lite holds all three in one cube: BOM × supplier prices × yield × volume, with what-if at every layer.",
+      "Hardware finance lives at the intersection of unit economics, supply chain, and capacity planning. NashOS holds all three in one cube: BOM × supplier prices × yield × volume, with what-if at every layer.",
     metricsToTrack: [
       "Gross margin per unit, per SKU, per channel",
       "BOM cost trends and supplier concentration",
@@ -91,7 +91,7 @@ const INDUSTRIES: Industry[] = [
     hookLine: "FP&A for services firms with mixed revenue streams.",
     headline: "Recurring + project + bill-on-completion, in one plan.",
     subhead:
-      "If your revenue is half MSA, half project, and a long tail of one-offs — your spreadsheet is held together with named ranges and a prayer. EPM Lite handles the heterogeneity in one cube with proper revenue-recognition logic.",
+      "If your revenue is half MSA, half project, and a long tail of one-offs — your spreadsheet is held together with named ranges and a prayer. NashOS handles the heterogeneity in one cube with proper revenue-recognition logic.",
     metricsToTrack: [
       "Revenue mix: recurring vs project vs ad-hoc",
       "Backlog and bookings",
@@ -122,7 +122,7 @@ export function generateMetadata({
   const i = INDUSTRIES.find((x) => x.slug === params.industry);
   if (!i) return { title: "Not found" };
   return {
-    title: `EPM Lite for ${i.name}`,
+    title: `NashOS for ${i.name}`,
     description: i.hookLine,
   };
 }
@@ -140,7 +140,7 @@ export default function IndustryPage({
       <section className="bg-white pt-10 pb-8 lg:pt-14 lg:pb-10 border-b border-surface-200">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <p className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">
-            EPM Lite for {i.name}
+            NashOS for {i.name}
           </p>
           <h1 className="font-display font-bold text-4xl lg:text-5xl text-slate-900 tracking-tight text-balance leading-[1.05]">
             {i.headline}
@@ -181,7 +181,7 @@ export default function IndustryPage({
           </div>
           <div className="rounded-2xl bg-white border border-surface-200 p-6 lg:p-7 shadow-card">
             <h2 className="font-display font-semibold text-slate-900 text-xl">
-              Why EPM Lite fits
+              Why NashOS fits
             </h2>
             <ul className="mt-4 space-y-3">
               {i.fitPoints.map((f) => (

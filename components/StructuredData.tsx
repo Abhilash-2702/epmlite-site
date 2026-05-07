@@ -13,12 +13,12 @@ const ORGANIZATION = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
-  name: "EPM Lite",
+  name: "NashOS",
   url: SITE_URL,
   logo: `${SITE_URL}/icon`,
   description:
-    "Agentic FP&A platform for finance teams. Close in days, forecast in minutes, audit-grade trail on every change.",
-  email: "admin@epmlite.com",
+    "Agentic finance platform for modern teams. Close in days, forecast in minutes, audit-grade trail on every change.",
+  email: "admin@nashos.ai",
   sameAs: [],
 };
 
@@ -27,7 +27,7 @@ const WEBSITE = {
   "@type": "WebSite",
   "@id": `${SITE_URL}/#website`,
   url: SITE_URL,
-  name: "EPM Lite",
+  name: "NashOS",
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en-US",
 };
@@ -36,12 +36,12 @@ const SOFTWARE_APPLICATION = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "@id": `${SITE_URL}/#software`,
-  name: "EPM Lite",
+  name: "NashOS",
   applicationCategory: "BusinessApplication",
   applicationSubCategory: "Financial Planning and Analysis (FP&A) software",
   operatingSystem: "Web · Self-hosted (Postgres + Node)",
   description:
-    "Agentic FP&A platform with 35+ AI tools, 15 forecast algorithms, and a 9-dimension financial cube. Cuts close cycles from 12 days to 4. Built for finance teams switching from Anaplan, Adaptive, Oracle EPM, OneStream, SAP BPC, Microsoft BI, Vena, Cube, or Excel.",
+    "Agentic finance platform with 35+ AI tools, 15 forecast algorithms, and a 9-dimension financial cube. Cuts close cycles from 12 days to 4. Built for finance teams switching from Anaplan, Adaptive, Oracle EPM, OneStream, SAP BPC, Microsoft BI, Vena, Cube, or Excel.",
   offers: [
     {
       "@type": "Offer",

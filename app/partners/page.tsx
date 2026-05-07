@@ -13,7 +13,7 @@ const tracks = [
     Icon: Handshake,
     title: "Implementation partners",
     body:
-      "FP&A and finance-transformation consultants who help teams roll out EPM Lite. Revenue-share on referred deals, co-marketing, joint case studies.",
+      "FP&A and finance-transformation consultants who help teams roll out NashOS. Revenue-share on referred deals, co-marketing, joint case studies.",
   },
   {
     Icon: Plug2,
