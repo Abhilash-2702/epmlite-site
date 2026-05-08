@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Sparkles, PlayCircle, Briefcase, BarChart3, Rocket } from "lucide-react";
+import { ArrowRight, Sparkles, PlayCircle, Briefcase, BarChart3, Rocket, Wand2 } from "lucide-react";
 import Link from "next/link";
 import VideoOrMockup from "@/components/animated/VideoOrMockup";
 import LiveDashboard from "@/components/animated/LiveDashboard";
@@ -98,13 +98,25 @@ export default function Hero() {
               {c.heroSecondaryCTA.label}
             </a>
           </div>
-          <Link
-            href="/demo"
-            className="mt-4 inline-flex items-center gap-2 text-sm text-slate-500 hover:text-theme-accent transition-colors"
-          >
-            <PlayCircle className="w-4 h-4" />
-            Watch a 60-second walkthrough
-          </Link>
+          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
+            <Link
+              href="/demo"
+              className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-theme-accent transition-colors"
+            >
+              <PlayCircle className="w-4 h-4" />
+              Watch a 60-second walkthrough
+            </Link>
+            <a
+              href="https://wizard.nashos.ai"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-theme-accent transition-colors"
+            >
+              <Wand2 className="w-4 h-4" />
+              Try the setup demo
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
         </motion.div>
 
         <motion.div
