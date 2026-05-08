@@ -2,16 +2,18 @@ import Link from "next/link";
 
 type Size = "sm" | "md" | "lg";
 
-const dims: Record<Size, { text: string; dot: string; square: string; gap: string }> = {
-  sm: { text: "text-lg", dot: "mx-1",   square: "w-1.5 h-1.5 ml-1.5", gap: "gap-0" },
-  md: { text: "text-xl", dot: "mx-1",   square: "w-2 h-2 ml-1.5",     gap: "gap-0" },
-  lg: { text: "text-3xl", dot: "mx-1.5", square: "w-2.5 h-2.5 ml-2",  gap: "gap-0" },
+const dims: Record<Size, { text: string; dot: string; gap: string }> = {
+  sm: { text: "text-lg",  dot: "mx-1",   gap: "gap-1.5" },
+  md: { text: "text-xl",  dot: "mx-1",   gap: "gap-2"   },
+  lg: { text: "text-3xl", dot: "mx-1.5", gap: "gap-2.5" },
 };
 
 /**
- * NashOS wordmark. Type-only — Mercury / Brex aesthetic.
- *   Nash · OS ▪
- * Brand-blue (or brand-400 on dark bg) interpunct + trailing emerald square.
+ * NashOS wordmark — N mark image + "Nash · OS" text lockup.
+ *
+ * The N mark is a transparent PNG with its own teal/emerald gradient,
+ * so it reads correctly on both light AND dark backgrounds without
+ * needing per-tone variants.
  */
 export default function Logo({
   size = "md",
@@ -26,20 +28,24 @@ export default function Logo({
 }) {
   const d = dims[size];
   const wordClass = monochrome ? "text-white" : "text-slate-900";
-  const dotClass = monochrome ? "text-brand-400" : "text-brand-600";
+  const dotClass = monochrome ? "text-slate-300/70" : "text-slate-400";
 
   const inner = (
     <span
-      className={`inline-flex items-baseline font-display font-bold tracking-tight ${d.text} ${wordClass} ${d.gap} ${className}`}
+      className={`inline-flex items-center font-display font-semibold tracking-tight ${d.text} ${wordClass} ${d.gap} ${className}`}
     >
-      Nash
-      <span className={`${dotClass} ${d.dot}`} aria-hidden="true">·</span>
-      OS
-      <span
-        className={`inline-block rounded-sm bg-accent-emerald ${d.square}`}
-        style={{ alignSelf: "center" }}
+      <img
+        src="/brand/nashos-mark.png"
+        alt=""
         aria-hidden="true"
+        className="h-[1.6em] w-auto select-none"
+        draggable={false}
       />
+      <span className="inline-flex items-baseline">
+        Nash
+        <span className={`${dotClass} ${d.dot}`} aria-hidden="true">·</span>
+        OS
+      </span>
     </span>
   );
 
