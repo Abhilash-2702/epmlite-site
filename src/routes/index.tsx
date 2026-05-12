@@ -22,6 +22,14 @@ export const Route = createFileRoute("/")({
         content: "A unified system for planning, forecasting, and decisions.",
       },
     ],
+    // Tell the browser to start downloading the hero videos from byte 1 of
+    // the page load — in parallel with HTML/CSS — so they're ready to play
+    // by the time the hero paints. Eliminates the brief poster-image flash.
+    // Only applied on the home route (other routes don't need them).
+    links: [
+      { rel: "preload", as: "video", href: "/hero-cfo.mp4", type: "video/mp4" },
+      { rel: "preload", as: "video", href: "/hero-boardroom.mp4", type: "video/mp4" },
+    ],
   }),
   component: Index,
 });

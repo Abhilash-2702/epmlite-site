@@ -116,9 +116,11 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden flex flex-col">
+    // bg-background ensures the section is dark from first paint — eliminates
+    // the bright poster-image flash before the hero video starts playing.
+    <section className="relative min-h-screen w-full overflow-hidden flex flex-col bg-background">
       {/* Video background — anchored to bottom half */}
-      <div className="absolute inset-x-0 bottom-0 top-1/3 overflow-hidden">
+      <div className="absolute inset-x-0 bottom-0 top-1/3 overflow-hidden bg-background">
         <div ref={layerRef} className="absolute inset-0 will-change-transform">
           {[videoARef, videoBRef].map((ref, i) => (
             <video
