@@ -4,7 +4,7 @@ import { PageShell } from "@/components/page-shell";
 import { PageHero, Section } from "@/components/page-sections";
 import { POSTS, CATEGORY_LABEL } from "@/lib/posts";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "Blog — NashOS" },
