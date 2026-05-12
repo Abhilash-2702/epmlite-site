@@ -134,7 +134,9 @@ export function Hero() {
               playsInline
               controls={false}
               disableRemotePlayback
-              poster={heroPoster}
+              // poster intentionally omitted — was causing a bright JPG flash
+              // before the first video frame decoded. With bg-background on
+              // the section underneath, the video stays invisible until ready.
               preload="auto"
             />
           ))}

@@ -130,10 +130,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+// Inline critical CSS — applies during HTML parse, BEFORE the external CSS
+// file loads. Without this, the browser shows white default body background
+// for ~one paint, then jumps to dark when styles.css arrives. Setting the
+// canonical bg + fg colors here ensures no white flash even on slow networks.
+const CRITICAL_CSS = `
+html, body { background-color: oklch(0.13 0.005 60); color: oklch(0.93 0.02 60); margin: 0; padding: 0; }
+html { color-scheme: dark; }
+`;
+
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <style dangerouslySetInnerHTML={{ __html: CRITICAL_CSS }} />
         <HeadContent />
       </head>
       <body>
