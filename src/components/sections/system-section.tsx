@@ -77,7 +77,7 @@ export function SystemSection() {
       onMouseLeave={() => setPaused(false)}
     >
       <div aria-hidden className="pointer-events-none absolute -top-40 left-[-10%] h-[600px] w-[600px] rounded-full opacity-30" style={{ background: "var(--gradient-radial-gold)" }} />
-      <div className="relative mx-auto max-w-[1200px] px-6 lg:px-10 py-24 sm:py-32">
+      <div className="relative mx-auto max-w-[1200px] px-6 lg:px-10 py-12 sm:py-16">
         <div className="text-center">
           <span className="chip"><span className="chip-dot" />Architecture</span>
           <h2 className="mt-7 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.02]">

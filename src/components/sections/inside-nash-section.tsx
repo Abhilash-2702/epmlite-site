@@ -57,7 +57,7 @@ export function InsideNashSection() {
         style={{ background: "var(--gradient-radial-gold)" }}
       />
 
-      <div className="relative mx-auto max-w-[1280px] px-6 lg:px-12 py-24 sm:py-32">
+      <div className="relative mx-auto max-w-[1280px] px-6 lg:px-12 py-12 sm:py-16">
         {/* Header: chip top-left, heading left-aligned, CTA top-right */}
         <div className="flex flex-col gap-8">
           <div className="flex items-start justify-between gap-6 flex-wrap">
