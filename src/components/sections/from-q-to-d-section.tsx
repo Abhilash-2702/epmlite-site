@@ -170,7 +170,7 @@ export function FromQtoDSection() {
         </div>
 
         {/* Tabs */}
-        <div className="mt-14 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <div className="surface-card inline-flex p-1.5 gap-1">
             {STEPS.map((s, i) => {
               const active = i === step;
@@ -287,7 +287,7 @@ export function FromQtoDSection() {
 
 
         {/* CTA */}
-        <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-5 surface-card p-7">
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-5 surface-card p-7">
           <div className="text-lg sm:text-xl font-semibold text-center sm:text-left">See it run on your numbers.</div>
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Link to="/try" className="btn-gold inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold whitespace-nowrap">

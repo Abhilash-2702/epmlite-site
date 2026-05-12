@@ -110,7 +110,7 @@ export function ForLeadersSection() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
           {cards.map((c) => (
             <div
               key={c.role}

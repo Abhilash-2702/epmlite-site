@@ -82,7 +82,7 @@ export function InsideNashSection() {
         </div>
 
         {/* Borderless grid with cross dividers */}
-        <div className="relative mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="relative mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {systems.map((s, i) => {
             const Icon = s.icon;
             const col = i % 3; // 0,1,2
@@ -126,7 +126,7 @@ export function InsideNashSection() {
         </div>
 
         {/* Footer band */}
-        <div className="mt-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-t border-border/30 pt-10">
+        <div className="mt-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-t border-border/30 pt-8">
           <p className="text-foreground/85 text-[15px] leading-relaxed lg:max-w-3xl">
             Together, these systems operate as one — multi-entity, continuously computed, fully auditable.{" "}
             <span className="font-semibold text-gradient-gold">No handoffs. No sync issues. No rebuilds.</span>
