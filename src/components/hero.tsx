@@ -161,7 +161,7 @@ export function Hero() {
           and <span className="text-gradient-gold font-serif-accent font-normal">decisions.</span>
         </h1>
 
-        <p className="mt-5 sm:mt-6 text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+        <p className="mt-24 sm:mt-32 lg:mt-40 text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl leading-relaxed">
           One continuously computed system for finance — multi-entity, multi-currency, audit-ready.
         </p>
 
@@ -196,8 +196,9 @@ function CornerFrame() {
 
   return (
     <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block">
-      {/* Left bracket */}
-      <div className="absolute left-12 top-[18%]" style={{ width: W, height: H }}>
+      {/* Left bracket — top shifted to 40% so the L-frame surrounds the
+          lowered subtitle/CTAs rather than the still-anchored headline. */}
+      <div className="absolute left-12 top-[40%]" style={{ width: W, height: H }}>
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} fill="none" className="absolute inset-0 overflow-visible">
           <path d={leftPath} stroke="oklch(0.82 0.14 78 / 0.14)" strokeWidth="1" />
           <circle r="2.5" fill="var(--gold)" style={{ filter: "drop-shadow(0 0 6px var(--gold))" }}>
@@ -212,8 +213,8 @@ function CornerFrame() {
         </div>
       </div>
 
-      {/* Right bracket */}
-      <div className="absolute right-12 top-[22%]" style={{ width: W, height: H }}>
+      {/* Right bracket — same downward shift as the left bracket. */}
+      <div className="absolute right-12 top-[44%]" style={{ width: W, height: H }}>
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} fill="none" className="absolute inset-0 overflow-visible">
           <path d={rightPath} stroke="oklch(0.82 0.14 78 / 0.14)" strokeWidth="1" />
           <circle r="2.5" fill="var(--gold)" style={{ filter: "drop-shadow(0 0 6px var(--gold))" }}>
