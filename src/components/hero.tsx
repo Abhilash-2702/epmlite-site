@@ -181,35 +181,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Trusted by marquee — borderless trust strip */}
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10 mt-10 sm:mt-0 pt-6 pb-5 sm:pb-6 lg:pb-8">
-        <p className="text-center text-[0.7rem] tracking-[0.25em] text-gold uppercase">
-          Trusted by finance teams that move fast
-        </p>
-        <div className="mt-4 marquee-mask">
-          <div className="marquee-track">
-            {[...Array(2)].map((_, dup) => (
-              <div className="marquee-group" key={dup} aria-hidden={dup === 1}>
-                {[
-                  ["✦", "NORTHSTAR"],
-                  ["⬡", "BEACON"],
-                  ["▦", "PULSE FP&A"],
-                  ["◉", "CLARION"],
-                  ["▲", "ATLAS DATA"],
-                  ["△", "AURORA SYSTEMS"],
-                  ["✺", "MERIDIAN"],
-                  ["◈", "VANTAGE"],
-                ].map(([icon, name]) => (
-                  <div key={name} className="flex items-center gap-2.5 text-xs sm:text-sm tracking-wider text-muted-foreground whitespace-nowrap">
-                    <span className="text-gold/80 text-lg">{icon}</span>
-                    <span>{name}</span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
