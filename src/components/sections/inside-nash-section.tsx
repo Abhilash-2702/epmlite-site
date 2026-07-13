@@ -102,7 +102,7 @@ export function InsideNashSection() {
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{ background: "radial-gradient(circle at 50% 30%, oklch(0.82 0.14 78 / 8%), transparent 70%)" }}
+                  style={{ background: "radial-gradient(circle at 50% 30%, rgba(43,97,162,0.10), transparent 70%)" }}
                 />
                 <div className="relative">
                   <Icon className="w-10 h-10 text-gold" strokeWidth={1.5} />

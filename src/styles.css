@@ -32,46 +32,51 @@
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
   --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Roboto", "Open Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-serif: "Inter", ui-sans-serif, system-ui, sans-serif; /* NASH: no serif/italics — aliased to display */
 }
 
 :root {
   --radius: 0.75rem;
-  /* Dark luxe finance theme — black + gold */
-  --background: oklch(0.13 0.005 60);
-  --foreground: oklch(0.98 0.01 80);
-  --card: oklch(0.16 0.007 60);
-  --card-foreground: oklch(0.98 0.01 80);
-  --popover: oklch(0.16 0.007 60);
-  --popover-foreground: oklch(0.98 0.01 80);
-  --primary: oklch(0.82 0.14 78);
-  --primary-foreground: oklch(0.15 0.01 60);
-  --secondary: oklch(0.22 0.01 60);
-  --secondary-foreground: oklch(0.98 0.01 80);
-  --muted: oklch(0.2 0.008 60);
-  --muted-foreground: oklch(0.7 0.015 70);
-  --accent: oklch(0.82 0.14 78);
-  --accent-foreground: oklch(0.15 0.01 60);
-  --destructive: oklch(0.6 0.22 27);
-  --destructive-foreground: oklch(0.98 0.01 80);
-  --border: oklch(0.28 0.015 70 / 60%);
-  --input: oklch(0.28 0.015 70 / 60%);
-  --ring: oklch(0.82 0.14 78);
+  /* NASH — navy boardroom theme (area 03: ground #0D1729 · panel #122036 · action #194071)
+     Bone is the voice, Steel the meta, Terracotta the alarm. tokens.css is the source of truth. */
+  --background: #0d1729;
+  --foreground: #edeae2;
+  --card: #122036;
+  --card-foreground: #edeae2;
+  --popover: #122036;
+  --popover-foreground: #edeae2;
+  --primary: #194071;
+  --primary-foreground: #ffffff;
+  --secondary: #122036;
+  --secondary-foreground: #edeae2;
+  --muted: #101b2e;
+  --muted-foreground: #999999;
+  --accent: #194071;
+  --accent-foreground: #ffffff;
+  --destructive: #c84534;
+  --destructive-foreground: #ffffff;
+  --border: rgba(153, 153, 153, 0.22);
+  --input: rgba(153, 153, 153, 0.22);
+  --ring: #2b61a2;
 
-  --gold: oklch(0.82 0.14 78);
-  --gold-soft: oklch(0.7 0.11 75);
+  /* legacy accent slots — re-pointed to the navy ramp (accent-on-dark = navy-100) */
+  --gold: #b5d4f8;
+  --gold-soft: #2b61a2;
 
-  --gradient-gold: linear-gradient(135deg, oklch(0.88 0.13 82), oklch(0.7 0.13 70));
-  --gradient-radial-gold: radial-gradient(circle at 50% 50%, oklch(0.82 0.14 78 / 35%), transparent 70%);
-  --shadow-gold: 0 10px 40px -10px oklch(0.82 0.14 78 / 35%);
-  --shadow-soft: 0 1px 0 0 oklch(1 0 0 / 6%) inset;
+  /* action gradient (buttons): single-hue navy ramp, calm */
+  --gradient-gold: linear-gradient(135deg, #2b61a2, #194071);
+  /* display-text gradient (hero headline accents): light on dark ground */
+  --gradient-text: linear-gradient(135deg, #ffffff, #b5d4f8);
+  --gradient-radial-gold: radial-gradient(circle at 50% 50%, rgba(43, 97, 162, 0.30), transparent 70%);
+  --shadow-gold: 0 10px 40px -10px rgba(25, 64, 113, 0.55);
+  --shadow-soft: 0 1px 0 0 rgba(255, 255, 255, 0.06) inset;
 }
 
 .dark {
-  --background: oklch(0.13 0.005 60);
-  --foreground: oklch(0.98 0.01 80);
+  --background: #0d1729;
+  --foreground: #edeae2;
 }
 
 @layer base {
@@ -82,16 +87,18 @@
     font-feature-settings: "cv11", "ss01", "ss03";
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4, h5, h6 { font-family: var(--font-sans); letter-spacing: -0.01em; }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.01em; }
   code, kbd, samp, pre, .font-mono { font-family: var(--font-mono); }
-  .font-serif-accent { font-family: var(--font-serif); font-style: italic; letter-spacing: -0.02em; }
+  /* NASH law: no italics — emphasis is weight or color. Former serif-italic accent
+     now renders as display type; the text gradient carries the emphasis. */
+  .font-serif-accent { font-family: var(--font-display); font-style: normal; letter-spacing: -0.02em; }
   .tabular-nums { font-variant-numeric: tabular-nums; }
-  ::selection { background: oklch(0.82 0.14 78 / 35%); color: var(--foreground); }
+  ::selection { background: rgba(43, 97, 162, 0.45); color: var(--foreground); }
 }
 
 @layer components {
   .text-gradient-gold {
-    background: var(--gradient-gold);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -104,34 +111,34 @@
   }
   .btn-gold:hover { transform: translateY(-1px); filter: brightness(1.05); }
   .btn-outline-gold {
-    border: 1px solid oklch(0.82 0.14 78 / 60%);
+    border: 1px solid rgba(181, 212, 248, 0.45);
     color: var(--gold);
     background: transparent;
     transition: background .2s ease, color .2s ease;
   }
-  .btn-outline-gold:hover { background: oklch(0.82 0.14 78 / 10%); }
+  .btn-outline-gold:hover { background: rgba(181, 212, 248, 0.08); }
   .chip {
     display: inline-flex; align-items: center; gap: .5rem;
     padding: .5rem 1rem; border-radius: 9999px;
     border: 1px solid var(--border);
-    background: oklch(0.18 0.007 60 / 60%);
+    background: rgba(18, 32, 54, 0.6);
     color: var(--gold);
     font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
   }
   .chip-dot { width: 6px; height: 6px; border-radius: 9999px; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
-  .nav-link { color: oklch(0.85 0.01 80 / 80%); transition: color .2s ease; font-size: .9rem; }
+  .nav-link { color: rgba(237, 234, 226, 0.8); transition: color .2s ease; font-size: .9rem; }
   .nav-link:hover, .nav-link[data-active="true"] { color: var(--gold); }
   .surface-card {
     border: 1px solid var(--border);
-    background: linear-gradient(180deg, oklch(0.16 0.007 60 / 80%), oklch(0.13 0.005 60 / 60%));
+    background: linear-gradient(180deg, rgba(18, 32, 54, 0.8), rgba(13, 23, 41, 0.6));
     border-radius: var(--radius-xl);
   }
 }
 
 /* Pulse breathing kept available but no longer applied to .pulse-dot globally — pulses are hero-only */
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 oklch(0.82 0.14 78 / 60%); }
-  50% { opacity: .7; box-shadow: 0 0 0 8px oklch(0.82 0.14 78 / 0%); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(181, 212, 248, 0.6); }
+  50% { opacity: .7; box-shadow: 0 0 0 8px rgba(181, 212, 248, 0); }
 }
 
 @keyframes drift {
@@ -144,8 +151,8 @@
 /* Grid backdrop for interactive console */
 .grid-bg {
   background-image:
-    linear-gradient(to right, oklch(0.82 0.14 78 / 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.82 0.14 78 / 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(153, 153, 153, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(153, 153, 153, 0.08) 1px, transparent 1px);
   background-size: 32px 32px;
   -webkit-mask-image: radial-gradient(ellipse at center, #000 40%, transparent 80%);
           mask-image: radial-gradient(ellipse at center, #000 40%, transparent 80%);
@@ -171,8 +178,8 @@
 
 /* Border flash on commit */
 @keyframes border-flash {
-  0% { box-shadow: 0 0 0 0 oklch(0.82 0.14 78 / 0.6); }
-  100% { box-shadow: 0 0 0 16px oklch(0.82 0.14 78 / 0); }
+  0% { box-shadow: 0 0 0 0 rgba(43, 97, 162, 0.6); }
+  100% { box-shadow: 0 0 0 16px rgba(43, 97, 162, 0); }
 }
 .border-flash { animation: border-flash 1s ease-out; }
 
@@ -214,28 +221,29 @@
   .pulse-dot-ltr, .pulse-dot-rtl, .animate-pulse-soft { animation: none; }
 }
 
-/* Light theme — warm-white sections to break the dark monotony */
+/* Light theme — NASH Bone field sections (navy-on-white pairing, area 01/02) */
 .theme-light {
-  --background: oklch(0.985 0.006 80);
-  --foreground: oklch(0.16 0.012 60);
+  --background: #edeae2;
+  --foreground: #0b0b0d;
   --card: #ffffff;
-  --card-foreground: oklch(0.16 0.012 60);
+  --card-foreground: #0b0b0d;
   --popover: #ffffff;
-  --popover-foreground: oklch(0.16 0.012 60);
-  --primary: oklch(0.66 0.17 72);
+  --popover-foreground: #0b0b0d;
+  --primary: #194071;
   --primary-foreground: #ffffff;
-  --secondary: oklch(0.95 0.008 80);
-  --secondary-foreground: oklch(0.16 0.012 60);
-  --muted: oklch(0.96 0.006 80);
-  --muted-foreground: oklch(0.38 0.015 65);
-  --accent: oklch(0.66 0.17 72);
+  --secondary: #e7e3da;
+  --secondary-foreground: #0b0b0d;
+  --muted: #e7e3da;
+  --muted-foreground: rgba(11, 11, 13, 0.58);
+  --accent: #194071;
   --accent-foreground: #ffffff;
-  --border: oklch(0.18 0.012 60 / 16%);
-  --input: oklch(0.18 0.012 60 / 16%);
-  --ring: oklch(0.66 0.17 72);
-  --gold: oklch(0.66 0.17 72);
-  --gold-soft: oklch(0.72 0.15 74);
-  --gradient-gold: linear-gradient(135deg, oklch(0.74 0.16 78), oklch(0.55 0.18 65));
+  --border: rgba(11, 11, 13, 0.14);
+  --input: rgba(11, 11, 13, 0.14);
+  --ring: #194071;
+  --gold: #194071;
+  --gold-soft: #2b61a2;
+  --gradient-gold: linear-gradient(135deg, #2b61a2, #194071);
+  --gradient-text: linear-gradient(135deg, #194071, #2b61a2);
 
   background-color: var(--background);
   color: var(--foreground);
@@ -247,37 +255,37 @@
 /* Re-skin shared component classes inside light sections */
 .theme-light .surface-card {
   background: #ffffff;
-  border-color: oklch(0.18 0.012 60 / 16%);
+  border-color: rgba(11, 11, 13, 0.14);
   box-shadow:
-    0 1px 0 oklch(0.18 0.012 60 / 4%),
-    0 12px 32px -16px oklch(0.18 0.012 60 / 14%);
+    0 1px 0 rgba(11, 11, 13, 0.04),
+    0 12px 32px -16px rgba(11, 11, 13, 0.14);
 }
 .theme-light .chip {
-  background: oklch(0.97 0.012 80);
-  border-color: oklch(0.18 0.012 60 / 14%);
-  color: oklch(0.45 0.16 65);
+  background: #ffffff;
+  border-color: rgba(11, 11, 13, 0.12);
+  color: #194071;
 }
 .theme-light .grid-bg {
   background-image:
-    linear-gradient(to right, oklch(0.18 0.012 60 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.18 0.012 60 / 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(11, 11, 13, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 11, 13, 0.05) 1px, transparent 1px);
 }
-/* Replace dark-tinted inner panels with a warm-gray tint so they read as distinct surfaces */
+/* Replace dark-tinted inner panels with a bone tint so they read as distinct surfaces */
 .theme-light .bg-black\/20,
 .theme-light .bg-black\/30 {
-  background-color: oklch(0.965 0.008 80) !important;
-  box-shadow: inset 1px 0 0 oklch(0.18 0.012 60 / 6%);
+  background-color: #e9e5dc !important;
+  box-shadow: inset 1px 0 0 rgba(11, 11, 13, 0.06);
 }
 .theme-light .bg-black\/40,
 .theme-light .bg-black\/50,
 .theme-light .bg-black\/60 {
-  background-color: oklch(0.95 0.008 80) !important;
+  background-color: #e4dfd4 !important;
   color: var(--foreground);
 }
 
 /* Lift faint progress / track backgrounds */
-.theme-light .bg-border { background-color: oklch(0.92 0.008 80) !important; }
-.theme-light .bg-gold\/20 { background-color: oklch(0.66 0.17 72 / 22%) !important; }
+.theme-light .bg-border { background-color: #ddd8cc !important; }
+.theme-light .bg-gold\/20 { background-color: rgba(25, 64, 113, 0.18) !important; }
 
 /* System section step transitions */
 @keyframes merge-out {

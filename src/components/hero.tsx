@@ -200,7 +200,7 @@ function CornerFrame() {
           lowered subtitle/CTAs rather than the still-anchored headline. */}
       <div className="absolute left-12 top-[40%]" style={{ width: W, height: H }}>
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} fill="none" className="absolute inset-0 overflow-visible">
-          <path d={leftPath} stroke="oklch(0.82 0.14 78 / 0.14)" strokeWidth="1" />
+          <path d={leftPath} stroke="rgba(181,212,248,0.14)" strokeWidth="1" />
           <circle r="2.5" fill="var(--gold)" style={{ filter: "drop-shadow(0 0 6px var(--gold))" }}>
             <animateMotion dur="7s" repeatCount="indefinite" path={leftPath} rotate="auto" begin="0.4s" />
           </circle>
@@ -216,7 +216,7 @@ function CornerFrame() {
       {/* Right bracket — same downward shift as the left bracket. */}
       <div className="absolute right-12 top-[44%]" style={{ width: W, height: H }}>
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} fill="none" className="absolute inset-0 overflow-visible">
-          <path d={rightPath} stroke="oklch(0.82 0.14 78 / 0.14)" strokeWidth="1" />
+          <path d={rightPath} stroke="rgba(181,212,248,0.14)" strokeWidth="1" />
           <circle r="2.5" fill="var(--gold)" style={{ filter: "drop-shadow(0 0 6px var(--gold))" }}>
             <animateMotion dur="9s" repeatCount="indefinite" path={rightPath} rotate="auto" begin="1.7s" />
           </circle>

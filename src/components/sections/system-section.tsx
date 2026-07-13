@@ -291,16 +291,16 @@ function CollapseStep() {
         >
           <defs>
             <linearGradient id="flowInGrad" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0%" stopColor="oklch(0.7 0.05 60)" stopOpacity="0.15" />
-              <stop offset="100%" stopColor="oklch(0.78 0.15 75)" stopOpacity="0.9" />
+              <stop offset="0%" stopColor="#999999" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="#B5D4F8" stopOpacity="0.9" />
             </linearGradient>
             <linearGradient id="flowOutGrad" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0%" stopColor="oklch(0.78 0.15 75)" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="oklch(0.7 0.05 60)" stopOpacity="0.2" />
+              <stop offset="0%" stopColor="#B5D4F8" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#999999" stopOpacity="0.2" />
             </linearGradient>
             <radialGradient id="hubGlow">
-              <stop offset="0%" stopColor="oklch(0.78 0.15 75)" stopOpacity="0.45" />
-              <stop offset="100%" stopColor="oklch(0.78 0.15 75)" stopOpacity="0" />
+              <stop offset="0%" stopColor="#B5D4F8" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="#B5D4F8" stopOpacity="0" />
             </radialGradient>
           </defs>
 
@@ -309,14 +309,14 @@ function CollapseStep() {
           {paths.left.map((d, i) => (
             <g key={`l${i}-${d}`}>
               <path d={d} fill="none" stroke="url(#flowInGrad)" strokeWidth="1.25" strokeLinecap="round" className="flow-path" style={{ animationDelay: `${i * 90}ms` }} />
-              <circle r="3" fill="oklch(0.82 0.15 75)" className="flow-pulse" style={{ offsetPath: `path("${d}")`, animationDelay: `${600 + i * 200}ms` } as React.CSSProperties} />
+              <circle r="3" fill="#B5D4F8" className="flow-pulse" style={{ offsetPath: `path("${d}")`, animationDelay: `${600 + i * 200}ms` } as React.CSSProperties} />
             </g>
           ))}
 
           {paths.right.map((d, i) => (
             <g key={`r${i}-${d}`}>
               <path d={d} fill="none" stroke="url(#flowOutGrad)" strokeWidth="1.25" strokeLinecap="round" className="flow-path" style={{ animationDelay: `${500 + i * 100}ms` }} />
-              <circle r="3" fill="oklch(0.82 0.15 75)" className="flow-pulse" style={{ offsetPath: `path("${d}")`, animationDelay: `${1100 + i * 180}ms` } as React.CSSProperties} />
+              <circle r="3" fill="#B5D4F8" className="flow-pulse" style={{ offsetPath: `path("${d}")`, animationDelay: `${1100 + i * 180}ms` } as React.CSSProperties} />
             </g>
           ))}
         </svg>

@@ -1,0 +1,14 @@
+{
+  "name": "NashOS",
+  "short_name": "Nash",
+  "description": "The Equilibrium Engine — agentic finance for planning, forecasting and decisions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D1729",
+  "theme_color": "#194071",
+  "icons": [
+    { "src": "/favicon-192.png",       "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png",          "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

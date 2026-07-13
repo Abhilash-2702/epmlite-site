@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import nashosLogo from "@/assets/nashos-logo-cropped.png";
-import nashMark from "@/assets/nash-mark.png";
+import nashosLogo from "@/assets/lockup-h-white.svg";
+import nashMark from "@/assets/monogram-white.svg";
 
 // Footer hosts the long tail of routes that aren't in the top nav (top nav
 // stays at 4: in-page hash sections + Pricing). Placeholder routes for the
@@ -75,7 +75,7 @@ export function SiteFooter() {
         className="pointer-events-none absolute inset-x-0 top-0 h-px"
         style={{
           background:
-            "linear-gradient(90deg, transparent, oklch(0.82 0.14 78 / 0.6), transparent)",
+            "linear-gradient(90deg, transparent, rgba(181,212,248,0.5), transparent)",
         }}
       />
       <div
@@ -93,7 +93,6 @@ export function SiteFooter() {
           src={nashMark}
           alt=""
           className="w-[60%] max-w-[720px] min-w-[320px] translate-y-[18%] opacity-[0.06] select-none"
-          style={{ filter: "grayscale(1) contrast(1.2) brightness(1.4)" }}
           draggable={false}
         />
       </div>

@@ -115,7 +115,7 @@ export function ForLeadersSection() {
             <div
               key={c.role}
               className="surface-card relative p-7 flex flex-col"
-              style={"highlight" in c && c.highlight ? { boxShadow: "var(--shadow-gold)", borderColor: "oklch(0.82 0.14 78 / 50%)" } : undefined}
+              style={"highlight" in c && c.highlight ? { boxShadow: "var(--shadow-gold)", borderColor: "rgba(43,97,162,0.5)" } : undefined}
             >
               {"badge" in c && c.badge && (
                 <span className="absolute top-4 right-4 chip" style={{ padding: ".25rem .6rem" }}>{c.badge}</span>

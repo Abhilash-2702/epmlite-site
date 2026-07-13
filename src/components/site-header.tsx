@@ -1,7 +1,7 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AlignRight, X } from "lucide-react";
-import nashosLogo from "@/assets/nashos-logo-cropped.png";
+import nashosLogo from "@/assets/lockup-h-white.svg";
 
 const links = [
   { hash: "from-q-to-d", label: "From Q to D" },

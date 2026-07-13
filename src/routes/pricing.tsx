@@ -64,7 +64,7 @@ function PricingPage() {
             <div
               key={t.name}
               className="surface-card p-8 flex flex-col"
-              style={t.highlight ? { boxShadow: "var(--shadow-gold)", borderColor: "oklch(0.82 0.14 78 / 50%)" } : undefined}
+              style={t.highlight ? { boxShadow: "var(--shadow-gold)", borderColor: "rgba(43,97,162,0.5)" } : undefined}
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-semibold">{t.name}</h3>
