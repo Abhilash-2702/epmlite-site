@@ -1,17 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 
-import heroPoster from "@/assets/hero-wave.jpg";
-import heroCfo from "@/assets/hero-cfo.mp4.asset.json";
-import heroBoardroom from "@/assets/hero-boardroom.mp4.asset.json";
-
-const CLIPS = [heroCfo.url, heroBoardroom.url];
+import heroCfo from "@/assets/hero-cfo.jpg";
 
 export function Hero() {
   const layerRef = useRef<HTMLDivElement>(null);
-  const videoARef = useRef<HTMLVideoElement>(null);
-  const videoBRef = useRef<HTMLVideoElement>(null);
-  const [active, setActive] = useState(0); // 0 = A visible, 1 = B visible
 
   useEffect(() => {
     const el = layerRef.current;
@@ -38,108 +31,18 @@ export function Hero() {
     };
   }, []);
 
-  // iOS Safari/Chrome reliability + cross-fade controller
-  useEffect(() => {
-    const a = videoARef.current;
-    const b = videoBRef.current;
-    if (!a || !b) return;
-    const videos = [a, b];
-    videos.forEach((v) => {
-      v.muted = true;
-      v.defaultMuted = true;
-      v.setAttribute("muted", "");
-      v.setAttribute("playsinline", "");
-      v.setAttribute("webkit-playsinline", "");
-      v.loop = false;
-    });
-    // Start A; keep B paused at frame 0 until first swap
-    a.currentTime = 0;
-    b.currentTime = 0;
-    a.play().catch(() => {});
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
-
-    const FADE_MS = 1400;
-    let current = 0;
-    let swapping = false;
-
-    const swap = () => {
-      if (swapping) return;
-      swapping = true;
-      const next = current === 0 ? 1 : 0;
-      const incoming = videos[next];
-      const outgoing = videos[current];
-      // Restart incoming from frame 0 for a clean, non-repeating cut
-      try { incoming.currentTime = 0; } catch {}
-      incoming.play().catch(() => {});
-      current = next;
-      setActive(next);
-      // After fade completes, pause outgoing and reset for next cycle
-      window.setTimeout(() => {
-        try { outgoing.pause(); outgoing.currentTime = 0; } catch {}
-        swapping = false;
-      }, FADE_MS + 60);
-    };
-
-    // Trigger swap when active clip nears its end (sync to actual video timing)
-    const onTimeUpdate = (v: HTMLVideoElement) => () => {
-      if (videos[current] !== v) return;
-      const remaining = (v.duration || 5) - v.currentTime;
-      if (remaining > 0 && remaining <= FADE_MS / 1000) swap();
-    };
-    const onEnded = (v: HTMLVideoElement) => () => {
-      if (videos[current] !== v) return;
-      swap();
-    };
-    const handlersTU = videos.map((v) => {
-      const h = onTimeUpdate(v);
-      v.addEventListener("timeupdate", h);
-      return h;
-    });
-    const handlersEnd = videos.map((v) => {
-      const h = onEnded(v);
-      v.addEventListener("ended", h);
-      return h;
-    });
-
-    const onInteract = () => { videos[current].play().catch(() => {}); };
-    document.addEventListener("touchstart", onInteract, { passive: true, once: true });
-    document.addEventListener("click", onInteract, { once: true });
-    return () => {
-      videos.forEach((v, i) => {
-        v.removeEventListener("timeupdate", handlersTU[i]);
-        v.removeEventListener("ended", handlersEnd[i]);
-      });
-      document.removeEventListener("touchstart", onInteract);
-      document.removeEventListener("click", onInteract);
-    };
-  }, []);
-
   return (
-    // bg-background ensures the section is dark from first paint — eliminates
-    // the bright poster-image flash before the hero video starts playing.
+    // bg-background keeps the section dark from first paint until the image decodes.
     <section className="relative min-h-screen w-full overflow-hidden flex flex-col bg-background">
-      {/* Video background — anchored to bottom half */}
+      {/* Image background — anchored to bottom half */}
       <div className="absolute inset-x-0 bottom-0 top-1/3 overflow-hidden bg-background">
         <div ref={layerRef} className="absolute inset-0 will-change-transform">
-          {[videoARef, videoBRef].map((ref, i) => (
-            <video
-              key={i}
-              ref={ref}
-              className="absolute inset-0 h-full w-full object-cover pointer-events-none transition-opacity duration-[1400ms] ease-in-out"
-              style={{ opacity: active === i ? 1 : 0 }}
-              src={CLIPS[i]}
-              autoPlay={i === 0}
-              muted
-              playsInline
-              controls={false}
-              disableRemotePlayback
-              // poster intentionally omitted — was causing a bright JPG flash
-              // before the first video frame decoded. With bg-background on
-              // the section underneath, the video stays invisible until ready.
-              preload="auto"
-            />
-          ))}
+          <img
+            src={heroCfo}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+            draggable={false}
+          />
         </div>
         {/* Global darken to tame brightness */}
         <div className="pointer-events-none absolute inset-0 bg-background/55" />
