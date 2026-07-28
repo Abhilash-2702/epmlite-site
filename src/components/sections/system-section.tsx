@@ -476,7 +476,9 @@ function ImpactStep() {
       <h3 className="text-2xl lg:text-3xl font-semibold">Compressed cycles. Continuous decisions.</h3>
       <p className="mt-2 text-muted-foreground">Real outcomes from teams running Nash.</p>
 
-      <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {/* 2×2 at all desktop widths — the capped panel width can't fit 4-across
+          without the 3xl stat values ("Continuous" ~155px) overflowing the border. */}
+      <div className="mt-7 grid gap-4 sm:grid-cols-2">
         {impact.map((i, idx) => (
           <div
             key={i.k}
