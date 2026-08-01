@@ -9,18 +9,16 @@ import {
   CtaBand,
   type ComparisonRow,
 } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/vs/adaptive")({
-  head: () => ({
-    meta: [
-      { title: "NashOS vs Workday Adaptive Planning" },
-      {
-        name: "description",
-        content:
-          "AI-native FP&A built for the LLM era. 35+ tools, 15 forecast algorithms, hours-not-months setup vs Workday Adaptive Planning.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "NashOS vs Workday Adaptive Planning",
+      description:
+        "AI-native FP&A built for the LLM era. 35+ tools, 15 forecast algorithms, hours-not-months setup vs Workday Adaptive Planning.",
+      path: "/vs/adaptive",
+    }),
   component: VsAdaptivePage,
 });
 

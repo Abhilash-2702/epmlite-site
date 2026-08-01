@@ -2,18 +2,16 @@ import { useState, useMemo } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import { PageHero, Section, CtaBand } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/calculator")({
-  head: () => ({
-    meta: [
-      { title: "ROI Calculator — NashOS" },
-      {
-        name: "description",
-        content:
-          "Quantify the time and money your finance team would save with NashOS. Drag four sliders, see the answer in dollars.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "ROI Calculator — NashOS",
+      description:
+        "Quantify the time and money your finance team would save with NashOS. Drag four sliders, see the answer in dollars.",
+      path: "/calculator",
+    }),
   component: CalculatorPage,
 });
 

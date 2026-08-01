@@ -9,18 +9,16 @@ import {
   CtaBand,
   type ComparisonRow,
 } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/vs/anaplan")({
-  head: () => ({
-    meta: [
-      { title: "NashOS vs Anaplan" },
-      {
-        name: "description",
-        content:
-          "AI-native FP&A in hours, not 6-month Anaplan implementations. 35+ tools, 15 forecast algorithms, $99/mo.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "NashOS vs Anaplan",
+      description:
+        "AI-native FP&A in hours, not 6-month Anaplan implementations. 35+ tools, 15 forecast algorithms, $99/mo.",
+      path: "/vs/anaplan",
+    }),
   component: VsAnaplanPage,
 });
 

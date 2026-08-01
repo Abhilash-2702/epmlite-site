@@ -9,18 +9,16 @@ import {
   CtaBand,
   type ComparisonRow,
 } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/vs/excel")({
-  head: () => ({
-    meta: [
-      { title: "NashOS vs Excel" },
-      {
-        name: "description",
-        content:
-          "When the spreadsheet stack stops scaling. AI-native FP&A with full audit trail, 15 forecast algorithms, multi-entity consolidation — for $99/mo.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "NashOS vs Excel",
+      description:
+        "When the spreadsheet stack stops scaling. AI-native FP&A with full audit trail, 15 forecast algorithms, multi-entity consolidation — for $99/mo.",
+      path: "/vs/excel",
+    }),
   component: VsExcelPage,
 });
 

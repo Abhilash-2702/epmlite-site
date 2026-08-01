@@ -2,18 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Calendar } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { PageHero, Section, FaqList } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — NashOS" },
-      {
-        name: "description",
-        content:
-          "Send us a note, book a 15-min demo, or write directly to admin@nashos.ai.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Contact — NashOS",
+      description:
+        "Send us a note, book a 15-min demo, or write directly to admin@nashos.ai.",
+      path: "/contact",
+    }),
   component: ContactPage,
 });
 

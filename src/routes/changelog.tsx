@@ -2,18 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Sparkles, Wrench, Plus, type LucideIcon } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { PageHero, Section } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/changelog")({
-  head: () => ({
-    meta: [
-      { title: "Changelog — NashOS" },
-      {
-        name: "description",
-        content:
-          "Everything shipped at NashOS — by week. We're shipping in days, not months.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Changelog — NashOS",
+      description:
+        "Everything shipped at NashOS — by week. We're shipping in days, not months.",
+      path: "/changelog",
+    }),
   component: ChangelogPage,
 });
 

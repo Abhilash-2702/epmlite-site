@@ -3,11 +3,34 @@ import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { Section } from "@/components/page-sections";
 import { POSTS, CATEGORY_LABEL } from "@/lib/posts";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/blog/$slug")({
-  head: () => ({
-    meta: [{ title: "Post — NashOS Blog" }],
-  }),
+  // Every post used to emit the same title, "Post — NashOS Blog", with no
+  // description and no canonical — so the whole archive looked to a crawler
+  // like one duplicated page. Derive both from the post itself.
+  head: ({ params }) => {
+    const post = POSTS.find((p) => p.slug === params.slug);
+    if (!post) {
+      return seo({
+        title: "Post not found — NashOS Blog",
+        description: "This post has moved or is being rebuilt under the new site.",
+        path: `/blog/${params.slug}`,
+        breadcrumbs: [{ name: "Blog", path: "/blog" }],
+        noindex: true,
+      });
+    }
+    return seo({
+      title: `${post.title} | NashOS`,
+      description: post.description,
+      path: `/blog/${post.slug}`,
+      type: "article",
+      breadcrumbs: [
+        { name: "Blog", path: "/blog" },
+        { name: post.title, path: `/blog/${post.slug}` },
+      ],
+    });
+  },
   component: BlogPostPage,
 });
 
@@ -46,8 +69,15 @@ function BlogPostPage() {
   }
 
   return (
-    <PageShell>
-      <article className="relative mx-auto max-w-3xl px-6 lg:px-10 pt-32 pb-12">
+    // Same trail the head() passes to seo({ breadcrumbs }) — Google requires the
+    // markup to reflect something the page actually shows.
+    <PageShell
+      crumbs={[
+        { name: "Blog", path: "/blog" },
+        { name: post.title, path: `/blog/${post.slug}` },
+      ]}
+    >
+      <article className="relative mx-auto max-w-3xl px-6 lg:px-10 pt-8 pb-12">
         <Link
           to="/blog"
           className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-gold mb-6 transition-colors"

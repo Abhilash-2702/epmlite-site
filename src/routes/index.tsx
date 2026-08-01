@@ -6,23 +6,18 @@ import { FromQtoDSection } from "@/components/sections/from-q-to-d-section";
 import { SystemSection } from "@/components/sections/system-section";
 import { InsideNashSection } from "@/components/sections/inside-nash-section";
 import { ForLeadersSection } from "@/components/sections/for-leaders-section";
+import { HomeContentSection, HOME_FAQ } from "@/components/sections/home-content-section";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "NashOS — Agentic Finance for planning, forecasting & decisions" },
-      {
-        name: "description",
-        content:
-          "NashOS runs your finance as one continuously computed system — multi-entity, multi-currency, audit-ready from day one.",
-      },
-      { property: "og:title", content: "NashOS — Agentic Finance" },
-      {
-        property: "og:description",
-        content: "A unified system for planning, forecasting, and decisions.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Agentic FP&A Software for Planning & Forecasting | NashOS",
+      description:
+        "NashOS is agentic FP&A software that runs planning, forecasting and close as one continuously computed system. Multi-entity, multi-currency, audit-ready.",
+      path: "/",
+      faq: HOME_FAQ,
+    }),
   component: Index,
 });
 
@@ -35,6 +30,8 @@ function Index() {
       <SystemSection />
       <InsideNashSection />
       <ForLeadersSection />
+      {/* Crawlable prose + FAQ — the animated sections above carry almost no text. */}
+      <HomeContentSection />
       <SiteFooter />
     </main>
   );

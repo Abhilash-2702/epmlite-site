@@ -9,18 +9,16 @@ import {
   StatGrid,
   CtaBand,
 } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "Who We Are — NashOS" },
-      {
-        name: "description",
-        content:
-          "Built by an FP&A operator who got tired of rebuilding the same spreadsheet.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Who We Are — NashOS",
+      description:
+        "Built by an FP&A operator who got tired of rebuilding the same spreadsheet.",
+      path: "/about",
+    }),
   component: AboutPage,
 });
 

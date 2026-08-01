@@ -3,18 +3,16 @@ import { Clock, Tag, ArrowRight } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { PageHero, Section } from "@/components/page-sections";
 import { POSTS, CATEGORY_LABEL } from "@/lib/posts";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/blog/")({
-  head: () => ({
-    meta: [
-      { title: "Blog — NashOS" },
-      {
-        name: "description",
-        content:
-          "Practical FP&A patterns: cutting close cycles, picking forecast algorithms, and what driver-based planning actually means.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Blog — NashOS",
+      description:
+        "Practical FP&A patterns: cutting close cycles, picking forecast algorithms, and what driver-based planning actually means.",
+      path: "/blog",
+    }),
   component: BlogIndexPage,
 });
 

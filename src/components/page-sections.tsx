@@ -16,6 +16,7 @@ export function PageHero({
   lede,
   primaryCta,
   secondaryCta,
+  tight = false,
 }: {
   eyebrow: string;
   title: ReactNode;
@@ -23,9 +24,13 @@ export function PageHero({
   lede?: ReactNode;
   primaryCta?: { label: string; to?: string; href?: string };
   secondaryCta?: { label: string; to?: string; href?: string };
+  /** Set on pages that render <Breadcrumbs>, which already clears the header. */
+  tight?: boolean;
 }) {
   return (
-    <section className="relative mx-auto max-w-[1400px] px-6 lg:px-10 pt-40 pb-16">
+    <section
+      className={`relative mx-auto max-w-[1400px] px-6 lg:px-10 pb-16 ${tight ? "pt-8" : "pt-40"}`}
+    >
       <div className="max-w-3xl">
         <span className="chip">
           <span className="chip-dot pulse-dot" />

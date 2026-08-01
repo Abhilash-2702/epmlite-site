@@ -16,18 +16,16 @@ import {
   FaqList,
   CtaBand,
 } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/agentic-fpa-platform")({
-  head: () => ({
-    meta: [
-      { title: "Agentic FP&A Platform — NashOS" },
-      {
-        name: "description",
-        content:
-          "NashOS is the agentic FP&A platform built around AI agents — not retrofitted with a chatbot. 35+ tools, 15 forecast algorithms, draft-before-commit safety, full audit trail.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Agentic FP&A Platform — NashOS",
+      description:
+        "NashOS is the agentic FP&A platform built around AI agents — not retrofitted with a chatbot. 35+ tools, 15 forecast algorithms, draft-before-commit safety, full audit trail.",
+      path: "/agentic-fpa-platform",
+    }),
   component: AgenticFpaPlatformPage,
 });
 

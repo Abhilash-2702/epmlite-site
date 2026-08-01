@@ -8,18 +8,16 @@ import {
   CardGrid,
   CtaBand,
 } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/partners")({
-  head: () => ({
-    meta: [
-      { title: "Partners — NashOS" },
-      {
-        name: "description",
-        content:
-          "Implementation consultants, platform partners, and integrators — let's build together.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Partners — NashOS",
+      description:
+        "Implementation consultants, platform partners, and integrators — let's build together.",
+      path: "/partners",
+    }),
   component: PartnersPage,
 });
 

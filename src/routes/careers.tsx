@@ -1,18 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import { PageHero, Section, SectionHeader, CtaBand } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/careers")({
-  head: () => ({
-    meta: [
-      { title: "Careers — NashOS" },
-      {
-        name: "description",
-        content:
-          "We're an early-stage product. Not actively hiring yet — but if you're an FP&A operator who codes, write us.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Careers — NashOS",
+      description:
+        "We're an early-stage product. Not actively hiring yet — but if you're an FP&A operator who codes, write us.",
+      path: "/careers",
+    }),
   component: CareersPage,
 });
 

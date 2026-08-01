@@ -1,23 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Keep in sync with src/routes/. Rules:
+   - Every indexable route appears exactly once, with no trailing slash.
+   - Routes whose seo() sets noindex must NOT appear here (/sign-in, /privacy,
+     /terms, /security) — listing a noindexed URL sends Google contradictory
+     signals about the same page.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://nashos.ai/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+
+  <!-- Core product pages -->
+  <url><loc>https://nashos.ai/system</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nashos.ai/inside-nash</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nashos.ai/for-leaders</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nashos.ai/products</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nashos.ai/pricing</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://nashos.ai/try</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://nashos.ai/sign-in</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nashos.ai/products</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nashos.ai/demo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nashos.ai/calculator</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Solution / keyword pages -->
   <url><loc>https://nashos.ai/agentic-fpa-platform</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nashos.ai/financial-close-software</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nashos.ai/calculator</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nashos.ai/demo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nashos.ai/roadmap</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://nashos.ai/changelog</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nashos.ai/for/saas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nashos.ai/for/services</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nashos.ai/for/consulting</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nashos.ai/for/manufacturing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nashos.ai/for/hardware</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Comparison pages -->
   <url><loc>https://nashos.ai/vs/anaplan</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nashos.ai/vs/adaptive</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nashos.ai/vs/excel</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Company -->
   <url><loc>https://nashos.ai/about</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nashos.ai/careers</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://nashos.ai/partners</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://nashos.ai/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nashos.ai/roadmap</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nashos.ai/changelog</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Resources -->
   <url><loc>https://nashos.ai/blog</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nashos.ai/blog/cut-your-close-cycle-from-11-days-to-4</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nashos.ai/blog/picking-a-forecast-algorithm-without-a-data-science-team</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nashos.ai/blog/what-driver-based-planning-actually-means</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nashos.ai/resources</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>

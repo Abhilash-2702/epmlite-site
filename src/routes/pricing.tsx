@@ -1,14 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/pricing")({
-  head: () => ({
-    meta: [
-      { title: "Pricing — NashOS" },
-      { name: "description", content: "Pilot in days. Scale with confidence." },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Pricing — NashOS",
+      description:
+        "Pilot in days. Scale with confidence.",
+      path: "/pricing",
+    }),
   component: PricingPage,
 });
 

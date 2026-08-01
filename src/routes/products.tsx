@@ -18,18 +18,16 @@ import {
   CardGrid,
   CtaBand,
 } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/products")({
-  head: () => ({
-    meta: [
-      { title: "Products & Platforms — NashOS" },
-      {
-        name: "description",
-        content:
-          "Nine product pillars — Reporting, Planning, AI, and Operations — backed by a 9-dimension cube.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Products & Platforms — NashOS",
+      description:
+        "Nine product pillars — Reporting, Planning, AI, and Operations — backed by a 9-dimension cube.",
+      path: "/products",
+    }),
   component: ProductsPage,
 });
 

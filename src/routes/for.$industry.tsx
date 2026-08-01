@@ -2,9 +2,38 @@ import { createFileRoute, useParams } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { PageHero, Section, CtaBand } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/for/$industry")({
-  head: () => ({ meta: [{ title: "Built for your team — NashOS" }] }),
+  // Was one shared title across every industry. Each variant is a distinct
+  // keyword page, so it needs its own title, description and canonical.
+  head: ({ params }) => {
+    const ind = INDUSTRIES[params.industry];
+    if (!ind) {
+      return seo({
+        title: "Built for your team — NashOS",
+        description: "NashOS adapts to how your industry plans, forecasts and closes.",
+        path: `/for/${params.industry}`,
+        noindex: true,
+      });
+    }
+    // hookLine alone is ~40 chars — too thin for a meta description, so pad it
+    // with the opening of the subhead and trim on a word boundary.
+    const desc = `${ind.hookLine} ${ind.subhead}`
+      .slice(0, 157)
+      .replace(/\s+\S*$/, "")
+      .replace(/[\s,—–-]+$/, "");
+    return seo({
+      title: `FP&A Software for ${ind.name} Teams | NashOS`,
+      description: desc,
+      path: `/for/${params.industry}`,
+      type: "article",
+      breadcrumbs: [
+        { name: "Products", path: "/products" },
+        { name: ind.name, path: `/for/${params.industry}` },
+      ],
+    });
+  },
   component: ForIndustry,
 });
 
@@ -163,8 +192,16 @@ function ForIndustry() {
   }
 
   return (
-    <PageShell>
+    // Same trail the head() passes to seo({ breadcrumbs }) — Google requires the
+    // markup to reflect something the page actually shows.
+    <PageShell
+      crumbs={[
+        { name: "Products", path: "/products" },
+        { name: known.name, path: `/for/${industry}` },
+      ]}
+    >
       <PageHero
+        tight
         eyebrow={`NashOS for ${known.name}`}
         title={known.headline}
         lede={known.subhead}

@@ -67,16 +67,68 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+// ── Site-wide structured data ────────────────────────────────────────────
+// These three emit once, on every page. Page-level schema (FAQPage,
+// BreadcrumbList) is added per route via the `seo()` helper in lib/seo.ts.
+//
+// The @id values let page-level schema reference these instead of repeating
+// them, which is what tells Google the entities are the same thing.
+
 const ORG_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://nashos.ai/#organization",
   name: "NashOS",
   url: "https://nashos.ai",
   logo: "https://nashos.ai/og-image.png",
   email: "admin@nashos.ai",
   description:
     "NashOS is agentic finance — one continuously computed system for planning, forecasting, and decisions.",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "admin@nashos.ai",
+    contactType: "sales",
+    availableLanguage: "en",
+  },
+  // TODO(NAP): add `address` (PostalAddress) and `telephone` here once the
+  // registered address and phone are confirmed. They must match the footer
+  // and the Google Business Profile character for character.
 };
+
+const WEBSITE_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://nashos.ai/#website",
+  url: "https://nashos.ai",
+  name: "NashOS",
+  publisher: { "@id": "https://nashos.ai/#organization" },
+};
+
+const SOFTWARE_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "NashOS",
+  applicationCategory: "BusinessApplication",
+  applicationSubCategory: "Financial Planning & Analysis",
+  operatingSystem: "Web",
+  url: "https://nashos.ai",
+  publisher: { "@id": "https://nashos.ai/#organization" },
+  featureList: [
+    "Driver-based continuous planning",
+    "Multi-entity, multi-currency consolidation",
+    "Agentic execution with draft-and-commit review",
+    "Full audit trail on every write",
+  ],
+};
+
+// ── Analytics + verification ─────────────────────────────────────────────
+// Both are env-driven so the tags only render once a real value exists —
+// an empty or placeholder ID is worse than no tag, because Search Console
+// treats a failed verification as a signal and GA4 records junk sessions.
+// Set these in Vercel → Project → Settings → Environment Variables.
+// See docs/seo-setup.md for how to obtain each value.
+const GA4_ID = import.meta.env.VITE_GA4_ID as string | undefined;
+const GSC_TOKEN = import.meta.env.VITE_GSC_TOKEN as string | undefined;
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -84,6 +136,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#194071" },
+      ...(GSC_TOKEN ? [{ name: "google-site-verification", content: GSC_TOKEN }] : []),
       { title: "NashOS — Agentic Finance" },
       {
         name: "description",
@@ -122,10 +175,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
     ],
     scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify(ORG_JSON_LD),
-      },
+      { type: "application/ld+json", children: JSON.stringify(ORG_JSON_LD) },
+      { type: "application/ld+json", children: JSON.stringify(WEBSITE_JSON_LD) },
+      { type: "application/ld+json", children: JSON.stringify(SOFTWARE_JSON_LD) },
+      ...(GA4_ID
+        ? [
+            { src: `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`, async: true },
+            {
+              children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA4_ID}');`,
+            },
+          ]
+        : []),
     ],
   }),
   shellComponent: RootShell,

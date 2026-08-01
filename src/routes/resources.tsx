@@ -2,18 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { FileSpreadsheet, BookOpen } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { PageHero, Section, CtaBand } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/resources")({
-  head: () => ({
-    meta: [
-      { title: "Resources — NashOS" },
-      {
-        name: "description",
-        content:
-          "Free FP&A starter pack — P&L, Cash Flow, Runway, Variance pack templates.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Resources — NashOS",
+      description:
+        "Free FP&A starter pack — P&L, Cash Flow, Runway, Variance pack templates.",
+      path: "/resources",
+    }),
   component: ResourcesPage,
 });
 

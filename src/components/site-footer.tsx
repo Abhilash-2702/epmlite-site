@@ -7,17 +7,17 @@ import nashMark from "@/assets/monogram-white.svg";
 // legacy Next.js paths are linked here so deep links don't 404 after cutover.
 // Add new routes by extending COLUMNS — keeps the link grid in one place.
 
-const productHashLinks = [
-  { hash: "from-q-to-d", label: "From Q to D" },
-  { hash: "system", label: "System" },
-  { hash: "inside-nash", label: "Inside Nash" },
-  { hash: "for-leaders", label: "For Leaders" },
-];
+// Only From Q to D remains a homepage anchor — System, Inside Nash and For
+// Leaders are dedicated routes now and appear in the Product column below.
+const productHashLinks = [{ hash: "from-q-to-d", label: "From Q to D" }];
 
 const COLUMNS: { heading: string; links: { to: string; label: string }[] }[] = [
   {
     heading: "Product",
     links: [
+      { to: "/system", label: "System" },
+      { to: "/inside-nash", label: "Inside Nash" },
+      { to: "/for-leaders", label: "For Leaders" },
       { to: "/products", label: "Products" },
       { to: "/pricing", label: "Pricing" },
       { to: "/demo", label: "Book a demo" },
@@ -139,12 +139,16 @@ export function SiteFooter() {
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               Agentic Finance for planning, forecasting and decisions — multi-entity, multi-currency, audit-ready from day one.
             </p>
-            <a
-              href="mailto:admin@nashos.ai"
-              className="mt-4 inline-flex items-center text-sm text-gold hover:underline"
-            >
-              admin@nashos.ai
-            </a>
+            {/* NAP — Name, Address, Phone. The audit flagged a missing physical
+                address as a trust gap. Add the registered address and phone here
+                AND to ORG_JSON_LD in routes/__root.tsx; the two must match each
+                other and the Google Business Profile character for character.
+                TODO(NAP): address + telephone pending. */}
+            <address className="mt-4 not-italic text-sm text-muted-foreground leading-relaxed">
+              <a href="mailto:admin@nashos.ai" className="text-gold hover:underline">
+                admin@nashos.ai
+              </a>
+            </address>
             <div className="mt-6">
               <h4 className="text-xs uppercase tracking-[0.14em] text-gold mb-3">On the home page</h4>
               <ul className="space-y-2 text-sm">
@@ -187,13 +191,13 @@ export function SiteFooter() {
         <div className="mt-12 pt-6 border-t border-border flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-4 text-xs text-muted-foreground text-center sm:text-left">
           <p>© {year} NashOS. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link to="/contact" className="hover:text-foreground transition-colors">
+            <Link to="/privacy" className="hover:text-foreground transition-colors">
               Privacy
             </Link>
-            <Link to="/contact" className="hover:text-foreground transition-colors">
+            <Link to="/terms" className="hover:text-foreground transition-colors">
               Terms
             </Link>
-            <Link to="/contact" className="hover:text-foreground transition-colors">
+            <Link to="/security" className="hover:text-foreground transition-colors">
               Security
             </Link>
           </div>

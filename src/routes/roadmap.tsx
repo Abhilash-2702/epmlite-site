@@ -2,18 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Sparkles, Zap, Compass, type LucideIcon } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { PageHero, Section, CtaBand } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/roadmap")({
-  head: () => ({
-    meta: [
-      { title: "Roadmap — NashOS" },
-      {
-        name: "description",
-        content:
-          "What's coming next at NashOS — Now, Next, and Later. Public, honest, no fake dates.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Roadmap — NashOS",
+      description:
+        "What's coming next at NashOS — Now, Next, and Later. Public, honest, no fake dates.",
+      path: "/roadmap",
+    }),
   component: RoadmapPage,
 });
 

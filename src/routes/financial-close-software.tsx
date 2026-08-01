@@ -10,18 +10,16 @@ import {
   FaqList,
   CtaBand,
 } from "@/components/page-sections";
+import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/financial-close-software")({
-  head: () => ({
-    meta: [
-      { title: "Financial Close Software — Close in 4 Days, Not 12 — NashOS" },
-      {
-        name: "description",
-        content:
-          "Faster financial close software. NashOS collapses an 11-day month-end close to 4 days using an agentic AI layer, 15 forecast algorithms, and a 9-dim cube.",
-      },
-    ],
-  }),
+  head: () =>
+    seo({
+      title: "Financial Close Software — Close in 4 Days, Not 12 — NashOS",
+      description:
+        "Faster financial close software. NashOS collapses an 11-day month-end close to 4 days using an agentic AI layer, 15 forecast algorithms, and a 9-dim cube.",
+      path: "/financial-close-software",
+    }),
   component: FinancialCloseSoftwarePage,
 });
 
