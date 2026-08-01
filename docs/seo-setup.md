@@ -9,7 +9,7 @@ relevant dashboard on that date — not inferred from the code.
 |---|---|
 | Search Console | ✅ Verified, sitemap submitted, indexing requested |
 | Google Analytics 4 | ✅ Live, receiving data |
-| Lead delivery | ⚠️ Working, on a temporary sender — see [Resend](#3-lead-delivery-resend) |
+| Lead delivery | ✅ Live from the verified domain |
 | Address / phone (NAP) | ❌ Not supplied |
 | Legal pages | ❌ Draft, held out of search |
 | Testimonials | ❌ Not built (deliberately) |
@@ -26,8 +26,8 @@ nothing to the running site.
 |---|---|---|
 | `VITE_GA4_ID` | GA4 measurement ID | ✅ `G-T4X0ZET299` |
 | `RESEND_API_KEY` | Sending lead emails | ✅ set (Sensitive) |
-| `LEAD_FROM_EMAIL` | `From:` on lead emails | ⚠️ temporary — see below |
-| `LEAD_TO_EMAIL` | Where leads land | ⚠️ temporary — see below |
+| `LEAD_FROM_EMAIL` | `From:` on lead emails | ✅ `NashOS <hello@nashos.ai>` |
+| `LEAD_TO_EMAIL` | Where leads land | ✅ `admin@nashos.ai` |
 | `VITE_GSC_TOKEN` | Search Console meta tag | **Unused.** Verification happened via the GA4 tag instead. Kept in code as a fallback. |
 
 Two stale variables, `NEXT_PUBLIC_GA_ID` and `NEXT_PUBLIC_CLARITY_ID`, survive from the Next.js
@@ -96,28 +96,24 @@ Failure modes are deliberately visible:
 The exact Resend rejection is written to `console.error`, so Vercel's runtime logs give the real
 reason rather than a generic failure.
 
-### Current state — temporary sender ⚠️
+### Current state — verified ✅
 
-`nashos.ai` was added to Resend (region **Tokyo, ap-northeast-1**) and the three sending DNS
-records are live in GoDaddy, confirmed resolving in public DNS. **Resend verification was still
-`Pending` as of 1 Aug** — AWS SES polls on its own schedule.
-
-Until it flips to Verified, the site runs on Resend's shared sender, because an unverified domain
-may only send to the account owner's own address:
-
-```
-LEAD_FROM_EMAIL = NashOS <onboarding@resend.dev>
-LEAD_TO_EMAIL   = mabhi2702@gmail.com
-```
-
-**Once Resend shows Verified**, change both and redeploy:
+`nashos.ai` is **Verified** in Resend (region **Tokyo, ap-northeast-1**, domain id
+`1ab1510f-4d36-43e5-9b11-504ff590c3f7`). Verification took roughly 30 minutes after the DNS
+records went in — AWS SES polls on its own schedule and there is no way to hurry it.
 
 ```
 LEAD_FROM_EMAIL = NashOS <hello@nashos.ai>
 LEAD_TO_EMAIL   = admin@nashos.ai
 ```
 
-Do not change them earlier — sending will start failing again.
+Confirmed on 1 Aug by posting to the live endpoint and receiving `{"ok":true}` — which, given the
+never-fake-success rule above, means the mail was genuinely accepted for delivery.
+
+While the domain was still pending, the site ran on Resend's shared sender
+(`onboarding@resend.dev` → `mabhi2702@gmail.com`), because an unverified domain may only send to
+the account owner's own address. That stopgap is no longer in use, but it is the fallback if the
+domain ever loses verification.
 
 ### DNS records
 
