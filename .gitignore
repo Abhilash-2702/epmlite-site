@@ -19,6 +19,12 @@ dist-ssr
 # TanStack Router auto-generated route tree (regenerated on every build)
 src/routeTree.gen.ts
 
+# Lockfile deliberately not committed. vercel.json installs with
+# `npm install --legacy-peer-deps`, and main has never carried a lockfile, so
+# production resolves semver ranges fresh at deploy time. Committing one would
+# silently pin prod to whatever tree happened to exist on one dev machine.
+package-lock.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

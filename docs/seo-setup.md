@@ -1,147 +1,199 @@
-# SEO & analytics setup
+# SEO, analytics & lead delivery
 
-Everything below is already wired in code. Each item is dormant until you set
-its environment variable — nothing renders a placeholder tag or a broken ID.
+Operational state of the search, analytics and lead-capture layer for nashos.ai.
 
-Set all of these in **Vercel → your project → Settings → Environment Variables**,
-tick **Production** (and Preview if you want them there too), then **redeploy** —
-Vite inlines `VITE_*` vars at build time, so an existing deployment will not pick
-them up.
+**Last verified: 1 August 2026.** Everything below was checked against the live site or the
+relevant dashboard on that date — not inferred from the code.
 
-| Variable | Used for | Required for |
+| Area | State |
+|---|---|
+| Search Console | ✅ Verified, sitemap submitted, indexing requested |
+| Google Analytics 4 | ✅ Live, receiving data |
+| Lead delivery | ⚠️ Working, on a temporary sender — see [Resend](#3-lead-delivery-resend) |
+| Address / phone (NAP) | ❌ Not supplied |
+| Legal pages | ❌ Draft, held out of search |
+| Testimonials | ❌ Not built (deliberately) |
+
+---
+
+## Environment variables
+
+Set in **Vercel → epmlite-site → Settings → Environment Variables**. `VITE_*` values are inlined
+at build time, so **a change to them requires a redeploy** — updating the variable alone does
+nothing to the running site.
+
+| Variable | Purpose | State |
 |---|---|---|
-| `VITE_GSC_TOKEN` | Search Console verification meta tag | Search Console |
-| `VITE_GA4_ID` | GA4 gtag.js snippet | Analytics |
-| `RESEND_API_KEY` | Sending lead emails | `/try` + `/sign-in` forms |
-| `LEAD_FROM_EMAIL` | The `From:` on lead emails | `/try` + `/sign-in` forms |
-| `LEAD_TO_EMAIL` | Where leads land (defaults to `admin@nashos.ai`) | optional |
+| `VITE_GA4_ID` | GA4 measurement ID | ✅ `G-T4X0ZET299` |
+| `RESEND_API_KEY` | Sending lead emails | ✅ set (Sensitive) |
+| `LEAD_FROM_EMAIL` | `From:` on lead emails | ⚠️ temporary — see below |
+| `LEAD_TO_EMAIL` | Where leads land | ⚠️ temporary — see below |
+| `VITE_GSC_TOKEN` | Search Console meta tag | **Unused.** Verification happened via the GA4 tag instead. Kept in code as a fallback. |
+
+Two stale variables, `NEXT_PUBLIC_GA_ID` and `NEXT_PUBLIC_CLARITY_ID`, survive from the Next.js
+era. Vite only exposes `VITE_*`, so they are dead config and can be deleted.
 
 ---
 
-## 1. Google Search Console
+## 1. Google Search Console — done
 
-Search Console is what tells you which queries you rank for, which pages Google
-has indexed, and which are erroring. Without it you are guessing.
+Property: **`https://nashos.ai/`** (URL-prefix).
 
-1. Go to <https://search.google.com/search-console> and sign in with the Google
-   account that should own the property.
-2. Click **Add property**. You get two choices:
-   - **Domain** (`nashos.ai`) — covers every subdomain and both `http`/`https`.
-     Requires a DNS TXT record. **Prefer this one.**
-   - **URL prefix** (`https://nashos.ai`) — covers just that prefix, and lets you
-     verify with the HTML meta tag this repo supports.
-3. **If you chose Domain:** Google shows a TXT record. Add it in your DNS
-   provider (wherever `nashos.ai`'s nameservers point — Vercel DNS if the domain
-   is managed there: Vercel → Domains → `nashos.ai` → DNS Records → Add, type
-   `TXT`, name `@`, value = the string Google gave you). Wait a few minutes,
-   click **Verify**. You can skip step 4 — `VITE_GSC_TOKEN` is not needed.
-4. **If you chose URL prefix:** pick the **HTML tag** method. Google shows:
+Ownership was **auto-verified via the Google Analytics tag** — no DNS record and no meta tag were
+needed, because GA4 was installed first under the same Google account.
 
-   ```html
-   <meta name="google-site-verification" content="AbC123..." />
-   ```
+> ⚠️ Verification therefore **depends on the GA4 tag staying on the site**. If GA4 is ever removed,
+> add a second method under *Settings → Ownership verification* first, or the property lapses.
 
-   Copy **only the `content` value** (`AbC123...`, not the whole tag). Set it as
-   `VITE_GSC_TOKEN` in Vercel, redeploy, then click **Verify**.
+Done on 1 Aug 2026:
+- `sitemap.xml` submitted and accepted (30 URLs)
+- Indexing requested for `/system`, `/inside-nash`, `/for-leaders` — all three reported
+  *"Discovered — currently not indexed"*, which is the normal pre-indexing state
 
-5. Once verified, go to **Sitemaps** in the left sidebar and submit:
+An earlier Domain-property attempt (DNS verification via GoDaddy) was abandoned and deleted. If
+subdomain-wide coverage is ever wanted — e.g. to include `app.nashos.ai` — add a Domain property
+and verify it with the TXT record Google supplies.
 
-   ```
-   sitemap.xml
-   ```
+**Reports take a day or two to populate.** *Performance* and *Indexing → Pages* both show
+"Processing data" until then.
 
-6. Use **URL Inspection** on `https://nashos.ai/system`, `/inside-nash` and
-   `/for-leaders` and hit **Request indexing** for each — these are brand-new
-   URLs (they returned 404 until this change) and this gets them crawled in days
-   rather than weeks.
+## 2. Google Analytics 4 — done
 
----
+Property **`nashos.ai`** under account **NashOS**, measurement ID **`G-T4X0ZET299`**,
+stream *"NashOS marketing site"*. Verified live: the tag renders in production HTML and Realtime
+registered a session.
 
-## 2. Google Analytics 4
+Configuration chosen at setup, all editable in Admin:
 
-1. Go to <https://analytics.google.com>.
-2. **Admin** (gear, bottom-left) → **Create** → **Property**. Name it `NashOS`,
-   set the timezone and currency.
-3. When asked for a platform, choose **Web**. Enter `https://nashos.ai` as the
-   website URL and give the stream a name.
-4. The stream detail page shows a **Measurement ID** in the top right, shaped
-   `G-XXXXXXXXXX`. Copy it.
-5. Set it as `VITE_GA4_ID` in Vercel and redeploy.
-6. Confirm it works: open `https://nashos.ai` in a normal browser tab, then in
-   GA4 go to **Reports → Realtime**. You should appear within about 30 seconds.
+- Reporting time zone **India (GMT+5:30)**; currency **USD** (matches how the site prices)
+- Industry **Finance**; business size 1–10
+- Objectives: *Generate leads* + *Understand web traffic*
+- Data sharing: **"Google products & services" and "Recommendations for your business" turned OFF**
+  — they exist for Google's benefit. *Technical support* and *Modeling contributions* left on
+  because they affect features you use.
+- Google marketing emails declined
+- ToS accepted for region **India**, plus the **GDPR Data Processing Terms** — relevant if any EU
+  visitor reaches the site
 
-Do not paste the ID into the code — `__root.tsx` reads it from the env var and
-renders no analytics tags at all when it is unset, which is what you want in
-local dev and preview builds.
+Realtime works immediately; all other reports need ~24–48 hours.
 
-### Optional but worth doing
+## 3. Lead delivery (Resend)
 
-In GA4 → **Admin → Events → Create event**, or via **Enhanced measurement**, mark
-form submissions as conversions once traffic starts, so you can tell which pages
-actually produce pilot requests rather than just visits.
+`api/lead.ts` posts submissions from `/try` and `/sign-in` to Resend.
 
----
+**The rule this endpoint exists to enforce: it never returns `ok: true` unless the mail was
+actually delivered.** Before it existed, both forms called `e.preventDefault()` and nothing else —
+every lead was discarded, and `/sign-in` showed a success message anyway.
 
-## 3. Lead email delivery (Resend)
+Failure modes are deliberately visible:
 
-Until this is set, `/try` and `/sign-in` return **HTTP 503** and show the visitor
-"Please email admin@nashos.ai". That is deliberate — the previous behaviour was
-to show a success message and silently discard the lead, and a visible error is
-strictly better than a lost customer.
+| Condition | Response | Visitor sees |
+|---|---|---|
+| `RESEND_API_KEY` / `LEAD_FROM_EMAIL` unset | `503` | "Please email admin@nashos.ai" |
+| Resend rejects the send | `502` | same |
+| Delivered | `200` | confirmation panel |
 
-1. Sign up at <https://resend.com>.
-2. **Domains → Add Domain** → `nashos.ai`. Resend gives you DKIM/SPF records —
-   add them in the same DNS panel as above. Wait for the domain to show
-   **Verified**.
-3. **API Keys → Create API Key**, scope it to *Sending access*. Copy the key
-   (shown once).
-4. In Vercel set:
-   - `RESEND_API_KEY` = the key
-   - `LEAD_FROM_EMAIL` = e.g. `NashOS <hello@nashos.ai>` — the domain **must** be
-     the one you verified in step 2, or Resend rejects the send
-   - `LEAD_TO_EMAIL` = `admin@nashos.ai` (or omit; that is the default)
-5. Redeploy, then submit the form on `/try` and confirm the email arrives.
+The exact Resend rejection is written to `console.error`, so Vercel's runtime logs give the real
+reason rather than a generic failure.
 
-If you would rather not run a mail provider, swap the `fetch` call in
-[`api/lead.ts`](../api/lead.ts) for any form backend (Formspree, Tally). Keep the
-contract: **only return `{ ok: true }` when the lead was actually delivered.**
+### Current state — temporary sender ⚠️
 
----
+`nashos.ai` was added to Resend (region **Tokyo, ap-northeast-1**) and the three sending DNS
+records are live in GoDaddy, confirmed resolving in public DNS. **Resend verification was still
+`Pending` as of 1 Aug** — AWS SES polls on its own schedule.
 
-## 4. Still outstanding
+Until it flips to Verified, the site runs on Resend's shared sender, because an unverified domain
+may only send to the account owner's own address:
 
-These are flagged in code with `TODO` and need information only you have:
+```
+LEAD_FROM_EMAIL = NashOS <onboarding@resend.dev>
+LEAD_TO_EMAIL   = mabhi2702@gmail.com
+```
 
-- **Physical address + phone.** Add to `src/components/site-footer.tsx` (the
-  `<address>` block), `PHONE_DISPLAY`/`PHONE_E164` in
-  `src/components/site-header.tsx`, and `ORG_JSON_LD` in `src/routes/__root.tsx`.
-  All three must match each other and your Google Business Profile exactly.
-- **Legal copy.** `/privacy`, `/terms` and `/security` render a visible draft
-  notice and are set to `noindex`. Once counsel signs off, delete the
-  `<DraftNotice>` from each route, remove `noindex: true` from its `seo()` call,
-  and add the three URLs to `public/sitemap.xml`.
-- **Testimonials.** Not built. Needs real named quotes with written consent —
-  do not add `Review`/`AggregateRating` schema without them.
+**Once Resend shows Verified**, change both and redeploy:
+
+```
+LEAD_FROM_EMAIL = NashOS <hello@nashos.ai>
+LEAD_TO_EMAIL   = admin@nashos.ai
+```
+
+Do not change them earlier — sending will start failing again.
+
+### DNS records
+
+Added in GoDaddy, verified live via `dns.google`:
+
+| Type | Name | Value | Priority |
+|---|---|---|---|
+| `TXT` | `resend._domainkey` | `p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDcqBYFcf0q5W8eXrP5N46PbRVSXX6X4nTmTKjOF27qnZWdyT54eua6P/0/HSnJL8tXIV25ZD8yuTAYM2zqJdplhX9wwjELNljIjyHC8XMAL+Yff8D8FSsnrXrtgYpUMxBU4JmUddj4t79uZ+PVCBb6AXh6ipjwXv9yZWQBaVYX1wIDAQAB` | — |
+| `MX` | `send` | `feedback-smtp.ap-northeast-1.amazonses.com` | `10` |
+| `TXT` | `send` | `v=spf1 include:amazonses.com ~all` | — |
+
+> ### ⛔ Never add Resend's fourth record
+>
+> Resend also lists `MX @ → inbound-smtp.ap-northeast-1.amazonaws.com`. That is for **receiving**
+> mail and is not needed to send.
+>
+> **nashos.ai runs Google Workspace** (`MX @ → alt2.aspmx.l.google.com`). Adding Resend's root MX
+> would redirect all mail for the domain to Amazon and break `admin@nashos.ai` — the address on the
+> website, in Search Console, and on every legal page.
+
+Two GoDaddy gotchas, both of which cost time on 1 Aug:
+
+- **GoDaddy appends the domain automatically.** Enter `send`, not `send.nashos.ai`, or you create
+  `send.nashos.ai.nashos.ai` and verification silently never passes.
+- Resend's UI shows the DKIM key with a `[…]` in the middle. That is display truncation, not part
+  of the value. Use the copy button, or the full string above.
 
 ---
 
 ## Verifying a deploy
 
-After any change to routes or `seo()`, check a page's head:
-
 ```bash
-curl -s https://nashos.ai/system | grep -E 'canonical|<title>|description|ld\+json' | head
+curl -s https://nashos.ai/system | grep -oE '<title>[^<]*|rel="canonical" href="[^"]*|"@type":"[^"]*'
 ```
 
-Then run the page through:
+```bash
+curl -s -X POST https://nashos.ai/api/lead -H "Content-Type: application/json" \
+  -d '{"source":"try","name":"test","email":"you@example.com","message":"delivery check"}'
+```
 
-- <https://search.google.com/test/rich-results> — validates FAQPage and
-  BreadcrumbList markup
-- <https://validator.schema.org> — validates Organization / SoftwareApplication
+`{"ok":true}` means an email was genuinely sent. Anything else is a real failure — read the reason
+in Vercel → Logs.
 
-Rules to keep the setup coherent:
+Structured data:
+- <https://search.google.com/test/rich-results> — FAQPage and BreadcrumbList
+- <https://validator.schema.org> — Organization / WebSite / SoftwareApplication
 
-- Every indexable route appears **exactly once** in `public/sitemap.xml`.
-- A route with `noindex: true` must **not** appear in the sitemap.
-- Every route's `seo({ path })` must match its real URL, or the canonical will
-  point somewhere wrong — which is worse than having no canonical at all.
+Rules that keep the layer coherent:
+
+- Every indexable route appears **exactly once** in `public/sitemap.xml`
+- A route with `noindex: true` must **not** appear in the sitemap
+- `seo({ path })` must match the real URL, or the canonical points somewhere wrong — worse than
+  having none
+- Anything passed to `seo({ faq })` must also be rendered on the page. Schema that describes
+  invisible content breaches Google's structured-data policy.
+
+---
+
+## Still outstanding
+
+Each needs information only the business can supply.
+
+1. **Postal address and phone.** Three prepared slots: the `<address>` block in
+   `src/components/site-footer.tsx`, `PHONE_DISPLAY`/`PHONE_E164` in
+   `src/components/site-header.tsx`, and `ORG_JSON_LD` in `src/routes/__root.tsx`. All three must
+   match each other and the Google Business Profile exactly. Nothing renders until they are set.
+2. **Legal copy.** `/privacy`, `/terms` and `/security` render a visible draft notice and are
+   `noindex`. When counsel signs off: delete `<DraftNotice>`, remove `noindex: true` from each
+   route's `seo()` call, and add the three URLs to `public/sitemap.xml`.
+3. **Testimonials.** Not built. Needs real named quotes with written consent. Do not add
+   `Review` or `AggregateRating` schema without them — fabricated review markup is both dishonest
+   and a search penalty.
+4. **Two contradictions already live on the site.** The homepage animation says the close cycle
+   goes from 11 days to 1; `/financial-close-software` and `/for/saas` say 11 to 4. Separately,
+   `/vs/anaplan` advertises `$99/mo` while `/pricing` quotes everything on request. Both predate
+   the SEO work and were left untouched, but Google can now surface either version.
+5. **`package-lock.json`** is untracked and not gitignored. `main` has never carried a lockfile,
+   and `vercel.json` installs with `npm install --legacy-peer-deps`, so committing it would change
+   production dependency resolution. Decide deliberately: commit it, or add it to `.gitignore`.
