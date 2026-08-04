@@ -6,6 +6,7 @@ import {
   SectionHeader,
   CardGrid,
   ComparisonTable,
+  FaqList,
   CtaBand,
   type ComparisonRow,
 } from "@/components/page-sections";
@@ -14,9 +15,10 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/vs/anaplan")({
   head: () =>
     seo({
-      title: "NashOS vs Anaplan",
+      title: "NashOS vs Anaplan \u2014 AI Forecasting Software Compared",
       description:
-        "AI-native FP&A in hours, not 6-month Anaplan implementations. 35+ tools, 15 forecast algorithms, $99/mo.",
+        "Anaplan alternatives compared. AI-native FP&A in hours, not 6-month Anaplan implementations. 35+ tools and 15 forecast algorithms.",
+      faq: FAQ,
       path: "/vs/anaplan",
     }),
   component: VsAnaplanPage,
@@ -35,6 +37,24 @@ const ROWS: ComparisonRow[] = [
   { label: "Best fit", nashos: "Mid-market · SMB", rival: "Enterprise · Fortune 500", winner: "draw" },
 ];
 
+const FAQ = [
+  {
+    question: "Which Anaplan alternatives suit a mid-market finance team?",
+    answer:
+      "The deciding factor is rarely the feature grid \u2014 it is who has to operate the thing. Anaplan expects trained model builders and a rollout measured in months. Among Anaplan alternatives, look for one a finance lead can stand up without a dedicated modelling team, and one where the planning model is a single cube rather than separate builds for planning, reporting and consolidation.",
+  },
+  {
+    question: "Is NashOS AI forecasting software or a planning tool with a chatbot?",
+    answer:
+      "AI forecasting software, in the sense that the agent runs the forecast rather than describing it. NashOS ships 15 algorithms \u2014 including regression, ARIMA/SARIMA, Holt-Winters, Ridge, Lasso, Random Forest and Gradient Boosting \u2014 and reports R\u00b2, RMSE, MAE and MAPE on every run. Anaplan's copilot sits on top of a model-builder paradigm; here the chat is how you read and write to the cube.",
+  },
+  {
+    question: "How do we improve forecast accuracy without a data science team?",
+    answer:
+      "The honest version of how to improve forecast accuracy is to stop choosing an algorithm by intuition. NashOS lets you run two to five algorithms side by side, compare them on R\u00b2, RMSE, MAE and MAPE, and lock the one that fits your history best. Drivers do the rest: mark headcount, units, hours or a percentage as a driver, write the formula once, and dependent lines recompute from the assumption instead of being typed in again.",
+  },
+];
+
 const CARDS = [
   {
     title: "AI is the foundation, not a feature",
@@ -47,9 +67,9 @@ const CARDS = [
       "Anaplan needs trained model builders and 6+ months. NashOS is set up by your finance lead in an afternoon. The same week you sign, you have variance reporting.",
   },
   {
-    title: "15 forecast algorithms shipped on day 1",
+    title: "AI forecasting software, judged on what it writes",
     body:
-      "ARIMA, SARIMA, Random Forest, Gradient Boosting, Holt-Winters, Neural Net, Ridge, Lasso — compared side-by-side with R²/RMSE/MAPE. Anaplan offers a fraction of this.",
+      "ARIMA, SARIMA, Random Forest, Gradient Boosting, Holt-Winters, Neural Net, Ridge, Lasso — compared side-by-side with R²/RMSE/MAPE. If the question is how to improve forecast accuracy, comparing candidates on the same history beats picking one by reputation. Anaplan offers a fraction of this.",
   },
   {
     title: "Mid-market price",
@@ -76,7 +96,10 @@ function VsAnaplanPage() {
       </Section>
 
       <Section>
-        <SectionHeader title="What you get with NashOS that you don't with Anaplan" />
+        <SectionHeader
+          title="Anaplan alternatives: what actually changes day to day"
+          caption="Feature grids rarely decide these projects. Who operates the model, how fast a change recomputes, and what the agent is allowed to write \u2014 those do."
+        />
         <CardGrid items={CARDS} cols={2} />
       </Section>
 
@@ -102,6 +125,13 @@ function VsAnaplanPage() {
               implementation.
             </p>
           </div>
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHeader eyebrow="FAQ" title="Common questions" />
+        <div className="mt-8 max-w-3xl">
+          <FaqList items={FAQ} />
         </div>
       </Section>
 

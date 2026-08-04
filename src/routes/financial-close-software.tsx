@@ -70,12 +70,12 @@ const FAQ = [
   {
     question: "What is financial close software?",
     answer:
-      "Financial close software automates the month-end and quarter-end close — pulling trial balance from your ERP, reconciling across entities, generating P&L / Balance Sheet / Cash Flow, and assembling the variance pack for the board. NashOS adds an agentic AI layer that drafts variance commentary, runs forecasts, and answers plain-English questions about the cube — cutting an 11-day close to 4.",
+      "Financial close software automates the month-end and quarter-end close. Financial close automation covers pulling trial balance from your ERP, reconciling across entities, generating P&L / Balance Sheet / Cash Flow, and assembling the variance pack for the board. NashOS adds an agentic AI layer that drafts variance commentary, runs forecasts, and answers plain-English questions about the cube — cutting an 11-day close to 4.",
   },
   {
     question: "How can I close my books faster?",
     answer:
-      "The 11-day close has three bottlenecks: (1) waiting for trial balance and reconciliation, (2) building the variance pack from scratch every period, (3) hand-writing commentary on the top movers. NashOS collapses each: continuous connectors land trial balance on day one, the agent ranks top movers by financial impact and drafts the commentary, and the audit trail replaces the 'who changed what' Slack thread. Result: 4-day close cycle, 90-minute variance pack.",
+      "CFO AI tools only help if they attack the right bottleneck. The 11-day close has three: (1) waiting for trial balance and reconciliation, (2) building the variance pack from scratch every period, (3) hand-writing commentary on the top movers. NashOS collapses each: continuous connectors land trial balance on day one, the agent ranks top movers by financial impact and drafts the commentary, and the audit trail replaces the 'who changed what' Slack thread. Result: 4-day close cycle, 90-minute variance pack.",
   },
   {
     question: "Is NashOS an alternative to Anaplan, Adaptive, or Oracle EPM?",
@@ -88,12 +88,12 @@ const FAQ = [
       "Today: REST APIs, SFTP, Excel, and CSV connectors are production-ready. Native NetSuite and QuickBooks connectors are on the near-term roadmap. Until those ship, NetSuite and QuickBooks customers connect via REST or scheduled CSV exports.",
   },
   {
-    question: "How long does setup take?",
+    question: "How long does finance automation software take to set up?",
     answer:
       "Hours, not months. Connect your trial balance (REST, SFTP, Excel, or CSV — or just paste it in), and the 9-dimension cube absorbs it. Most teams have a working Executive Summary the same day. A full driver-based plan with custom formulas is typically a 2-week onboarding with our team.",
   },
   {
-    question: "Is the AI agent safe? Can it auto-write to my financial data?",
+    question: "Are CFO AI tools safe? Can the agent auto-write to my financial data?",
     answer:
       "No auto-writes. Every chat-driven mutation produces a draft that the user must Post to commit. The backend re-validates the draft on commit. Audit trail captures actor, timestamp, and full before/after JSON for every change. The LLM never writes to the database directly — every tool call is server-side authenticated.",
   },
@@ -103,12 +103,13 @@ function FinancialCloseSoftwarePage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Close & consolidation"
-        title="Close software, reimagined as a continuous system."
+        eyebrow="Financial close automation"
+        title="Close software, reimagined as Continuous Finance."
         lede={
           <>
             Multi-entity, multi-currency consolidation with audit trail by construction — not a
-            monthly fire drill. NashOS collapses an 11-day month-end close to 4 days.
+            monthly fire drill. Continuous Finance means the close runs as a system rather
+            than a deadline. NashOS collapses an 11-day month-end close to 4 days.
           </>
         }
         primaryCta={{ label: "Try with your data", to: "/try" }}
@@ -121,8 +122,8 @@ function FinancialCloseSoftwarePage() {
 
       <Section>
         <SectionHeader
-          title="Where the speed comes from"
-          caption="Most close-cycle pain isn't the journal entries. It's the 7 days of human reconciliation either side. NashOS collapses each layer."
+          title="Where financial close automation actually saves the days"
+          caption="Most close-cycle pain isn't the journal entries. It's the 7 days of human reconciliation either side. Finance automation software earns its place by removing those days, not by adding dashboards."
         />
         <CardGrid items={PILLARS} cols={2} />
       </Section>

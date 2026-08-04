@@ -90,12 +90,12 @@ const FAQ = [
   {
     question: "What is an agentic FP&A platform?",
     answer:
-      "An agentic FP&A platform uses AI agents — software that can chain multiple tool calls, read and write financial data with permissions, and complete multi-step finance tasks autonomously — rather than just chatbot UIs bolted onto a legacy planning tool. NashOS was built around agents from day one: 35+ tools cover ~99% of manual app actions, every write produces a draft for human review, and every action is audit-trailed.",
+      "An agentic FP&A platform is built around AI agents for finance — software that can chain multiple tool calls, read and write financial data under the calling user's permissions, and carry a multi-step finance task through to a reviewable result — rather than a chatbot UI bolted onto a legacy planning tool. NashOS was built around agents from day one: 35+ tools cover ~99% of manual app actions, every write produces a draft for human review, and every action is audit-trailed.",
   },
   {
     question: "How is this different from a chatbot in Anaplan or Adaptive?",
     answer:
-      "Legacy planning tools added a chatbot bolt-on after the fact — the chatbot can answer questions but the planning model wasn't built for tool-using agents. NashOS reversed the design: every primitive (cube schema, RBAC, draft queue, audit trail) is designed for an agent to operate within safely. The agent can plan, forecast, draft writes, run scenarios, and commit changes — not just summarize what's already there.",
+      "The AI for FP&A in those tools arrived as a chatbot bolt-on after the fact — it answers questions, but the planning model underneath was never built for tool-using agents. NashOS reversed the design: every primitive (cube schema, RBAC, draft queue, audit trail) is designed for an agent to operate within safely. The agent can plan, forecast, draft writes, run scenarios, and commit changes — not just summarize what's already there.",
   },
   {
     question: "Is the agent safe? What stops it from messing up my financial data?",
@@ -108,7 +108,7 @@ const FAQ = [
       "Claude Sonnet 4.6 by default; Gemini 2.5-flash supported as a fallback. Both are swappable via environment variable. Prompt caching keeps API costs low at typical usage.",
   },
   {
-    question: "What can the agent actually do?",
+    question: "What can agentic AI in finance actually do inside a planning model?",
     answer:
       "Read fact tables, draft entries, run 15 forecast algorithms, commit writes through the draft queue, export reports as CSV/Excel/PDF, manage scenarios and what-ifs, query the audit log, manage drivers and formulas, and answer plain-English questions about the cube. 35+ tools cover ~99% of manual app actions.",
   },
@@ -128,7 +128,7 @@ function AgenticFpaPlatformPage() {
         highlight="Not retrofitted with a chatbot."
         lede={
           <>
-            NashOS is the FP&amp;A platform designed around tool-using AI agents from day one.
+            NashOS is the FP&amp;A platform designed around AI agents for finance from day one.
             35+ agent tools cover ~99% of manual app actions. Every write is drafted, every
             action audit-trailed. The agentic alternative to Anaplan, Adaptive, and Excel.
           </>
@@ -139,15 +139,15 @@ function AgenticFpaPlatformPage() {
 
       <Section>
         <SectionHeader
-          title="What an agentic platform actually means"
-          caption='Most "AI in FP&A" today is a chatbot bolted onto a 2015 planning tool. NashOS inverted the design: the agent is the primary interface, traditional grids are the fallback. 35+ tools across four categories.'
+          title="What AI agents for finance actually do"
+          caption="Most AI for FP&A today is a chatbot bolted onto a planning tool built long before tool-using models existed. NashOS inverted the design: the agent is the primary interface, traditional grids are the fallback. 35+ tools across four categories."
         />
         <CardGrid items={TOOL_CATEGORIES} cols={4} />
       </Section>
 
       <Section>
         <SectionHeader
-          title="Safety primitives"
+          title="What makes agentic AI in finance safe to run"
           caption="An agent that can write to your financials needs to be safe by default. Every write surface is gated behind these four primitives."
         />
         <CardGrid items={SAFETY} cols={4} />
