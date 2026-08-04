@@ -38,12 +38,11 @@ export const Route = createFileRoute("/system")({
   head: () =>
     seo({
       title: "The NashOS System: 8 EPM Modules Collapsed Into 5",
-      // Deliberately carries no close-cycle figure. The homepage animation says
-      // 11 days → 1 while /financial-close-software and /for/saas say 11 → 4;
-      // until those are reconciled, don't promote either number into a SERP
-      // snippet where Google can show two different claims side by side.
+      // Close-cycle figure is 11 -> 4 days, canonical site-wide (user decision,
+      // 2026-08-04). Matches /financial-close-software and /for/saas. Do not
+      // reintroduce the old 11 -> 1 claim anywhere.
       description:
-        "How NashOS collapses eight EPM modules into five systems on one data foundation, so a driver change recomputes the forecast, consolidation and variance from the same source.",
+        "How NashOS collapses eight EPM modules into five systems on one data foundation — cutting close from 11 days to 4 and variance packs from 40 hours to 90 minutes.",
       path: "/system",
       type: "article",
       faq: FAQ,
