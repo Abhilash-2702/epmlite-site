@@ -39,9 +39,9 @@ const PILLARS = [
   },
   {
     Icon: Sparkles,
-    title: "Agent drafts variance commentary",
+    title: "The variance pack, assembled from the cube",
     body:
-      "Top movers ranked by financial impact, not raw %. Paragraph-style commentary auto-drafted from the cube. CFO edits, doesn't write from scratch. The 40-hour board pack collapses to 90 minutes.",
+      "Top movers ranked by financial impact, not raw %. The pack is assembled from the cube instead of rebuilt in slides each period, so the 40-hour board pack collapses to 90 minutes. Auto-drafted, board-ready paragraph commentary is on the near-term roadmap.",
   },
   {
     Icon: ShieldCheck,
@@ -70,12 +70,12 @@ const FAQ = [
   {
     question: "What is financial close software?",
     answer:
-      "Financial close software automates the month-end and quarter-end close. Financial close automation covers pulling trial balance from your ERP, reconciling across entities, generating P&L / Balance Sheet / Cash Flow, and assembling the variance pack for the board. NashOS adds an agentic AI layer that drafts variance commentary, runs forecasts, and answers plain-English questions about the cube — cutting an 11-day close to 4.",
+      "Financial close software automates the month-end and quarter-end close. Financial close automation covers pulling trial balance from your ERP, reconciling across entities, generating P&L / Balance Sheet / Cash Flow, and assembling the variance pack for the board. NashOS adds an agentic AI layer that ranks the top movers, runs forecasts, and answers plain-English questions about the cube — cutting an 11-day close to 4.",
   },
   {
     question: "How can I close my books faster?",
     answer:
-      "CFO AI tools only help if they attack the right bottleneck. The 11-day close has three: (1) waiting for trial balance and reconciliation, (2) building the variance pack from scratch every period, (3) hand-writing commentary on the top movers. NashOS collapses each: continuous connectors land trial balance on day one, the agent ranks top movers by financial impact and drafts the commentary, and the audit trail replaces the 'who changed what' Slack thread. Result: 4-day close cycle, 90-minute variance pack.",
+      "CFO AI tools only help if they attack the right bottleneck. The 11-day close has three: (1) waiting for trial balance and reconciliation, (2) building the variance pack from scratch every period, (3) hand-writing commentary on the top movers. NashOS collapses each: continuous connectors land trial balance on day one, the agent ranks top movers by financial impact so commentary starts from a ranked list rather than a blank page (auto-drafted paragraphs are on the near-term roadmap), and the audit trail replaces the 'who changed what' Slack thread. Result: 4-day close cycle, 90-minute variance pack.",
   },
   {
     question: "Is NashOS an alternative to Anaplan, Adaptive, or Oracle EPM?",
