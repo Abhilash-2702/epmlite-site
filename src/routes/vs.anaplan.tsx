@@ -26,7 +26,7 @@ export const Route = createFileRoute("/vs/anaplan")({
 
 const ROWS: ComparisonRow[] = [
   { label: "Setup time", nashos: "Hours", rival: "6–9 months", winner: "nashos" },
-  { label: "Annual price (mid-market)", nashos: "$1.2k–$6k", rival: "$150k+", winner: "nashos" },
+  { label: "Commercial model", nashos: "Quoted to your entity count and volume", rival: "Six-figure annual contract", winner: "nashos" },
   { label: "AI architecture", nashos: "Native · 35+ tools", rival: "Bolt-on copilot", winner: "nashos" },
   { label: "Forecast algorithms", nashos: "15 (compare side-by-side)", rival: "Limited / single-model", winner: "nashos" },
   { label: "What-if scenarios", nashos: "Live slider · sub-second", rival: "Yes (slower modeling)", winner: "nashos" },
@@ -72,9 +72,9 @@ const CARDS = [
       "ARIMA, SARIMA, Random Forest, Gradient Boosting, Holt-Winters, Neural Net, Ridge, Lasso — compared side-by-side with R²/RMSE/MAPE. If the question is how to improve forecast accuracy, comparing candidates on the same history beats picking one by reputation. Anaplan offers a fraction of this.",
   },
   {
-    title: "Mid-market price",
+    title: "Priced for a mid-market budget",
     body:
-      "Starter at $99/mo. Pro at $499/mo. Enterprise on request. You can run a real plan without an Anaplan-tier budget.",
+      "An Anaplan-tier deployment is a six-figure annual commitment. NashOS is quoted against your entity count, data volume and rollout pace, so you can run a real plan without an Anaplan-tier budget.",
   },
 ];
 

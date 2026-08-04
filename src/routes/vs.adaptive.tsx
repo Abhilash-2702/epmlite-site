@@ -24,7 +24,7 @@ export const Route = createFileRoute("/vs/adaptive")({
 
 const ROWS: ComparisonRow[] = [
   { label: "Setup time", nashos: "Hours", rival: "3–6 months", winner: "nashos" },
-  { label: "Annual price (mid-market)", nashos: "$1.2k–$6k", rival: "$150k+", winner: "nashos" },
+  { label: "Commercial model", nashos: "Quoted to your entity count and volume", rival: "Six-figure annual contract", winner: "nashos" },
   { label: "AI architecture", nashos: "Native · 35+ tools", rival: "Bolt-on assistant", winner: "nashos" },
   { label: "Forecast algorithms", nashos: "15 · side-by-side compare", rival: "2–3 traditional", winner: "nashos" },
   { label: "What-if scenarios", nashos: "Live slider · sub-second", rival: "Yes", winner: "draw" },
@@ -54,7 +54,7 @@ const CARDS = [
   {
     title: "Pricing that lets a 30-person company actually buy it",
     body:
-      "Adaptive's mid-market pricing starts in six figures. NashOS is $99–$499/mo for the same core capabilities. The CFO who'd never get budget for Adaptive can buy this on a credit card.",
+      "Adaptive's mid-market pricing starts in six figures. NashOS is quoted against your entity count and data volume, for the same core capabilities — at a number the CFO who'd never get budget for Adaptive can actually approve.",
   },
 ];
 

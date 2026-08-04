@@ -58,7 +58,7 @@ const PILLARS = [
 ];
 
 const COMPARISON = [
-  { tool: "NashOS", close: "4 days", live: "Hours, not months", price: "$99 / mo", highlight: true },
+  { tool: "NashOS", close: "4 days", live: "Hours, not months", price: "On request", highlight: true },
   { tool: "Excel + BI stack", close: "11–14 days", live: "Already running", price: "$0 + soul" },
   { tool: "Anaplan", close: "5–7 days", live: "6–9 months", price: "$150k+ / yr" },
   { tool: "Workday Adaptive", close: "5–8 days", live: "3–6 months", price: "$50k+ / yr" },
@@ -80,7 +80,7 @@ const FAQ = [
   {
     question: "Is NashOS an alternative to Anaplan, Adaptive, or Oracle EPM?",
     answer:
-      "Yes — NashOS is built for finance teams that want the planning + close + reporting capability of Anaplan or Workday Adaptive Planning without the $150k+ ACV and 6-month rollout. Implementation is days, not months. Pricing starts at $99/mo. Side-by-side comparisons available at /vs/anaplan, /vs/adaptive, and /vs/excel.",
+      "Yes — NashOS is built for finance teams that want the planning + close + reporting capability of Anaplan or Workday Adaptive Planning without the $150k+ ACV and 6-month rollout. Implementation is days, not months. Pricing is quoted against your entity count, data volume and rollout pace. Side-by-side comparisons available at /vs/anaplan, /vs/adaptive, and /vs/excel.",
   },
   {
     question: "Does it integrate with NetSuite or QuickBooks?",

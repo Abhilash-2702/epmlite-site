@@ -16,7 +16,7 @@ export const Route = createFileRoute("/vs/excel")({
     seo({
       title: "NashOS vs Excel",
       description:
-        "When the spreadsheet stack stops scaling. AI-native FP&A with full audit trail, 15 forecast algorithms, multi-entity consolidation — for $99/mo.",
+        "When the spreadsheet stack stops scaling. AI-native FP&A with full audit trail, 15 forecast algorithms and multi-entity consolidation.",
       path: "/vs/excel",
     }),
   component: VsExcelPage,
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/vs/excel")({
 
 const ROWS: ComparisonRow[] = [
   { label: "Setup time", nashos: "Hours", rival: "0 (already there)", winner: "rival" },
-  { label: "Monthly price", nashos: "$99–$499", rival: "$0–$22 (M365)", winner: "rival" },
+  { label: "Commercial model", nashos: "Quoted to your entity count and volume", rival: "$0–$22 (M365)", winner: "rival" },
   { label: "AI agent", nashos: "35+ tools · plain-English read/write", rival: "Copilot bolt-on (read-only on data)", winner: "nashos" },
   { label: "Forecast algorithms", nashos: "15 · one-click compare", rival: "Manual / add-in", winner: "nashos" },
   { label: "Audit trail", nashos: "Before/after JSON · per cell", rival: "OneDrive version history", winner: "nashos" },
