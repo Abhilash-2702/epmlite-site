@@ -103,7 +103,7 @@ export function ForLeadersSection() {
           <h2 className="mt-7 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.02]">
             Built for the way finance
             <br />
-            <span className="font-serif-accent text-gradient-gold">Actually works.</span>
+            <span className="font-serif-accent text-gradient-gold">actually works.</span>
           </h2>
           <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Same system, three lenses — each tuned to what your role needs to ship today.
