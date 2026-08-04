@@ -15,16 +15,16 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/financial-close-software")({
   head: () =>
     seo({
-      title: "Financial Close Software — Close in 4 Days, Not 12 — NashOS",
+      title: "Financial Close Software — Close in 1 Day, Not 12 — NashOS",
       description:
-        "Faster financial close software. NashOS collapses an 11-day month-end close to 4 days using an agentic AI layer, 15 forecast algorithms, and a 9-dim cube.",
+        "Faster financial close software. NashOS collapses an 11-day month-end close to 1 day using an agentic AI layer, 15 forecast algorithms, and a 9-dim cube.",
       path: "/financial-close-software",
     }),
   component: FinancialCloseSoftwarePage,
 });
 
 const STAT = [
-  { num: "4 days", label: "Close cycle (vs 12 industry average)" },
+  { num: "1 day", label: "Close cycle (vs 12 industry average)" },
   { num: "90 min", label: "Variance pack (vs 40 hours)" },
   { num: "35+", label: "AI agent tools covering 99% of manual actions" },
   { num: "15", label: "Forecast algorithms compared side-by-side" },
@@ -58,7 +58,7 @@ const PILLARS = [
 ];
 
 const COMPARISON = [
-  { tool: "NashOS", close: "4 days", live: "Hours, not months", price: "On request", highlight: true },
+  { tool: "NashOS", close: "1 day", live: "Hours, not months", price: "On request", highlight: true },
   { tool: "Excel + BI stack", close: "11–14 days", live: "Already running", price: "$0 + soul" },
   { tool: "Anaplan", close: "5–7 days", live: "6–9 months", price: "$150k+ / yr" },
   { tool: "Workday Adaptive", close: "5–8 days", live: "3–6 months", price: "$50k+ / yr" },
@@ -70,12 +70,12 @@ const FAQ = [
   {
     question: "What is financial close software?",
     answer:
-      "Financial close software automates the month-end and quarter-end close. Financial close automation covers pulling trial balance from your ERP, reconciling across entities, generating P&L / Balance Sheet / Cash Flow, and assembling the variance pack for the board. NashOS adds an agentic AI layer that ranks the top movers, runs forecasts, and answers plain-English questions about the cube — cutting an 11-day close to 4.",
+      "Financial close software automates the month-end and quarter-end close. Financial close automation covers pulling trial balance from your ERP, reconciling across entities, generating P&L / Balance Sheet / Cash Flow, and assembling the variance pack for the board. NashOS adds an agentic AI layer that ranks the top movers, runs forecasts, and answers plain-English questions about the cube — cutting an 11-day close to 1.",
   },
   {
     question: "How can I close my books faster?",
     answer:
-      "CFO AI tools only help if they attack the right bottleneck. The 11-day close has three: (1) waiting for trial balance and reconciliation, (2) building the variance pack from scratch every period, (3) hand-writing commentary on the top movers. NashOS collapses each: continuous connectors land trial balance on day one, the agent ranks top movers by financial impact so commentary starts from a ranked list rather than a blank page (auto-drafted paragraphs are on the near-term roadmap), and the audit trail replaces the 'who changed what' Slack thread. Result: 4-day close cycle, 90-minute variance pack.",
+      "CFO AI tools only help if they attack the right bottleneck. The 11-day close has three: (1) waiting for trial balance and reconciliation, (2) building the variance pack from scratch every period, (3) hand-writing commentary on the top movers. NashOS collapses each: continuous connectors land trial balance on day one, the agent ranks top movers by financial impact so commentary starts from a ranked list rather than a blank page (auto-drafted paragraphs are on the near-term roadmap), and the audit trail replaces the 'who changed what' Slack thread. Result: 1-day close cycle, 90-minute variance pack.",
   },
   {
     question: "Is NashOS an alternative to Anaplan, Adaptive, or Oracle EPM?",
@@ -109,7 +109,7 @@ function FinancialCloseSoftwarePage() {
           <>
             Multi-entity, multi-currency consolidation with audit trail by construction — not a
             monthly fire drill. Continuous Finance means the close runs as a system rather
-            than a deadline. NashOS collapses an 11-day month-end close to 4 days.
+            than a deadline. NashOS collapses an 11-day month-end close to 1 day.
           </>
         }
         primaryCta={{ label: "Try with your data", to: "/try" }}

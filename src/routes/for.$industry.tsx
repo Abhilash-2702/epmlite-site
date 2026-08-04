@@ -68,7 +68,7 @@ const INDUSTRIES: Record<string, Industry> = {
       "Audit-grade trail satisfies pre-IPO due diligence on day one.",
     ],
     scenario:
-      "$15M ARR, 60% growth, 11-day close. Move to a 4-day close, run weekly re-forecasts, and surface board-ready variance commentary in 90 minutes per cycle.",
+      "$15M ARR, 60% growth, 11-day close. Move to a 1-day close, run weekly re-forecasts, and surface board-ready variance commentary in 90 minutes per cycle.",
   },
   services: {
     name: "Services",
@@ -90,7 +90,7 @@ const INDUSTRIES: Record<string, Industry> = {
       "Audit-grade for SOC 2 customers — we already have the trail you need.",
     ],
     scenario:
-      "Marketing-services firm, 50% retainer / 40% project / 10% one-off. Close in 4 days, weekly cash-conversion forecast, and project-margin investigation in seconds.",
+      "Marketing-services firm, 50% retainer / 40% project / 10% one-off. Close in 1 day, weekly cash-conversion forecast, and project-margin investigation in seconds.",
   },
   consulting: {
     name: "Consulting",

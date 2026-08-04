@@ -11,7 +11,7 @@ const now = [
 ];
 
 const impact = [
-  { k: "Close cycle", from: "11 days", to: "4 days", note: "Compressed from ~11 days to ~4 days." },
+  { k: "Close cycle", from: "11 days", to: "1 day", note: "Compressed from ~11 days to ~1 day." },
   { k: "Variance analysis", from: "40 hours", to: "90 min", note: "Variance pack in ~90 mins." },
   { k: "Forecasting", from: "Periodic", to: "Continuous", note: "Instant recompute across drivers." },
   { k: "Decisions", from: "Manual", to: "System", note: "Drafted, reviewed, fully auditable." },
