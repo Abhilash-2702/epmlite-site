@@ -334,3 +334,32 @@
     animation: none; opacity: 1; transform: none; stroke-dashoffset: 0;
   }
 }
+
+/* ── Home content: scroll-driven reveal + compact disclosures ─────────────
+   `rise-in` uses CSS scroll-driven animation. Where `animation-timeline` is
+   unsupported (Safari/Firefox today) the @supports block simply doesn't apply,
+   so the content renders normally — it is never hidden behind JS or an
+   unsupported feature. Reduced-motion opts out entirely. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .rise-in {
+      animation: step-in 0.6s ease-out both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 42%;
+    }
+  }
+}
+
+/* Native <details> disclosure — keeps the prose in the DOM (crawlable) while
+   collapsing it visually. */
+.detail-card > summary::-webkit-details-marker { display: none; }
+.detail-card > summary { outline: none; }
+.detail-card > summary:focus-visible {
+  outline: 2px solid rgba(25, 64, 113, 0.55);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.detail-card > summary:hover { color: var(--foreground); }
+@media (prefers-reduced-motion: no-preference) {
+  .detail-card[open] .detail-body { animation: step-in 0.28s ease-out both; }
+}

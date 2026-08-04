@@ -101,7 +101,7 @@ export function ForLeadersSection() {
         <div className="text-center">
           <span className="chip"><span className="chip-dot pulse-dot" />Built for finance leaders</span>
           <h2 className="mt-7 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.02]">
-            Built for the way finance.
+            Built for the way finance
             <br />
             <span className="font-serif-accent text-gradient-gold">Actually works.</span>
           </h2>

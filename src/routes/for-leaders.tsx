@@ -52,7 +52,7 @@ function ForLeadersPage() {
       <PageHero
         tight
         eyebrow="Built for finance leaders"
-        title="Built for the way finance."
+        title="Built for the way finance"
         highlight="Actually works."
         lede="Same system, three lenses — each tuned to what your role needs to ship today. None of this is a separate product or a separate licence."
         primaryCta={{ label: "Try with your data", to: "/try" }}
