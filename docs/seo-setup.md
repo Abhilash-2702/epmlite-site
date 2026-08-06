@@ -26,8 +26,19 @@ nothing to the running site.
 |---|---|---|
 | `VITE_GA4_ID` | GA4 measurement ID | ✅ `G-T4X0ZET299` |
 | `RESEND_API_KEY` | Sending lead emails | ✅ set (Sensitive) |
-| `LEAD_FROM_EMAIL` | `From:` on lead emails | ✅ `NashOS <hello@nashos.ai>` |
+| `LEAD_FROM_EMAIL` | `From:` on lead emails | ⚠️ was `NashOS <hello@nashos.ai>` — **that mailbox does not exist**; set it to `NashOS <sales@nashos.ai>` |
 | `LEAD_TO_EMAIL` | Where leads land | ✅ `admin@nashos.ai` |
+
+> **The `From:` address must be a real mailbox.** Resend only verifies the
+> *domain*, so it will happily send as any `@nashos.ai` address — including one
+> that was never created. `hello@nashos.ai` was configured here and does not
+> exist in Google Workspace, so anything sent to it bounced. Replies to leads
+> were unaffected (the endpoint sets `reply_to` to the prospect), but the
+> sender identity was a dead address.
+>
+> Aliases that DO exist (alternate addresses on the admin user, all delivering
+> to one inbox): `admin`, `murali`, `sooryah`, `support`, `security`, `sales`,
+> `billing` — all `@nashos.ai`.
 | `VITE_GSC_TOKEN` | Search Console meta tag | **Unused.** Verification happened via the GA4 tag instead. Kept in code as a fallback. |
 
 Two stale variables, `NEXT_PUBLIC_GA_ID` and `NEXT_PUBLIC_CLARITY_ID`, survive from the Next.js
@@ -103,7 +114,7 @@ reason rather than a generic failure.
 records went in — AWS SES polls on its own schedule and there is no way to hurry it.
 
 ```
-LEAD_FROM_EMAIL = NashOS <hello@nashos.ai>
+LEAD_FROM_EMAIL = NashOS <sales@nashos.ai>
 LEAD_TO_EMAIL   = admin@nashos.ai
 ```
 
