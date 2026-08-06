@@ -26,8 +26,9 @@ nothing to the running site.
 |---|---|---|
 | `VITE_GA4_ID` | GA4 measurement ID | ✅ `G-T4X0ZET299` |
 | `RESEND_API_KEY` | Sending lead emails | ✅ set (Sensitive) |
-| `LEAD_FROM_EMAIL` | `From:` on lead emails | ⚠️ was `NashOS <hello@nashos.ai>` — **that mailbox does not exist**; set it to `NashOS <sales@nashos.ai>` |
+| `LEAD_FROM_EMAIL` | `From:` on lead emails | ✅ `NashOS <sales@nashos.ai>` (was `hello@` — a mailbox that never existed; changed 6 Aug 2026) |
 | `LEAD_TO_EMAIL` | Where leads land | ✅ `admin@nashos.ai` |
+| `VITE_GSC_TOKEN` | Search Console meta tag | **Unused.** Verification happened via the GA4 tag instead. Kept in code as a fallback. |
 
 > **The `From:` address must be a real mailbox.** Resend only verifies the
 > *domain*, so it will happily send as any `@nashos.ai` address — including one
@@ -39,7 +40,6 @@ nothing to the running site.
 > Aliases that DO exist (alternate addresses on the admin user, all delivering
 > to one inbox): `admin`, `murali`, `sooryah`, `support`, `security`, `sales`,
 > `billing` — all `@nashos.ai`.
-| `VITE_GSC_TOKEN` | Search Console meta tag | **Unused.** Verification happened via the GA4 tag instead. Kept in code as a fallback. |
 
 Two stale variables, `NEXT_PUBLIC_GA_ID` and `NEXT_PUBLIC_CLARITY_ID`, survive from the Next.js
 era. Vite only exposes `VITE_*`, so they are dead config and can be deleted.
