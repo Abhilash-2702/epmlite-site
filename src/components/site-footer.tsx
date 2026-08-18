@@ -60,6 +60,7 @@ const COLUMNS: { heading: string; links: { to: string; label: string }[] }[] = [
     links: [
       { to: "/blog", label: "Blog" },
       { to: "/resources", label: "Resources" },
+      { to: "/sitemap", label: "Site map" },
       { to: "/sign-in", label: "Sign in" },
       { to: "/try", label: "Try with your data" },
     ],

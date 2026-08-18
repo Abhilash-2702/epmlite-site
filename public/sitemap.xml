@@ -47,4 +47,5 @@
   <url><loc>https://nashos.ai/blog/picking-a-forecast-algorithm-without-a-data-science-team</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nashos.ai/blog/what-driver-based-planning-actually-means</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nashos.ai/resources</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://nashos.ai/sitemap</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
 </urlset>
