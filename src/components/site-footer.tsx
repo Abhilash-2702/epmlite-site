@@ -41,7 +41,9 @@ const COLUMNS: { heading: string; links: { to: string; label: string }[] }[] = [
       { to: "/agentic-fpa-platform", label: "Agentic FP&A platform" },
       { to: "/for/saas", label: "For SaaS" },
       { to: "/for/services", label: "For services" },
+      { to: "/for/consulting", label: "For consulting" },
       { to: "/for/manufacturing", label: "For manufacturing" },
+      { to: "/for/hardware", label: "For hardware" },
     ],
   },
   {
