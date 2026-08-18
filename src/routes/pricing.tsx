@@ -33,7 +33,7 @@ const tiers = [
     name: "Enterprise",
     price: "Bespoke",
     blurb: "Global rollout with controls, governance and lineage at scale.",
-    features: ["Role-based access control", "Region pinning", "Dedicated environment", "Solution engineering"],
+    features: ["Role-based access control", "Custom dimensions", "Dedicated environment", "Solution engineering"],
     cta: "Contact sales",
     highlight: false,
   },
