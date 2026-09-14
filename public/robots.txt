@@ -149,8 +149,8 @@ Disallow: /api/
 
 Sitemap: https://nashos.ai/sitemap.xml
 
-# llms.txt / llms-full.txt provide a curated, structured summary of this
-# site's content specifically for LLMs and AI answer engines
-# (see https://llmstxt.org for the emerging convention).
-# llms.txt:      https://nashos.ai/llms.txt
-# llms-full.txt: https://nashos.ai/llms-full.txt
+# An llms.txt / llms-full.txt pair (https://llmstxt.org) is planned but NOT yet
+# published - the 2026-09-09 agency drafts failed a claim audit (117 of 320
+# claims refuted against the codebase) and must be rewritten before they go up.
+# vercel.json already excludes both paths from the SSR rewrite, so they will
+# serve correctly the moment they land.
