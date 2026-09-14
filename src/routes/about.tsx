@@ -44,7 +44,16 @@ export const Route = createFileRoute("/about")({
 type TeamMember = {
   name: string;
   role: string;
+  /** Shown until a real headshot exists. */
   initials: string;
+  /**
+   * Public-folder path to the headshot, e.g. "/team/murali-reddy.jpg".
+   * Drop the file in Website/site/public/team/ and set this — the avatar and
+   * the Person.image in structured data both switch over. Left unset, the
+   * initials render instead, and no image URL is published to Google (a
+   * Person.image pointing at a 404 is worse than none). Square, >=400x400.
+   */
+  photo?: string;
   bio: string;
 };
 
@@ -74,6 +83,7 @@ const TEAM_JSON_LD = {
     name: m.name,
     jobTitle: m.role,
     description: m.bio,
+    ...(m.photo ? { image: `https://nashos.ai${m.photo}` } : {}),
     worksFor: { "@id": "https://nashos.ai/#organization" },
     url: "https://nashos.ai/about",
   })),
@@ -149,12 +159,24 @@ function AboutPage() {
           {TEAM.map((m) => (
             <div key={m.name} className="surface-card p-7">
               <div className="flex items-center gap-4">
+                {m.photo ? (
+                  <img
+                    src={m.photo}
+                    alt={`${m.name}, ${m.role} of NashOS`}
+                    width={56}
+                    height={56}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-14 w-14 shrink-0 rounded-full object-cover ring-1 ring-gold/20"
+                  />
+                ) : (
                 <span
                   aria-hidden
                   className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold/10 text-lg font-semibold text-gold"
                 >
                   {m.initials}
                 </span>
+                )}
                 <div>
                   <h3 className="text-xl font-semibold text-foreground">{m.name}</h3>
                   <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
