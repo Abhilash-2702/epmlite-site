@@ -7,6 +7,11 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<!-- This page duplicates the native, branded sitemap at /sitemap. It is kept
+	     as a static fallback, but points its canonical there and is noindexed so
+	     the two do not compete as duplicate content. -->
+	<link rel="canonical" href="https://nashos.ai/sitemap" />
+	<meta name="robots" content="noindex, follow" />
 <script type="text/javascript">
 	function el_t(el,cl){if(el)el.classList.toggle(cl);}
 	window.addEventListener('load', (event) => {
