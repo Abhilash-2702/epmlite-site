@@ -18,12 +18,16 @@ import {
 } from "@/components/page-sections";
 import { seo } from "@/lib/seo";
 
+// Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
+const CRUMBS = [{ name: "Agentic FP&A platform", path: "/agentic-fpa-platform" }];
+
 export const Route = createFileRoute("/agentic-fpa-platform")({
   head: () =>
     seo({
       title: "Agentic FP&A Platform — NashOS",
       description:
         "NashOS is the agentic FP&A platform built around AI agents — not retrofitted with a chatbot. 35+ tools, 15 forecast algorithms, draft-before-commit safety, full audit trail.",
+      breadcrumbs: CRUMBS,
       path: "/agentic-fpa-platform",
     }),
   component: AgenticFpaPlatformPage,
@@ -121,8 +125,9 @@ const FAQ = [
 
 function AgenticFpaPlatformPage() {
   return (
-    <PageShell>
+    <PageShell crumbs={CRUMBS}>
       <PageHero
+        tight
         eyebrow="Agentic finance"
         title={<>Built for AI agents.</>}
         highlight="Not retrofitted with a chatbot."
@@ -139,7 +144,7 @@ function AgenticFpaPlatformPage() {
 
       <Section>
         <SectionHeader
-          title="What AI agents for finance actually do"
+          title="How the agent layer is built"
           caption="Most AI for FP&A today is a chatbot bolted onto a planning tool built long before tool-using models existed. NashOS inverted the design: the agent is the primary interface, traditional grids are the fallback. 35+ tools across four categories."
         />
         <CardGrid items={TOOL_CATEGORIES} cols={4} />

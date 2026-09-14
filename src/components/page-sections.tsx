@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight } from "lucide-react";
+import { Linkified } from "@/components/linkified";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Reusable section primitives for content pages — all in the gold-on-dark theme.
@@ -187,7 +188,7 @@ export function FaqList({
             <span className="text-gold group-open:rotate-180 transition-transform">▾</span>
           </summary>
           <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-            {it.answer}
+            <Linkified text={it.answer} />
           </p>
         </details>
       ))}

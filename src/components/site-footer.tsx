@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import nashosLogo from "@/assets/lockup-h-white.svg";
 import nashMark from "@/assets/monogram-white.svg";
+import { SocialLinks } from "@/components/social-links";
 
 // Footer hosts the long tail of routes that aren't in the top nav (top nav
 // stays at 4: in-page hash sections + Pricing). Placeholder routes for the
@@ -39,6 +40,16 @@ const COLUMNS: { heading: string; links: { to: string; label: string }[] }[] = [
     heading: "Solutions",
     links: [
       { to: "/agentic-fpa-platform", label: "Agentic FP&A platform" },
+      { to: "/ai-agents-for-finance", label: "AI agents for finance" },
+      { to: "/finance-automation-software", label: "Finance automation" },
+      { to: "/ai-forecasting-software", label: "AI forecasting" },
+      { to: "/cfo-ai-tools", label: "CFO AI tools" },
+      { to: "/continuous-finance", label: "Continuous finance" },
+    ],
+  },
+  {
+    heading: "By industry",
+    links: [
       { to: "/for/saas", label: "For SaaS" },
       { to: "/for/services", label: "For services" },
       { to: "/for/consulting", label: "For consulting" },
@@ -152,6 +163,7 @@ export function SiteFooter() {
                 admin@nashos.ai
               </a>
             </address>
+            <SocialLinks className="mt-5 justify-center sm:justify-start" />
             <div className="mt-6">
               <h4 className="text-xs uppercase tracking-[0.14em] text-gold mb-3">On the home page</h4>
               <ul className="space-y-2 text-sm">
@@ -167,7 +179,7 @@ export function SiteFooter() {
           </div>
 
           {/* Link columns — long-tail routes */}
-          <nav className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+          <nav className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
             {COLUMNS.map((col) => (
               <div key={col.heading}>
                 <h4 className="text-xs uppercase tracking-[0.14em] text-gold mb-4">

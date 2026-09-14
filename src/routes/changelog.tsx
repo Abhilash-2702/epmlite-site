@@ -4,12 +4,16 @@ import { PageShell } from "@/components/page-shell";
 import { PageHero, Section } from "@/components/page-sections";
 import { seo } from "@/lib/seo";
 
+// Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
+const CRUMBS = [{ name: "Changelog", path: "/changelog" }];
+
 export const Route = createFileRoute("/changelog")({
   head: () =>
     seo({
       title: "Changelog — NashOS",
       description:
         "Everything shipped at NashOS — by week. We're shipping in days, not months.",
+      breadcrumbs: CRUMBS,
       path: "/changelog",
     }),
   component: ChangelogPage,
@@ -104,8 +108,9 @@ const TAG_STYLE: Record<Tag, { Icon: LucideIcon; cls: string }> = {
 
 function ChangelogPage() {
   return (
-    <PageShell>
+    <PageShell crumbs={CRUMBS}>
       <PageHero
+        tight
         eyebrow="Changelog"
         title="Everything shipped,"
         highlight="by week."

@@ -10,12 +10,16 @@ import {
 } from "@/components/page-sections";
 import { seo } from "@/lib/seo";
 
+// Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
+const CRUMBS = [{ name: "Partners", path: "/partners" }];
+
 export const Route = createFileRoute("/partners")({
   head: () =>
     seo({
       title: "Partners — NashOS",
       description:
         "Implementation consultants, platform partners, and integrators — let's build together.",
+      breadcrumbs: CRUMBS,
       path: "/partners",
     }),
   component: PartnersPage,
@@ -44,8 +48,9 @@ const tracks = [
 
 function PartnersPage() {
   return (
-    <PageShell>
+    <PageShell crumbs={CRUMBS}>
       <PageHero
+        tight
         eyebrow="Partners"
         title="Building integrations"
         highlight="and partnerships."

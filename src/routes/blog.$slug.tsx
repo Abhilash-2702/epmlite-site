@@ -1,8 +1,9 @@
-import { createFileRoute, Link, useParams } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useParams } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { Section } from "@/components/page-sections";
 import { POSTS, CATEGORY_LABEL } from "@/lib/posts";
+import { StickyCta } from "@/components/sticky-cta";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -30,6 +31,13 @@ export const Route = createFileRoute("/blog/$slug")({
         { name: post.title, path: `/blog/${post.slug}` },
       ],
     });
+  },
+  // Unknown slugs used to render a friendly "being rebuilt" page with HTTP 200
+  // - a soft 404. Any /blog/<anything> looked like a real page to a crawler,
+  // so junk URLs could be indexed and the archive looked larger than it is.
+  // notFound() returns a genuine 404 status and the branded not-found page.
+  loader: ({ params }) => {
+    if (!POSTS.some((p) => p.slug === params.slug)) throw notFound();
   },
   component: BlogPostPage,
 });
@@ -132,6 +140,7 @@ function BlogPostPage() {
           </div>
         </Section>
       )}
+      <StickyCta label="Try with your data" to="/try" />
     </PageShell>
   );
 }

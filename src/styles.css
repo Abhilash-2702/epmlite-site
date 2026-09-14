@@ -80,6 +80,12 @@
 }
 
 @layer base {
+  /* The header is fixed (97px mobile / 113px from sm up), so anchor jumps
+     and keyboard focus would otherwise land underneath it. */
+  html {
+    scroll-padding-top: 7.5rem;
+  }
+
   * { border-color: var(--color-border); }
   html, body { background-color: var(--color-background); color: var(--color-foreground); }
   body {

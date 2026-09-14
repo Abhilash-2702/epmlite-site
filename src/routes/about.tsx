@@ -11,16 +11,73 @@ import {
 } from "@/components/page-sections";
 import { seo } from "@/lib/seo";
 
+// Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
+const CRUMBS = [{ name: "About", path: "/about" }];
+
 export const Route = createFileRoute("/about")({
-  head: () =>
-    seo({
-      title: "Who We Are — NashOS",
+  head: () => {
+    const base = seo({
+      title: "About NashOS — The Team Behind Agentic FP&A",
       description:
-        "Built by an FP&A operator who got tired of rebuilding the same spreadsheet.",
+        "Who builds NashOS: an FP&A operator and a fintech platform team who got tired of rebuilding the same spreadsheet. Meet the people behind the product.",
+      breadcrumbs: CRUMBS,
       path: "/about",
-    }),
+    });
+    // seo() covers FAQ and breadcrumbs; Person entries are appended here.
+    return {
+      ...base,
+      scripts: [
+        ...base.scripts,
+        { type: "application/ld+json", children: JSON.stringify(TEAM_JSON_LD) },
+      ],
+    };
+  },
   component: AboutPage,
 });
+
+// The site had no named people anywhere, which is the single biggest
+// E-E-A-T gap for a finance product: Google and AI answer engines both look
+// for who stands behind the claims. Bios are supplied by the founders.
+//
+// TODO(photos): headshots are not in the repo yet. Drop them in
+// src/assets/team/ and swap `initials` for an <img> when they land.
+type TeamMember = {
+  name: string;
+  role: string;
+  initials: string;
+  bio: string;
+};
+
+const TEAM: TeamMember[] = [
+  {
+    name: "Murali Reddy",
+    role: "CEO",
+    initials: "MR",
+    bio:
+      "10+ years leading fintech product & platform teams. Scaled enterprise finance systems globally. Product architecture and systems thinking across AI and infrastructure.",
+  },
+  {
+    name: "Sooryah Pokkali",
+    role: "CBO",
+    initials: "SP",
+    bio:
+      "25+ years across telecom & hospitality. Scaled and exited a previous venture. Enterprise GTM, strategic partnerships, and operational scaling.",
+  },
+];
+
+// Person entries hang off the Organization node so the founders resolve as
+// entities tied to NashOS rather than as loose names on a page.
+const TEAM_JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": TEAM.map((m) => ({
+    "@type": "Person",
+    name: m.name,
+    jobTitle: m.role,
+    description: m.bio,
+    worksFor: { "@id": "https://nashos.ai/#organization" },
+    url: "https://nashos.ai/about",
+  })),
+};
 
 const beliefs = [
   {
@@ -60,8 +117,9 @@ const stats = [
 
 function AboutPage() {
   return (
-    <PageShell>
+    <PageShell crumbs={CRUMBS}>
       <PageHero
+        tight
         eyebrow="Who we are"
         title={<>The FP&amp;A platform we couldn't buy.</>}
         highlight="So we built it."
@@ -80,6 +138,37 @@ function AboutPage() {
       <Section>
         <SectionHeader title="What we believe" />
         <CardGrid items={beliefs} cols={3} />
+      </Section>
+
+      <Section>
+        <SectionHeader
+          eyebrow="The team"
+          title="Building the next-generation financial operating system."
+        />
+        <div className="grid gap-6 md:grid-cols-2">
+          {TEAM.map((m) => (
+            <div key={m.name} className="surface-card p-7">
+              <div className="flex items-center gap-4">
+                <span
+                  aria-hidden
+                  className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold/10 text-lg font-semibold text-gold"
+                >
+                  {m.initials}
+                </span>
+                <div>
+                  <h3 className="text-xl font-semibold text-foreground">{m.name}</h3>
+                  <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                    {m.role}
+                  </p>
+                </div>
+              </div>
+              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{m.bio}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-6 text-sm text-muted-foreground">
+          Backed by four more senior engineers with deep ERP and EPM experience.
+        </p>
       </Section>
 
       <Section>

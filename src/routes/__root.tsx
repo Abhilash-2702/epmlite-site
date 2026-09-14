@@ -9,26 +9,62 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { PageShell } from "@/components/page-shell";
+import { SOCIAL_SAME_AS } from "@/lib/social";
 
+// Where a visitor who hit a dead URL most likely wanted to go. Kept short on
+// purpose - a 404 that dumps the whole sitemap is just another dead end.
+const NOT_FOUND_LINKS: { to: string; label: string; blurb: string }[] = [
+  { to: "/system", label: "The System", blurb: "Eight EPM modules collapsed into five." },
+  { to: "/products", label: "Products", blurb: "Every pillar, on one data foundation." },
+  { to: "/pricing", label: "Pricing", blurb: "How engagements are scoped and quoted." },
+  { to: "/blog", label: "Blog", blurb: "Practical FP&A patterns, no fluff." },
+  { to: "/sitemap", label: "Site map", blurb: "Every page on the site." },
+  { to: "/contact", label: "Contact", blurb: "Reply within one business day." },
+];
+
+// The old 404 was a bare centred block with no header, footer or navigation -
+// a dead end for anyone who landed on a stale link. It now renders inside the
+// standard shell so the nav, footer and these links are all reachable.
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
+    <PageShell>
+      <section className="relative mx-auto max-w-[1400px] px-6 lg:px-10 pt-40 pb-16">
+        <div className="max-w-3xl">
+          <span className="chip">
+            <span className="chip-dot" />
+            404
+          </span>
+          <h1 className="mt-8 text-4xl lg:text-6xl font-semibold tracking-tight leading-[1.05]">
+            That page isn't here.
+            <br />
+            <span className="text-gradient-gold">Here's what is.</span>
+          </h1>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            The link may be out of date, or the page may have moved as the site was rebuilt.
+            Nothing is lost - pick up from one of these.
+          </p>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section className="relative mx-auto max-w-[1400px] px-6 lg:px-10 pb-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {NOT_FOUND_LINKS.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className="block surface-card p-5 hover:border-gold/40 transition-colors group"
+            >
+              <span className="text-xs font-mono text-muted-foreground">{l.to}</span>
+              <h2 className="mt-1.5 font-semibold text-foreground group-hover:text-gold transition-colors">
+                {l.label}
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{l.blurb}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </PageShell>
   );
 }
 
@@ -90,6 +126,9 @@ const ORG_JSON_LD = {
     contactType: "sales",
     availableLanguage: "en",
   },
+  // Ties the official profiles to this entity. Must stay identical to the
+  // links the footer and /contact actually render (both read lib/social.ts).
+  sameAs: SOCIAL_SAME_AS,
   // TODO(NAP): add `address` (PostalAddress) and `telephone` here once the
   // registered address and phone are confirmed. They must match the footer
   // and the Google Business Profile character for character.

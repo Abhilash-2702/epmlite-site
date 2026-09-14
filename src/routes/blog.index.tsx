@@ -5,12 +5,16 @@ import { PageHero, Section } from "@/components/page-sections";
 import { POSTS, CATEGORY_LABEL } from "@/lib/posts";
 import { seo } from "@/lib/seo";
 
+// Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
+const CRUMBS = [{ name: "Blog", path: "/blog" }];
+
 export const Route = createFileRoute("/blog/")({
   head: () =>
     seo({
       title: "Blog — NashOS",
       description:
         "Practical FP&A patterns: cutting close cycles, picking forecast algorithms, and what driver-based planning actually means.",
+      breadcrumbs: CRUMBS,
       path: "/blog",
     }),
   component: BlogIndexPage,
@@ -19,8 +23,9 @@ export const Route = createFileRoute("/blog/")({
 function BlogIndexPage() {
   const sorted = [...POSTS].sort((a, b) => (a.date < b.date ? 1 : -1));
   return (
-    <PageShell>
+    <PageShell crumbs={CRUMBS}>
       <PageHero
+        tight
         eyebrow="Blog"
         title="FP&A patterns."
         highlight="No fluff."

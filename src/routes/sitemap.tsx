@@ -124,6 +124,31 @@ const GROUPS: { heading: string; caption: string; pages: SitePage[] }[] = [
         blurb: "Built around AI agents — not retrofitted with a chatbot.",
       },
       {
+        to: "/ai-agents-for-finance",
+        title: "AI agents for finance",
+        blurb: "35+ tools across Read, Plan, Forecast and Decide — and what keeps them safe.",
+      },
+      {
+        to: "/finance-automation-software",
+        title: "Finance automation software",
+        blurb: "Automating at the data layer instead of scripting the screen.",
+      },
+      {
+        to: "/ai-forecasting-software",
+        title: "AI forecasting software",
+        blurb: "15 algorithms compared on holdout windows — then lock the winner.",
+      },
+      {
+        to: "/cfo-ai-tools",
+        title: "CFO AI tools",
+        blurb: "How to evaluate AI in the finance stack: trust, audit, permissions.",
+      },
+      {
+        to: "/continuous-finance",
+        title: "Continuous finance",
+        blurb: "Planning, forecasting and close as an always-computed system.",
+      },
+      {
         to: "/for/saas",
         title: "For SaaS",
         blurb: "ARR, retention cohorts, and runway in one cube.",
@@ -199,6 +224,16 @@ const GROUPS: { heading: string; caption: string; pages: SitePage[] }[] = [
         to: "/blog/what-driver-based-planning-actually-means",
         title: "What driver-based planning actually means",
         blurb: "A worked example: one driver, one formula, 3 days of rework collapsed to 30 seconds.",
+      },
+      {
+        to: "/blog/agentic-ai-in-finance-explained",
+        title: "Agentic AI in finance, explained",
+        blurb: "What makes AI agentic, and what that means inside a finance system.",
+      },
+      {
+        to: "/blog/how-to-improve-forecast-accuracy",
+        title: "How to improve forecast accuracy",
+        blurb: "A six-step playbook, starting with measuring error properly.",
       },
       {
         to: "/resources",

@@ -9,7 +9,11 @@ import {
   CtaBand,
   type ComparisonRow,
 } from "@/components/page-sections";
+import { StickyCta } from "@/components/sticky-cta";
 import { seo } from "@/lib/seo";
+
+// Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
+const CRUMBS = [{ name: "Compare", path: "/products" }, { name: "vs Adaptive", path: "/vs/adaptive" }];
 
 export const Route = createFileRoute("/vs/adaptive")({
   head: () =>
@@ -17,6 +21,7 @@ export const Route = createFileRoute("/vs/adaptive")({
       title: "NashOS vs Workday Adaptive Planning",
       description:
         "AI-native FP&A built for the LLM era. 35+ tools, 15 forecast algorithms, hours-not-months setup vs Workday Adaptive Planning.",
+      breadcrumbs: CRUMBS,
       path: "/vs/adaptive",
     }),
   component: VsAdaptivePage,
@@ -60,8 +65,9 @@ const CARDS = [
 
 function VsAdaptivePage() {
   return (
-    <PageShell>
+    <PageShell crumbs={CRUMBS}>
       <PageHero
+        tight
         eyebrow="NashOS vs Adaptive"
         title="AI-native planning,"
         highlight="without the Workday tax."
@@ -110,6 +116,7 @@ function VsAdaptivePage() {
         primaryCta={{ label: "Try with your data", to: "/try" }}
         secondaryCta={{ label: "Book a demo", to: "/demo" }}
       />
+      <StickyCta label="Book a demo" to="/demo" />
     </PageShell>
   );
 }

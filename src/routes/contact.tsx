@@ -4,12 +4,17 @@ import { PageShell } from "@/components/page-shell";
 import { PageHero, Section, FaqList } from "@/components/page-sections";
 import { seo } from "@/lib/seo";
 
+// Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
+const CRUMBS = [{ name: "Contact", path: "/contact" }];
+import { SocialLinks } from "@/components/social-links";
+
 export const Route = createFileRoute("/contact")({
   head: () =>
     seo({
       title: "Contact — NashOS",
       description:
         "Send us a note, book a 15-min demo, or write directly to admin@nashos.ai.",
+      breadcrumbs: CRUMBS,
       path: "/contact",
     }),
   component: ContactPage,
@@ -31,8 +36,9 @@ const FAQ = [
 
 function ContactPage() {
   return (
-    <PageShell>
+    <PageShell crumbs={CRUMBS}>
       <PageHero
+        tight
         eyebrow="Contact"
         title="Tell us what you're"
         highlight="trying to do."
@@ -82,6 +88,16 @@ function ContactPage() {
               </p>
             </div>
           </a>
+        </div>
+      </Section>
+
+      <Section>
+        <div className="max-w-3xl">
+          <h2 className="text-2xl font-semibold mb-3">Follow along</h2>
+          <p className="text-sm text-muted-foreground">
+            Product updates, FP&amp;A patterns, and what we ship each week.
+          </p>
+          <SocialLinks className="mt-5" />
         </div>
       </Section>
 

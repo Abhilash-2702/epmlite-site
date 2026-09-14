@@ -9,7 +9,11 @@ import {
   CtaBand,
   type ComparisonRow,
 } from "@/components/page-sections";
+import { StickyCta } from "@/components/sticky-cta";
 import { seo } from "@/lib/seo";
+
+// Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
+const CRUMBS = [{ name: "Compare", path: "/products" }, { name: "vs Excel", path: "/vs/excel" }];
 
 export const Route = createFileRoute("/vs/excel")({
   head: () =>
@@ -17,6 +21,7 @@ export const Route = createFileRoute("/vs/excel")({
       title: "NashOS vs Excel",
       description:
         "When the spreadsheet stack stops scaling. AI-native FP&A with full audit trail, 15 forecast algorithms and multi-entity consolidation.",
+      breadcrumbs: CRUMBS,
       path: "/vs/excel",
     }),
   component: VsExcelPage,
@@ -60,8 +65,9 @@ const CARDS = [
 
 function VsExcelPage() {
   return (
-    <PageShell>
+    <PageShell crumbs={CRUMBS}>
       <PageHero
+        tight
         eyebrow="NashOS vs Excel"
         title="When the spreadsheet stack"
         highlight="stops scaling."
@@ -111,6 +117,7 @@ function VsExcelPage() {
         primaryCta={{ label: "Try with your data", to: "/try" }}
         secondaryCta={{ label: "Book a demo", to: "/demo" }}
       />
+      <StickyCta label="Book a demo" to="/demo" />
     </PageShell>
   );
 }

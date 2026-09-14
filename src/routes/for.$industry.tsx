@@ -1,4 +1,4 @@
-import { createFileRoute, useParams } from "@tanstack/react-router";
+import { createFileRoute, notFound, useParams } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { PageHero, Section, CtaBand } from "@/components/page-sections";
@@ -8,7 +8,7 @@ export const Route = createFileRoute("/for/$industry")({
   // Was one shared title across every industry. Each variant is a distinct
   // keyword page, so it needs its own title, description and canonical.
   head: ({ params }) => {
-    const ind = INDUSTRIES[params.industry];
+    const ind = getIndustry(params.industry);
     if (!ind) {
       return seo({
         title: "Built for your team — NashOS",
@@ -33,6 +33,13 @@ export const Route = createFileRoute("/for/$industry")({
         { name: ind.name, path: `/for/${params.industry}` },
       ],
     });
+  },
+  // Same soft-404 fix as /blog/$slug: an unknown industry used to render a
+  // "we haven't built this vertical yet" page with HTTP 200, so /for/<anything>
+  // was an indexable URL. Exact-key lookup also stops case variants
+  // (/for/SaaS) resolving as a second URL for the same page.
+  loader: ({ params }) => {
+    if (!getIndustry(params.industry)) throw notFound();
   },
   component: ForIndustry,
 });
@@ -160,9 +167,18 @@ const INDUSTRIES: Record<string, Industry> = {
   },
 };
 
+// Own-property lookup only. A bare INDUSTRIES[key] inherits Object.prototype,
+// so /for/constructor and /for/toString resolved to truthy values and rendered
+// with HTTP 200 instead of 404.
+function getIndustry(key: string): Industry | undefined {
+  return Object.prototype.hasOwnProperty.call(INDUSTRIES, key)
+    ? INDUSTRIES[key]
+    : undefined;
+}
+
 function ForIndustry() {
   const { industry } = useParams({ from: "/for/$industry" });
-  const known = INDUSTRIES[industry.toLowerCase()];
+  const known = getIndustry(industry);
   const pretty = industry
     .split("-")
     .map((s) => s.charAt(0).toUpperCase() + s.slice(1))

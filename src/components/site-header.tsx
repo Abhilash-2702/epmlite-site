@@ -26,6 +26,17 @@ export function SiteHeader() {
   const { pathname } = useLocation();
   const onHome = pathname === "/";
   const [open, setOpen] = useState(false);
+  // The header used to be absolute, so nav and the Try CTA scrolled away and
+  // never came back on these long pages. It is fixed now; it stays transparent
+  // over the hero and only paints a background once the page has scrolled.
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Lock scroll when mobile menu open
   useEffect(() => {
@@ -47,7 +58,13 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-30">
+    <header
+      className={`fixed top-0 left-0 right-0 z-40 transition-colors duration-300 ${
+        scrolled || open
+          ? "bg-background/90 backdrop-blur-md border-b border-border/60"
+          : "border-b border-transparent"
+      }`}
+    >
       {/* Utility bar — direct contact above the fold on every page. */}
       <div className="border-b border-border/40 bg-background/70 backdrop-blur-sm">
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-2 flex items-center justify-between gap-4 text-xs">

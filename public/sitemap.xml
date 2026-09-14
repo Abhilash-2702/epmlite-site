@@ -14,7 +14,7 @@
 
   <url>
        <loc>https://nashos.ai/</loc>
-       <lastmod>2026-08-04</lastmod>
+       <lastmod>2026-08-01</lastmod>
        <priority>1.0000</priority>
   </url>
   <url>
@@ -34,32 +34,32 @@
   </url>
   <url>
        <loc>https://nashos.ai/products</loc>
-       <lastmod>2026-08-01</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/pricing</loc>
-       <lastmod>2026-08-18</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/calculator</loc>
-       <lastmod>2026-08-01</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/roadmap</loc>
-       <lastmod>2026-08-01</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/changelog</loc>
-       <lastmod>2026-08-01</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/demo</loc>
-       <lastmod>2026-08-01</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
@@ -69,87 +69,87 @@
   </url>
   <url>
        <loc>https://nashos.ai/contact</loc>
-       <lastmod>2026-08-01</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/vs/anaplan</loc>
-       <lastmod>2026-08-04</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/vs/adaptive</loc>
-       <lastmod>2026-08-04</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/vs/excel</loc>
-       <lastmod>2026-08-04</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/financial-close-software</loc>
-       <lastmod>2026-08-04</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/agentic-fpa-platform</loc>
-       <lastmod>2026-08-04</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/for/saas</loc>
-       <lastmod>2026-08-04</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/for/services</loc>
-       <lastmod>2026-08-04</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/for/consulting</loc>
-       <lastmod>2026-08-04</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/for/manufacturing</loc>
-       <lastmod>2026-08-04</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/for/hardware</loc>
-       <lastmod>2026-08-04</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/about</loc>
-       <lastmod>2026-08-01</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/careers</loc>
-       <lastmod>2026-08-01</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/partners</loc>
-       <lastmod>2026-08-01</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/blog</loc>
-       <lastmod>2026-08-01</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/resources</loc>
-       <lastmod>2026-08-01</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://nashos.ai/sitemap</loc>
-       <lastmod>2026-08-18</lastmod>
+       <lastmod>2026-09-14</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
@@ -165,6 +165,41 @@
   <url>
        <loc>https://nashos.ai/blog/what-driver-based-planning-actually-means</loc>
        <lastmod>2026-04-15</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://nashos.ai/finance-automation-software</loc>
+       <lastmod>2026-09-14</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://nashos.ai/ai-forecasting-software</loc>
+       <lastmod>2026-09-14</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://nashos.ai/ai-agents-for-finance</loc>
+       <lastmod>2026-09-14</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://nashos.ai/cfo-ai-tools</loc>
+       <lastmod>2026-09-14</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://nashos.ai/continuous-finance</loc>
+       <lastmod>2026-09-14</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://nashos.ai/blog/agentic-ai-in-finance-explained</loc>
+       <lastmod>2026-09-12</lastmod>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://nashos.ai/blog/how-to-improve-forecast-accuracy</loc>
+       <lastmod>2026-09-10</lastmod>
        <priority>0.6400</priority>
   </url>
 </urlset>

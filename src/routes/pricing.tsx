@@ -1,7 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SiteFooter } from "@/components/site-footer";
 import { seo } from "@/lib/seo";
+
+// Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
+const CRUMBS = [{ name: "Pricing", path: "/pricing" }];
 
 export const Route = createFileRoute("/pricing")({
   head: () =>
@@ -9,6 +13,7 @@ export const Route = createFileRoute("/pricing")({
       title: "Pricing — NashOS",
       description:
         "Pilot in days. Scale with confidence.",
+      breadcrumbs: CRUMBS,
       path: "/pricing",
     }),
   component: PricingPage,
@@ -45,12 +50,13 @@ function PricingPage() {
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-hidden">
       <SiteHeader />
+      <Breadcrumbs items={CRUMBS} />
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 right-[-10%] h-[600px] w-[600px] rounded-full"
         style={{ background: "var(--gradient-radial-gold)" }}
       />
-      <section className="relative mx-auto max-w-[1400px] px-6 lg:px-10 pt-40 pb-24">
+      <section className="relative mx-auto max-w-[1400px] px-6 lg:px-10 pt-8 pb-24">
         <div className="max-w-3xl">
           <span className="chip"><span className="chip-dot pulse-dot" />Pricing</span>
           <h1 className="mt-8 text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05]">

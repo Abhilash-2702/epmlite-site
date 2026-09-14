@@ -4,12 +4,16 @@ import { PageShell } from "@/components/page-shell";
 import { PageHero, Section, CtaBand } from "@/components/page-sections";
 import { seo } from "@/lib/seo";
 
+// Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
+const CRUMBS = [{ name: "ROI calculator", path: "/calculator" }];
+
 export const Route = createFileRoute("/calculator")({
   head: () =>
     seo({
       title: "ROI Calculator — NashOS",
       description:
         "Quantify the time and money your finance team would save with NashOS. Drag four sliders, see the answer in dollars.",
+      breadcrumbs: CRUMBS,
       path: "/calculator",
     }),
   component: CalculatorPage,
@@ -45,8 +49,9 @@ function CalculatorPage() {
   }, [headcount, closeDays, variancePackHours, salary]);
 
   return (
-    <PageShell>
+    <PageShell crumbs={CRUMBS}>
       <PageHero
+        tight
         eyebrow="ROI calculator"
         title="How much is your close cycle"
         highlight="costing you?"

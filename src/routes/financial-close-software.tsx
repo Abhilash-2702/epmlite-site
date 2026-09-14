@@ -12,12 +12,16 @@ import {
 } from "@/components/page-sections";
 import { seo } from "@/lib/seo";
 
+// Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
+const CRUMBS = [{ name: "Financial close software", path: "/financial-close-software" }];
+
 export const Route = createFileRoute("/financial-close-software")({
   head: () =>
     seo({
       title: "Financial Close Software — Close in 1 Day, Not 12 — NashOS",
       description:
         "Faster financial close software. NashOS collapses an 11-day month-end close to 1 day using an agentic AI layer, 15 forecast algorithms, and a 9-dim cube.",
+      breadcrumbs: CRUMBS,
       path: "/financial-close-software",
     }),
   component: FinancialCloseSoftwarePage,
@@ -101,8 +105,9 @@ const FAQ = [
 
 function FinancialCloseSoftwarePage() {
   return (
-    <PageShell>
+    <PageShell crumbs={CRUMBS}>
       <PageHero
+        tight
         eyebrow="Financial close automation"
         title="Close software, reimagined as Continuous Finance."
         lede={
