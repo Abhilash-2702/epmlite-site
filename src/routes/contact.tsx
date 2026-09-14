@@ -83,8 +83,13 @@ function ContactPage() {
               <p className="mt-1 text-sm text-muted-foreground">
                 We'll line up a walkthrough on your data.
               </p>
+              {/* This line used to read "Calendar link goes here once Calendly
+                  is set up." — a note to ourselves, published on a live page
+                  (2026-09 audit). The card has always opened a pre-addressed
+                  demo-request email, so it now says what actually happens.
+                  Swap in the scheduler link when one exists. */}
               <p className="mt-3 text-xs text-muted-foreground/80">
-                Calendar link goes here once Calendly is set up.
+                Tell us your timezone and we'll send times that suit.
               </p>
             </div>
           </a>

@@ -27,12 +27,12 @@ const EXAMPLES: { q: string; a: string; answer: Answer }[] = [
       tools: ["query_headcount_plan", "simulate_hires", "recompute_pnl", "recompute_cashflow"],
       headline: [
         { label: "Runway", value: 12.8, suffix: " mo" },
-        { label: "Q4 EBITDA", value: -1.1, prefix: "$", suffix: "M" },
+        { label: "EBITDA impact", value: -1.1, prefix: "$", suffix: "M" },
       ],
       summary:
-        "Adds ~$1.1M fully-loaded cost in Q4 (salary + benefits + equipment). Runway compresses by 1.4 months vs base; cash EoY lands at $42.6M. Within board-approved hiring envelope.",
+        "Adds ~$1.1M fully-loaded cost over the first twelve months (salary + benefits + equipment). Runway compresses by 1.4 months vs base; cash EoY lands at $42.6M. Within board-approved hiring envelope.",
       rows: [
-        { label: "Payroll Δ (Q3→Q4)", value: "+$0.95M", pct: 72, tone: "neg" },
+        { label: "Payroll Δ (first 12 mo)", value: "+$0.95M", pct: 72, tone: "neg" },
         { label: "Onboarding + equip", value: "+$0.15M", pct: 18, tone: "neg" },
         { label: "Runway Δ", value: "−1.4 mo", pct: 56, tone: "neg" },
         { label: "Capacity Δ (eng-mo)", value: "+12.5", pct: 62, tone: "pos" },

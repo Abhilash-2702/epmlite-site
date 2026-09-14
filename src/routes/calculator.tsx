@@ -19,10 +19,17 @@ export const Route = createFileRoute("/calculator")({
   component: CalculatorPage,
 });
 
+// Money, including a negative one. Every branch used to assume n >= 0, so a
+// point of view where NashOS costs more than it saves — reachable on the
+// minimum sliders: 4 close days, 4 variance-pack hours, 1 person, $60k —
+// rendered its headline as "$-5135" (2026-09 audit). The sign goes outside
+// the symbol, and thousands are grouped.
 function fmt(n: number): string {
-  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000) return `$${(n / 1_000).toFixed(0)}k`;
-  return `$${n.toFixed(0)}`;
+  const sign = n < 0 ? "-" : "";
+  const v = Math.abs(n);
+  if (v >= 1_000_000) return `${sign}$${(v / 1_000_000).toFixed(1)}M`;
+  if (v >= 1_000) return `${sign}$${(v / 1_000).toFixed(0)}k`;
+  return `${sign}$${Math.round(v).toLocaleString("en-US")}`;
 }
 
 function CalculatorPage() {
