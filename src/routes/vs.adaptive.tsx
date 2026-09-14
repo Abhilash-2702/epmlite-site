@@ -54,7 +54,7 @@ const CARDS = [
   {
     title: "No Workday lock-in required",
     body:
-      "If you're not on Workday HCM, Adaptive's biggest integration advantage doesn't apply. NashOS stays integration-agnostic — REST/SFTP/Excel/CSV today, with NetSuite + QuickBooks on the roadmap.",
+      "If you're not on Workday HCM, Adaptive's biggest integration advantage doesn't apply. NashOS stays integration-agnostic — REST/SFTP/Excel/CSV self-serve today, with the SAP and NetSuite engines built and set up with you, and QuickBooks on the roadmap.",
   },
   {
     title: "Pricing that lets a 30-person company actually buy it",

@@ -89,7 +89,7 @@ const FAQ = [
   {
     question: "Does it integrate with NetSuite or QuickBooks?",
     answer:
-      "Today: REST APIs, SFTP, Excel, and CSV connectors are production-ready. Native NetSuite and QuickBooks connectors are on the near-term roadmap. Until those ship, NetSuite and QuickBooks customers connect via REST or scheduled CSV exports.",
+      "Today: REST APIs, SFTP, Excel and CSV connectors are self-serve and production-ready, and inbound pulls can be scheduled hourly, nightly or weekly. The SAP (OData) and NetSuite (SuiteQL) engines are built and tested, but setting one up is still something we do with you rather than a self-serve screen. QuickBooks connects via REST until a native adapter lands.",
   },
   {
     question: "How long does finance automation software take to set up?",

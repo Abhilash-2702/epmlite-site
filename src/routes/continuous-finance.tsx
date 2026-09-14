@@ -68,7 +68,7 @@ const SECTION_2 = [
     meta: "REST · SFTP · CSV · Excel",
     title: "Connectors on schedule",
     body:
-      "Syncs from REST APIs and SFTP run on schedule, not on a close deadline. CSV and Excel uploads land in the same cube; the onboarding wizard auto-maps P&L and GL uploads into accounts. Native NetSuite and QuickBooks connectors are on the near-term roadmap.",
+      "Syncs from REST APIs and SFTP run on schedule, not on a close deadline. CSV and Excel uploads land in the same cube; the onboarding wizard auto-maps P&L and GL uploads into accounts. The SAP and NetSuite engines are built and tested; we set those up with you today rather than from a self-serve screen.",
   },
   {
     Icon: Gauge,

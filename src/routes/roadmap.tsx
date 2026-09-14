@@ -33,11 +33,6 @@ const NOW: Item[] = [
       "Admin-gated review before chat writes commit. The draft sits in a queue; an approver reviews + posts.",
   },
   {
-    title: "Designer (drag-drop dashboards)",
-    body:
-      "Build custom executive dashboards by dragging fields into a canvas. No model-builder team required.",
-  },
-  {
     title: "Mobile-responsive product pass",
     body:
       "The product app gets the same mobile polish the marketing site already has. Board-meeting ready on iPad.",
@@ -46,9 +41,9 @@ const NOW: Item[] = [
 
 const NEXT: Item[] = [
   {
-    title: "NetSuite + QuickBooks connectors",
+    title: "Self-serve NetSuite + QuickBooks setup",
     body:
-      "Native bidirectional sync. Pull trial balance and chart of accounts on schedule; push journal drafts back when ready.",
+      "The NetSuite SuiteQL engine is built and tested. What is left is self-serve setup: an ERP pull has to supply scenario, version and year as constants, and the connector mapping screen cannot express those yet — so today an ERP connector is something we configure with you. QuickBooks stays REST-based until a native adapter lands.",
   },
   {
     title: "Multi-tenant SaaS hosting",

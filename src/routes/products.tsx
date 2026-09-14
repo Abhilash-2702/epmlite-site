@@ -40,7 +40,7 @@ const reporting = [
     Icon: BarChart3,
     title: "Executive Dashboard",
     body:
-      "Revenue, Gross Profit, EBITDA, Net Income, COGS, OPEX. Variance vs Budget on every card. Monthly trend, regional breakdown, P&L waterfall, cost-structure pie. Status badge surfaces above-plan / below-plan instantly.",
+      "Revenue, Gross Profit, EBITDA, Net Income, COGS, OPEX. Variance vs Budget on every card. Monthly trend, regional breakdown, P&L waterfall, cost-structure pie. Or build your own in Designer — drag fields onto a canvas for custom dashboards and data-entry forms, no model-builder team required.",
   },
   {
     Icon: FileSpreadsheet,
@@ -91,7 +91,7 @@ const operations = [
     Icon: Plug,
     title: "Connectors",
     body:
-      "Inbound + outbound. Real drivers: REST · SFTP · Excel · CSV. Stub-ready: Oracle · SAP · ODBC. Run history, connection testing, scheduled runs.",
+      "Inbound + outbound. Self-serve today: REST · SFTP · Excel · CSV — with scheduled pulls (hourly, nightly or weekly), connection testing and full run history on every run. The SAP (OData), NetSuite (SuiteQL), Oracle and ODBC engines are built and tested, but setting one up still needs us — ask if you need one.",
   },
   {
     Icon: ShieldCheck,

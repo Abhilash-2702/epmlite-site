@@ -44,7 +44,7 @@ export const HOME_FAQ: Faq[] = [
   {
     question: "Which systems does NashOS connect to?",
     answer:
-      "REST APIs, SFTP, Excel and CSV connectors are production-ready and validated on every run, with full run history. Native NetSuite and QuickBooks connectors are on the near-term roadmap; until those ship, those customers connect via REST or scheduled exports.",
+      "REST APIs, SFTP, Excel and CSV connectors are self-serve and production-ready, validated on every run with full run history, and inbound pulls can be scheduled hourly, nightly or weekly. The SAP (OData) and NetSuite (SuiteQL) engines are built and tested, but setting one up is still something we do with you rather than a self-serve screen. QuickBooks connects via REST until a native adapter lands.",
   },
   {
     question: "What does NashOS cost?",
@@ -168,12 +168,13 @@ export function HomeContentSection() {
             },
             {
               h: "What it connects to",
-              lead: "REST APIs, SFTP, Excel and CSV are production-ready today, validated on every run.",
+              lead: "REST APIs, SFTP, Excel and CSV are self-serve and production-ready today, validated on every run.",
               body: (
                 <>
-                  Every connector run keeps full history. Native ERP connectors are on the
-                  near-term roadmap; until they ship, NetSuite and QuickBooks customers connect via
-                  REST or scheduled exports.
+                  Every connector run keeps full history, and inbound pulls can be scheduled
+                  hourly, nightly or weekly. The SAP and NetSuite engines are built and tested —
+                  we set those up with you today rather than from a self-serve screen. QuickBooks
+                  connects via REST until a native adapter lands.
                 </>
               ),
             },
