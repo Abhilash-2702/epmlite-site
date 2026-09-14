@@ -1,87 +1,92 @@
-# robots.txt — nashos.ai
-# All search engines and AI crawlers are welcome.
-#
-# NOTE: a crawler obeys only its most specific matching group and ignores `*`.
-# The named groups below therefore RE-STATE the allow-all policy per bot; if a
-# Disallow is ever added under `*`, it must be copied into every named group.
+# robots.txt for https://nashos.ai/
+# Standard web crawlers: allowed. Only non-public/app routes are disallowed.
+# AI/LLM crawlers: explicitly allowed for AEO/GEO (answer engine & generative engine optimization),
+# so NashOS content can be indexed, cited, and summarized by AI assistants and answer engines.
 
-# Default: allow everyone
 User-agent: *
 Allow: /
+Disallow: /sign-in
+Disallow: /api/
+Disallow: /*?*utm_
+Disallow: /*?*session
 
-# --- Google ---
-User-agent: Googlebot
-Allow: /
+# NOTE: /try and /demo were previously disallowed here. Both are commercially
+# important, are listed in the sitemap, and are intended to be indexed —
+# removed from Disallow per client review (email, [DATE]).
 
-User-agent: Googlebot-Image
-Allow: /
+# ------------------------------------------------------------------
+# AI assistants / answer engines / GEO crawlers — explicitly allowed
+# ------------------------------------------------------------------
 
-User-agent: Googlebot-News
-Allow: /
-
-# Gemini / AI training + grounding
-User-agent: Google-Extended
-Allow: /
-
-# --- Bing / Copilot ---
-User-agent: Bingbot
-Allow: /
-
-# --- DuckDuckGo ---
-User-agent: DuckDuckBot
-Allow: /
-
-# --- OpenAI ---
 User-agent: GPTBot
-Allow: /
-
-User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-# --- Anthropic ---
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Claude-SearchBot
+User-agent: Claude-Web
 Allow: /
 
-User-agent: Claude-User
+User-agent: anthropic-ai
 Allow: /
 
-# --- Perplexity ---
 User-agent: PerplexityBot
 Allow: /
 
 User-agent: Perplexity-User
 Allow: /
 
-# --- Common Crawl ---
-User-agent: CCBot
+User-agent: GoogleOther
 Allow: /
 
-# --- Meta AI ---
-User-agent: FacebookBot
+User-agent: Google-Extended
 Allow: /
 
-User-agent: meta-externalagent
-Allow: /
-
-# --- Amazon ---
-User-agent: Amazonbot
-Allow: /
-
-# --- ByteDance ---
-User-agent: Bytespider
-Allow: /
-
-# --- Apple ---
 User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
+User-agent: Bingbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# ------------------------------------------------------------------
+# Sitemap
+# ------------------------------------------------------------------
+# Only the machine-readable XML sitemap is declared here. /sitemap is the
+# human-readable HTML sitemap page (a normal indexable page, not a sitemap
+# file) and has been removed from this directive — declaring it as a
+# Sitemap: target is invalid per the sitemaps.org protocol.
+
 Sitemap: https://nashos.ai/sitemap.xml
+
+# llms.txt / llms-full.txt provide a curated, structured summary of this
+# site's content specifically for LLMs and AI answer engines (see
+# https://llmstxt.org for the emerging convention).
+# llms.txt: https://nashos.ai/llms.txt
+# llms-full.txt: https://nashos.ai/llms-full.txt

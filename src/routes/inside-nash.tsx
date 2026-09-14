@@ -42,6 +42,7 @@ export const Route = createFileRoute("/inside-nash")({
       type: "article",
       faq: FAQ,
       breadcrumbs: CRUMBS,
+      webPage: true,
     }),
   component: InsideNashPage,
 });

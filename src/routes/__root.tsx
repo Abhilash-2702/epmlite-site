@@ -107,12 +107,17 @@ const WEBSITE_JSON_LD = {
 const SOFTWARE_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
+  // @id added so page-level WebPage nodes can point `about` at this entity
+  // instead of repeating it (SEO package, 2026-09-09).
+  "@id": "https://nashos.ai/#software",
   name: "NashOS",
   applicationCategory: "BusinessApplication",
-  applicationSubCategory: "Financial Planning & Analysis",
+  applicationSubCategory: "FP&A Software",
   operatingSystem: "Web",
-  url: "https://nashos.ai",
+  url: "https://nashos.ai/",
   publisher: { "@id": "https://nashos.ai/#organization" },
+  description:
+    "Agentic FP&A software that runs planning, forecasting and close as one continuously computed system across a single data foundation - multi-entity, multi-currency, audit-ready.",
   featureList: [
     "Driver-based continuous planning",
     "Multi-entity, multi-currency consolidation",

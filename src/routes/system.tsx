@@ -49,6 +49,7 @@ export const Route = createFileRoute("/system")({
       type: "article",
       faq: FAQ,
       breadcrumbs: CRUMBS,
+      webPage: true,
     }),
   component: SystemPage,
 });

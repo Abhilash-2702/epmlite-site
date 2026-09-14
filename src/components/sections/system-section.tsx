@@ -10,6 +10,12 @@ const now = [
   { n: "3", t: "Draft → Commit", s: "~25s" },
 ];
 
+// Two DIFFERENT metrics live in this component and must never be presented
+// interchangeably (SEO package, 2026-09-09):
+//   1. Close cycle      — the end-to-end monthly process. 11 days -> 1 day,
+//                         canonical site-wide (user decision, 2026-08-04).
+//   2. Recompute time   — how long the model takes to settle after a driver
+//                         change. ~1 min. This is NOT a close-cycle claim.
 const impact = [
   { k: "Close cycle", from: "11 days", to: "1 day", note: "Compressed from ~11 days to ~1 day." },
   { k: "Variance analysis", from: "40 hours", to: "90 min", note: "Variance pack in ~90 mins." },
@@ -19,7 +25,7 @@ const impact = [
 
 const STEPS = [
   { n: "01", label: "Collapse", tag: "8 modules → 5 systems" },
-  { n: "02", label: "Compression", tag: "14 days → 1 minute" },
+  { n: "02", label: "Compression", tag: "Driver change → recomputed" },
   { n: "03", label: "Impact", tag: "Cycles → continuous" },
 ] as const;
 
@@ -399,7 +405,7 @@ function CompressionStep({ prm }: { prm: boolean }) {
       {/* Animated compression bar */}
       <div className="mt-7 rounded-2xl border border-border bg-card/40 p-5">
         <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider">
-          <span className="text-muted-foreground">Time to decision</span>
+          <span className="text-muted-foreground">Driver change → recomputed model</span>
           <span className="text-gold tabular-nums">~10–14d → ~1 min</span>
         </div>
         <div className="relative mt-3 h-2 rounded-full bg-card/60 border border-border overflow-hidden">
@@ -409,8 +415,8 @@ function CompressionStep({ prm }: { prm: boolean }) {
           />
         </div>
         <div className="mt-1.5 flex justify-between text-[10px] font-mono text-muted-foreground">
-          <span>~14 days</span>
-          <span className="text-gold">~1 min</span>
+          <span>~10–14 days of rework</span>
+          <span className="text-gold">~1 min recompute</span>
         </div>
       </div>
 

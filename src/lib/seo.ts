@@ -36,6 +36,12 @@ type SeoInput = {
   faq?: Faq[];
   /** Emits BreadcrumbList. Home is prepended automatically. */
   breadcrumbs?: Crumb[];
+  /**
+   * Emits a WebPage node tying this page to the site-wide WebSite and
+   * SoftwareApplication entities (SEO package, 2026-09-09). Pass a string to
+   * also declare the page's target audience, e.g. "CFOs".
+   */
+  webPage?: boolean | string;
   /** Keep the page out of the index (thin or duplicate pages). */
   noindex?: boolean;
 };
@@ -48,6 +54,7 @@ export function seo({
   type = "website",
   faq,
   breadcrumbs,
+  webPage = false,
   noindex = false,
 }: SeoInput) {
   const url = absoluteUrl(path);
@@ -99,12 +106,35 @@ export function seo({
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
+        // @id lets the WebPage node below point `breadcrumb` here rather than
+        // inlining a second copy of the same trail.
+        "@id": `${url}#breadcrumb`,
         itemListElement: trail.map((c, i) => ({
           "@type": "ListItem",
           position: i + 1,
           name: c.name,
           item: absoluteUrl(c.path),
         })),
+      }),
+    });
+  }
+
+  if (webPage) {
+    scripts.push({
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: title,
+        description,
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        about: { "@id": `${SITE_URL}/#software` },
+        ...(typeof webPage === "string"
+          ? { audience: { "@type": "Audience", audienceType: webPage } }
+          : {}),
+        ...(breadcrumbs?.length ? { breadcrumb: { "@id": `${url}#breadcrumb` } } : {}),
       }),
     });
   }

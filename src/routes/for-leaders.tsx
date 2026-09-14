@@ -42,6 +42,8 @@ export const Route = createFileRoute("/for-leaders")({
       type: "article",
       faq: FAQ,
       breadcrumbs: CRUMBS,
+      // audienceType per the SEO package's /for-leaders WebPage node.
+      webPage: "CFOs",
     }),
   component: ForLeadersPage,
 });
