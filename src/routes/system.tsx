@@ -25,7 +25,7 @@ const FAQ: Faq[] = [
   {
     question: "What happens when we change the chart of accounts?",
     answer:
-      "Dimensions are file-driven, so a structural change is an edit rather than a rebuild. Dependent figures recompute from the same source; no scenario or report needs to be reconstructed.",
+      "Dimensions are metadata inside the model rather than structure compiled into it, so a change to the chart of accounts is an edit — made in the app or bulk-loaded from a CSV template — not a rebuild. Dependent figures recompute from the same source; no scenario or report needs to be reconstructed.",
   },
   {
     question: "Can we see how a number was produced?",

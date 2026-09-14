@@ -74,7 +74,7 @@ const ai = [
   },
   {
     Icon: TrendingUp,
-    title: "ML Forecasting · 15 algorithms",
+    title: "Forecasting · 15 algorithms",
     body:
       "Linear / Poly Regression, ARIMA / SARIMA, Ridge / Lasso, Random Forest, Gradient Boosting, Neural Net, Holt-Winters, Exponential Smoothing. R² / RMSE / MAE / MAPE per run. Compare 2–5 algos side-by-side and lock the winner.",
   },

@@ -48,11 +48,10 @@ function CalculatorPage() {
     const vpAnnual = vpHoursSavedPerCycle * 12 * hourlyRate;
 
     const totalAnnual = closeAnnual + vpAnnual;
-    const nashosCost = 6_000; // ~$500/mo Pro tier
-    const netSavings = totalAnnual - nashosCost;
-    const paybackMonths = netSavings > 0 ? Math.max(1, Math.round((nashosCost / totalAnnual) * 12)) : 0;
-
-    return { closeAnnual, vpAnnual, totalAnnual, nashosCost, netSavings, paybackMonths };
+    // NashOS is quoted per engagement across Pilot / Operate / Enterprise - there
+    // is no list price, so this model deliberately does not assume one. It shows
+    // gross recoverable effort; the quote gets subtracted in the conversation.
+    return { closeAnnual, vpAnnual, totalAnnual };
   }, [headcount, closeDays, variancePackHours, salary]);
 
   return (
@@ -114,10 +113,11 @@ function CalculatorPage() {
               Your annual savings
             </p>
             <div className="text-5xl font-bold tabular-nums text-gradient-gold">
-              {fmt(calc.netSavings)}
+              {fmt(calc.totalAnnual)}
             </div>
             <p className="mt-2 text-sm text-muted-foreground">
-              after subtracting NashOS at ~{fmt(calc.nashosCost)}/yr (Pro tier).
+              of finance time a year, before your NashOS quote. Pricing is scoped per
+              engagement — we will put a number against this on a call.
             </p>
 
             <hr className="my-6 border-border/60" />
@@ -125,21 +125,12 @@ function CalculatorPage() {
             <Row label="Close cycle savings" value={fmt(calc.closeAnnual)} />
             <Row label="Variance pack savings" value={fmt(calc.vpAnnual)} />
             <Row label="Total annual value" value={fmt(calc.totalAnnual)} />
-            <Row label="NashOS cost" value={`−${fmt(calc.nashosCost)}`} />
-
-            {calc.paybackMonths > 0 && (
-              <p className="mt-6 text-sm text-muted-foreground">
-                Payback in roughly{" "}
-                <span className="font-semibold text-foreground">
-                  {calc.paybackMonths} {calc.paybackMonths === 1 ? "month" : "months"}
-                </span>
-                .
-              </p>
-            )}
 
             <p className="mt-6 text-xs text-muted-foreground/80 italic">
-              Estimate only. Real savings depend on entity count, data hygiene, and how much of
-              the variance pack is automatable in your environment.
+              Estimate only, and a model rather than a measured result — it uses your inputs
+              and our assumptions about what is automatable. Real recovery depends on entity
+              count, data hygiene, and how much of the variance pack applies in your
+              environment. NashOS is quoted per engagement, so no licence cost is assumed here.
             </p>
           </div>
         </div>
