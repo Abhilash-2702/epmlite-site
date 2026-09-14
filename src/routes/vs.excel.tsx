@@ -30,10 +30,10 @@ export const Route = createFileRoute("/vs/excel")({
 const ROWS: ComparisonRow[] = [
   { label: "Setup time", nashos: "Hours", rival: "0 (already there)", winner: "rival" },
   { label: "Commercial model", nashos: "Quoted to your entity count and volume", rival: "$0–$22 (M365)", winner: "rival" },
-  { label: "AI agent", nashos: "35+ tools · plain-English read/write", rival: "Copilot bolt-on (read-only on data)", winner: "nashos" },
+  { label: "AI agent", nashos: "43 tools · plain-English read/write", rival: "Copilot bolt-on (read-only on data)", winner: "nashos" },
   { label: "Forecast algorithms", nashos: "15 · one-click compare", rival: "Manual / add-in", winner: "nashos" },
   { label: "Audit trail", nashos: "Before/after JSON · per cell", rival: "OneDrive version history", winner: "nashos" },
-  { label: "Multi-entity consolidation", nashos: "Automated (9-dim cube)", rival: "Manual cross-sheet rebuilds", winner: "nashos" },
+  { label: "Multi-entity consolidation", nashos: "Automated (10-dim cube)", rival: "Manual cross-sheet rebuilds", winner: "nashos" },
   { label: "Variance investigation", nashos: "Seconds via chat", rival: "Hours of manual drill-down", winner: "nashos" },
   { label: "What-if scenarios", nashos: "Live slider · saves stack", rival: "Copy sheet, change inputs, hope", winner: "nashos" },
   { label: "Multi-user collaboration", nashos: "Concurrent · row-level RBAC", rival: "Sequential edits, conflict files", winner: "nashos" },

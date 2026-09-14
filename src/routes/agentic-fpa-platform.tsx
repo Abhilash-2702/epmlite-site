@@ -26,7 +26,7 @@ export const Route = createFileRoute("/agentic-fpa-platform")({
     seo({
       title: "Agentic FP&A Platform — NashOS",
       description:
-        "NashOS is the agentic FP&A platform built around AI agents — not retrofitted with a chatbot. 35+ tools, 15 forecast algorithms, draft-before-commit safety, full audit trail.",
+        "NashOS is the agentic FP&A platform built around AI agents — not retrofitted with a chatbot. 43 tools, 15 forecast algorithms, draft-before-commit safety, full audit trail.",
       breadcrumbs: CRUMBS,
       path: "/agentic-fpa-platform",
     }),
@@ -94,7 +94,7 @@ const FAQ = [
   {
     question: "What is an agentic FP&A platform?",
     answer:
-      "An agentic FP&A platform is built around AI agents for finance — software that can chain multiple tool calls, read and write financial data under the calling user's permissions, and carry a multi-step finance task through to a reviewable result — rather than a chatbot UI bolted onto a legacy planning tool. NashOS was built around agents from day one: 35+ tools cover ~99% of manual app actions, every write produces a draft for human review, and every action is audit-trailed.",
+      "An agentic FP&A platform is built around AI agents for finance — software that can chain multiple tool calls, read and write financial data under the calling user's permissions, and carry a multi-step finance task through to a reviewable result — rather than a chatbot UI bolted onto a legacy planning tool. NashOS was built around agents from day one: 43 tools cover the day-to-day work, every write produces a draft for human review, and every action is audit-trailed.",
   },
   {
     question: "How is this different from a chatbot in Anaplan or Adaptive?",
@@ -114,7 +114,7 @@ const FAQ = [
   {
     question: "What can agentic AI in finance actually do inside a planning model?",
     answer:
-      "Read fact tables, draft entries, run 15 forecast algorithms, commit writes through the draft queue, export reports as CSV/Excel/PDF, manage scenarios and what-ifs, query the audit log, manage drivers and formulas, and answer plain-English questions about the cube. 35+ tools cover ~99% of manual app actions.",
+      "Read fact tables, draft entries, run 15 forecast algorithms, commit writes through the draft queue, export reports as CSV/Excel/PDF, manage scenarios and what-ifs, query the audit log, manage drivers and formulas, and answer plain-English questions about the cube. 43 tools cover the day-to-day work.",
   },
   {
     question: "Can the agent handle multi-step tasks?",
@@ -134,7 +134,7 @@ function AgenticFpaPlatformPage() {
         lede={
           <>
             NashOS is the FP&amp;A platform designed around AI agents for finance from day one.
-            35+ agent tools cover ~99% of manual app actions. Every write is drafted, every
+            43 agent tools cover the day-to-day work. Every write is drafted, every
             action audit-trailed. The agentic alternative to Anaplan, Adaptive, and Excel.
           </>
         }
@@ -145,7 +145,7 @@ function AgenticFpaPlatformPage() {
       <Section>
         <SectionHeader
           title="How the agent layer is built"
-          caption="Most AI for FP&A today is a chatbot bolted onto a planning tool built long before tool-using models existed. NashOS inverted the design: the agent is the primary interface, traditional grids are the fallback. 35+ tools across four categories."
+          caption="Most AI for FP&A today is a chatbot bolted onto a planning tool built long before tool-using models existed. NashOS inverted the design: the agent is the primary interface, traditional grids are the fallback. 43 tools across four categories."
         />
         <CardGrid items={TOOL_CATEGORIES} cols={4} />
       </Section>

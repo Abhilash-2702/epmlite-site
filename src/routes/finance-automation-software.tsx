@@ -20,9 +20,9 @@ const CRUMBS = [{ name: "Finance automation", path: "/finance-automation-softwar
 const PROSE = [
   "Finance automation software runs the recurring work of a finance team — close, consolidation, variance analysis, reporting, planning — as software instead of late nights. The useful question is no longer whether to automate but at which layer. RPA bots and spreadsheet macros automate the screen: they replay clicks and cell references, and they break the day a layout changes. Agentic automation works at the data layer: an AI agent calls typed tools against a governed data model, drafts the result, and a human decides what posts.",
   "More of the close is automatable than most teams assume. Connector syncs from REST APIs, SFTP, Excel and CSV sources run on schedule, so trial balance lands without anyone exporting it by hand. Native NetSuite and QuickBooks connectors are on the near-term roadmap. Consolidation runs as computation — intercompany matching, non-controlling interests, dated ownership, period-average FX translation under IAS 21 — with a consolidation bridge and board pack as outputs. Variance movers are ranked by financial impact rather than eyeballed in a pivot. Reports export to CSV, Excel, or PDF from any view. Forecasting compares 15 algorithms on holdout windows using R², RMSE, MAE, and MAPE, and lets you pin the winner.",
-  "The agentic difference shows up when something changes. An RPA bot that scripts your ERP's export screen fails the day the export moves; a macro embeds its logic in a workbook nobody dares reopen. A NashOS agent reads and writes through the same computation path as the rest of the system — 35+ tools covering roughly 99% of manual app actions, across Read, Plan, Forecast, and Decide categories — so there is no screen to break. Change a driver and member formulas recompute the downstream lines through OPEX, EBITDA, and net income. Nothing gets re-recorded or re-scripted.",
+  "The agentic difference shows up when something changes. An RPA bot that scripts your ERP's export screen fails the day the export moves; a macro embeds its logic in a workbook nobody dares reopen. A NashOS agent reads and writes through the same computation path as the rest of the system — 43 tools covering the day-to-day work, across Read, Plan, Forecast, and Decide categories — so there is no screen to break. Change a driver and member formulas recompute the downstream lines through OPEX, EBITDA, and net income. Nothing gets re-recorded or re-scripted.",
   "Automation that writes to financial data has to be safe by construction, not by policy. Every agent write in NashOS produces a draft card a human must Post, and the backend re-validates before commit — the model never auto-mutates the database. Tool calls run with the calling user's permissions, enforced at the API layer; the LLM never holds credentials. Every mutation lands in the audit trail with actor, timestamp, and before/after JSON. And the agent streams its work live, so you can interrupt mid-task or hit the kill switch.",
-  "All of it runs on one data foundation — the 9-dimension cube described at /system — so automations compound instead of fragmenting into bots that each hold their own copy of the truth. That is how NashOS collapses an 11-day close cycle to 1 day and a 40-hour variance pack to 90 minutes. For the close specifically, see /financial-close-software; for the agent layer, /inside-nash; for the platform design, /agentic-fpa-platform. A pilot takes days, not months — and a walkthrough on your data happens within one business day.",
+  "All of it runs on one data foundation — the 10-dimension cube described at /system — so automations compound instead of fragmenting into bots that each hold their own copy of the truth. That is how NashOS collapses an 11-day close cycle to 1 day and a 40-hour variance pack to 90 minutes. For the close specifically, see /financial-close-software; for the agent layer, /inside-nash; for the platform design, /agentic-fpa-platform. A pilot takes days, not months — and a walkthrough on your data happens within one business day.",
 ];
 
 const SECTION_1 = [
@@ -59,10 +59,10 @@ const SECTION_1 = [
 const SECTION_2 = [
   {
     Icon: FileEdit,
-    meta: "35+ typed tools",
+    meta: "43 typed tools",
     title: "Tools, not screen scripts",
     body:
-      "RPA breaks when a layout, export format, or field name changes. NashOS agents call 35+ typed tools against the data model, with permissions enforced at the API layer — so there is no screen to break.",
+      "RPA breaks when a layout, export format, or field name changes. NashOS agents call 43 typed tools against the data model, with permissions enforced at the API layer — so there is no screen to break.",
   },
   {
     Icon: Activity,
@@ -91,7 +91,7 @@ const FAQ = [
   {
     question: "What is finance automation software?",
     answer:
-      "Finance automation software runs recurring finance work — close, consolidation, variance analysis, reporting, and planning — as software rather than manual effort. Legacy approaches automate the screen with RPA bots and macros; agentic automation works at the data layer, where AI agents call typed tools against a governed data model. NashOS is the agentic kind: 35+ tools cover roughly 99% of manual app actions, and every write is drafted for human review.",
+      "Finance automation software runs recurring finance work — close, consolidation, variance analysis, reporting, and planning — as software rather than manual effort. Legacy approaches automate the screen with RPA bots and macros; agentic automation works at the data layer, where AI agents call typed tools against a governed data model. NashOS is the agentic kind: 43 tools cover the day-to-day work, and every write is drafted for human review.",
   },
   {
     question: "How is agentic automation different from RPA?",
@@ -135,7 +135,7 @@ function Page() {
         eyebrow={"Finance automation"}
         title={"Finance automation software that won't break"}
         highlight={"when the layout changes."}
-        lede={"Most finance automation software scripts the screen — and breaks the day a layout changes. NashOS automates at the data layer instead: AI agents with 35+ typed tools draft close tasks and forecasts and rank variance movers by financial impact on one 9-dimension foundation, and a human posts every write."}
+        lede={"Most finance automation software scripts the screen — and breaks the day a layout changes. NashOS automates at the data layer instead: AI agents with 43 typed tools draft close tasks and forecasts and rank variance movers by financial impact on one 10-dimension foundation, and a human posts every write."}
         primaryCta={{ label: "Try with your data", to: "/try" }}
         secondaryCta={{ label: "Book a walkthrough", to: "/demo" }}
       />

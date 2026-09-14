@@ -20,7 +20,7 @@ export const Route = createFileRoute("/vs/adaptive")({
     seo({
       title: "NashOS vs Workday Adaptive Planning",
       description:
-        "AI-native FP&A built for the LLM era. 35+ tools, 15 forecast algorithms, hours-not-months setup vs Workday Adaptive Planning.",
+        "AI-native FP&A built for the LLM era. 43 tools, 15 forecast algorithms, hours-not-months setup vs Workday Adaptive Planning.",
       breadcrumbs: CRUMBS,
       path: "/vs/adaptive",
     }),
@@ -30,13 +30,13 @@ export const Route = createFileRoute("/vs/adaptive")({
 const ROWS: ComparisonRow[] = [
   { label: "Setup time", nashos: "Hours", rival: "3–6 months", winner: "nashos" },
   { label: "Commercial model", nashos: "Quoted to your entity count and volume", rival: "Six-figure annual contract", winner: "nashos" },
-  { label: "AI architecture", nashos: "Native · 35+ tools", rival: "Bolt-on assistant", winner: "nashos" },
+  { label: "AI architecture", nashos: "Native · 43 tools", rival: "Bolt-on assistant", winner: "nashos" },
   { label: "Forecast algorithms", nashos: "15 · side-by-side compare", rival: "2–3 traditional", winner: "nashos" },
   { label: "What-if scenarios", nashos: "Live slider · sub-second", rival: "Yes", winner: "draw" },
   { label: "Excel-like grids", nashos: "Yes (chat-first, grid fallback)", rival: "Yes (grid-first)", winner: "draw" },
   { label: "Workday HRIS integration", nashos: "Roadmap", rival: "Native", winner: "rival" },
   { label: "Audit trail", nashos: "Before/after JSON", rival: "Yes", winner: "draw" },
-  { label: "Multi-entity / currency", nashos: "9-dim cube", rival: "Yes", winner: "draw" },
+  { label: "Multi-entity / currency", nashos: "10-dim cube", rival: "Yes", winner: "draw" },
   { label: "Plain-English query", nashos: "Native chat agent", rival: "Limited", winner: "nashos" },
 ];
 

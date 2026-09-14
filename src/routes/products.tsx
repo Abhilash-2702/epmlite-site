@@ -28,7 +28,7 @@ export const Route = createFileRoute("/products")({
     seo({
       title: "Products & Platforms — NashOS",
       description:
-        "Nine product pillars — Reporting, Planning, AI, and Operations — backed by a 9-dimension cube.",
+        "Nine product pillars — Reporting, Planning, AI, and Operations — backed by a 10-dimension cube.",
       breadcrumbs: CRUMBS,
       path: "/products",
     }),
@@ -46,7 +46,7 @@ const reporting = [
     Icon: FileSpreadsheet,
     title: "P&L · Balance Sheet · Cash Flow",
     body:
-      "Drill from rollups (TOTAL_PL, TOTAL_BS, TOTAL_CF) to leaves. Multi-currency. CSV / Excel / PDF export from any view. Backed by a 9-dimension cube.",
+      "Drill from rollups (TOTAL_PL, TOTAL_BS, TOTAL_CF) to leaves. Multi-currency. CSV / Excel / PDF export from any view. Backed by a 10-dimension cube.",
   },
 ];
 
@@ -70,7 +70,7 @@ const ai = [
     Icon: Sparkles,
     title: "AI Agent",
     body:
-      'Plain-English chat with 35+ tools that cover ~99% of manual app actions. Ask: "What\'s our runway?" "Hire 3 engineers and show the impact." "Update JPY rate to 150." Every write produces a draft card. Nothing the LLM says auto-mutates the database.',
+      'Plain-English chat with 43 tools that cover the day-to-day work. Ask: "What\'s our runway?" "Hire 3 engineers and show the impact." "Update JPY rate to 150." Every write produces a draft card. Nothing the LLM says auto-mutates the database.',
   },
   {
     Icon: TrendingUp,

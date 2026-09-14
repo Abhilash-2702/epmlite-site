@@ -21,7 +21,7 @@ const PROSE = [
   "Continuous finance is an operating model in which planning, forecasting, and the financial close run as one continuously computed system on a single data foundation, rather than as separate batch cycles. Connectors land data on a schedule, the cube recomputes downstream numbers as inputs change, and reports read the current computed state. Under this model, close becomes verification instead of assembly, and planning becomes a standing state instead of a quarterly project.",
   "The batch model, by contrast, is defined by waits. Trial balance waits for an export. Reconciliation waits for regional adjustments. The variance pack waits for actuals to settle, then gets rebuilt in slides. The plan waits for the annual cycle, then goes stale the week it is approved. None of these waits are accounting requirements — they are artifacts of moving data by hand between systems that each hold a partial copy of the truth.",
   "This model removes the waits by removing the assembly. When connectors run on schedule, trial balance is in the cube before close starts, so close is checking numbers rather than building them — NashOS collapses an 11-day close cycle to 1 day. When the variance pack is assembled from the cube instead of rebuilt in slides, 40 hours becomes 90 minutes. When a driver changes, member formulas recompute the downstream lines, and the modelling loop collapses: 14 days → 1 minute.",
-  "NashOS is built as this model rather than adapted to it. Eight traditional EPM modules collapse into five systems on one 9-dimension cube — the architecture is laid out at /system. Connectors for REST APIs and SFTP sync on schedule; CSV and Excel uploads land in the same cube. AI agents operate the system through 35+ tools, every write goes through a draft a human must post, and every mutation is audit-trailed — multi-entity, multi-currency, and audit-ready by construction. More on the agent layer at /agentic-fpa-platform.",
+  "NashOS is built as this model rather than adapted to it. Eight traditional EPM modules collapse into five systems on one 10-dimension cube — the architecture is laid out at /system. Connectors for REST APIs and SFTP sync on schedule; CSV and Excel uploads land in the same cube. AI agents operate the system through 43 tools, every write goes through a draft a human must post, and every mutation is audit-trailed — multi-entity, multi-currency, and audit-ready by construction. More on the agent layer at /agentic-fpa-platform.",
 ];
 
 const SECTION_1 = [
@@ -58,10 +58,10 @@ const SECTION_1 = [
 const SECTION_2 = [
   {
     Icon: FileEdit,
-    meta: "9-dimension cube",
+    meta: "10-dimension cube",
     title: "One data foundation",
     body:
-      "Planning, forecasting, and close read and write the same 9-dimension cube. There is no export step between them, so there is nothing to go stale between them. The five-system architecture is laid out at /system.",
+      "Planning, forecasting, and close read and write the same 10-dimension cube. There is no export step between them, so there is nothing to go stale between them. The five-system architecture is laid out at /system.",
   },
   {
     Icon: Activity,
@@ -79,10 +79,10 @@ const SECTION_2 = [
   },
   {
     Icon: Layers,
-    meta: "35+ tools",
+    meta: "43 tools",
     title: "Agents with a paper trail",
     body:
-      "AI agents operate the system — 35+ tools covering ~99% of manual app actions — but every write produces a draft a human must post, and every mutation logs actor, timestamp, and before/after JSON. How Nash works under the hood: /inside-nash.",
+      "AI agents operate the system — 43 tools covering the day-to-day work — but every write produces a draft a human must post, and every mutation logs actor, timestamp, and before/after JSON. How Nash works under the hood: /inside-nash.",
   },
 ];
 
@@ -110,7 +110,7 @@ const FAQ = [
   {
     question: "How does NashOS implement continuous finance?",
     answer:
-      "NashOS runs planning, forecasting, and close as five systems on one 9-dimension cube — a consolidation of the eight modules a traditional EPM stack splits them into. Connectors for REST APIs and SFTP sync on schedule; drivers and member formulas keep downstream lines computed; and AI agents operate the system with draft-before-commit safety and a full audit trail on every mutation. The architecture is at /system, and the agent layer at /agentic-fpa-platform.",
+      "NashOS runs planning, forecasting, and close as five systems on one 10-dimension cube — a consolidation of the eight modules a traditional EPM stack splits them into. Connectors for REST APIs and SFTP sync on schedule; drivers and member formulas keep downstream lines computed; and AI agents operate the system with draft-before-commit safety and a full audit trail on every mutation. The architecture is at /system, and the agent layer at /agentic-fpa-platform.",
   },
 ];
 

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/vs/anaplan")({
     seo({
       title: "NashOS vs Anaplan \u2014 AI Forecasting Software Compared",
       description:
-        "Anaplan alternatives compared. AI-native FP&A in hours, not 6-month Anaplan implementations. 35+ tools and 15 forecast algorithms.",
+        "Anaplan alternatives compared. AI-native FP&A in hours, not 6-month Anaplan implementations. 43 tools and 15 forecast algorithms.",
       faq: FAQ,
       breadcrumbs: CRUMBS,
       path: "/vs/anaplan",
@@ -32,10 +32,10 @@ export const Route = createFileRoute("/vs/anaplan")({
 const ROWS: ComparisonRow[] = [
   { label: "Setup time", nashos: "Hours", rival: "6–9 months", winner: "nashos" },
   { label: "Commercial model", nashos: "Quoted to your entity count and volume", rival: "Six-figure annual contract", winner: "nashos" },
-  { label: "AI architecture", nashos: "Native · 35+ tools", rival: "Bolt-on copilot", winner: "nashos" },
+  { label: "AI architecture", nashos: "Native · 43 tools", rival: "Bolt-on copilot", winner: "nashos" },
   { label: "Forecast algorithms", nashos: "15 (compare side-by-side)", rival: "Limited / single-model", winner: "nashos" },
   { label: "What-if scenarios", nashos: "Live slider · sub-second", rival: "Yes (slower modeling)", winner: "nashos" },
-  { label: "Multi-entity / currency", nashos: "9-dim cube · built in", rival: "Yes", winner: "draw" },
+  { label: "Multi-entity / currency", nashos: "10-dim cube · built in", rival: "Yes", winner: "draw" },
   { label: "Audit trail", nashos: "Before/after JSON · per-mutation", rival: "Yes", winner: "draw" },
   { label: "Implementation team needed", nashos: "1 finance lead", rival: "Anaplan model builder team", winner: "nashos" },
   { label: "Plain-English query", nashos: "Native chat agent", rival: "Through partner add-ons", winner: "nashos" },

@@ -137,7 +137,7 @@ const INDUSTRIES: Record<string, Industry> = {
     fitPoints: [
       "Drivers per SKU: BOM_COST, SUPPLIER_PRICE_INDEX, YIELD_PCT, VOLUME — the plan is built on real unit economics.",
       "What-if a 5% supplier price hike across the top 3 components — see the gross margin impact in seconds.",
-      "9-dim cube tracks Entity × Product × Period — perfect fit for SKU-level reporting.",
+      "10-dim cube tracks Entity × Product × Period — perfect fit for SKU-level reporting.",
       "Connector to your ERP / MES pulls actual cost, yield, and volume; the cube handles the rest.",
     ],
     scenario:
@@ -159,7 +159,7 @@ const INDUSTRIES: Record<string, Industry> = {
     fitPoints: [
       "Drivers per SKU: BOM_COST, SUPPLIER_PRICE_INDEX, YIELD_PCT, VOLUME — the plan is built on real unit economics.",
       "What-if a 5% supplier price hike across the top 3 components — see the gross margin impact in seconds.",
-      "9-dim cube tracks Entity × Product × Period — perfect fit for SKU-level reporting.",
+      "10-dim cube tracks Entity × Product × Period — perfect fit for SKU-level reporting.",
       "Connector to your ERP / MES pulls actual cost, yield, and volume; the cube handles the rest.",
     ],
     scenario:
@@ -193,7 +193,7 @@ function ForIndustry() {
           highlight="yet."
           lede={
             <>
-              The 9-dim cube is industry-agnostic — it'll model {pretty.toLowerCase()} fine. Drop
+              The 10-dim cube is industry-agnostic — it'll model {pretty.toLowerCase()} fine. Drop
               us a note at{" "}
               <a href="mailto:admin@nashos.ai" className="text-gold hover:underline">
                 admin@nashos.ai

@@ -54,7 +54,7 @@ const GROUPS: { heading: string; caption: string; pages: SitePage[] }[] = [
       {
         to: "/products",
         title: "Products & Platforms",
-        blurb: "Nine product pillars — Reporting, Planning, AI, and Operations — on a 9-dimension cube.",
+        blurb: "Nine product pillars — Reporting, Planning, AI, and Operations — on a 10-dimension cube.",
       },
       {
         to: "/pricing",
@@ -100,7 +100,7 @@ const GROUPS: { heading: string; caption: string; pages: SitePage[] }[] = [
       {
         to: "/vs/adaptive",
         title: "NashOS vs Workday Adaptive",
-        blurb: "Built for the LLM era — 35+ tools, 15 forecast algorithms.",
+        blurb: "Built for the LLM era — 43 tools, 15 forecast algorithms.",
       },
       {
         to: "/vs/excel",
@@ -126,7 +126,7 @@ const GROUPS: { heading: string; caption: string; pages: SitePage[] }[] = [
       {
         to: "/ai-agents-for-finance",
         title: "AI agents for finance",
-        blurb: "35+ tools across Read, Plan, Forecast and Decide — and what keeps them safe.",
+        blurb: "43 tools across Read, Plan, Forecast and Decide — and what keeps them safe.",
       },
       {
         to: "/finance-automation-software",

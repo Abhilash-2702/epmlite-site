@@ -104,14 +104,14 @@ const stats = [
   {
     num: "9",
     label:
-      "Product pillars · Dashboard, P&L, BS, CF, Drivers, AI Chat, Forecasting, What-If, Alerts",
+      "Product pillars · Executive Dashboard, P&L/BS/CF, Driver-Based Planning, What-If Scenarios, AI Agent, ML Forecasting, Alerts, Connectors, Audit + RBAC",
   },
-  { num: "35+", label: "AI tools that cover ~99% of manual app actions in plain English" },
-  { num: "15", label: "ML forecasting algorithms — compare side-by-side, pick the winner" },
+  { num: "43", label: "AI tools that run the day-to-day work in plain English" },
+  { num: "15", label: "ML forecasting algorithms — compare side-by-side on R²/RMSE/MAE/MAPE" },
   {
-    num: "9-dim",
+    num: "10-dim",
     label:
-      "Cube · Entity × Account × Period × Scenario × Version × Currency × Year × Product × Department",
+      "Cube · Entity × Account × Period × Scenario × Version × Currency × Year × Product × Department × Intercompany Partner",
   },
 ];
 

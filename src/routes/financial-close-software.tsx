@@ -20,7 +20,7 @@ export const Route = createFileRoute("/financial-close-software")({
     seo({
       title: "Financial Close Software — Close in 1 Day, Not 12 — NashOS",
       description:
-        "Faster financial close software. NashOS collapses an 11-day month-end close to 1 day using an agentic AI layer, 15 forecast algorithms, and a 9-dim cube.",
+        "Faster financial close software. NashOS collapses an 11-day month-end close to 1 day using an agentic AI layer, 15 forecast algorithms, and a 10-dim cube.",
       breadcrumbs: CRUMBS,
       path: "/financial-close-software",
     }),
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/financial-close-software")({
 const STAT = [
   { num: "1 day", label: "Close cycle (vs 12 industry average)" },
   { num: "90 min", label: "Variance pack (vs 40 hours)" },
-  { num: "35+", label: "AI agent tools covering 99% of manual actions" },
+  { num: "43", label: "AI agent tools covering the day-to-day work" },
   { num: "15", label: "Forecast algorithms compared side-by-side" },
 ];
 
@@ -94,7 +94,7 @@ const FAQ = [
   {
     question: "How long does finance automation software take to set up?",
     answer:
-      "Hours, not months. Connect your trial balance (REST, SFTP, Excel, or CSV — or just paste it in), and the 9-dimension cube absorbs it. Most teams have a working Executive Summary the same day. A full driver-based plan with custom formulas is typically a 2-week onboarding with our team.",
+      "Hours, not months. Connect your trial balance (REST, SFTP, Excel, or CSV — or just paste it in), and the 10-dimension cube absorbs it. Most teams have a working Executive Summary the same day. A full driver-based plan with custom formulas is typically a 2-week onboarding with our team.",
   },
   {
     question: "Are CFO AI tools safe? Can the agent auto-write to my financial data?",
