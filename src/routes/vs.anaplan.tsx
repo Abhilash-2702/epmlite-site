@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import {
   PageHero,
@@ -19,9 +19,9 @@ const CRUMBS = [{ name: "Compare", path: "/products" }, { name: "vs Anaplan", pa
 export const Route = createFileRoute("/vs/anaplan")({
   head: () =>
     seo({
-      title: "NashOS vs Anaplan \u2014 AI Forecasting Software Compared",
+      title: "Anaplan Alternatives \u2014 NashOS vs Anaplan Compared",
       description:
-        "Anaplan alternatives compared. AI-native FP&A in hours, not 6-month Anaplan implementations. 43 tools and 15 forecast algorithms.",
+        "Anaplan alternatives compared. AI-native FP&A in hours, not 6-month Anaplan implementations. 44 tools and 15 forecast algorithms.",
       faq: FAQ,
       breadcrumbs: CRUMBS,
       path: "/vs/anaplan",
@@ -32,7 +32,7 @@ export const Route = createFileRoute("/vs/anaplan")({
 const ROWS: ComparisonRow[] = [
   { label: "Setup time", nashos: "Hours", rival: "6–9 months", winner: "nashos" },
   { label: "Commercial model", nashos: "Quoted to your entity count and volume", rival: "Six-figure annual contract", winner: "nashos" },
-  { label: "AI architecture", nashos: "Native · 43 tools", rival: "Bolt-on copilot", winner: "nashos" },
+  { label: "AI architecture", nashos: "Native · 44 tools", rival: "Bolt-on copilot", winner: "nashos" },
   { label: "Forecast algorithms", nashos: "15 (compare side-by-side)", rival: "Limited / single-model", winner: "nashos" },
   { label: "What-if scenarios", nashos: "Live slider · sub-second", rival: "Yes (slower modeling)", winner: "nashos" },
   { label: "Multi-entity / currency", nashos: "10-dim cube · built in", rival: "Yes", winner: "draw" },
@@ -89,9 +89,9 @@ function VsAnaplanPage() {
       <PageHero
         tight
         eyebrow="NashOS vs Anaplan"
-        title="The Anaplan model —"
-        highlight="without the 6-month implementation."
-        lede="Anaplan is excellent for Fortune 500s with full BPM teams. For everyone else, the implementation tax is the killer. NashOS gives you AI-native planning, drivers, and forecasting at mid-market price — live in your environment in hours."
+        title="Anaplan Alternatives"
+        subtitle="The Anaplan model — without the 6-month implementation."
+        lede="Anaplan is excellent for Fortune 500s with full BPM teams. For everyone else, the implementation tax is the killer. Among Anaplan alternatives, NashOS gives you AI-native planning, drivers, and forecasting at mid-market price — live in your environment in hours."
         primaryCta={{ label: "Try with your data", to: "/try" }}
         secondaryCta={{ label: "Book a walkthrough", to: "/demo" }}
       />
@@ -99,6 +99,47 @@ function VsAnaplanPage() {
       <Section>
         <SectionHeader title="Side-by-side" />
         <ComparisonTable rivalName="Anaplan" rows={ROWS} />
+      </Section>
+
+      <Section className="pt-0">
+        <SectionHeader
+          title="How to evaluate Anaplan alternatives"
+          caption="The feature grid rarely decides these projects. Four questions do."
+        />
+        <div className="max-w-3xl space-y-5 text-foreground/85 leading-relaxed">
+          <p>
+            Most Anaplan alternatives get compared on a grid of features, and the grid rarely
+            settles anything. Who operates the model day to day — a trained model builder, or the
+            finance lead who owns the numbers? How long until the first real report — a quarter,
+            or the same week? What is the commercial model — a six-figure annual contract, or a
+            quote against your entity count and volume? And what is the AI actually allowed to
+            do — describe the plan, or change it under review?
+          </p>
+          <p>
+            On those four, NashOS is built for the mid-market answer: a finance lead can have a
+            live workspace in hours and a pilot running in days rather than a quarter; planning,
+            reporting and consolidation sit on one
+            10-dimension cube rather than separate builds; pricing is quoted to your scale; and
+            the agent drafts writes that a person approves. Forecasting is its own comparison —
+            NashOS fits 15 algorithms and scores them on holdout error, covered in depth on the{" "}
+            <Link to="/ai-forecasting-software" className="text-gold hover:underline">
+              AI forecasting software
+            </Link>{" "}
+            page, with the practical playbook in{" "}
+            <Link
+              to="/blog/$slug"
+              params={{ slug: "how-to-improve-forecast-accuracy" }}
+              className="text-gold hover:underline"
+            >
+              how to improve forecast accuracy
+            </Link>
+            .
+          </p>
+          <p>
+            Anaplan remains the right answer for a Fortune 500 with a 20-person FP&amp;A team and a
+            dedicated model builder; the table above is where the two diverge.
+          </p>
+        </div>
       </Section>
 
       <Section>

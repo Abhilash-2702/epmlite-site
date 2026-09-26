@@ -21,7 +21,7 @@ const PROSE = [
   "Continuous finance is an operating model in which planning, forecasting, and the financial close run as one continuously computed system on a single data foundation, rather than as separate batch cycles. Connectors land data on a schedule, the cube recomputes downstream numbers as inputs change, and reports read the current computed state. Under this model, close becomes verification instead of assembly, and planning becomes a standing state instead of a quarterly project.",
   "The batch model, by contrast, is defined by waits. Trial balance waits for an export. Reconciliation waits for regional adjustments. The variance pack waits for actuals to settle, then gets rebuilt in slides. The plan waits for the annual cycle, then goes stale the week it is approved. None of these waits are accounting requirements — they are artifacts of moving data by hand between systems that each hold a partial copy of the truth.",
   "This model removes the waits by removing the assembly. When connectors run on schedule, trial balance is in the cube before close starts, so close is checking numbers rather than building them — NashOS collapses an 11-day close cycle to 1 day. When the variance pack is assembled from the cube instead of rebuilt in slides, 40 hours becomes 90 minutes. When a driver changes, member formulas recompute the downstream lines, and the modelling loop collapses: 14 days → 1 minute.",
-  "NashOS is built as this model rather than adapted to it. Eight traditional EPM modules collapse into five systems on one 10-dimension cube — the architecture is laid out at /system. Connectors for REST APIs and SFTP sync on schedule; CSV and Excel uploads land in the same cube. AI agents operate the system through 43 tools, every write goes through a draft a human must post, and every mutation is audit-trailed — multi-entity, multi-currency, and audit-ready by construction. More on the agent layer at /agentic-fpa-platform.",
+  "NashOS is built as this model rather than adapted to it. Eight traditional EPM modules collapse into five systems on one 10-dimension cube — the architecture is laid out at /system. Connectors for REST APIs and SFTP sync on schedule; CSV and Excel uploads land in the same cube. AI agents operate the system through 44 tools, every write goes through a draft a human must post, and every mutation is audit-trailed — multi-entity, multi-currency, and audit-ready by construction. More on the agent layer at /agentic-fpa-platform.",
 ];
 
 const SECTION_1 = [
@@ -79,10 +79,10 @@ const SECTION_2 = [
   },
   {
     Icon: Layers,
-    meta: "43 tools",
+    meta: "44 tools",
     title: "Agents with a paper trail",
     body:
-      "AI agents operate the system — 43 tools covering the day-to-day work — but every write produces a draft a human must post, and every mutation logs actor, timestamp, and before/after JSON. How Nash works under the hood: /inside-nash.",
+      "AI agents operate the system — 44 tools covering the day-to-day work — but every write produces a draft a human must post, and every mutation logs actor, timestamp, and before/after JSON. How Nash works under the hood: /inside-nash.",
   },
 ];
 
@@ -132,8 +132,8 @@ function Page() {
       <PageHero
         tight
         eyebrow={"Operating model"}
-        title={"Continuous finance, defined."}
-        highlight={"Always computed, never assembled."}
+        title="Continuous Finance"
+        subtitle="Defined: always computed, never assembled."
         lede={"Continuous finance is the operating model where planning, forecasting, and close run as one always-computed system instead of batch cycles. Connectors land data on schedule, the cube recomputes, and close becomes verification instead of assembly. NashOS is built as this model — five systems on one data foundation."}
         primaryCta={{ label: "Try with your data", to: "/try" }}
         secondaryCta={{ label: "Book a walkthrough", to: "/demo" }}

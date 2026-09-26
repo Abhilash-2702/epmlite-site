@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, Sparkles, ShieldCheck, FileSpreadsheet } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import {
@@ -18,9 +18,9 @@ const CRUMBS = [{ name: "Financial close software", path: "/financial-close-soft
 export const Route = createFileRoute("/financial-close-software")({
   head: () =>
     seo({
-      title: "Financial Close Software — Close in 1 Day, Not 12 — NashOS",
+      title: "Financial Close Automation Software — 1-Day Close | NashOS",
       description:
-        "Faster financial close software. NashOS collapses an 11-day month-end close to 1 day using an agentic AI layer, 15 forecast algorithms, and a 10-dim cube.",
+        "Financial close automation that collapses an 11-day close to 1 day: scheduled connectors, a variance pack built from the cube, audit trail by construction.",
       breadcrumbs: CRUMBS,
       path: "/financial-close-software",
     }),
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/financial-close-software")({
 const STAT = [
   { num: "1 day", label: "Close cycle (vs 12 industry average)" },
   { num: "90 min", label: "Variance pack (vs 40 hours)" },
-  { num: "43", label: "AI agent tools covering the day-to-day work" },
+  { num: "44", label: "AI agent tools covering the day-to-day work" },
   { num: "15", label: "Forecast algorithms compared side-by-side" },
 ];
 
@@ -99,7 +99,7 @@ const FAQ = [
   {
     question: "Are CFO AI tools safe? Can the agent auto-write to my financial data?",
     answer:
-      "No auto-writes. Every chat-driven mutation produces a draft that the user must Post to commit. The backend re-validates the draft on commit. Audit trail captures actor, timestamp, and full before/after JSON for every change. The LLM never writes to the database directly — every tool call is server-side authenticated.",
+      "No auto-writes. Every chat-driven mutation produces a draft that the user must Post to commit. The backend re-validates the draft on commit. Audit trail captures actor, timestamp, and before/after JSON for every row-level change; bulk loads are logged as attributed runs. The LLM never writes to the database directly — every tool call is server-side authenticated.",
   },
 ];
 
@@ -108,13 +108,14 @@ function FinancialCloseSoftwarePage() {
     <PageShell crumbs={CRUMBS}>
       <PageHero
         tight
-        eyebrow="Financial close automation"
-        title="Close software, reimagined as Continuous Finance."
+        eyebrow="Month-end close"
+        title="Financial Close Automation"
+        subtitle="An 11-day month-end close, collapsed to one."
         lede={
           <>
-            Multi-entity, multi-currency consolidation with audit trail by construction — not a
-            monthly fire drill. Continuous Finance means the close runs as a system rather
-            than a deadline. NashOS collapses an 11-day month-end close to 1 day.
+            Multi-entity, multi-currency consolidation with an audit trail by construction — not
+            a monthly fire drill. Financial close automation means the close runs as a system
+            rather than a deadline: NashOS collapses an 11-day month-end close to 1 day.
           </>
         }
         primaryCta={{ label: "Try with your data", to: "/try" }}
@@ -123,6 +124,33 @@ function FinancialCloseSoftwarePage() {
 
       <Section>
         <StatGrid items={STAT} cols={4} />
+      </Section>
+
+      <Section className="pt-0">
+        <SectionHeader
+          title="What financial close automation changes, week by week"
+          caption="It is not one feature. It is the removal of the wait states that make a close take eleven days."
+        />
+        <div className="max-w-3xl space-y-5 text-foreground/85 leading-relaxed">
+          <p>
+            The first wait is for data. Connectors pull the trial balance on a schedule — hourly,
+            nightly or weekly — so it is in the cube on day one rather than day five. The second
+            is reconciliation across entities and currencies, which runs as computation
+            (intercompany matching, non-controlling interests, period-average FX under IAS 21)
+            instead of as a spreadsheet exercise. The third is the variance pack, assembled from
+            the cube with movers ranked by financial impact rather than rebuilt in slides.
+          </p>
+          <p>
+            Because each of those steps leaves a record — every connector run logged, and
+            every single-row change with actor, timestamp and before-and-after values — sign-off
+            changes too: the reviewer opens a query, not a Slack thread. That is the operating
+            model we call{" "}
+            <Link to="/continuous-finance" className="text-gold hover:underline">
+              continuous finance
+            </Link>{" "}
+            — a close that is always current, verified at month-end rather than assembled there.
+          </p>
+        </div>
       </Section>
 
       <Section>

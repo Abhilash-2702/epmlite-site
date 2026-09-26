@@ -10,6 +10,7 @@ import {
   CtaBand,
 } from "@/components/page-sections";
 import { seo } from "@/lib/seo";
+import { TEAM, personId } from "@/lib/team";
 
 // Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
 const CRUMBS = [{ name: "About", path: "/about" }];
@@ -39,40 +40,9 @@ export const Route = createFileRoute("/about")({
 // E-E-A-T gap for a finance product: Google and AI answer engines both look
 // for who stands behind the claims. Bios are supplied by the founders.
 //
-// TODO(photos): headshots are not in the repo yet. Drop them in
-// src/assets/team/ and swap `initials` for an <img> when they land.
-type TeamMember = {
-  name: string;
-  role: string;
-  /** Shown until a real headshot exists. */
-  initials: string;
-  /**
-   * Public-folder path to the headshot, e.g. "/team/murali-reddy.jpg".
-   * Drop the file in Website/site/public/team/ and set this — the avatar and
-   * the Person.image in structured data both switch over. Left unset, the
-   * initials render instead, and no image URL is published to Google (a
-   * Person.image pointing at a 404 is worse than none). Square, >=400x400.
-   */
-  photo?: string;
-  bio: string;
-};
-
-const TEAM: TeamMember[] = [
-  {
-    name: "Murali Reddy",
-    role: "CEO",
-    initials: "MR",
-    bio:
-      "10+ years leading fintech product & platform teams. Scaled enterprise finance systems globally. Product architecture and systems thinking across AI and infrastructure.",
-  },
-  {
-    name: "Sooryah Pokkali",
-    role: "CBO",
-    initials: "SP",
-    bio:
-      "25+ years across telecom & hospitality. Scaled and exited a previous venture. Enterprise GTM, strategic partnerships, and operational scaling.",
-  },
-];
+// The records themselves live in lib/team.ts so blog bylines, /about and the
+// Person graph all read one source; drop headshots in public/team/ and set
+// `photo` there (see the TeamMember doc comment).
 
 // Person entries hang off the Organization node so the founders resolve as
 // entities tied to NashOS rather than as loose names on a page.
@@ -80,12 +50,13 @@ const TEAM_JSON_LD = {
   "@context": "https://schema.org",
   "@graph": TEAM.map((m) => ({
     "@type": "Person",
+    "@id": personId(m.id),
     name: m.name,
     jobTitle: m.role,
     description: m.bio,
     ...(m.photo ? { image: `https://nashos.ai${m.photo}` } : {}),
     worksFor: { "@id": "https://nashos.ai/#organization" },
-    url: "https://nashos.ai/about",
+    url: personId(m.id),
   })),
 };
 
@@ -116,7 +87,7 @@ const stats = [
     label:
       "Product pillars · Executive Dashboard, P&L/BS/CF, Driver-Based Planning, What-If Scenarios, AI Agent, Forecasting, Alerts, Connectors, Audit + RBAC",
   },
-  { num: "43", label: "AI tools that run the day-to-day work in plain English" },
+  { num: "44", label: "AI tools that run the day-to-day work in plain English" },
   { num: "15", label: "Forecasting algorithms — statistical, time-series and ML — compared on R²/RMSE/MAE/MAPE" },
   {
     num: "10-dim",
@@ -150,14 +121,14 @@ function AboutPage() {
         <CardGrid items={beliefs} cols={3} />
       </Section>
 
-      <Section>
+      <Section id="team" className="scroll-mt-32">
         <SectionHeader
           eyebrow="The team"
           title="Building the next-generation financial operating system."
         />
         <div className="grid gap-6 md:grid-cols-2">
           {TEAM.map((m) => (
-            <div key={m.name} className="surface-card p-7">
+            <div key={m.id} id={m.id} className="surface-card p-7 scroll-mt-32">
               <div className="flex items-center gap-4">
                 {m.photo ? (
                   <img

@@ -133,8 +133,8 @@ function Page() {
       <PageHero
         tight
         eyebrow={"The CFO's lens"}
-        title={"CFO AI tools that can"}
-        highlight={"prove every number."}
+        title="CFO AI tools"
+        subtitle="Tools that can prove every number."
         lede={"CFO AI tools should be judged on what they can prove, not what they can generate. The four questions that matter: is there an audit trail, does a human approve every write, whose permissions does the AI run on, and can you reconstruct what happened. NashOS was built to answer yes to all four — and to close the books in 1 day instead of 11."}
         primaryCta={{ label: "Try with your data", to: "/try" }}
         secondaryCta={{ label: "Book a walkthrough", to: "/demo" }}

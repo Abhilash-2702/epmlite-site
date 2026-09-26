@@ -22,7 +22,7 @@ const PROSE = [
   "The holdout window is the whole game. A model can trace your historical revenue perfectly and still know nothing about next quarter — that's overfitting, and training-fit metrics reward it. So judge models only on periods they never saw, and read MAPE as the headline: under 5% is excellent, 5–15% good, 15–30% workable, above 30% means the model isn't useful. Those bands are the honest answer to \"how accurate is it\" — accuracy is a property of your series, not of the software.",
   "The statistical-versus-ML debate mostly evaporates once you measure. Short, noisy series favor simple methods — linear regression, moving averages — because heavier models memorize noise and call it signal. Long, clean, seasonal series are where ARIMA and SARIMA tend to win. You don't have to pick a camp: shortlist the candidates, compare them side by side, and read the holdout column. That's also the difference from the single fitted curve legacy planning suites bolt on — the side-by-side comparison at /vs/anaplan covers it.",
   "Some series can't be forecast at all — a brand-new product line has no history, and no algorithm extrapolates from nothing. NashOS handles those with a driver-based hybrid: mark the inputs as drivers with a unit of measure (price, units, retention), write member formulas like SALARIES_ENG = HEADCOUNT_ENG × −10000, and let the math compose the line. When the new line accrues enough actuals, you can move it to the statistical bake-off like everything else.",
-  "The agent runs the same workflow. Forecasting is one of four tool categories — 8 of the 43 agent tools fit algorithms, compare metrics, lock winners, and run what-ifs — and every write lands as a draft a human must post, with the full audit trail behind it. Ask for a forecast in plain English; ratify the result. How the whole agent platform works is at /agentic-fpa-platform.",
+  "The agent runs the same workflow. Forecasting is one of four tool categories — the forecasting tools among the 44 fit algorithms, compare metrics, lock winners, and run what-ifs — and every write lands as a draft a human must post, with the full audit trail behind it. Ask for a forecast in plain English; ratify the result. How the whole agent platform works is at /agentic-fpa-platform.",
 ];
 
 const SECTION_1 = [
@@ -138,8 +138,8 @@ function Page() {
       <PageHero
         tight
         eyebrow={"AI forecasting"}
-        title={"AI forecasting software that shows its work."}
-        highlight={"15 algorithms. One honest scoreboard."}
+        title="AI Forecasting Software"
+        subtitle="Shows its work: 15 algorithms, one honest scoreboard."
         lede={"Most AI forecasting software asks you to trust a black box. NashOS fits 15 algorithms to your series, scores them on holdout MAPE / R² / RMSE, and locks the winner — the forecast that ships is the one that earned it. For series with no history, a driver-based plan takes over."}
         primaryCta={{ label: "Try with your data", to: "/try" }}
         secondaryCta={{ label: "Book a walkthrough", to: "/demo" }}

@@ -11,6 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import { PageShell } from "@/components/page-shell";
 import { SOCIAL_SAME_AS } from "@/lib/social";
+import { ORG_POSTAL_ADDRESS } from "@/lib/org";
 
 // Where a visitor who hit a dead URL most likely wanted to go. Kept short on
 // purpose - a 404 that dumps the whole sitemap is just another dead end.
@@ -129,9 +130,11 @@ const ORG_JSON_LD = {
   // Ties the official profiles to this entity. Must stay identical to the
   // links the footer and /contact actually render (both read lib/social.ts).
   sameAs: SOCIAL_SAME_AS,
-  // TODO(NAP): add `address` (PostalAddress) and `telephone` here once the
-  // registered address and phone are confirmed. They must match the footer
-  // and the Google Business Profile character for character.
+  // Registered office, from lib/org.ts — the footer and /contact render the
+  // same constant, so the three cannot drift. `telephone` is still pending a
+  // real, answered number (ORG_PHONE_E164); add it here and in the header
+  // together, matching any Google Business Profile character for character.
+  address: ORG_POSTAL_ADDRESS,
 };
 
 const WEBSITE_JSON_LD = {

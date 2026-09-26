@@ -2,15 +2,22 @@
 // MDX or a CMS. To add a post, append to POSTS — body uses double-newline for
 // paragraph breaks; the route renders each block as a <p>.
 
+import type { TeamMemberId } from "./team";
+
 export type PostCategory = "process" | "forecasting" | "concepts" | "playbooks";
 
 export type Post = {
   slug: string;
   title: string;
   description: string;
+  /** Published (ISO date). */
   date: string;
+  /** Last substantive edit (ISO date) — emitted as BlogPosting.dateModified. */
+  updated?: string;
   readingTimeMin: number;
   category: PostCategory;
+  /** Byline + BlogPosting.author; resolves against lib/team.ts. */
+  author: TeamMemberId;
   body: string;
 };
 
@@ -30,6 +37,7 @@ export const POSTS: Post[] = [
     date: "2026-04-30",
     readingTimeMin: 7,
     category: "process",
+    author: "sooryah-pokkali",
     body: `The median mid-market finance team takes 11 days to close the books. The benchmark teams do it in 4. The gap isn't software, it's the wait-states inside each phase.
 
 Phase 1 — Reconciliation (days 1–5). Most of this week is waiting for trial balance to land from the ERP, then waiting for adjustments from regional teams. The fix is continuous: connectors run on schedule, not on a deadline. Trial balance should land in your cube on day 1, not day 5. If reconciliation lives in a Slack thread, you've already lost.
@@ -48,6 +56,7 @@ Net: 4-day close. 90-minute variance pack. Same team, same software stack — di
     date: "2026-04-22",
     readingTimeMin: 9,
     category: "forecasting",
+    author: "murali-reddy",
     body: `Most FP&A forecasting in the wild is a linear trend with seasonal adjustments eyeballed by hand. That's fine for a stable business at 30% growth. It's not fine for a SaaS company growing 80% with a new product line and three pricing changes.
 
 The right algorithm depends on your series. A few rules of thumb:
@@ -70,6 +79,7 @@ The last move: lock the winner. NashOS lets you pin the best-performing algorith
     date: "2026-04-15",
     readingTimeMin: 6,
     category: "concepts",
+    author: "murali-reddy",
     body: `"Driver-based planning" is one of those phrases that gets tossed around in FP&A circles without a clear definition. Here's what it actually means in practice.
 
 A driver is any non-monetary input that, when changed, recomputes a downstream financial line. Headcount is a driver. Units sold is a driver. Bill rate is a driver. They're the things you control or assume; everything else (salaries, revenue, COGS) is computed from them.
@@ -86,12 +96,14 @@ The thing nobody tells you: driver-based planning isn't about modeling sophistic
   },
   {
     slug: "agentic-ai-in-finance-explained",
-    title: "Agentic AI in finance, explained",
+    title: "Agentic AI in Finance",
     description:
       "What agentic AI in finance actually means — tool use, multi-step loops, permissions — plus the safety primitives and a realistic adoption path.",
     date: "2026-09-12",
+    updated: "2026-09-26",
     readingTimeMin: 9,
     category: "concepts",
+    author: "murali-reddy",
     body: `"Agentic AI in finance" is on every vendor homepage this year, which is usually a sign that a term has stopped meaning anything. Underneath the fog there is a real, fairly precise distinction — and you can test for it in a live demo in minutes. Here is what "agentic" actually means, what it looks like inside a finance system, why finance needs a higher safety bar than other functions get away with, and how to adopt it without betting the ledger.
 
 Start with the baseline: a chatbot. A chatbot takes your question, consults what it knows — training data, plus maybe some documents you attached — and produces text. That is the whole loop. It can explain a variance methodology, summarize a lease policy, even reason about numbers you paste in. What it cannot do is touch your systems. It answers; it does not act. Most "AI in finance" shipped to date is exactly this: a text box bolted onto software that was never designed for a model to operate.
@@ -102,7 +114,7 @@ Loops second. Real finance work is rarely one step. "Why is gross margin down?" 
 
 Permissions third, and this is the part finance should care about most. An agent acts inside a system of record, so the question "acting as whom, allowed to do what?" needs a hard answer. In a sound design, every tool call runs under a specific user's identity with that user's access rights, enforced by the server — not by the model's own restraint. An agent whose limits live only in its prompt has no limits.
 
-Here is what those three properties look like against a real planning cube. Reads: fetch the trial balance, query fact tables, pull audit-log entries, list scenarios. Writes: update a headcount driver, write a member formula, create a scenario. Analysis: run forecast algorithms, compare error metrics on a holdout window, rank variance movers by financial impact instead of raw percentage. In NashOS — the worked example here, because it is the system we can describe precisely — the agent has 43 tools covering the day-to-day work in the app, across four categories: Read, Plan, Forecast and Decide. The grids are still there, but they are the fallback, not the primary interface.
+Here is what those three properties look like against a real planning cube. Reads: fetch the trial balance, query fact tables, pull audit-log entries, list scenarios. Writes: update a headcount driver, write a member formula, create a scenario. Analysis: run forecast algorithms, compare error metrics on a holdout window, rank variance movers by financial impact instead of raw percentage. In NashOS — the worked example here, because it is the system we can describe precisely — the agent has 44 tools covering the day-to-day work in the app, across four categories: Read, Plan, Forecast and Decide. The grids are still there, but they are the fallback, not the primary interface.
 
 Chaining is where an agent earns its keep. Take the request "Hire 3 engineers and show the runway impact." The agent updates the HEADCOUNT_ENG driver, a member formula recomputes engineering salaries, the runway forecast reruns, and the result renders as a card — each step streaming in as it happens, with the user ratifying the final commit. One sentence replaces what would otherwise be a run of grid edits and a manual model rerun. Nothing in that chain is exotic; every step is a capability the software already had. The agent's contribution is sequencing them correctly without being walked through it.
 
@@ -122,13 +134,15 @@ The takeaway is a three-question test you can run on any vendor, including us. O
   },
   {
     slug: "how-to-improve-forecast-accuracy",
-    title: "How to improve forecast accuracy in FP&A",
+    title: "How to Improve Forecast Accuracy",
     description:
-      "A six-step playbook to improve forecast accuracy: measure holdout MAPE, fix the data, decompose to drivers, pick algorithms empirically, reforecast on cadence.",
+      "How to improve forecast accuracy: measure holdout MAPE, fix the data, decompose to drivers, pick algorithms empirically, reforecast on cadence.",
     date: "2026-09-10",
+    updated: "2026-09-26",
     readingTimeMin: 8,
     category: "forecasting",
-    body: `Most attempts to improve forecast accuracy start in the wrong place: the model. A team swaps its linear trend for something more sophisticated, the fit on historical data looks better, and next quarter the miss is the same size as last quarter's. That's because accuracy isn't a model property — it's a process property. The model is step four of six. Here's the playbook, in the order that actually works.
+    author: "sooryah-pokkali",
+    body: `Most advice on how to improve forecast accuracy starts in the wrong place: the model. A team swaps its linear trend for something more sophisticated, the fit on historical data looks better, and next quarter the miss is the same size as last quarter's. That's because accuracy isn't a model property — it's a process property. The model is step four of six. Here's the playbook, in the order that actually works.
 
 Step 1 — Measure error properly before changing anything. You cannot improve what you measure wrong, and most teams measure wrong in a specific way: they judge a forecast by how well it fits the history it was trained on. Training fit is flattery — a model with enough parameters can trace last year's revenue line perfectly and still know nothing about next quarter. The honest test is a holdout: hide the last few months of actuals from the model, forecast them, and score the miss. Score it with MAPE — mean absolute percentage error — because it's comparable across lines of different sizes. The rule of thumb for reading it: under 5% is excellent, 5–15% is good, 15–30% is workable, above 30% means the forecast isn't useful. Whatever your holdout MAPE is today, write it down. That number is the baseline every following step gets measured against.
 
@@ -142,6 +156,6 @@ Step 5 — Reforecast on cadence, not annually. A forecast is a perishable good.
 
 Step 6 — Run an error post-mortem every cycle. When actuals land, score the last forecast against them line by line, then classify every material miss into one of four buckets. Data problem: a one-off leaked into the series or calendarization slipped — fix it at the source so it can't recur. Assumption problem: a driver was set optimistically — the sales-capacity number, the churn rate — so adjust the input, not the model. Model drift: the locked algorithm's holdout MAPE is creeping up as the business changes — re-run the side-by-side comparison and consider re-pinning. Genuine surprise: a top customer churned without warning — no process fixes this; note it and move on. The classification matters more than the score, because each bucket has a different fix. Teams that skip the post-mortem repeat their misses with growing confidence; teams that run it convert every miss into a process change.
 
-The sequence is the point. Measurement comes first because everything after it needs a baseline. Data before models, because models amplify whatever the data encodes. Decomposition before algorithm selection, because the best algorithm on a composite series loses to a mediocre one on clean drivers. Cadence and post-mortems last, because they're the loop that compounds the other four. None of it requires a data science team — it requires holdout discipline and an honest MAPE number. Work the six steps in order and you give forecast accuracy a way to improve every cycle: not because the model got smarter, but because the process did.`,
+The sequence is the point, and it is the honest answer to how to improve forecast accuracy. Measurement comes first because everything after it needs a baseline. Data before models, because models amplify whatever the data encodes. Decomposition before algorithm selection, because the best algorithm on a composite series loses to a mediocre one on clean drivers. Cadence and post-mortems last, because they're the loop that compounds the other four. None of it requires a data science team — it requires holdout discipline and an honest MAPE number. Work the six steps in order and you give forecast accuracy a way to improve every cycle: not because the model got smarter, but because the process did.`,
   },
 ];

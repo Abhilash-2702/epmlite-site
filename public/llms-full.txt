@@ -200,7 +200,7 @@ Source: https://nashos.ai/about, https://nashos.ai/products
 
 - **Nine product pillars:** Executive Dashboard; P&L · Balance Sheet · Cash Flow; Driver-Based
   Planning; What-If Scenarios; AI Agent; Forecasting; Alerts; Connectors; Audit + RBAC.
-- **43 AI tools** covering the day-to-day work in plain English — reading the cube, pulling
+- **44 AI tools** covering the day-to-day work in plain English — reading the cube, pulling
   consolidated statements, intercompany matching and the NCI roll-forward, running forecasts,
   variance and what-ifs, and drafting changes to facts, dimensions, formulas, drivers, exchange
   rates, users, alerts and consolidation setup.

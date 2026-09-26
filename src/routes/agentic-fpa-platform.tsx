@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Sparkles,
   GitBranch,
@@ -24,9 +24,9 @@ const CRUMBS = [{ name: "Agentic FP&A platform", path: "/agentic-fpa-platform" }
 export const Route = createFileRoute("/agentic-fpa-platform")({
   head: () =>
     seo({
-      title: "Agentic FP&A Platform — NashOS",
+      title: "AI for FP&A — The Agentic FP&A Platform | NashOS",
       description:
-        "NashOS is the agentic FP&A platform built around AI agents — not retrofitted with a chatbot. 43 tools, 15 forecast algorithms, draft-before-commit safety, full audit trail.",
+        "AI for FP&A built around agents rather than a bolt-on chatbot: 44 tools, 15 forecast algorithms, draft-before-commit safety and a full audit trail.",
       breadcrumbs: CRUMBS,
       path: "/agentic-fpa-platform",
     }),
@@ -37,28 +37,24 @@ const TOOL_CATEGORIES = [
   {
     Icon: Activity,
     title: "Read",
-    meta: "12 tools",
     body:
-      "Query fact tables, fetch trial balance, summarize a report, pull audit-log entries, list scenarios.",
+      "Query fact tables, pull a P&L, balance sheet or cash flow, summarize a report, pull audit-log entries, list scenarios.",
   },
   {
     Icon: GitBranch,
     title: "Plan",
-    meta: "10 tools",
     body:
       "Update drivers, write member formulas, create scenarios, manage entities and dimensions, schedule connectors.",
   },
   {
     Icon: Sparkles,
     title: "Forecast",
-    meta: "8 tools",
     body:
       "Run 15 forecast algorithms, compare with R²/RMSE/MAE/MAPE, lock the winner, run what-if scenarios.",
   },
   {
     Icon: FileEdit,
     title: "Decide",
-    meta: "7 tools",
     body:
       "Draft commits, ratify writes, export PDFs, push notifications, manage approvals, query the audit log.",
   },
@@ -81,7 +77,7 @@ const SAFETY = [
     Icon: Activity,
     title: "Full audit trail",
     body:
-      "Every mutation logged: actor, timestamp, before/after JSON. Filterable. Forever.",
+      "Every row-level change logged: actor, timestamp, before/after JSON; bulk loads logged as attributed runs. Filterable.",
   },
   {
     Icon: Zap,
@@ -94,7 +90,7 @@ const FAQ = [
   {
     question: "What is an agentic FP&A platform?",
     answer:
-      "An agentic FP&A platform is built around AI agents for finance — software that can chain multiple tool calls, read and write financial data under the calling user's permissions, and carry a multi-step finance task through to a reviewable result — rather than a chatbot UI bolted onto a legacy planning tool. NashOS was built around agents from day one: 43 tools cover the day-to-day work, every write produces a draft for human review, and every action is audit-trailed.",
+      "An agentic FP&A platform is built around AI agents for finance — software that can chain multiple tool calls, read and write financial data under the calling user's permissions, and carry a multi-step finance task through to a reviewable result — rather than a chatbot UI bolted onto a legacy planning tool. NashOS was built around agents from day one: 44 tools cover the day-to-day work, every write produces a draft for human review, and every action is audit-trailed.",
   },
   {
     question: "How is this different from a chatbot in Anaplan or Adaptive?",
@@ -104,7 +100,7 @@ const FAQ = [
   {
     question: "Is the agent safe? What stops it from messing up my financial data?",
     answer:
-      "Three safeguards. (1) Draft-before-commit: every chat-driven write produces a draft card the user must Post. The LLM never auto-mutates the database. (2) Server-side authentication: every tool call runs with the calling user's permissions; the LLM never gets credentials. (3) Audit trail: every mutation logged with actor, timestamp, and before/after JSON. You can prove what happened.",
+      "Three safeguards. (1) Draft-before-commit: every chat-driven write produces a draft card the user must Post. The LLM never auto-mutates the database. (2) Server-side authentication: every tool call runs with the calling user's permissions; the LLM never gets credentials. (3) Audit trail: every row-level change logged with actor, timestamp, and before/after JSON; bulk loads are logged as attributed runs. You can prove what happened.",
   },
   {
     question: "Which LLMs does NashOS use?",
@@ -114,12 +110,17 @@ const FAQ = [
   {
     question: "What can agentic AI in finance actually do inside a planning model?",
     answer:
-      "Read fact tables, draft entries, run 15 forecast algorithms, commit writes through the draft queue, export reports as CSV/Excel/PDF, manage scenarios and what-ifs, query the audit log, manage drivers and formulas, and answer plain-English questions about the cube. 43 tools cover the day-to-day work.",
+      "Read fact tables, draft entries, run 15 forecast algorithms, commit writes through the draft queue, export reports as CSV/Excel/PDF, manage scenarios and what-ifs, query the audit log, manage drivers and formulas, and answer plain-English questions about the cube. 44 tools cover the day-to-day work.",
   },
   {
     question: "Can the agent handle multi-step tasks?",
     answer:
       "Yes. Example: 'Hire 3 engineers and show the runway impact' chains four tool calls — update HEADCOUNT_ENG, recompute SALARIES_ENG via member formula, run runway forecast, render the waterfall card. The user sees each step stream in real time and ratifies the final commit.",
+  },
+  {
+    question: "What should a finance team look for in AI for FP&A?",
+    answer:
+      "Four things. Whether the AI can act — chain tool calls and produce a reviewable result — or only describe. Whether every write is drafted for a person to approve, or committed automatically. Whose permissions it runs on: the calling user's, or a service account with broad access. And whether each change is logged — with before and after values on every row-level edit — so any number can be traced back. NashOS answers act, drafted, the user's, and logged.",
   },
 ];
 
@@ -129,23 +130,64 @@ function AgenticFpaPlatformPage() {
       <PageHero
         tight
         eyebrow="Agentic finance"
-        title={<>Built for AI agents.</>}
-        highlight="Not retrofitted with a chatbot."
+        title={"AI for FP&A"}
+        subtitle="Built for AI agents. Not retrofitted with a chatbot."
         lede={
           <>
-            NashOS is the FP&amp;A platform designed around AI agents for finance from day one.
-            43 agent tools cover the day-to-day work. Every write is drafted, every
-            action audit-trailed. The agentic alternative to Anaplan, Adaptive, and Excel.
+            AI for FP&amp;A, done as a platform rather than a plug-in: NashOS was designed around
+            agents from day one. 44 agent tools cover the day-to-day work. Every write is
+            drafted, every action audit-trailed. The agentic alternative to Anaplan, Adaptive,
+            and Excel.
           </>
         }
         primaryCta={{ label: "Try with your data", to: "/try" }}
         secondaryCta={{ label: "Book a walkthrough", to: "/demo" }}
       />
 
+      <Section className="pt-4">
+        <SectionHeader
+          title="What AI for FP&A means in practice"
+          caption="Two very different products share the label. One describes the numbers you already have. The other operates the system and hands you the result to approve."
+        />
+        <div className="max-w-3xl space-y-5 text-foreground/85 leading-relaxed">
+          <p>
+            AI for FP&amp;A splits into two products. The first is a chatbot attached to a
+            planning tool: it can describe what is already in the model. The second is an{" "}
+            <Link to="/ai-agents-for-finance" className="text-gold hover:underline">
+              agent that operates the system
+            </Link>{" "}
+            — reads the cube, updates a driver, runs a forecast, drafts the change — and hands a
+            person the result to approve. NashOS is the second kind, and the difference shows up
+            in what happens after the answer.
+          </p>
+          <p>
+            In practice the agent works through 44 typed tools in four groups: Read, Plan,
+            Forecast and Decide. It can query fact tables and pull a P&amp;L or balance sheet, update
+            drivers and write member formulas, fit{" "}
+            <Link to="/ai-forecasting-software" className="text-gold hover:underline">
+              15 forecast algorithms
+            </Link>{" "}
+            and compare them on R², RMSE, MAE and MAPE, then draft the commit and export the
+            report. A request like "hire three engineers and show the runway impact" chains
+            several of those in one pass, and the user watches each step stream in before
+            ratifying the final commit.
+          </p>
+          <p>
+            What makes that safe on live financials is the write path. No tool writes to the
+            database directly: every write-capable tool produces a draft, the user posts it, and
+            the backend re-validates before anything commits. Tool calls run with the calling
+            user's permissions, so the model never holds credentials, and each single-row change
+            is logged with actor, timestamp and before-and-after values. That is the bar we think
+            AI for FP&amp;A has to clear — not "the model was usually right", but "you can prove
+            what happened".
+          </p>
+        </div>
+      </Section>
+
       <Section>
         <SectionHeader
           title="How the agent layer is built"
-          caption="Most AI for FP&A today is a chatbot bolted onto a planning tool built long before tool-using models existed. NashOS inverted the design: the agent is the primary interface, traditional grids are the fallback. 43 tools across four categories."
+          caption="Most AI for FP&A today is a chatbot bolted onto a planning tool built long before tool-using models existed. NashOS inverted the design: the agent is the primary interface, traditional grids are the fallback. 44 tools across four categories."
         />
         <CardGrid items={TOOL_CATEGORIES} cols={4} />
       </Section>

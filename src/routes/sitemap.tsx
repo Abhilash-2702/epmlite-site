@@ -100,7 +100,7 @@ const GROUPS: { heading: string; caption: string; pages: SitePage[] }[] = [
       {
         to: "/vs/adaptive",
         title: "NashOS vs Workday Adaptive",
-        blurb: "Built for the LLM era — 43 tools, 15 forecast algorithms.",
+        blurb: "Built for the LLM era — 44 tools, 15 forecast algorithms.",
       },
       {
         to: "/vs/excel",
@@ -126,7 +126,7 @@ const GROUPS: { heading: string; caption: string; pages: SitePage[] }[] = [
       {
         to: "/ai-agents-for-finance",
         title: "AI agents for finance",
-        blurb: "43 tools across Read, Plan, Forecast and Decide — and what keeps them safe.",
+        blurb: "44 tools across Read, Plan, Forecast and Decide — and what keeps them safe.",
       },
       {
         to: "/finance-automation-software",
@@ -227,12 +227,12 @@ const GROUPS: { heading: string; caption: string; pages: SitePage[] }[] = [
       },
       {
         to: "/blog/agentic-ai-in-finance-explained",
-        title: "Agentic AI in finance, explained",
+        title: "Agentic AI in Finance",
         blurb: "What makes AI agentic, and what that means inside a finance system.",
       },
       {
         to: "/blog/how-to-improve-forecast-accuracy",
-        title: "How to improve forecast accuracy",
+        title: "How to Improve Forecast Accuracy",
         blurb: "A six-step playbook, starting with measuring error properly.",
       },
       {

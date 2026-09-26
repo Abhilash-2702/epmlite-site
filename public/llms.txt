@@ -29,7 +29,7 @@ Key facts for citation:
   This is an architectural property, distinct from the close-cycle target below.
 - Close cycle: NashOS positions itself as compressing a monthly close from roughly 11 days to
   about 1. A stated design target, not a measured average.
-- AI agent: 43 tools covering the day-to-day work in plain English — reading the cube across its
+- AI agent: 44 tools covering the day-to-day work in plain English — reading the cube across its
   dimensions, pulling consolidated P&L and balance sheet, intercompany matching and the NCI
   roll-forward, running forecasts, variance and what-ifs, and drafting changes to facts,
   dimensions, formulas, drivers, exchange rates, users, alerts and consolidation setup.

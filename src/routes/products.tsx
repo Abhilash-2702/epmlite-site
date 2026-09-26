@@ -70,7 +70,7 @@ const ai = [
     Icon: Sparkles,
     title: "AI Agent",
     body:
-      'Plain-English chat with 43 tools that cover the day-to-day work. Ask: "What\'s our runway?" "Hire 3 engineers and show the impact." "Update JPY rate to 150." Every write produces a draft card. Nothing the LLM says auto-mutates the database.',
+      'Plain-English chat with 44 tools that cover the day-to-day work. Ask: "What\'s our runway?" "Hire 3 engineers and show the impact." "Update JPY rate to 150." Every write produces a draft card. Nothing the LLM says auto-mutates the database.',
   },
   {
     Icon: TrendingUp,

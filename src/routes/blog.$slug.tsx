@@ -4,7 +4,8 @@ import { PageShell } from "@/components/page-shell";
 import { Section } from "@/components/page-sections";
 import { POSTS, CATEGORY_LABEL } from "@/lib/posts";
 import { StickyCta } from "@/components/sticky-cta";
-import { seo } from "@/lib/seo";
+import { absoluteUrl, DEFAULT_OG_IMAGE, seo } from "@/lib/seo";
+import { TEAM_BY_ID, personId } from "@/lib/team";
 
 export const Route = createFileRoute("/blog/$slug")({
   // Every post used to emit the same title, "Post — NashOS Blog", with no
@@ -21,7 +22,7 @@ export const Route = createFileRoute("/blog/$slug")({
         noindex: true,
       });
     }
-    return seo({
+    const base = seo({
       title: `${post.title} | NashOS`,
       description: post.description,
       path: `/blog/${post.slug}`,
@@ -31,6 +32,37 @@ export const Route = createFileRoute("/blog/$slug")({
         { name: post.title, path: `/blog/${post.slug}` },
       ],
     });
+    // BlogPosting with a named Person author — the E-E-A-T signal the 2026-09
+    // audit asked for. The author @id is the same one /about's Person graph
+    // uses, so both resolve to one entity.
+    const author = TEAM_BY_ID[post.author];
+    const url = absoluteUrl(`/blog/${post.slug}`);
+    const article = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": `${url}#article`,
+      headline: post.title,
+      description: post.description,
+      url,
+      mainEntityOfPage: url,
+      datePublished: post.date,
+      dateModified: post.updated ?? post.date,
+      articleSection: CATEGORY_LABEL[post.category] ?? post.category,
+      wordCount: post.body.split(/\s+/).length,
+      image: DEFAULT_OG_IMAGE,
+      author: {
+        "@type": "Person",
+        "@id": personId(author.id),
+        name: author.name,
+        jobTitle: author.role,
+        url: personId(author.id),
+      },
+      publisher: { "@id": "https://nashos.ai/#organization" },
+    };
+    return {
+      ...base,
+      scripts: [...base.scripts, { type: "application/ld+json", children: JSON.stringify(article) }],
+    };
   },
   // Unknown slugs used to render a friendly "being rebuilt" page with HTTP 200
   // - a soft 404. Any /blog/<anything> looked like a real page to a crawler,
@@ -47,34 +79,9 @@ function BlogPostPage() {
   const post = POSTS.find((p) => p.slug === slug);
   const others = post ? POSTS.filter((p) => p.slug !== slug).slice(0, 2) : [];
 
-  if (!post) {
-    const pretty = slug
-      .split("-")
-      .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
-      .join(" ");
-    return (
-      <PageShell>
-        <Section>
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-gold mb-6 transition-colors mt-32"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to blog
-          </Link>
-          <h1 className="text-3xl lg:text-5xl font-semibold tracking-tight">{pretty}</h1>
-          <p className="mt-6 text-muted-foreground">
-            This post is being rebuilt under the new site. The full archive lands soon — drop
-            us your email at{" "}
-            <a href="mailto:admin@nashos.ai" className="text-gold hover:underline">
-              admin@nashos.ai
-            </a>{" "}
-            if you want it sent over when it does.
-          </p>
-        </Section>
-      </PageShell>
-    );
-  }
+  // Unknown slugs never reach here — the loader throws notFound(). Type guard.
+  if (!post) return null;
+  const author = TEAM_BY_ID[post.author];
 
   return (
     // Same trail the head() passes to seo({ breadcrumbs }) — Google requires the
@@ -99,7 +106,20 @@ function BlogPostPage() {
         <h1 className="text-3xl lg:text-5xl font-semibold tracking-tight leading-[1.1]">
           {post.title}
         </h1>
+        <p className="mt-4 text-lg text-muted-foreground leading-relaxed">{post.description}</p>
         <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+          <span>
+            By{" "}
+            <Link
+              to="/about"
+              hash="team"
+              className="font-medium text-foreground/90 hover:text-gold transition-colors"
+            >
+              {author.name}
+            </Link>
+            , {author.role}
+          </span>
+          <span>·</span>
           <time className="font-mono tabular-nums">{post.date}</time>
           <span>·</span>
           <span className="inline-flex items-center gap-1">

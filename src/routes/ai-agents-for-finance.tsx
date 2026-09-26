@@ -18,8 +18,8 @@ const CRUMBS = [{ name: "AI agents", path: "/ai-agents-for-finance" }];
 // Answer-first explainer. Rendered as the first block on the page so the
 // definition sits above the card sections, where answer engines look first.
 const PROSE = [
-  "AI agents for finance are software that carries a task end to end: read the numbers, change the plan, run the forecast, and draft the result for a human to approve. Not a summarizer — an operator. In NashOS the agent works through 43 tools covering the day-to-day work in the app, so nearly anything a person can do by clicking, the agent can do by chaining tool calls — under that person's permissions, with a draft and an audit entry every time.",
-  "The tools divide into four categories that mirror how finance work actually flows. Read (12 tools) is the agent's eyes: query fact tables, pull trial balance, summarize reports, list scenarios. Plan (10) changes the model: update drivers, write member formulas, create scenarios, manage entities and dimensions. Forecast (8) runs the 15 algorithms, compares them on R², RMSE, MAE, and MAPE, and locks the winner. Decide (7) is the commit path: draft writes, ratify them, export reports, manage approvals.",
+  "AI agents for finance are software that carries a task end to end: read the numbers, change the plan, run the forecast, and draft the result for a human to approve. Not a summarizer — an operator. In NashOS the agent works through 44 tools covering the day-to-day work in the app, so nearly anything a person can do by clicking, the agent can do by chaining tool calls — under that person's permissions, with a draft and an audit entry every time.",
+  "The tools divide into four categories that mirror how finance work actually flows. Read is the agent's eyes: query fact tables, pull a P&L or balance sheet, summarize reports, list scenarios. Plan changes the model: update drivers, write member formulas, create scenarios, manage entities and dimensions. Forecast runs the 15 algorithms, compares them on R², RMSE, MAE, and MAPE, and locks the winner. Decide is the commit path: draft writes, ratify them, export reports, manage approvals.",
   "Multi-step chains are where agents separate from chat. 'Hire 3 engineers and show the runway impact' runs four tool calls: update HEADCOUNT_ENG, recompute SALARIES_ENG through the member formula, run the runway forecast, render the result. Each step streams live over SSE; the final commit waits for you to ratify it. One sentence in, a reviewable runway answer out — and every intermediate write held as a draft until a human posts it.",
   "An agent with write access has to be boring about safety, so every write surface is gated. Draft-before-commit: agent writes produce a draft card a human must Post, and the backend re-validates before anything lands. Server-side permissions: tool calls run with the calling user's RBAC; the LLM never holds credentials. A full audit trail logs actor, timestamp, and before/after JSON on every mutation. And runs are interruptible mid-task, with a platform kill switch behind that.",
   "This page covers what the agents do day to day. The architectural case — why agent-first beats a chatbot bolted onto a legacy planning tool — is made at /agentic-fpa-platform, and /inside-nash goes under the hood on how Nash itself is built. For how agents fit into the close itself, see /financial-close-software. Pricing is quoted to your entity count and volume — /pricing is the single source there.",
@@ -87,7 +87,7 @@ const FAQ = [
   {
     question: "What are AI agents for finance?",
     answer:
-      "AI agents for finance are LLM-driven software that completes finance tasks by calling tools — reading data, updating plans, running forecasts, and drafting changes — rather than just answering questions in chat. The distinguishing features are tool use, multi-step chaining, and operating inside a real permission system. In NashOS, the agent works through 43 tools covering the day-to-day work in the app, and every write it drafts requires human approval before it commits.",
+      "AI agents for finance are LLM-driven software that completes finance tasks by calling tools — reading data, updating plans, running forecasts, and drafting changes — rather than just answering questions in chat. The distinguishing features are tool use, multi-step chaining, and operating inside a real permission system. In NashOS, the agent works through 44 tools covering the day-to-day work in the app, and every write it drafts requires human approval before it commits.",
   },
   {
     question: "What tasks can AI agents handle in a finance system today?",
@@ -119,8 +119,8 @@ const FAQ = [
 export const Route = createFileRoute("/ai-agents-for-finance")({
   head: () =>
     seo({
-      title: "AI Agents for Finance — 43 Tools, Safe by Design — NashOS",
-      description: "AI agents for finance that operate the system: 43 tools across Read, Plan, Forecast, and Decide — every write drafted, audited, and human-approved.",
+      title: "AI Agents for Finance — 44 Tools, Safe by Design — NashOS",
+      description: "AI agents for finance that operate the system: 44 tools across Read, Plan, Forecast, and Decide — every write drafted, audited, and human-approved.",
       path: "/ai-agents-for-finance",
       faq: FAQ,
       breadcrumbs: CRUMBS,
@@ -134,9 +134,9 @@ function Page() {
       <PageHero
         tight
         eyebrow={"Agents at work"}
-        title={"AI agents for finance,"}
-        highlight={"day to day."}
-        lede={"AI agents for finance earn their keep by operating the system, not chatting about it. In NashOS the agent works through 43 tools — reading the cube, updating drivers, running forecasts, drafting writes — chained into multi-step tasks you watch stream live. Every change is drafted first, permission-checked server-side, and logged to the audit trail."}
+        title="AI agents for finance"
+        subtitle="Day to day — what they do, and why they're safe to run."
+        lede={"AI agents for finance earn their keep by operating the system, not chatting about it. In NashOS the agent works through 44 tools — reading the cube, updating drivers, running forecasts, drafting writes — chained into multi-step tasks you watch stream live. Every change is drafted first, permission-checked server-side, and logged to the audit trail."}
         primaryCta={{ label: "Try with your data", to: "/try" }}
         secondaryCta={{ label: "Book a walkthrough", to: "/demo" }}
       />

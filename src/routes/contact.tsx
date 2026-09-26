@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, Calendar } from "lucide-react";
+import { Mail, Calendar, MapPin } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { PageHero, Section, FaqList } from "@/components/page-sections";
 import { seo } from "@/lib/seo";
@@ -7,6 +7,7 @@ import { seo } from "@/lib/seo";
 // Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
 const CRUMBS = [{ name: "Contact", path: "/contact" }];
 import { SocialLinks } from "@/components/social-links";
+import { ORG_ADDRESS_LINES } from "@/lib/org";
 
 export const Route = createFileRoute("/contact")({
   head: () =>
@@ -103,6 +104,23 @@ function ContactPage() {
             Product updates, FP&amp;A patterns, and what we ship each week.
           </p>
           <SocialLinks className="mt-5" />
+        </div>
+      </Section>
+
+      <Section>
+        <div className="max-w-3xl">
+          <h2 className="text-2xl font-semibold mb-3">Registered office</h2>
+          <address className="not-italic flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" aria-hidden />
+            <span>
+              {ORG_ADDRESS_LINES[0]}
+              <br />
+              {ORG_ADDRESS_LINES[1]}
+            </span>
+          </address>
+          <p className="mt-3 text-xs text-muted-foreground/80">
+            Registered agent address, not a staffed office. For anything that needs a reply, email is fastest.
+          </p>
         </div>
       </Section>
 

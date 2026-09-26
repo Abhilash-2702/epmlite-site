@@ -14,6 +14,7 @@ export function PageHero({
   eyebrow,
   title,
   highlight,
+  subtitle,
   lede,
   primaryCta,
   secondaryCta,
@@ -22,6 +23,12 @@ export function PageHero({
   eyebrow: string;
   title: ReactNode;
   highlight?: string;
+  /**
+   * Second hero line rendered OUTSIDE the <h1>, styled like `highlight`. Use it
+   * when the h1 has to stay an exact keyword phrase (the 2026-09 SEO brief) so
+   * the page keeps its brand line without diluting the heading.
+   */
+  subtitle?: ReactNode;
   lede?: ReactNode;
   primaryCta?: { label: string; to?: string; href?: string };
   secondaryCta?: { label: string; to?: string; href?: string };
@@ -46,6 +53,11 @@ export function PageHero({
             </>
           )}
         </h1>
+        {subtitle && (
+          <p className="mt-3 text-2xl lg:text-4xl font-semibold tracking-tight leading-[1.1] text-gradient-gold">
+            {subtitle}
+          </p>
+        )}
         {lede && (
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">{lede}</p>
         )}
@@ -235,12 +247,15 @@ export function CtaBand({
 export function Section({
   children,
   className = "",
+  id,
 }: {
   children: ReactNode;
   className?: string;
+  /** Anchor target, e.g. "team" for /about#team. */
+  id?: string;
 }) {
   return (
-    <section className={`relative mx-auto max-w-[1400px] px-6 lg:px-10 py-14 ${className}`}>
+    <section id={id} className={`relative mx-auto max-w-[1400px] px-6 lg:px-10 py-14 ${className}`}>
       {children}
     </section>
   );

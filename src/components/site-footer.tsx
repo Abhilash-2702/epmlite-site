@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import nashosLogo from "@/assets/lockup-h-white.svg";
 import nashMark from "@/assets/monogram-white.svg";
 import { SocialLinks } from "@/components/social-links";
+import { ORG_ADDRESS_LINES } from "@/lib/org";
 
 // Footer hosts the long tail of routes that aren't in the top nav (top nav
 // stays at 4: in-page hash sections + Pricing). Placeholder routes for the
@@ -153,15 +154,23 @@ export function SiteFooter() {
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               Agentic Finance for planning, forecasting and decisions — multi-entity, multi-currency, audit-ready from day one.
             </p>
-            {/* NAP — Name, Address, Phone. The audit flagged a missing physical
-                address as a trust gap. Add the registered address and phone here
-                AND to ORG_JSON_LD in routes/__root.tsx; the two must match each
-                other and the Google Business Profile character for character.
-                TODO(NAP): address + telephone pending. */}
+            {/* NAP — Name, Address, Phone. The address is lib/org.ts, the same
+                constant ORG_JSON_LD in routes/__root.tsx emits, so the two cannot
+                drift. It is the registered office, so it is labelled as one.
+                TODO(NAP): telephone still pending a real, answered number. */}
             <address className="mt-4 not-italic text-sm text-muted-foreground leading-relaxed">
               <a href="mailto:admin@nashos.ai" className="text-gold hover:underline">
                 admin@nashos.ai
               </a>
+              <span className="mt-3 block">
+                <span className="text-xs uppercase tracking-[0.14em] text-muted-foreground/80">
+                  Registered office
+                </span>
+                <br />
+                {ORG_ADDRESS_LINES[0]}
+                <br />
+                {ORG_ADDRESS_LINES[1]}
+              </span>
             </address>
             <SocialLinks className="mt-5 justify-center sm:justify-start" />
             <div className="mt-6">

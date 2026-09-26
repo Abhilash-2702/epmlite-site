@@ -4,6 +4,7 @@ import { PageShell } from "@/components/page-shell";
 import { PageHero, Section } from "@/components/page-sections";
 import { POSTS, CATEGORY_LABEL } from "@/lib/posts";
 import { seo } from "@/lib/seo";
+import { TEAM_BY_ID } from "@/lib/team";
 
 // Visible trail + BreadcrumbList schema. Same array to both so they can't drift.
 const CRUMBS = [{ name: "Blog", path: "/blog" }];
@@ -47,6 +48,7 @@ function BlogIndexPage() {
                   <Clock className="w-3 h-3" />
                   {p.readingTimeMin} min read
                 </span>
+                <span>By {TEAM_BY_ID[p.author].name}</span>
                 <span className="inline-flex items-center gap-1 text-gold font-semibold uppercase tracking-wider">
                   <Tag className="w-3 h-3" />
                   {CATEGORY_LABEL[p.category] ?? p.category}

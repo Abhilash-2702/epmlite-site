@@ -34,7 +34,7 @@ const HIGHLIGHTS = [
   },
   {
     Icon: MessageSquare,
-    title: "AI agent — 43 tools",
+    title: "AI agent — 44 tools",
     body:
       'Ask: "What\'s our runway?" "Why is COGS up?" "Hire 3 engineers and show the impact." Watch tool calls stream live.',
   },
