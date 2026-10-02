@@ -18,9 +18,9 @@ const CRUMBS = [{ name: "Compare", path: "/products" }, { name: "vs Excel", path
 export const Route = createFileRoute("/vs/excel")({
   head: () =>
     seo({
-      title: "NashOS vs Excel",
+      title: "Excel Alternatives for FP&A | AI Finance Software – NashOS",
       description:
-        "When the spreadsheet stack stops scaling. AI-native FP&A with full audit trail, 15 forecast algorithms and multi-entity consolidation.",
+        "Explore Excel alternatives for FP&A teams. Compare NashOS with Excel for financial planning, forecasting, automation, collaboration and smarter decisions.",
       breadcrumbs: CRUMBS,
       path: "/vs/excel",
     }),

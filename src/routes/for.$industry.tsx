@@ -24,8 +24,8 @@ export const Route = createFileRoute("/for/$industry")({
       .replace(/\s+\S*$/, "")
       .replace(/[\s,—–-]+$/, "");
     return seo({
-      title: `FP&A Software for ${ind.name} Teams | NashOS`,
-      description: desc,
+      title: ind.seoTitle ?? `FP&A Software for ${ind.name} Teams | NashOS`,
+      description: ind.seoDescription ?? desc,
       path: `/for/${params.industry}`,
       type: "article",
       breadcrumbs: [
@@ -49,6 +49,9 @@ type Industry = {
   hookLine: string;
   headline: string;
   subhead: string;
+  /** <title>/meta overrides from the agency meta-tag sheet; template fallback below. */
+  seoTitle?: string;
+  seoDescription?: string;
   metrics: string[];
   fitPoints: string[];
   scenario: string;
@@ -58,6 +61,8 @@ const INDUSTRIES: Record<string, Industry> = {
   saas: {
     name: "SaaS",
     hookLine: "FP&A for SaaS founders running on ARR.",
+    seoTitle: "FP&A Software for SaaS Companies | AI Finance – NashOS",
+    seoDescription: "NashOS provides AI-powered FP&A software for SaaS companies, enabling financial planning, forecasting, scenario analysis and finance automation.",
     headline: "Plan ARR cohorts, churn, and runway in the same view.",
     subhead:
       "Most SaaS finance stacks split between an FP&A tool, a BI tool, and a Stripe export. NashOS collapses them — driver-based ARR projections, cohort retention curves, and a runway calculator that updates when you toggle hiring.",
@@ -80,6 +85,8 @@ const INDUSTRIES: Record<string, Industry> = {
   services: {
     name: "Services",
     hookLine: "FP&A for services firms with mixed revenue streams.",
+    seoTitle: "FP&A Software for Services | FP&A Software AI Tools - NashOS",
+    seoDescription: "Streamline financial planning and forecasting with NashOS FP&A software for services companies. Automate finance workflows and improve financial visibility.",
     headline: "Recurring + project + bill-on-completion, in one plan.",
     subhead:
       "If your revenue is half MSA, half project, and a long tail of one-offs — your spreadsheet is held together with named ranges and a prayer. NashOS handles the heterogeneity in one cube with proper revenue-recognition logic.",
@@ -102,6 +109,8 @@ const INDUSTRIES: Record<string, Industry> = {
   consulting: {
     name: "Consulting",
     hookLine: "FP&A for consulting firms running on utilization.",
+    seoTitle: "FP&A Software for Consulting Firms | AI Finance - NashOS",
+    seoDescription: "NashOS helps consulting firms automate FP&A, financial planning, forecasting and analysis with AI-powered tools built for professional services teams.",
     headline: "Project margin × utilization × bench, in one cube.",
     subhead:
       "Consulting finance is two problems: forecasting utilization (which is people math) and forecasting project margin (which is ratio math). Most stacks give you one or the other. NashOS gives you both, with the agent computing realization and recovery on every project on demand.",
@@ -124,6 +133,8 @@ const INDUSTRIES: Record<string, Industry> = {
   manufacturing: {
     name: "Manufacturing",
     hookLine: "FP&A for manufacturing tracking margin to the unit.",
+    seoTitle: "FP&A Software for Manufacturing | FP&A Tools for Manufacturing",
+    seoDescription: "Optimize financial planning and forecasting with NashOS FP&A software for manufacturing. Automate finance workflows, scenarios and financial analysis.",
     headline: "Unit economics, BOM, COGS — drilled all the way down.",
     subhead:
       "Manufacturing finance lives at the intersection of unit economics, supply chain, and capacity planning. NashOS holds all three in one cube: BOM × supplier prices × yield × volume, with what-if at every layer.",
@@ -146,6 +157,8 @@ const INDUSTRIES: Record<string, Industry> = {
   hardware: {
     name: "Hardware",
     hookLine: "FP&A for hardware companies tracking margin to the unit.",
+    seoTitle: "FP&A Software for Hardware Companies – NashOS",
+    seoDescription: "NashOS provides AI-powered FP&A software for hardware companies to streamline planning, forecasting, scenario analysis and financial decision-making.",
     headline: "Unit economics, BOM, COGS — drilled all the way down.",
     subhead:
       "Hardware finance lives at the intersection of unit economics, supply chain, and capacity planning. NashOS holds all three in one cube: BOM × supplier prices × yield × volume, with what-if at every layer.",

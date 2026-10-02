@@ -118,8 +118,8 @@ const FAQ = [
 export const Route = createFileRoute("/cfo-ai-tools")({
   head: () =>
     seo({
-      title: "CFO AI Tools — What to Trust, What to Verify | NashOS",
-      description: "CFO AI tools evaluated on what matters: audit trail, human approval on writes, permissions, provable numbers. How NashOS cuts an 11-day close to 1 day.",
+      title: "CFO AI Tools | AI-Powered Finance & Automation – NashOS",
+      description: "Explore CFO AI tools for finance planning, forecasting, reporting and automation with human approvals, audit trails, permissions and AI-powered workflows.",
       path: "/cfo-ai-tools",
       faq: FAQ,
       breadcrumbs: CRUMBS,

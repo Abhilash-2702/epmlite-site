@@ -35,9 +35,9 @@ const FAQ: Faq[] = [
 export const Route = createFileRoute("/for-leaders")({
   head: () =>
     seo({
-      title: "NashOS for CFOs, FP&A Teams and Founders",
+      title: "AI Finance Software for CFOs & FP&A Leaders | CFO AI Tools - NashOS",
       description:
-        "One system, three lenses. Board-ready audited numbers for CFOs, continuous driver-based planning for FP&A, and self-serve runway and burn for founders.",
+        "Empower CFOs and FP&A leaders with AI finance software for planning, forecasting, real-time insights, financial automation and better decisions.",
       path: "/for-leaders",
       type: "article",
       faq: FAQ,

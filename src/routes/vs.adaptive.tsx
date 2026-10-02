@@ -18,9 +18,9 @@ const CRUMBS = [{ name: "Compare", path: "/products" }, { name: "vs Adaptive", p
 export const Route = createFileRoute("/vs/adaptive")({
   head: () =>
     seo({
-      title: "NashOS vs Workday Adaptive Planning",
+      title: "Adaptive Planning Alternatives | AI FP&A Software – NashOS",
       description:
-        "AI-native FP&A built for the LLM era. 44 tools, 15 forecast algorithms, hours-not-months setup vs Workday Adaptive Planning.",
+        "Explore Adaptive Planning alternatives for modern FP&A teams. Compare NashOS for AI-powered planning, forecasting, automation and faster financial decisions.",
       breadcrumbs: CRUMBS,
       path: "/vs/adaptive",
     }),

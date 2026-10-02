@@ -123,8 +123,8 @@ const FAQ = [
 export const Route = createFileRoute("/ai-forecasting-software")({
   head: () =>
     seo({
-      title: "AI Forecasting Software — 15 Algorithms Compared — NashOS",
-      description: "AI forecasting software done honestly: NashOS fits 15 algorithms, scores them on holdout MAPE/R²/RMSE, and locks the winner. New lines get driver-based plans.",
+      title: "AI Forecasting Software | 15 Algorithms – NashOS",
+      description: "AI forecasting software from NashOS compares 15 algorithms on holdout data to select reliable forecasts for financial planning, reporting, and decision-making.",
       path: "/ai-forecasting-software",
       faq: FAQ,
       breadcrumbs: CRUMBS,

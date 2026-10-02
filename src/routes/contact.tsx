@@ -12,9 +12,9 @@ import { ORG_ADDRESS_LINES } from "@/lib/org";
 export const Route = createFileRoute("/contact")({
   head: () =>
     seo({
-      title: "Contact — NashOS",
+      title: "Contact NashOS | AI Finance & Automation Platform",
       description:
-        "Send us a note, book a 15-min demo, or write directly to admin@nashos.ai.",
+        "Contact NashOS to learn how AI-powered finance automation, planning, forecasting and agentic AI can transform your finance operations.",
       breadcrumbs: CRUMBS,
       path: "/contact",
     }),

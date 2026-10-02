@@ -10,9 +10,9 @@ const CRUMBS = [{ name: "Changelog", path: "/changelog" }];
 export const Route = createFileRoute("/changelog")({
   head: () =>
     seo({
-      title: "Changelog — NashOS",
+      title: "NashOS Changelog | Product Updates & Improvements – NashOS",
       description:
-        "Everything shipped at NashOS — by week. We're shipping in days, not months.",
+        "Stay updated with NashOS product releases, new AI finance features, platform improvements, integrations and enhancements for finance teams.",
       breadcrumbs: CRUMBS,
       path: "/changelog",
     }),

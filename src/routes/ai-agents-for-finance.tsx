@@ -119,8 +119,8 @@ const FAQ = [
 export const Route = createFileRoute("/ai-agents-for-finance")({
   head: () =>
     seo({
-      title: "AI Agents for Finance — 44 Tools, Safe by Design — NashOS",
-      description: "AI agents for finance that operate the system: 44 tools across Read, Plan, Forecast, and Decide — every write drafted, audited, and human-approved.",
+      title: "AI Agents for Finance | Automate Finance Tasks – NashOS",
+      description: "AI agents for finance automate planning, forecasting, reporting and finance tasks with 44 tools, human approvals, permissions and audit-ready workflows.",
       path: "/ai-agents-for-finance",
       faq: FAQ,
       breadcrumbs: CRUMBS,

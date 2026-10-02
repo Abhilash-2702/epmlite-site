@@ -10,9 +10,9 @@ const CRUMBS = [{ name: "Pricing", path: "/pricing" }];
 export const Route = createFileRoute("/pricing")({
   head: () =>
     seo({
-      title: "Pricing — NashOS",
+      title: "Finance Automation Software Pricing | AI Finance Platforms Pricing",
       description:
-        "Pilot in days. Scale with confidence.",
+        "Explore NashOS pricing for finance automation, planning, forecasting and agentic finance. Choose the right solution for your finance transformation.",
       breadcrumbs: CRUMBS,
       path: "/pricing",
     }),

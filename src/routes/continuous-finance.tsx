@@ -117,8 +117,8 @@ const FAQ = [
 export const Route = createFileRoute("/continuous-finance")({
   head: () =>
     seo({
-      title: "Continuous Finance — Always-On Planning & Close — NashOS",
-      description: "Continuous finance runs planning, forecasting, and close as one always-computed system instead of batch cycles. See how NashOS is built as that model.",
+      title: "Continuous Finance | Always-On Planning & Close – NashOS",
+      description: "Continuous finance connects planning, forecasting and financial close in one always-computed system, helping finance teams reduce manual work and close faster.",
       path: "/continuous-finance",
       faq: FAQ,
       breadcrumbs: CRUMBS,

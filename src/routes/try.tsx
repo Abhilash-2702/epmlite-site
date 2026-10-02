@@ -8,9 +8,9 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/try")({
   head: () =>
     seo({
-      title: "Try NashOS on Your Own Finance Data | Pilot Intake",
+      title: "Try NashOS | AI-Powered Finance Automation Platform",
       description:
-        "Run a NashOS pilot on your own numbers. Tell us about your finance stack and we'll line up a walkthrough on your data within one business day.",
+        "Try NashOS and experience AI-powered finance automation for planning, forecasting, financial analysis, reporting and smarter finance decisions.",
       path: "/try",
     }),
   component: Try,

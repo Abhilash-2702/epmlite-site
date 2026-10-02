@@ -10,9 +10,9 @@ const CRUMBS = [{ name: "ROI calculator", path: "/calculator" }];
 export const Route = createFileRoute("/calculator")({
   head: () =>
     seo({
-      title: "ROI Calculator — NashOS",
+      title: "Finance Automation ROI Calculator | AI Automation ROI Calculator",
       description:
-        "Quantify the time and money your finance team would save with NashOS. Drag four sliders, see the answer in dollars.",
+        "Calculate the potential ROI of finance automation with NashOS. Estimate time savings, efficiency gains and value from automating finance workflows.",
       breadcrumbs: CRUMBS,
       path: "/calculator",
     }),

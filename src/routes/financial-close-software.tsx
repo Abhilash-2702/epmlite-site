@@ -18,9 +18,9 @@ const CRUMBS = [{ name: "Financial close software", path: "/financial-close-soft
 export const Route = createFileRoute("/financial-close-software")({
   head: () =>
     seo({
-      title: "Financial Close Automation Software — 1-Day Close | NashOS",
+      title: "Financial Close Automation | AI Financial Close Software – NashOS",
       description:
-        "Financial close automation that collapses an 11-day close to 1 day: scheduled connectors, a variance pack built from the cube, audit trail by construction.",
+        "Financial Close Automation with NashOS. Speed up reconciliation, consolidation, reporting and variance analysis with AI-powered financial close automation.",
       breadcrumbs: CRUMBS,
       path: "/financial-close-software",
     }),

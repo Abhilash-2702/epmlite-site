@@ -12,9 +12,9 @@ const CRUMBS = [{ name: "Blog", path: "/blog" }];
 export const Route = createFileRoute("/blog/")({
   head: () =>
     seo({
-      title: "Blog — NashOS",
+      title: "NashOS Latest Blogs | AI Finance, FP&A & Automation Insights",
       description:
-        "Practical FP&A patterns: cutting close cycles, picking forecast algorithms, and what driver-based planning actually means.",
+        "Read the NashOS blog for insights on AI in finance, FP&A, financial automation, forecasting, planning and the future of finance technology.",
       breadcrumbs: CRUMBS,
       path: "/blog",
     }),

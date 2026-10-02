@@ -19,9 +19,9 @@ const CRUMBS = [{ name: "Compare", path: "/products" }, { name: "vs Anaplan", pa
 export const Route = createFileRoute("/vs/anaplan")({
   head: () =>
     seo({
-      title: "Anaplan Alternatives \u2014 NashOS vs Anaplan Compared",
+      title: "Anaplan Alternatives | Best Anaplan Competitors & Alternatives – NashOS",
       description:
-        "Anaplan alternatives compared. AI-native FP&A in hours, not 6-month Anaplan implementations. 44 tools and 15 forecast algorithms.",
+        "Explore Anaplan alternatives for modern finance teams. Compare NashOS vs Anaplan for AI-powered planning, forecasting, automation and faster implementation.",
       faq: FAQ,
       breadcrumbs: CRUMBS,
       path: "/vs/anaplan",

@@ -118,8 +118,8 @@ const FAQ = [
 export const Route = createFileRoute("/finance-automation-software")({
   head: () =>
     seo({
-      title: "Finance Automation Software — Agentic, Not RPA — NashOS",
-      description: "Finance automation software built on agents, not screen macros. NashOS drafts close and forecast work for human review. Pilot in days.",
+      title: "Finance Automation Software | AI-Powered Finance – NashOS",
+      description: "Finance automation software by NashOS automates close, consolidation, reporting, variance analysis and planning with AI agents and human-reviewed workflows.",
       path: "/finance-automation-software",
       faq: FAQ,
       breadcrumbs: CRUMBS,

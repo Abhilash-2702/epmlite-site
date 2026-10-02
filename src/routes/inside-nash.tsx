@@ -35,9 +35,9 @@ const FAQ: Faq[] = [
 export const Route = createFileRoute("/inside-nash")({
   head: () =>
     seo({
-      title: "Inside Nash: The Six Systems Behind Agentic FP&A",
+      title: "Agentic AI in Finance | AI agents for finance – NashOS",
       description:
-        "Decision System, Continuous Planning, Agentic Execution, Audit & Control, Data Foundation, Integrations — what each does and how they run as one model.",
+        "Discover how NashOS uses agentic AI in finance for continuous planning, forecasting, financial insights, automation, audit controls and execution.",
       path: "/inside-nash",
       type: "article",
       faq: FAQ,

@@ -12,9 +12,9 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/")({
   head: () =>
     seo({
-      title: "Agentic FP&A Software for Planning & Forecasting | NashOS",
+      title: "Finance Automation Software | AI Forecasting & Finance Agents",
       description:
-        "NashOS is agentic FP&A software that runs planning, forecasting and close as one continuously computed system. Multi-entity, multi-currency, audit-ready.",
+        "Discover finance automation software with AI forecasting and AI agents for finance. Automate planning, forecasting and decisions with NashOS.",
       path: "/",
       faq: HOME_FAQ,
     }),

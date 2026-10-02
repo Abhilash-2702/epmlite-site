@@ -18,9 +18,9 @@ const CRUMBS = [{ name: "About", path: "/about" }];
 export const Route = createFileRoute("/about")({
   head: () => {
     const base = seo({
-      title: "About NashOS — The Team Behind Agentic FP&A",
+      title: "About NashOS | AI-Powered Finance Automation Platform",
       description:
-        "Who builds NashOS: an FP&A operator and a fintech platform team who got tired of rebuilding the same spreadsheet. Meet the people behind the product.",
+        "Learn about NashOS and our mission to transform finance with AI-powered automation, continuous planning, forecasting and intelligent financial decision-making.",
       breadcrumbs: CRUMBS,
       path: "/about",
     });

@@ -9,9 +9,9 @@ const CRUMBS = [{ name: "Careers", path: "/careers" }];
 export const Route = createFileRoute("/careers")({
   head: () =>
     seo({
-      title: "Careers — NashOS",
+      title: "Careers at NashOS | Join the AI Finance Team",
       description:
-        "We're an early-stage product. Not actively hiring yet — but if you're an FP&A operator who codes, write us.",
+        "Explore careers at NashOS and join a team building AI-powered finance automation, planning, forecasting and agentic AI solutions for modern businesses.",
       breadcrumbs: CRUMBS,
       path: "/careers",
     }),

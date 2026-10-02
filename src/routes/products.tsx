@@ -26,9 +26,9 @@ const CRUMBS = [{ name: "Products", path: "/products" }];
 export const Route = createFileRoute("/products")({
   head: () =>
     seo({
-      title: "Products & Platforms — NashOS",
+      title: "AI Finance Products | AI Tools for Finance & Financial Analysis",
       description:
-        "Nine product pillars — Reporting, Planning, AI, and Operations — backed by a 10-dimension cube.",
+        "Explore NashOS AI finance products for planning, forecasting, financial close, reporting and automation, built to transform modern finance teams.",
       breadcrumbs: CRUMBS,
       path: "/products",
     }),

@@ -24,9 +24,9 @@ const CRUMBS = [{ name: "Agentic FP&A platform", path: "/agentic-fpa-platform" }
 export const Route = createFileRoute("/agentic-fpa-platform")({
   head: () =>
     seo({
-      title: "AI for FP&A — The Agentic FP&A Platform | NashOS",
+      title: "AI for FP&A | Agentic FP&A Platform | Agentic AI for Finance - NashOS",
       description:
-        "AI for FP&A built around agents rather than a bolt-on chatbot: 44 tools, 15 forecast algorithms, draft-before-commit safety and a full audit trail.",
+        "Discover AI for FP&A with NashOS. Automate planning, forecasting, scenarios and finance decisions with AI agents built for modern FP&A teams.",
       breadcrumbs: CRUMBS,
       path: "/agentic-fpa-platform",
     }),

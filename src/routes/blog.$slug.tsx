@@ -23,8 +23,8 @@ export const Route = createFileRoute("/blog/$slug")({
       });
     }
     const base = seo({
-      title: `${post.title} | NashOS`,
-      description: post.description,
+      title: post.seoTitle ?? `${post.title} | NashOS`,
+      description: post.seoDescription ?? post.description,
       path: `/blog/${post.slug}`,
       type: "article",
       breadcrumbs: [

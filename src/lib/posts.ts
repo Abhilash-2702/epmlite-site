@@ -10,6 +10,10 @@ export type Post = {
   slug: string;
   title: string;
   description: string;
+  /** <title> / meta description overrides from the SEO agency's meta-tag sheet.
+   *  The H1 stays `title` (exact keyword); these only change the head tags. */
+  seoTitle?: string;
+  seoDescription?: string;
   /** Published (ISO date). */
   date: string;
   /** Last substantive edit (ISO date) — emitted as BlogPosting.dateModified. */
@@ -97,6 +101,8 @@ The thing nobody tells you: driver-based planning isn't about modeling sophistic
   {
     slug: "agentic-ai-in-finance-explained",
     title: "Agentic AI in Finance",
+    seoTitle: "Agentic AI in Finance: Tools, Workflows & Safety – NashOS",
+    seoDescription: "Learn what agentic AI in finance means, how tools and multi-step workflows work, and the permissions, human approvals and audit controls finance teams need.",
     description:
       "What agentic AI in finance actually means — tool use, multi-step loops, permissions — plus the safety primitives and a realistic adoption path.",
     date: "2026-09-12",
@@ -135,6 +141,8 @@ The takeaway is a three-question test you can run on any vendor, including us. O
   {
     slug: "how-to-improve-forecast-accuracy",
     title: "How to Improve Forecast Accuracy",
+    seoTitle: "How to Improve Forecast Accuracy | FP&A Guide – NashOS",
+    seoDescription: "Learn how to improve forecast accuracy with a six-step FP&A playbook covering data quality, driver-based planning, algorithm selection, reforecasting and error analysis.",
     description:
       "How to improve forecast accuracy: measure holdout MAPE, fix the data, decompose to drivers, pick algorithms empirically, reforecast on cadence.",
     date: "2026-09-10",

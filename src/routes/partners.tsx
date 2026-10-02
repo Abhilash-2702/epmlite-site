@@ -16,9 +16,9 @@ const CRUMBS = [{ name: "Partners", path: "/partners" }];
 export const Route = createFileRoute("/partners")({
   head: () =>
     seo({
-      title: "Partners — NashOS",
+      title: "NashOS Partners | Finance Technology & AI Partnerships",
       description:
-        "Implementation consultants, platform partners, and integrators — let's build together.",
+        "Partner with NashOS to deliver AI-powered finance automation, planning, forecasting and agentic finance solutions to modern finance teams.",
       breadcrumbs: CRUMBS,
       path: "/partners",
     }),
