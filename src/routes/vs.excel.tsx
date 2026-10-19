@@ -30,13 +30,13 @@ export const Route = createFileRoute("/vs/excel")({
 const ROWS: ComparisonRow[] = [
   { label: "Setup time", nashos: "Hours", rival: "0 (already there)", winner: "rival" },
   { label: "Commercial model", nashos: "Quoted to your entity count and volume", rival: "$0–$22 (M365)", winner: "rival" },
-  { label: "AI agent", nashos: "44 tools · plain-English read/write", rival: "Copilot bolt-on (read-only on data)", winner: "nashos" },
+  { label: "AI agent", nashos: "45 tools · plain-English reads, drafted writes", rival: "Copilot bolt-on (read-only on data)", winner: "nashos" },
   { label: "Forecast algorithms", nashos: "15 · one-click compare", rival: "Manual / add-in", winner: "nashos" },
-  { label: "Audit trail", nashos: "Before/after JSON · per cell", rival: "OneDrive version history", winner: "nashos" },
+  { label: "Audit trail", nashos: "Per-save log · before/after on most draft edits", rival: "OneDrive version history", winner: "draw" },
   { label: "Multi-entity consolidation", nashos: "Automated (10-dim cube)", rival: "Manual cross-sheet rebuilds", winner: "nashos" },
   { label: "Variance investigation", nashos: "Seconds via chat", rival: "Hours of manual drill-down", winner: "nashos" },
   { label: "What-if scenarios", nashos: "Live slider · saves stack", rival: "Copy sheet, change inputs, hope", winner: "nashos" },
-  { label: "Multi-user collaboration", nashos: "Concurrent · row-level RBAC", rival: "Sequential edits, conflict files", winner: "nashos" },
+  { label: "Multi-user collaboration", nashos: "Concurrent · roles + dimension scopes", rival: "Sequential edits, conflict files", winner: "nashos" },
   { label: "Best fit", nashos: "FP&A teams · multi-entity", rival: "Solo bookkeeper · simple co", winner: "draw" },
 ];
 
@@ -47,14 +47,14 @@ const CARDS = [
       "Three months of growth, one acquisition, or one new entity later — and the workbook starts crashing, the consolidation breaks, and one bad =SUM() ruins the variance pack. We've all lived this. NashOS is what you migrate to when the spreadsheet stops scaling.",
   },
   {
-    title: "Auditability that survives an audit",
+    title: "An audit log, not file versions",
     body:
-      "OneDrive version history tells you when something changed. It does not tell you what specifically, who, why, or how it propagated downstream. NashOS captures every mutation with before/after JSON, actor, timestamp — filterable and queryable forever.",
+      "OneDrive version history keeps earlier copies of the whole workbook. NashOS keeps a log instead: edits committed from a Nash draft card record their actor and timestamp, most with before/after values — filterable, exportable, and never removed by retention — and every grid save and bulk load is recorded with who saved it, when and how many rows it inserted or updated.",
   },
   {
     title: "Copilot reads. NashOS writes (safely).",
     body:
-      'Excel Copilot can summarize a range. The NashOS agent reads AND writes — "hire 3 engineers and show the impact" updates the plan, with a draft confirmation before commit. No silent edits. Full audit trail. Reversible.',
+      'Excel Copilot can summarize a range. The NashOS agent reads the plan and drafts changes to it — "hire 3 engineers and show the impact" previews the change on the plan, and saving it is a draft you confirm before commit. No silent edits. Every committed draft is recorded with who posted it and when, and an administrator can revert a figure edit posted from a Nash fact draft card.',
   },
   {
     title: "Variance investigation in 30 seconds",

@@ -18,11 +18,11 @@ const CRUMBS = [{ name: "AI forecasting", path: "/ai-forecasting-software" }];
 // Answer-first explainer. Rendered as the first block on the page so the
 // definition sits above the card sections, where answer engines look first.
 const PROSE = [
-  "Honest AI forecasting is a bake-off, not an oracle. Fit multiple algorithms to each series, hold back the most recent periods, score every model on data it never saw, and ship the one that earned it. NashOS runs this as a workflow: 15 algorithms available, candidates compared side by side on holdout R², RMSE, MAE, and MAPE, with the best performer locked so the next cycle uses it by default. No single \"AI\" makes the forecast. The scoreboard does.",
+  "Honest AI forecasting is a bake-off, not an oracle. Fit multiple algorithms to each series, hold back the most recent periods, score every model on data it never saw, and ship the one that earned it. NashOS runs this as a workflow: 15 algorithms available, candidates compared side by side on holdout R², RMSE, MAE, and MAPE, with the best performer's forecast saved into a forecast scenario. No single \"AI\" makes the forecast. The scoreboard does.",
   "The holdout window is the whole game. A model can trace your historical revenue perfectly and still know nothing about next quarter — that's overfitting, and training-fit metrics reward it. So judge models only on periods they never saw, and read MAPE as the headline: under 5% is excellent, 5–15% good, 15–30% workable, above 30% means the model isn't useful. Those bands are the honest answer to \"how accurate is it\" — accuracy is a property of your series, not of the software.",
   "The statistical-versus-ML debate mostly evaporates once you measure. Short, noisy series favor simple methods — linear regression, moving averages — because heavier models memorize noise and call it signal. Long, clean, seasonal series are where ARIMA and SARIMA tend to win. You don't have to pick a camp: shortlist the candidates, compare them side by side, and read the holdout column. That's also the difference from the single fitted curve legacy planning suites bolt on — the side-by-side comparison at /vs/anaplan covers it.",
   "Some series can't be forecast at all — a brand-new product line has no history, and no algorithm extrapolates from nothing. NashOS handles those with a driver-based hybrid: mark the inputs as drivers with a unit of measure (price, units, retention), write member formulas like SALARIES_ENG = HEADCOUNT_ENG × −10000, and let the math compose the line. When the new line accrues enough actuals, you can move it to the statistical bake-off like everything else.",
-  "The agent runs the same workflow. Forecasting is one of four tool categories — the forecasting tools among the 44 fit algorithms, compare metrics, lock winners, and run what-ifs — and every write lands as a draft a human must post, with the full audit trail behind it. Ask for a forecast in plain English; ratify the result. How the whole agent platform works is at /agentic-fpa-platform.",
+  "The agent runs the same workflow. Forecasting is one of four tool categories — the forecasting tools among the 45 fit algorithms, compare metrics, save the winner's forecast, and run what-ifs — and every write lands as a draft a human must post, with the save recorded against who made it and when. Ask for a forecast in plain English; ratify the result. How the whole agent platform works is at /agentic-fpa-platform.",
 ];
 
 const SECTION_1 = [
@@ -43,16 +43,16 @@ const SECTION_1 = [
   {
     Icon: ShieldCheck,
     meta: "Step 3",
-    title: "Lock",
+    title: "Save",
     body:
-      "Pin the winner and the next forecast cycle uses it by default. No re-litigating the model choice every month, and no quietly swapped methodology behind the board deck.",
+      "Save the winner's forecast into a forecast scenario, recorded with who saved it and when. No quietly swapped methodology behind the board deck: the saved forecast is the one the reports read.",
   },
   {
     Icon: Zap,
     meta: "Step 4",
     title: "Revisit",
     body:
-      "The next forecast cycle uses the locked algorithm by default. Revisit the choice on a cadence — a series that changes character, from new pricing or a new channel, deserves a re-run of the bake-off.",
+      "Keep the winning algorithm for the next cycle and revisit the choice on a cadence — a series that changes character, from new pricing or a new channel, deserves a re-run of the bake-off.",
   },
 ];
 
@@ -91,7 +91,7 @@ const FAQ = [
   {
     question: "What is AI forecasting software?",
     answer:
-      "AI forecasting software fits statistical and machine-learning models to your historical financials and projects them forward. Done honestly, it fits several algorithms per series, scores each on a holdout window the models never saw, and ships the best performer. NashOS makes 15 algorithms available, compares candidates on holdout R² / RMSE / MAE / MAPE, and lets you lock the winner for the next cycle.",
+      "AI forecasting software fits statistical and machine-learning models to your historical financials and projects them forward. Done honestly, it fits several algorithms per series, scores each on a holdout window the models never saw, and ships the best performer. NashOS makes 15 algorithms available, compares candidates on holdout R² / RMSE / MAE / MAPE, and saves the winner's forecast into a forecast scenario.",
   },
   {
     question: "How accurate is AI forecasting?",
@@ -111,7 +111,7 @@ const FAQ = [
   {
     question: "How does NashOS pick the winning algorithm?",
     answer:
-      "It doesn't guess — it measures. 15 algorithms are available; each candidate is scored on R² / RMSE / MAE / MAPE against a holdout window, and you compare candidates side by side — lowest holdout MAPE is usually the one to lock. You pin the winner, the next cycle uses it by default, and the agent can run the whole comparison — with every write gated by draft-before-commit.",
+      "It doesn't guess — it measures. 15 algorithms are available; each candidate is scored on R² / RMSE / MAE / MAPE against a holdout window, and you compare candidates side by side — lowest holdout MAPE is usually the one to keep. You save the winner's forecast into a forecast scenario, and the agent can run the whole comparison — with every write gated by draft-before-commit.",
   },
   {
     question: "Do I need a data science team to run AI forecasting software?",
@@ -140,7 +140,7 @@ function Page() {
         eyebrow={"AI forecasting"}
         title="AI Forecasting Software"
         subtitle="Shows its work: 15 algorithms, one honest scoreboard."
-        lede={"Most AI forecasting software asks you to trust a black box. NashOS fits 15 algorithms to your series, scores them on holdout MAPE / R² / RMSE, and locks the winner — the forecast that ships is the one that earned it. For series with no history, a driver-based plan takes over."}
+        lede={"Most AI forecasting software asks you to trust a black box. NashOS fits 15 algorithms to your series, scores them on holdout MAPE / R² / RMSE, and saves the winner's forecast — the forecast that ships is the one that earned it. For series with no history, a driver-based plan takes over."}
         primaryCta={{ label: "Try with your data", to: "/try" }}
         secondaryCta={{ label: "Book a walkthrough", to: "/demo" }}
       />
@@ -162,7 +162,7 @@ function Page() {
 
       <Section>
         <SectionHeader
-          title={"The workflow: fit, compare, lock, revisit"}
+          title={"The workflow: fit, compare, save, revisit"}
           caption={"Four steps, none of them magic. The winning model is chosen on evidence you can read — and it has to re-earn the job whenever you re-run the bake-off."}
         />
         <CardGrid items={SECTION_1} cols={4} />

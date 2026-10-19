@@ -7,7 +7,7 @@ type StepId = 0 | 1 | 2;
 const STEPS = [
   { n: "01", label: "Ask", title: "Ask in plain English", desc: "Live answers on your real model — no stale exports, no ticket queue." },
   { n: "02", label: "Test", title: "Test the decision", desc: "Impact across P&L, Balance Sheet and Cash Flow — instantly." },
-  { n: "03", label: "Commit", title: "Commit with audit", desc: "Draft → review → commit. Every change tracked, before/after stored, revertable." },
+  { n: "03", label: "Commit", title: "Commit with audit", desc: "Draft → review → commit. Every committed draft is tied to the user and the time, and most keep their before/after values." },
 ] as const;
 
 type Answer = {
@@ -24,28 +24,27 @@ const EXAMPLES: { q: string; a: string; answer: Answer }[] = [
     q: "Hire 5 engineers in Q3",
     a: "Runway and EBITDA, instantly.",
     answer: {
-      tools: ["query_headcount_plan", "simulate_hires", "recompute_pnl", "recompute_cashflow"],
+      tools: ["list_drivers", "what_if_preview"],
       headline: [
         { label: "Runway", value: 12.8, suffix: " mo" },
         { label: "EBITDA impact", value: -1.1, prefix: "$", suffix: "M" },
       ],
       summary:
-        "Adds ~$1.1M fully-loaded cost over the first twelve months (salary + benefits + equipment). Runway compresses by 1.4 months vs base; cash EoY lands at $42.6M. Within board-approved hiring envelope.",
+        "Adds ~$1.1M of engineering salary over the first twelve months at the plan's formula rate. Runway compresses by 1.4 months vs base.",
       rows: [
-        { label: "Payroll Δ (first 12 mo)", value: "+$0.95M", pct: 72, tone: "neg" },
-        { label: "Onboarding + equip", value: "+$0.15M", pct: 18, tone: "neg" },
+        { label: "Payroll Δ (first 12 mo)", value: "+$1.10M", pct: 72, tone: "neg" },
         { label: "Runway Δ", value: "−1.4 mo", pct: 56, tone: "neg" },
-        { label: "Capacity Δ (eng-mo)", value: "+12.5", pct: 62, tone: "pos" },
+        { label: "HEADCOUNT_ENG", value: "+5 FTE", pct: 62, tone: "neutral" },
       ],
-      source: "Headcount plan v7 · Aug actuals · 3 entities (US/EU/UK) · USD",
-      caveat: "Assumes blended $190k loaded cost · ramp = 0.5 in month 1.",
+      source: "HEADCOUNT_ENG driver · formula rate · cash at Aug actuals · USD",
+      caveat: "Priced at the plan's formula rate · name a salary to price the hires at it.",
     },
   },
   {
     q: "Why is EBITDA off?",
     a: "Ranked drivers, in seconds.",
     answer: {
-      tools: ["variance_analysis", "rank_drivers", "trace_to_source"],
+      tools: ["get_variance", "get_fact_value"],
       headline: [
         { label: "EBITDA Δ vs plan", value: -2.4, prefix: "$", suffix: "M" },
         { label: "Margin Δ", value: -3.1, suffix: " pp" },
@@ -59,28 +58,27 @@ const EXAMPLES: { q: string; a: string; answer: Answer }[] = [
         { label: "Other (FX, true-ups)", value: "−$0.22M", pct: 9, tone: "neg" },
       ],
       source: "GL Aug-close · 3 entities · linked to 1,284 source rows",
-      caveat: "Drill-through available on every line · revertable.",
+      caveat: "Drill-through available on every line.",
     },
   },
   {
-    q: "Re-forecast on new pipeline",
+    q: "Re-forecast on the latest actuals",
     a: "Recomputed across entities.",
     answer: {
-      tools: ["pull_crm_pipeline", "apply_win_rates", "recompute_forecast", "consolidate_fx"],
+      tools: ["compare_predictions", "prepare_forecast_save"],
       headline: [
-        { label: "FY ARR (new)", value: 38.4, prefix: "$", suffix: "M" },
+        { label: "FY revenue (new fcst)", value: 38.4, prefix: "$", suffix: "M" },
         { label: "vs prior fcst", value: 2.6, prefix: "+$", suffix: "M" },
       ],
       summary:
-        "New pipeline lifts FY ARR by $2.6M (+7.3%). Lift is concentrated in EU mid-market; US enterprise unchanged. Cash conversion improves by 0.4 months.",
+        "The holdout winner lifts the FY revenue forecast by $2.6M (+7.3%) over the prior forecast. The lift is concentrated in the EU entity; the draft card saves it into the forecast scenario once you post it.",
       rows: [
-        { label: "EU mid-market", value: "+$1.90M", pct: 73, tone: "pos" },
-        { label: "US SMB", value: "+$0.55M", pct: 21, tone: "pos" },
-        { label: "UK enterprise", value: "+$0.15M", pct: 6, tone: "pos" },
-        { label: "Churn assumption", value: "unchanged", pct: 0, tone: "neutral" },
+        { label: "EU entity", value: "+$1.90M", pct: 73, tone: "pos" },
+        { label: "US entity", value: "+$0.55M", pct: 21, tone: "pos" },
+        { label: "UK entity", value: "+$0.15M", pct: 6, tone: "pos" },
+        { label: "Holdout winner", value: "Holt-Winters", pct: 0, tone: "neutral" },
       ],
-      source: "CRM snapshot · win-rate model v3 · FX rates locked Aug-31",
-      caveat: "Stage-weighted · excludes deals <$25k ACV.",
+      source: "ACTUAL history · holdout backtest · 3 entities · USD",
     },
   },
 ];
@@ -165,7 +163,7 @@ export function FromQtoDSection() {
             <span className="font-serif-accent text-gradient-gold">Not reports.</span>
           </h2>
           <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ask. Test. Commit. One continuous loop — every figure traceable, every assumption explicit.
+            Ask. Test. Commit. One continuous loop — every saved figure recorded, every assumption explicit.
           </p>
         </div>
 
@@ -253,8 +251,8 @@ export function FromQtoDSection() {
                 ].map((t) => <Bullet key={t}>{t}</Bullet>)}
                 {step === 2 && [
                   "Draft → review → commit workflow",
-                  "Before/after diff stored, revertable",
-                  "Tied to user, time, and source rows",
+                  "Before/after kept on most drafts",
+                  "Tied to the user and the time",
                 ].map((t) => <Bullet key={t}>{t}</Bullet>)}
               </ul>
 
@@ -479,7 +477,7 @@ function TestPane({ prm }: { prm: boolean }) {
 
   return (
     <div className="flex flex-col gap-4 h-full">
-      <PaneHeader label="scenario · WHATIF_Q3_HIRE" right={<span className="font-mono text-[11px] text-gold">live</span>} />
+      <PaneHeader label="what-if · Q3 hire" right={<span className="font-mono text-[11px] text-gold">live</span>} />
 
       <div className="rounded-xl border border-border bg-card/40 p-4">
         <div className="flex items-center justify-between text-xs">
@@ -532,10 +530,10 @@ function DeltaRow({ label, value, pct, delay, prm }: { label: string; value: str
 /* ---------------- COMMIT ---------------- */
 
 const LOG_LINES = [
-  { t: "audit_log: INSERT scenario=WHATIF_Q3_HIRE5", c: "gold" },
-  { t: "↳ user=admin · before/after stored", c: "muted" },
-  { t: "↳ diff: 1,284 cells · 3 entities", c: "muted" },
-  { t: "↳ revertable · auditId=8842", c: "muted" },
+  { t: "audit_log: INSERT dim_scenario · WHATIF_MH2K7Q9", c: "gold" },
+  { t: "↳ name=Q3 hire 5 · user=admin · time + adjustments stored", c: "muted" },
+  { t: "↳ factCount=1,284 · base FORECAST FY26", c: "muted" },
+  { t: "↳ auditId=8842", c: "muted" },
 ] as const;
 
 function CommitPane({ prm }: { prm: boolean }) {
@@ -574,7 +572,7 @@ function CommitPane({ prm }: { prm: boolean }) {
           </div>
         ))}
         {committed && (
-          <div className="row-in text-gold mt-1">✓ committed · scenario applied to base</div>
+          <div className="row-in text-gold mt-1">✓ committed · scenario saved beside base</div>
         )}
         {shown === LOG_LINES.length && !committed && <span className="caret" />}
       </div>
@@ -588,7 +586,7 @@ function CommitPane({ prm }: { prm: boolean }) {
           {committed ? "Committed" : "Commit scenario"} <span aria-hidden>{committed ? "✓" : "→"}</span>
         </button>
         <button className="btn-outline-gold inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
-          Revert
+          Discard
         </button>
       </div>
     </div>

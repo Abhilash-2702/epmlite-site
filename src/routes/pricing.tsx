@@ -40,7 +40,7 @@ const tiers = [
     name: "Enterprise",
     price: "Bespoke",
     blurb: "Global rollout with controls, governance and lineage at scale.",
-    features: ["Role-based access control", "Custom dimensions", "Dedicated environment", "Solution engineering"],
+    features: ["Custom dimensions", "Phased multi-entity rollout", "Solution engineering"],
     cta: "Contact sales",
     highlight: false,
   },
@@ -97,6 +97,16 @@ function PricingPage() {
             </div>
           ))}
         </div>
+
+        <p className="mt-10 max-w-3xl text-sm text-muted-foreground">
+          Every plan runs on its own dedicated environment (its own database, backend service and
+          web frontend) and includes role-based access control with group and dimension scopes.
+          How the application is secured is on our{" "}
+          <Link to="/security" className="text-gold hover:underline">
+            security page
+          </Link>
+          .
+        </p>
       </section>
       <SiteFooter />
     </main>

@@ -23,12 +23,12 @@ const systems = [
   {
     icon: Sparkles,
     title: "Agentic Execution",
-    line: "Turns intent into action. Ask in plain English; the system plans, drafts, confirms and commits.",
+    line: "Turns intent into action. Ask in plain English; the system plans and drafts, and you confirm and commit.",
   },
   {
     icon: ShieldCheck,
     title: "Audit & Control",
-    line: "Every change trustworthy — before/after on every write, full history, traceability and role-based control.",
+    line: "Every figure saved is recorded — attributed to its user, with before/after kept on most committed drafts, and role-based control.",
   },
   {
     icon: Database,
@@ -128,7 +128,7 @@ export function InsideNashSection() {
         {/* Footer band */}
         <div className="mt-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-t border-border/30 pt-8">
           <p className="text-foreground/85 text-[15px] leading-relaxed lg:max-w-3xl">
-            Together, these systems operate as one — multi-entity, continuously computed, fully auditable.{" "}
+            Together, these systems operate as one — multi-entity, continuously computed, every saved figure recorded.{" "}
             <span className="font-semibold text-gradient-gold">No handoffs. No sync issues. No rebuilds.</span>
           </p>
           <Link

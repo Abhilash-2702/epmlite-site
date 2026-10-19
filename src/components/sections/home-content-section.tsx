@@ -19,7 +19,7 @@ export const HOME_FAQ: Faq[] = [
   {
     question: "What is agentic FP&A software?",
     answer:
-      "Agentic FP&A software lets a finance user state an intent in plain English and have the system carry out the work — resolving the request against your dimensions, running the computation, drafting the change, and committing it only after review. It differs from a chatbot bolted onto a planning tool: the agent has tools that read and write the model directly, and every action it takes is recorded in the audit trail.",
+      "Agentic FP&A software lets a finance user state an intent in plain English and have the system carry out the work — resolving the request against your dimensions, running the computation, drafting the change, and committing it only after review. It differs from a chatbot bolted onto a planning tool: the agent has tools that read the model and draft changes to it, and every change committed from its drafts is recorded with who made it and when.",
   },
   {
     question: "How is NashOS different from Anaplan or Adaptive Planning?",
@@ -39,12 +39,12 @@ export const HOME_FAQ: Faq[] = [
   {
     question: "Is my data auditable and is every AI-generated change reviewable?",
     answer:
-      "Every write stores the before value, the after value, the actor, the timestamp and the originating request. Agent-drafted changes are staged as drafts — nothing is committed without explicit confirmation — and figures on a report drill through to the source rows that produced them.",
+      "Most edits committed from a Nash draft card store the before value, the after value, the actor and the timestamp, and grid saves and bulk loads are recorded per save, with who, when and how many rows. Agent-drafted changes are staged as drafts — nothing is committed without explicit confirmation — and report lines expand from rollup to leaf, with a dashboard KPI tile drilling through to the fact rows behind it.",
   },
   {
     question: "Which systems does NashOS connect to?",
     answer:
-      "REST APIs, SFTP, Excel and CSV connectors are self-serve and production-ready, validated on every run with full run history, and inbound pulls can be scheduled hourly, nightly or weekly. The SAP (OData) and NetSuite (SuiteQL) engines are built and tested, but setting one up is still something we do with you rather than a self-serve screen. QuickBooks connects via REST until a native adapter lands.",
+      "REST API, SFTP, Excel and CSV connectors are self-serve today, with connection testing and run history, and every inbound load is validated before anything is written; REST API and SFTP sources can be pulled on a schedule you set (hourly, daily, weekly or a custom cron). The SAP S/4HANA, NetSuite (SuiteQL), QuickBooks Online and Stripe engines are built and covered by automated tests, and we set those up with you; NetSuite, QuickBooks Online and Stripe are inbound (pull) sources.",
   },
   {
     question: "What does NashOS cost?",
@@ -124,7 +124,7 @@ export function HomeContentSection() {
               <Link to="/for-leaders" className="text-foreground font-medium hover:text-gold">
                 CFOs
               </Link>{" "}
-              — board-ready numbers with a full audit trail on every write.
+              — board-ready numbers, and every figure saved is recorded with who saved it and when.
             </p>
             <p className="text-muted-foreground">
               <span className="text-foreground font-medium">FP&amp;A teams</span> — driver-based
@@ -151,30 +151,30 @@ export function HomeContentSection() {
                   <Link to="/inside-nash" className="text-gold hover:underline">
                     six systems behind that
                   </Link>{" "}
-                  are described in full on their own page.
+                  are described in full on a dedicated page.
                 </>
               ),
             },
             {
               h: "What makes it auditable",
-              lead: "Every write records the before value, the after value, the actor, the timestamp and the request that produced it.",
+              lead: "Most edits committed from a Nash draft card record the before value, the after value, the actor and the timestamp.",
               body: (
                 <>
-                  Reports trace back to source rows, so a number on a board deck can be drilled to
-                  the transaction that created it. Agent-proposed changes are staged as drafts and
-                  are not written until a user confirms them.
+                  Grid saves and bulk loads are recorded per save, with who, when and how many rows; report lines expand from rollup to
+                  leaf; and each connector keeps the source rows of its recent runs. Agent-proposed
+                  changes are staged as drafts and are not written until a user confirms them.
                 </>
               ),
             },
             {
               h: "What it connects to",
-              lead: "REST APIs, SFTP, Excel and CSV are self-serve and production-ready today, validated on every run.",
+              lead: "REST API, SFTP, Excel and CSV are self-serve today, and every inbound load is validated before anything is written.",
               body: (
                 <>
-                  Every connector run keeps full history, and inbound pulls can be scheduled
-                  hourly, nightly or weekly. The SAP and NetSuite engines are built and tested —
-                  we set those up with you today rather than from a self-serve screen. QuickBooks
-                  connects via REST until a native adapter lands.
+                  Each connector has connection testing and run history, and REST API and SFTP
+                  sources can be pulled on a schedule you set (hourly, daily, weekly or a custom
+                  cron). The SAP S/4HANA, NetSuite, QuickBooks Online and Stripe engines are built
+                  and covered by automated tests, and we set those up with you.
                 </>
               ),
             },

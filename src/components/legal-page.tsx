@@ -4,7 +4,9 @@ import { PageShell } from "@/components/page-shell";
 import { PageHero, Section } from "@/components/page-sections";
 import type { Crumb } from "@/lib/seo";
 
-// Shared chrome for /privacy, /terms and /security.
+// Shared chrome for /privacy and /terms. (/security has its own layout in
+// routes/security.index.tsx: it describes live product controls rather than
+// legal text awaiting counsel, so it carries no draft notice and is indexed.)
 //
 // The footer used to point all three at /contact, which is a weak trust signal
 // and a dead end for anyone checking before they hand over data. These routes
@@ -21,7 +23,7 @@ export function DraftNotice() {
     <div className="surface-card border-destructive/40 bg-destructive/5 p-5 flex items-start gap-3">
       <AlertTriangle className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
       <p className="text-sm text-muted-foreground">
-        <strong className="text-foreground">Draft — not yet in force.</strong> This page is being
+        <strong className="text-foreground">Draft — not in force.</strong> This page is being
         finalised with counsel. For anything you need in writing today, email{" "}
         <a href="mailto:admin@nashos.ai" className="text-gold hover:underline">
           admin@nashos.ai

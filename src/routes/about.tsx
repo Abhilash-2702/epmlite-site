@@ -69,9 +69,9 @@ const beliefs = [
   },
   {
     Icon: History,
-    title: "Audit trail beats version history",
+    title: "An audit trail, not a version history",
     body:
-      "Knowing who changed the COGS assumption — and what the value was before — is non-negotiable for finance. Excel can't do this. We do.",
+      "Knowing who changed a figure, and when, is non-negotiable for finance. NashOS records every grid save and load with the user and the time, and most edits committed from a Nash draft card keep the value before and after.",
   },
   {
     Icon: GitBranch,
@@ -87,7 +87,7 @@ const stats = [
     label:
       "Product pillars · Executive Dashboard, P&L/BS/CF, Driver-Based Planning, What-If Scenarios, AI Agent, Forecasting, Alerts, Connectors, Audit + RBAC",
   },
-  { num: "44", label: "AI tools that run the day-to-day work in plain English" },
+  { num: "45", label: "AI tools that run the day-to-day work in plain English" },
   { num: "15", label: "Forecasting algorithms — statistical, time-series and ML — compared on R²/RMSE/MAE/MAPE" },
   {
     num: "10-dim",

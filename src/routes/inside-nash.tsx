@@ -13,17 +13,17 @@ const FAQ: Faq[] = [
   {
     question: "Can the AI change my numbers without me knowing?",
     answer:
-      "No. Agent-initiated changes are staged as drafts. You see the before value, the after value and the reasoning before anything is written, and the commit is an explicit action. Every committed write is attributed and timestamped in the same audit trail as a manual edit.",
+      "No. Agent-initiated changes are staged as draft cards, shown with Nash's summary of the change, and most cards show the before value and the after value before anything is written; the commit is an explicit action. Every committed write is attributed and timestamped. The security page sets out what the cards show.",
   },
   {
     question: "What stops the agent from inventing a figure?",
     answer:
-      "The agent reads and writes through the same computation path as the rest of the system rather than generating numbers itself. Figures it reports are drawn from the model and drill back to source rows.",
+      "The agent reads and writes through the same computation path as the rest of the system rather than generating numbers itself. Figures it reports are drawn from the model, so they match the reports you can open and expand from rollup to leaf.",
   },
   {
     question: "Who can commit changes?",
     answer:
-      "A change is only written when a user confirms it, and the audit trail records who confirmed it and when. Splitting that into separate draft and approve permissions — so an analyst prepares a change that only an approver can write — is on the near-term roadmap rather than shipped today.",
+      "Users whose role holds the write-data permission: planners and administrators by default, while analysts and viewers read and report. A dimension scope limits which entities, departments and products each user can write to. A change Nash proposes is written only when a user who holds the permission for it confirms it, and the audit trail records who confirmed it and when. Consolidation set-up cards and held close-run loads are confirmed by an administrator.",
   },
   {
     question: "Does it work across multiple entities and currencies?",
@@ -88,9 +88,9 @@ function InsideNashPage() {
           </div>
           <div className="space-y-4">
             <p>
-              Audit &amp; Control is what makes that safe to run. Every write stores its before
-              value, after value, actor and timestamp, and nothing the agent proposes reaches the
-              model until a user confirms it.
+              Audit &amp; Control is what makes that safe to run. Most edits committed from a draft
+              card store their before value, after value, actor and timestamp, grid saves and bulk loads
+              are recorded per save, and nothing the agent proposes reaches the model until a user confirms it.
             </p>
             <p>
               Underneath, the Data Foundation is multi-entity and multi-currency by construction,
