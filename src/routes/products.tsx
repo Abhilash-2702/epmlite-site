@@ -70,13 +70,13 @@ const ai = [
     Icon: Sparkles,
     title: "AI Agent",
     body:
-      'Plain-English chat with 44 tools that cover the day-to-day work. Ask: "What\'s our runway?" "Hire 3 engineers and show the impact." "Update JPY rate to 150." Every write produces a draft card. Nothing the LLM says auto-mutates the database.',
+      'Plain-English chat with 45 tools that cover the day-to-day work. Ask: "What\'s our runway?" "Hire 3 engineers and show the impact." "Update JPY rate to 150." Every write Nash proposes produces a draft card. Nothing the LLM says auto-mutates the database.',
   },
   {
     Icon: TrendingUp,
     title: "Forecasting · 15 algorithms",
     body:
-      "Linear / Poly Regression, ARIMA / SARIMA, Ridge / Lasso, Random Forest, Gradient Boosting, Neural Net, Holt-Winters, Exponential Smoothing. R² / RMSE / MAE / MAPE per run. Compare 2–5 algos side-by-side and lock the winner.",
+      "Linear / Poly Regression, ARIMA / SARIMA, Ridge / Lasso, Random Forest, Gradient Boosting, Neural Net, Holt-Winters, Exponential Smoothing. R² / RMSE / MAE / MAPE per run. Compare 2–5 algos side-by-side and save the winner's forecast into a scenario.",
   },
 ];
 
@@ -91,13 +91,13 @@ const operations = [
     Icon: Plug,
     title: "Connectors",
     body:
-      "Inbound + outbound. Self-serve today: REST · SFTP · Excel · CSV — with scheduled pulls (hourly, nightly or weekly), connection testing and full run history on every run. The SAP (OData), NetSuite (SuiteQL), Oracle and ODBC engines are built and tested, but setting one up still needs us — ask if you need one.",
+      "Inbound + outbound. Self-serve today: REST · SFTP · Excel · CSV — with connection testing and full run history on every run, and scheduled REST and SFTP pulls (hourly, daily, weekly or any cron schedule). The SAP S/4HANA, NetSuite (SuiteQL), QuickBooks Online, Stripe, Oracle and ODBC engines are built and covered by automated tests, and we set those up with you — ask if you need one. NetSuite, QuickBooks Online and Stripe are inbound.",
   },
   {
     Icon: ShieldCheck,
     title: "Audit + RBAC",
     body:
-      "Every mutation captured with before/after JSON. Roles: super_admin · admin · planner · viewer. Short-lived JWTs, refresh rotation, account lockout, helmet/CORS hardened.",
+      "Most draft-card edits captured with before/after JSON; grid saves and bulk loads logged per save. Assignable roles: viewer · analyst · planner · admin, plus custom roles, with group and dimension scopes. Short-lived JWTs, refresh rotation, account lockout, helmet/CORS hardened.",
   },
 ];
 

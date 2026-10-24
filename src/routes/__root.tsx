@@ -165,7 +165,7 @@ const SOFTWARE_JSON_LD = {
     "Driver-based continuous planning",
     "Multi-entity, multi-currency consolidation",
     "Agentic execution with draft-and-commit review",
-    "Full audit trail on every write",
+    "Every figure saved is recorded with who saved it and when",
   ],
 };
 

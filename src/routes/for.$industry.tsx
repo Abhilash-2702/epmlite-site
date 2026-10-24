@@ -76,8 +76,8 @@ const INDUSTRIES: Record<string, Industry> = {
     fitPoints: [
       "Drivers: NEW_LOGOS, ACV, CHURN_RATE, EXPANSION_RATE — recompute the plan when any of these moves.",
       "AI agent: ask it to model 'extend runway by 6 months without slowing growth' — it stress-tests headcount + S&M + churn assumptions.",
-      "Connectors pull from Stripe / HubSpot / Salesforce so the cube has live ARR, not last quarter's CSV.",
-      "Audit-grade trail satisfies pre-IPO due diligence on day one.",
+      "The Stripe connector loads invoices as monthly billing by product and customer country, with revenue recognised over each service period. CRM data, for example from HubSpot or Salesforce, loads as a CSV or Excel file.",
+      "Every figure saved is recorded with who saved it and when, every load is recorded as a run, and most edits committed from a Nash draft card carry before/after values.",
     ],
     scenario:
       "$15M ARR, 60% growth, 11-day close. Move to a 1-day close, run weekly re-forecasts, and surface board-ready variance commentary in 90 minutes per cycle.",
@@ -101,7 +101,7 @@ const INDUSTRIES: Record<string, Industry> = {
       "Multi-revenue-stream chart of accounts handled at the cube level — no parallel spreadsheets.",
       "Backlog visibility tied to forward revenue: convert a signed MSA into a future-period revenue projection automatically.",
       "What-if scenarios stack: capacity change × pricing change × backlog conversion all in one view.",
-      "Audit-grade for SOC 2 customers — we already have the trail you need.",
+      "When a client asks about a change, the audit trail shows who saved each plan and load, and when, with before/after values on most edits committed from a Nash draft card.",
     ],
     scenario:
       "Marketing-services firm, 50% retainer / 40% project / 10% one-off. Close in 1 day, weekly cash-conversion forecast, and project-margin investigation in seconds.",

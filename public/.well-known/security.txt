@@ -1,0 +1,6 @@
+# NashOS vulnerability disclosure (RFC 9116)
+Contact: mailto:security@nashos.ai
+Expires: 2027-10-16T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://nashos.ai/.well-known/security.txt
+Policy: https://nashos.ai/security

@@ -32,11 +32,11 @@ export const Route = createFileRoute("/vs/anaplan")({
 const ROWS: ComparisonRow[] = [
   { label: "Setup time", nashos: "Hours", rival: "6–9 months", winner: "nashos" },
   { label: "Commercial model", nashos: "Quoted to your entity count and volume", rival: "Six-figure annual contract", winner: "nashos" },
-  { label: "AI architecture", nashos: "Native · 44 tools", rival: "Bolt-on copilot", winner: "nashos" },
+  { label: "AI architecture", nashos: "Native · 45 tools", rival: "Bolt-on copilot", winner: "nashos" },
   { label: "Forecast algorithms", nashos: "15 (compare side-by-side)", rival: "Limited / single-model", winner: "nashos" },
   { label: "What-if scenarios", nashos: "Live slider · sub-second", rival: "Yes (slower modeling)", winner: "nashos" },
   { label: "Multi-entity / currency", nashos: "10-dim cube · built in", rival: "Yes", winner: "draw" },
-  { label: "Audit trail", nashos: "Before/after JSON · per-mutation", rival: "Yes", winner: "draw" },
+  { label: "Audit trail", nashos: "Per-save log · before/after on most draft edits", rival: "Yes", winner: "draw" },
   { label: "Implementation team needed", nashos: "1 finance lead", rival: "Anaplan model builder team", winner: "nashos" },
   { label: "Plain-English query", nashos: "Native chat agent", rival: "Through partner add-ons", winner: "nashos" },
   { label: "Best fit", nashos: "Mid-market · SMB", rival: "Enterprise · Fortune 500", winner: "draw" },
@@ -56,7 +56,7 @@ const FAQ = [
   {
     question: "How do we improve forecast accuracy without a data science team?",
     answer:
-      "The honest version of how to improve forecast accuracy is to stop choosing an algorithm by intuition. NashOS lets you run two to five algorithms side by side, compare them on R\u00b2, RMSE, MAE and MAPE, and lock the one that fits your history best. Drivers do the rest: mark headcount, units, hours or a percentage as a driver, write the formula once, and dependent lines recompute from the assumption instead of being typed in again.",
+      "The honest version of how to improve forecast accuracy is to stop choosing an algorithm by intuition. NashOS lets you run two to five algorithms side by side, compare them on R\u00b2, RMSE, MAE and MAPE, and save the forecast of the one that fits your history best. Drivers do the rest: mark headcount, units, hours or a percentage as a driver, write the formula once, and dependent lines recompute from the assumption instead of being typed in again.",
   },
 ];
 

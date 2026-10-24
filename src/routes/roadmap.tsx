@@ -41,14 +41,14 @@ const NOW: Item[] = [
 
 const NEXT: Item[] = [
   {
-    title: "Self-serve NetSuite + QuickBooks setup",
+    title: "Self-serve ERP connector setup",
     body:
-      "The NetSuite SuiteQL engine is built and tested. What is left is self-serve setup: an ERP pull has to supply scenario, version and year as constants, and the connector mapping screen cannot express those yet — so today an ERP connector is something we configure with you. QuickBooks stays REST-based until a native adapter lands.",
+      "The SAP S/4HANA, NetSuite, QuickBooks Online and Stripe engines are built and covered by automated tests, and today we configure them with you. This item makes their setup self-serve from the connectors page.",
   },
   {
     title: "Multi-tenant SaaS hosting",
     body:
-      "Self-serve account creation. Workspace isolation via row-level security. Available alongside the existing self-host option.",
+      "Self-serve account creation on shared infrastructure, with workspace isolation via row-level security. Today every customer runs on a dedicated environment instead: its own database, backend and frontend.",
   },
   {
     title: "SSO (SAML / OIDC)",
@@ -56,9 +56,9 @@ const NEXT: Item[] = [
       "Required by every enterprise procurement workflow. Ships with the multi-tenant release.",
   },
   {
-    title: "Substitution variables / row-level security",
+    title: "Substitution variables",
     body:
-      "Enterprise governance: hide JP entity numbers from the EU planner who shouldn't see them. Per-role, per-row.",
+      "Named values such as the current period or the active forecast version, maintained once and picked up by every form and report. Per-user dimension scopes on entity, department and product already ship: they limit the reports, dashboards, forecasts and Nash answers a planner sees, and the figures they can enter or change.",
   },
 ];
 

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { LegalPage, LegalSection } from "@/components/legal-page";
 import { seo, type Crumb } from "@/lib/seo";
 
@@ -70,6 +70,13 @@ function PrivacyPage() {
           Financial data loaded into a NashOS workspace is handled under the agreement covering
           that workspace rather than under this website policy. Ask us for the current data
           processing terms before a pilot and we will send them.
+        </p>
+        <p>
+          The third parties that process workspace data are listed on our{" "}
+          <Link to="/security/subprocessors" className="text-gold hover:underline">
+            sub-processors page
+          </Link>
+          .
         </p>
       </LegalSection>
 

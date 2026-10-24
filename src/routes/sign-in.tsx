@@ -10,7 +10,7 @@ export const Route = createFileRoute("/sign-in")({
     seo({
       title: "Sign in to NashOS",
       description:
-        "Self-serve sign-in isn't open yet. Request access and we'll set your workspace up — usually within one business day.",
+        "Accounts are set up by the NashOS team on your own environment. Request access and we'll set your workspace up — usually within one business day.",
       path: "/sign-in",
       // Access-request stub, not a page we want ranking for its own terms.
       noindex: true,
@@ -57,7 +57,7 @@ function SignIn() {
             <>
               <h1 className="text-2xl font-semibold">Sign in to NashOS</h1>
               <p className="mt-1 text-sm text-muted-foreground">
-                Self-serve sign-in isn't open yet. Drop your email and we'll set you up.
+                Accounts are set up by the NashOS team. Drop your email and we'll set you up.
               </p>
               <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
                 <Field

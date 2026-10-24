@@ -34,7 +34,7 @@ const HIGHLIGHTS = [
   },
   {
     Icon: MessageSquare,
-    title: "AI agent — 44 tools",
+    title: "AI agent — 45 tools",
     body:
       'Ask: "What\'s our runway?" "Why is COGS up?" "Hire 3 engineers and show the impact." Watch tool calls stream live.',
   },
@@ -48,7 +48,7 @@ const HIGHLIGHTS = [
     Icon: PlayCircle,
     title: "Forecast comparison",
     body:
-      "Run 5 algorithms side-by-side on the same series. See R² / RMSE / MAPE. Lock the one you trust.",
+      "Run 5 algorithms side-by-side on the same series. See R² / RMSE / MAPE. Save the forecast you trust.",
   },
 ];
 

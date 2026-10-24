@@ -4,21 +4,21 @@ const cards = [
   {
     role: "CFO",
     sub: "Control + Audit",
-    headline: "Board-ready numbers, fully audited — zero rebuilds.",
-    bullets: ["Full audit on every write", "Defensible forecasts", "Board-grade governance"],
+    headline: "Board-ready numbers with an audit trail — zero rebuilds.",
+    bullets: ["Every figure saved is recorded", "Defensible forecasts", "Board-grade governance"],
     cta: "Explore Nash for CFO",
     mock: (
       <div className="rounded-xl border border-border bg-black/50 p-3 font-mono text-[11px] space-y-1">
         <div className="flex items-center justify-between text-muted-foreground text-[10px] uppercase tracking-wider mb-1">
-          <span className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-gold pulse-dot" />audit_log · live</span>
-          <span>tail -f</span>
+          <span className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-gold" />audit trail · recent</span>
+          <span>latest</span>
         </div>
         {[
-          ["11:42:18", "COMMIT", "forecast FY26 Q3 · admin"],
+          ["11:42:18", "BULK_SAVE", "plan_action · forecast FY27 · admin"],
           ["12:01:09", "INSERT", "dim_account · OPEX_RND"],
-          ["12:04:31", "INSERT", "scenario=WHATIF_Q3"],
-          ["12:06:18", "UPDATE", "REV_SAAS · +$2.1M"],
-          ["12:08:42", "COMMIT", "forecast FY27 · admin"],
+          ["12:04:31", "INSERT", "dim_scenario · WHATIF_MH2K7Q9"],
+          ["12:06:18", "UPDATE", "fact_data · $4.2M → $6.3M"],
+          ["12:08:42", "UPDATE", "exchange_rates · JPY 150 → 152"],
         ].map(([t, op, msg]) => (
           <div key={t} className="flex gap-2 text-foreground/70">
             <span className="text-muted-foreground">{t}</span>

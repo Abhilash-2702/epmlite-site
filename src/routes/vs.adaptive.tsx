@@ -30,12 +30,12 @@ export const Route = createFileRoute("/vs/adaptive")({
 const ROWS: ComparisonRow[] = [
   { label: "Setup time", nashos: "Hours", rival: "3–6 months", winner: "nashos" },
   { label: "Commercial model", nashos: "Quoted to your entity count and volume", rival: "Six-figure annual contract", winner: "nashos" },
-  { label: "AI architecture", nashos: "Native · 44 tools", rival: "Bolt-on assistant", winner: "nashos" },
+  { label: "AI architecture", nashos: "Native · 45 tools", rival: "Bolt-on assistant", winner: "nashos" },
   { label: "Forecast algorithms", nashos: "15 · side-by-side compare", rival: "2–3 traditional", winner: "nashos" },
   { label: "What-if scenarios", nashos: "Live slider · sub-second", rival: "Yes", winner: "draw" },
   { label: "Excel-like grids", nashos: "Yes (chat-first, grid fallback)", rival: "Yes (grid-first)", winner: "draw" },
   { label: "Workday HRIS integration", nashos: "Roadmap", rival: "Native", winner: "rival" },
-  { label: "Audit trail", nashos: "Before/after JSON", rival: "Yes", winner: "draw" },
+  { label: "Audit trail", nashos: "Per-save log · before/after on most draft edits", rival: "Yes", winner: "draw" },
   { label: "Multi-entity / currency", nashos: "10-dim cube", rival: "Yes", winner: "draw" },
   { label: "Plain-English query", nashos: "Native chat agent", rival: "Limited", winner: "nashos" },
 ];
@@ -54,7 +54,7 @@ const CARDS = [
   {
     title: "No Workday lock-in required",
     body:
-      "If you're not on Workday HCM, Adaptive's biggest integration advantage doesn't apply. NashOS stays integration-agnostic — REST/SFTP/Excel/CSV self-serve today, with the SAP and NetSuite engines built and set up with you, and QuickBooks on the roadmap.",
+      "If you're not on Workday HCM, Adaptive's biggest integration advantage doesn't apply. NashOS stays integration-agnostic — REST/SFTP/Excel/CSV self-serve today, with the SAP S/4HANA, NetSuite, QuickBooks Online and Stripe engines built and set up with you.",
   },
   {
     title: "Pricing that lets a 30-person company actually buy it",

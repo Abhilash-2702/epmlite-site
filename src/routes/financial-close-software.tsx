@@ -30,16 +30,16 @@ export const Route = createFileRoute("/financial-close-software")({
 const STAT = [
   { num: "1 day", label: "Close cycle (vs 12 industry average)" },
   { num: "90 min", label: "Variance pack (vs 40 hours)" },
-  { num: "44", label: "AI agent tools covering the day-to-day work" },
+  { num: "45", label: "AI agent tools covering the day-to-day work" },
   { num: "15", label: "Forecast algorithms compared side-by-side" },
 ];
 
 const PILLARS = [
   {
     Icon: Clock,
-    title: "Continuous reconciliation, not month-end sprint",
+    title: "Reconciliation on every load, not a month-end sprint",
     body:
-      "Connectors run on schedule, not on a deadline. Trial balance lands in the cube on day 1 of close, not day 5. Reconciliation lives in queryable tables, not a Slack thread.",
+      "Connectors run on schedule, not on a deadline, and a schedule set to run the full close reconciles every new load. Trial balance lands in the cube on day 1 of close, not day 5. Reconciliation lives in queryable tables, not a Slack thread.",
   },
   {
     Icon: Sparkles,
@@ -49,9 +49,9 @@ const PILLARS = [
   },
   {
     Icon: ShieldCheck,
-    title: "Audit trail replaces version control",
+    title: "An audit trail, not version control",
     body:
-      "Every change has a who, when, before-after JSON, and reason. There's no 'wait, who changed the COGS assumption?' — it's a query. Pre-IPO ready on day one.",
+      "Every edit committed from a Nash draft card has a who and a when, most with before-after JSON, and every grid save and bulk load is recorded with who saved it, when and how many rows it inserted or updated.",
   },
   {
     Icon: FileSpreadsheet,
@@ -89,7 +89,7 @@ const FAQ = [
   {
     question: "Does it integrate with NetSuite or QuickBooks?",
     answer:
-      "Today: REST APIs, SFTP, Excel and CSV connectors are self-serve and production-ready, and inbound pulls can be scheduled hourly, nightly or weekly. The SAP (OData) and NetSuite (SuiteQL) engines are built and tested, but setting one up is still something we do with you rather than a self-serve screen. QuickBooks connects via REST until a native adapter lands.",
+      "Yes. The NetSuite (SuiteQL) and QuickBooks Online engines are built and covered by automated tests as inbound (pull) sources, alongside SAP S/4HANA and Stripe, and we set those up with you. REST API, SFTP, Excel and CSV connectors are self-serve today, with connection testing and run history, and REST API and SFTP sources can be pulled on a schedule you set (hourly, daily, weekly or a custom cron).",
   },
   {
     question: "How long does finance automation software take to set up?",
@@ -99,7 +99,7 @@ const FAQ = [
   {
     question: "Are CFO AI tools safe? Can the agent auto-write to my financial data?",
     answer:
-      "No auto-writes. Every chat-driven mutation produces a draft that the user must Post to commit. The backend re-validates the draft on commit. Audit trail captures actor, timestamp, and before/after JSON for every row-level change; bulk loads are logged as attributed runs. The LLM never writes to the database directly — every tool call is server-side authenticated.",
+      "No auto-writes from chat. Every chat-driven mutation produces a draft that the user must Post to commit. The backend re-validates the draft on commit. Audit trail captures actor and timestamp for every edit committed from a draft, and before/after JSON for most; grid saves and bulk loads are logged per save. The LLM never writes to the database directly — every tool call is server-side authenticated.",
   },
 ];
 
@@ -141,8 +141,9 @@ function FinancialCloseSoftwarePage() {
             the cube with movers ranked by financial impact rather than rebuilt in slides.
           </p>
           <p>
-            Because each of those steps leaves a record — every connector run logged, and
-            every single-row change with actor, timestamp and before-and-after values — sign-off
+            Because each of those steps leaves a record — every connector run and grid save logged
+            with who and when, and most edits committed from a Nash draft card with their
+            before-and-after values — sign-off
             changes too: the reviewer opens a query, not a Slack thread. That is the operating
             model we call{" "}
             <Link to="/continuous-finance" className="text-gold hover:underline">

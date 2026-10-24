@@ -17,7 +17,7 @@ export const Route = createFileRoute("/sitemap")({
 
 // Human-readable mirror of public/sitemap.xml — keep the two in sync when a
 // route is added or removed. Same rule as the XML file: noindexed routes
-// (/sign-in, /privacy, /terms, /security) are deliberately absent.
+// (/sign-in, /privacy, /terms) are deliberately absent.
 //
 // Static paths are checked against the generated route union at compile time;
 // concrete /blog/<slug> and /for/<industry> paths can't be (the union only has
@@ -100,7 +100,7 @@ const GROUPS: { heading: string; caption: string; pages: SitePage[] }[] = [
       {
         to: "/vs/adaptive",
         title: "NashOS vs Workday Adaptive",
-        blurb: "Built for the LLM era — 44 tools, 15 forecast algorithms.",
+        blurb: "Built for the LLM era — 45 tools, 15 forecast algorithms.",
       },
       {
         to: "/vs/excel",
@@ -126,7 +126,7 @@ const GROUPS: { heading: string; caption: string; pages: SitePage[] }[] = [
       {
         to: "/ai-agents-for-finance",
         title: "AI agents for finance",
-        blurb: "44 tools across Read, Plan, Forecast and Decide — and what keeps them safe.",
+        blurb: "45 tools across Read, Plan, Forecast and Decide — and what keeps them safe.",
       },
       {
         to: "/finance-automation-software",
@@ -136,7 +136,7 @@ const GROUPS: { heading: string; caption: string; pages: SitePage[] }[] = [
       {
         to: "/ai-forecasting-software",
         title: "AI forecasting software",
-        blurb: "15 algorithms compared on holdout windows — then lock the winner.",
+        blurb: "15 algorithms compared on holdout windows — then save the winner's forecast.",
       },
       {
         to: "/cfo-ai-tools",
@@ -198,6 +198,17 @@ const GROUPS: { heading: string; caption: string; pages: SitePage[] }[] = [
         to: "/contact",
         title: "Contact",
         blurb: "Send a note, book a 15-min demo, or write to admin@nashos.ai.",
+      },
+      {
+        to: "/security",
+        title: "Security",
+        blurb:
+          "Security controls running in the application today, and how to report a vulnerability.",
+      },
+      {
+        to: "/security/subprocessors",
+        title: "Sub-processors",
+        blurb: "The third parties that process customer data, and the data each one receives.",
       },
     ],
   },

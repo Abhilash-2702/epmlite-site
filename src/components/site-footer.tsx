@@ -214,7 +214,7 @@ export function SiteFooter() {
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-border flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-4 text-xs text-muted-foreground text-center sm:text-left">
           <p>© {year} NashOS. All rights reserved.</p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <Link to="/privacy" className="hover:text-foreground transition-colors">
               Privacy
             </Link>
@@ -223,6 +223,9 @@ export function SiteFooter() {
             </Link>
             <Link to="/security" className="hover:text-foreground transition-colors">
               Security
+            </Link>
+            <Link to="/security/subprocessors" className="hover:text-foreground transition-colors">
+              Sub-processors
             </Link>
           </div>
         </div>

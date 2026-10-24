@@ -30,7 +30,7 @@ const FAQ: Faq[] = [
   {
     question: "Can we see how a number was produced?",
     answer:
-      "Yes. Any figure drills through to the source rows behind it, and every write carries its before value, after value, actor and timestamp.",
+      "Yes. Report lines expand from rollup to leaf, a dashboard KPI tile drills through to the fact rows behind it, and each connector keeps the source rows of its recent runs. Most edits committed from a Nash draft card carry their before value, after value, actor and timestamp; grid saves and bulk loads are recorded per save.",
   },
 ];
 
@@ -138,7 +138,7 @@ function SystemPage() {
               items={[
                 "Ask — plain English, resolved against your real dimensions",
                 "System executes — computation runs across every affected entity",
-                "Draft → Commit — before/after shown, written only on confirmation",
+                "Draft → Commit — the change shown for review, written only on confirmation",
               ]}
             />
           </div>

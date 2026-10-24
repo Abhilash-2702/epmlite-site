@@ -19,40 +19,40 @@ const CRUMBS = [{ name: "CFO AI tools", path: "/cfo-ai-tools" }];
 // definition sits above the card sections, where answer engines look first.
 const PROSE = [
   "The right way to evaluate CFO AI tools is not by what they generate — it's by what they can prove. A wrong paragraph in a marketing draft costs an edit; a wrong number in a board deck costs credibility. So the evaluation lens for AI in finance is different from everywhere else in the company: audit trail, human approval on writes, a real permission model, and the ability to reconstruct exactly what happened.",
-  "NashOS passes that inspection by construction. Every agent write produces a draft card a human must Post, and the backend re-validates before commit — the model never auto-mutates the database. Tool calls run with the calling user's permissions; the LLM never holds credentials, and RBAC is enforced at the API layer. Every mutation is logged with actor, timestamp, and before/after JSON. Above all of that sit a kill switch and an audit mode, and every agent run streams live and can be interrupted mid-task.",
-  "What that buys the CFO personally is speed without asterisks. The close collapses from 11 days to 1 because trial balance lands on a schedule and reconciliation runs continuously instead of as a month-end sprint — the close story in full is at /financial-close-software. The variance pack drops from 40 hours to 90 minutes, with movers ranked by financial impact rather than raw percentages. The board pack and consolidation bridge come out of the same multi-entity, multi-currency system that ran the close — one set of numbers, no slide rebuild.",
-  "The same holds mid-meeting. Ask the agent 'Hire 3 engineers and show the runway impact' and it chains the headcount update, recomputes salaries through the member formula, runs the runway forecast, and renders the result — you ratify the final commit. Underneath is a 10-dimension cube and 15 forecast algorithms compared on R², RMSE, MAE, and MAPE, so you can pin the winner instead of arguing about methods.",
+  "NashOS passes that inspection by construction. Every write Nash proposes produces a draft card a human must Post, and the backend re-validates before commit — the model never auto-mutates the database. Tool calls run with the calling user's permissions; the LLM never holds a session token or a stored connector secret, and RBAC is enforced at the API layer. Edits committed from a draft card are logged with actor and timestamp, most with before/after JSON, and grid saves and bulk loads per save. Above all of that sit a per-agent kill switch and an audit mode, and every agent run streams live, step by step.",
+  "What that buys the CFO personally is speed without asterisks. The close collapses from 11 days to 1 because trial balance lands on a schedule and, with the schedule set to run the full close, reconciliation runs on every new load instead of as a month-end sprint — the close story in full is at /financial-close-software. The variance pack drops from 40 hours to 90 minutes, with movers ranked by financial impact rather than raw percentages. The board pack and consolidation bridge come out of the same multi-entity, multi-currency system that ran the close — one set of numbers, no slide rebuild.",
+  "The same holds mid-meeting. Ask the agent 'Hire 3 engineers and show the runway impact' and it finds the headcount driver and runs a what-if that recomputes salaries through the member formula and shows the statement and runway before and after — and saving it as a scenario is a card you confirm. Underneath is a 10-dimension cube and 15 forecast algorithms compared on R², RMSE, MAE, and MAPE, so you can save the winner's forecast instead of arguing about methods.",
   "Start where the payback is measurable. Put your close length and variance-pack hours into the ROI calculator at /calculator, read the leadership case at /for-leaders, and go deeper on the agent architecture at /inside-nash. Pricing is quoted to your entity count and volume — details at /pricing. A pilot takes days, not months, and a walkthrough on your own data happens within one business day.",
 ];
 
 const SECTION_1 = [
   {
     Icon: Sparkles,
-    meta: "Actor · timestamp · before/after",
-    title: "Is there a full audit trail?",
+    meta: "Actor · timestamp · every figure saved",
+    title: "Is there an audit trail?",
     body:
-      "Every NashOS mutation is logged with actor, timestamp, and before/after JSON. 'Who changed the COGS assumption?' is a query, not an investigation.",
+      "Edits committed from a Nash draft card are logged with actor and timestamp, most with before/after JSON. Grid saves and bulk loads are logged per save, with who saved them, when and how many rows they inserted or updated.",
   },
   {
     Icon: GitBranch,
     meta: "Draft-before-commit",
-    title: "Does a human approve every write?",
+    title: "Does a human approve the AI's writes?",
     body:
-      "Every agent write produces a draft card a human must Post. The backend re-validates on commit. The model never auto-mutates the database.",
+      "Every write Nash proposes produces a draft card a human must Post. The backend re-validates on commit. The model never auto-mutates the database.",
   },
   {
     Icon: ShieldCheck,
     meta: "Server-side auth",
     title: "Whose permissions does the AI run on?",
     body:
-      "Tool calls run with the calling user's permissions, enforced at the API layer by RBAC. The LLM never holds credentials.",
+      "Tool calls run with the calling user's permissions, enforced at the API layer by RBAC. The LLM never holds a session token or a stored connector secret.",
   },
   {
     Icon: Zap,
     meta: "Kill switch + audit mode",
     title: "Can you stop it — and prove what happened?",
     body:
-      "Agent runs stream live and can be interrupted mid-task. A kill switch and audit mode sit above that, and the audit trail reconstructs every change after the fact.",
+      "Agent runs stream live, step by step. A per-agent kill switch and an audit mode sit above that, and the audit trail records who saved each figure and when, with before/after values on most edits committed from a draft.",
   },
 ];
 
@@ -69,14 +69,14 @@ const SECTION_2 = [
     meta: "11 days → 1",
     title: "Close in 1 day, not 11",
     body:
-      "Connectors for REST APIs and SFTP sync on schedule, so trial balance is already in the cube when close starts. Reconciliation runs continuously, not as a sprint.",
+      "Connectors for REST APIs and SFTP sync on schedule, so trial balance is already in the cube when close starts. Set the schedule to run the full close and reconciliation runs on every new load, not as a sprint.",
   },
   {
     Icon: Gauge,
     meta: "Ask mid-meeting",
     title: "Runway and burn on demand",
     body:
-      "'Hire 3 engineers and show the runway impact' chains a headcount update, a salary recompute, and the runway forecast — and you ratify the commit. Answers come from the live cube, not last week's export.",
+      "'Hire 3 engineers and show the runway impact' runs a what-if on the headcount driver that recomputes salaries and shows the runway before and after — and saving it as a scenario is a card you confirm. Answers come from the live cube, not last week's export.",
   },
   {
     Icon: Layers,
@@ -96,7 +96,7 @@ const FAQ = [
   {
     question: "How do you trust CFO AI tools with financial data?",
     answer:
-      "Trust comes from controls you can inspect, not vendor assurances. In NashOS, every agent write produces a draft a human must Post and the backend re-validates on commit; tool calls run with the calling user's permissions, so the LLM never holds credentials; and every mutation is logged with actor, timestamp, and before/after JSON. If a tool can't show you that trail, it can't prove its own numbers.",
+      "Trust comes from controls you can inspect, not vendor assurances. In NashOS, every write Nash proposes produces a draft a human must Post and the backend re-validates on commit; tool calls run on the server with the calling user's permissions, so the LLM never holds a session token or a stored connector secret; and every edit committed from a draft is logged with actor and timestamp, most with before/after JSON. If a tool can't show you that trail, it can't prove its own numbers.",
   },
   {
     question: "Will AI replace finance teams?",
@@ -134,8 +134,8 @@ function Page() {
         tight
         eyebrow={"The CFO's lens"}
         title="CFO AI tools"
-        subtitle="Tools that can prove every number."
-        lede={"CFO AI tools should be judged on what they can prove, not what they can generate. The four questions that matter: is there an audit trail, does a human approve every write, whose permissions does the AI run on, and can you reconstruct what happened. NashOS was built to answer yes to all four — and to close the books in 1 day instead of 11."}
+        subtitle="Tools that record every figure saved, and who saved it."
+        lede={"CFO AI tools should be judged on what they can prove, not what they can generate. The four questions that matter: is there an audit trail, does a human approve every write the AI proposes, whose permissions does the AI run on, and can you reconstruct what happened. NashOS was built to answer yes to all four — and to close the books in 1 day instead of 11."}
         primaryCta={{ label: "Try with your data", to: "/try" }}
         secondaryCta={{ label: "Book a walkthrough", to: "/demo" }}
       />

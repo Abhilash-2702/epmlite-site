@@ -23,12 +23,12 @@ const FAQ: Faq[] = [
   {
     question: "How do we stop analysts committing changes they shouldn't?",
     answer:
-      "Today: no change is written without a user explicitly confirming it, and the audit trail records who confirmed it. A dedicated approval queue — where an analyst's draft waits for a separate approver — is on the near-term roadmap.",
+      "By role and scope. The built-in analyst and viewer roles do not hold the write-data permission, so the server refuses any figure they try to save, and Nash does not prepare a card that changes figures for them. A dimension scope limits which entities, departments and products a planner or administrator can write to, and a held close-run load waits for an administrator. No change is written without a user explicitly confirming it, and the audit trail records who confirmed it.",
   },
   {
     question: "Will our auditors accept this?",
     answer:
-      "Every write carries before value, after value, actor, timestamp and originating request, and reports drill through to source rows — which is the evidence chain an audit asks for. Confirm scope with your own auditor before relying on it for a specific standard.",
+      "Most edits committed from a Nash draft card carry their before value, after value, actor and timestamp; grid saves and bulk loads are recorded per save with who and when; report lines expand from rollup to leaf; and administrators can filter the audit log and export it as CSV. Confirm scope with your own auditor before relying on it for a specific standard.",
   },
 ];
 
@@ -78,8 +78,9 @@ function ForLeadersPage() {
             <h3 className="font-semibold text-lg text-foreground mb-3">CFO</h3>
             <p>
               The question a CFO gets asked in the board room is not “what is the number” but
-              “where did it come from”. Every figure answers that without a follow-up email: the
-              write that produced it, who made it, when, and what the value was before.
+              “where did it come from”. NashOS answers that without a follow-up email: every figure
+              saved is recorded with who saved it and when, report lines expand from rollup to leaf, and most
+              edits committed from a Nash draft card keep the value before and after.
             </p>
           </div>
           <div>

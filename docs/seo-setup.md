@@ -191,9 +191,13 @@ Each needs information only the business can supply.
    `src/components/site-footer.tsx`, `PHONE_DISPLAY`/`PHONE_E164` in
    `src/components/site-header.tsx`, and `ORG_JSON_LD` in `src/routes/__root.tsx`. All three must
    match each other and the Google Business Profile exactly. Nothing renders until they are set.
-2. **Legal copy.** `/privacy`, `/terms` and `/security` render a visible draft notice and are
-   `noindex`. When counsel signs off: delete `<DraftNotice>`, remove `noindex: true` from each
-   route's `seo()` call, and add the three URLs to `public/sitemap.xml`.
+2. **Legal copy.** `/privacy` and `/terms` render a visible draft notice and are `noindex`. When
+   counsel signs off: delete `<DraftNotice>`, remove `noindex: true` from each route's `seo()`
+   call, and add the two URLs to `public/sitemap.xml`. `/security` and `/security/subprocessors`
+   are indexed (2026-10-24): they state only controls live on app.nashos.ai and vendors that
+   receive customer data today, so update them the day either changes. Security reports go to
+   `security@nashos.ai`, matching `public/.well-known/security.txt` (renew its `Expires` before
+   2027-10-16) and the app's and wizard's own copies.
 3. **Testimonials.** Not built. Needs real named quotes with written consent. Do not add
    `Review` or `AggregateRating` schema without them — fabricated review markup is both dishonest
    and a search penalty.

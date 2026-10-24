@@ -36,3 +36,5 @@ https://nashos.ai/cfo-ai-tools
 https://nashos.ai/continuous-finance
 https://nashos.ai/blog/agentic-ai-in-finance-explained
 https://nashos.ai/blog/how-to-improve-forecast-accuracy
+https://nashos.ai/security
+https://nashos.ai/security/subprocessors
