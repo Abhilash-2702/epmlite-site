@@ -11,7 +11,7 @@ const CRUMBS: Crumb[] = [
 
 // Change this date, and public/sitemap.xml's <lastmod> for this URL, whenever
 // a row below changes.
-const LAST_UPDATED = "24 October 2026";
+const LAST_UPDATED = "25 October 2026";
 
 export const Route = createFileRoute("/security/subprocessors")({
   head: () =>
@@ -105,9 +105,34 @@ const ROWS: Row[] = [
   },
   {
     name: "GitHub",
-    purpose: "Runs the automated jobs that provision a new customer environment.",
-    data: "When these jobs copy a customer's onboarding data into a new environment's database, that data, including user accounts, passes through a GitHub-hosted runner on the way, together with the provisioning request (customer name, subdomain and owner email address).",
-    when: "When an environment is provisioned",
+    purpose:
+      "Runs the automated jobs that provision a new customer environment, back up the app.nashos.ai database every night and test-restore a backup every month.",
+    data: (
+      <>
+        <p>
+          When these jobs copy a customer's onboarding data into a new environment's database, that
+          data, including user accounts, passes through a GitHub-hosted runner on the way, together
+          with the provisioning request (customer name, subdomain and owner email address).
+        </p>
+        <p className="mt-2">
+          The nightly backup and the monthly restore test pass the app.nashos.ai database through a
+          GitHub-hosted runner; the backup is encrypted on the runner before it is stored.
+        </p>
+      </>
+    ),
+    when: "When an environment is provisioned; every night for the backup and every month for the restore test",
+  },
+  {
+    name: "Sentry",
+    purpose: "Records application errors so they can be fixed.",
+    data: "Error reports from the application: the error message and stack trace, the page or API address involved, browser and device details, the environment's name, and the signed-in user's internal ID and role. No name, username, email or IP address is stored; cookies, sign-in tokens and request bodies are removed before a report is sent.",
+    when: "When an error occurs in the app.nashos.ai environment",
+  },
+  {
+    name: "Cloudflare",
+    purpose: "Stores the nightly backups of the app.nashos.ai database (Cloudflare R2).",
+    data: "The database backup, encrypted before it is uploaded. Cloudflare does not receive the key.",
+    when: "Every night",
   },
   {
     name: "Tavily",
