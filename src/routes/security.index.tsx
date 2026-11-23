@@ -325,8 +325,8 @@ function SecurityPage() {
                   server re-validates the confirmed change under that user's own permissions.
                 </>,
                 <>
-                  What Nash sends to the language-model provider, and when web search is used, is
-                  set out on the <SubprocessorsLink>sub-processors page</SubprocessorsLink>.
+                  What Nash sends to the language-model provider is set out on the{" "}
+                  <SubprocessorsLink>sub-processors page</SubprocessorsLink>.
                 </>,
               ]}
             />
