@@ -11,14 +11,14 @@ const CRUMBS: Crumb[] = [
 
 // Change this date, and public/sitemap.xml's <lastmod> for this URL, whenever
 // a row below changes.
-const LAST_UPDATED = "25 October 2026";
+const LAST_UPDATED = "23 November 2026";
 
 export const Route = createFileRoute("/security/subprocessors")({
   head: () =>
     seo({
       title: "Sub-processors | NashOS Security",
       description:
-        `The third parties that process customer data for the NashOS application: what each one does, the data it receives, and which are opt-in. Updated ${LAST_UPDATED}.`,
+        `The third parties that process customer data for the NashOS application: what each one does and the data it receives. Updated ${LAST_UPDATED}.`,
       path: "/security/subprocessors",
       breadcrumbs: CRUMBS,
       webPage: true,
@@ -133,18 +133,6 @@ const ROWS: Row[] = [
     purpose: "Stores the nightly backups of the app.nashos.ai database (Cloudflare R2).",
     data: "The database backup, encrypted before it is uploaded. Cloudflare does not receive the key.",
     when: "Every night",
-  },
-  {
-    name: "Tavily",
-    purpose: "Web search for Nash.",
-    data: "The search queries Nash writes, which can include parts of a user's question.",
-    when: (
-      <>
-        Opt-in. On for app.nashos.ai, NashOS's own workspace; on a customer environment only where
-        the customer has opted in.
-      </>
-    ),
-    optIn: true,
   },
 ];
 
