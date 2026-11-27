@@ -1,9 +1,8 @@
 import { Band, SectionHead } from "./band";
-import { Placeholder } from "./placeholder";
+import { HOME_FAQ } from "./faq-data";
 
-// FAQ band (navy). Owner: phase 2 worker 4. Body to port: the mock-up's
-// .hp-faq-list, rendered from HOME_FAQ in ./faq-data.ts (the same list feeds
-// the FAQPage schema in src/routes/index.tsx, so render it, do not retype it).
+// FAQ band (navy), rendered from HOME_FAQ (the same list feeds the FAQPage
+// schema in src/routes/index.tsx).
 export function FaqBand() {
   return (
     <Band id="faq" tone="navy">
@@ -17,7 +16,15 @@ export function FaqBand() {
           }
         />
         <div className="hp-faq-list">
-          <Placeholder owner="worker 4">The seven questions go here, from HOME_FAQ.</Placeholder>
+          {HOME_FAQ.map((f) => (
+            <details key={f.question}>
+              <summary>
+                {f.question}
+                <span aria-hidden="true">▾</span>
+              </summary>
+              <p>{f.answer}</p>
+            </details>
+          ))}
         </div>
       </div>
     </Band>

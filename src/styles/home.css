@@ -1,8 +1,7 @@
 /* Homepage redesign (2026-11): the approved mock-up's stylesheet, namespaced.
    GENERATED from Website/redesign-2026-11/index.html (monorepo) by a conversion
-   script; rule order is the mock-up's. Edit by hand only for real fixes, and keep
-   section-specific overrides in the section's own CSS file (see
-   src/components/home/README.md).
+   script; rule order is the mock-up's. Rules added by hand for the real site sit
+   at the end of this file (see src/components/home/README.md).
 
    How it was namespaced
    - Every class is prefixed: .wrap -> .hp-wrap, .collapse -> .hp-collapse, ...

@@ -1,21 +1,23 @@
-# Homepage redesign (2026-11): notes for the section workers
+# Homepage (2026-11 redesign): how this folder works
 
-The homepage is a port of the approved mock-up
+The homepage is a port of the mock-up the owner approved on 2026-11-27
 (`Website/redesign-2026-11/index.html` in the NashOS monorepo, brief in `BRIEF.md`
-beside it). Phase 1 laid the base: stylesheet, header, footer, hero, the shared
-pieces below, and one stub per band. Each phase 2 worker fills only their own
-files.
+beside it). The mock-up is the specification: a change to the homepage's look
+starts there.
 
-| Band                                            | File                                                                                 | CSS overrides                     | Owner    |
-| ----------------------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------- | -------- |
-| From Q to D (Ask / Test / Commit console)       | `from-q-to-d.tsx`                                                                    | `src/styles/home-from-q-to-d.css` | worker 2 |
-| System (stepper: Collapse, Compression, Impact) | `system.tsx`                                                                         | `src/styles/home-system.css`      | worker 3 |
-| Inside Nash, For Leaders, What NashOS is, FAQ   | `inside-nash.tsx`, `for-leaders.tsx`, `what-nashos-is.tsx`, `faq.tsx`, `faq-data.ts` | `src/styles/home-static.css`      | worker 4 |
+| Band                                            | Files                                                             |
+| ----------------------------------------------- | ----------------------------------------------------------------- |
+| Hero                                            | `hero.tsx`                                                        |
+| From Q to D (Ask / Test / Commit console)       | `from-q-to-d.tsx`, `from-q-to-d-panes.tsx`, `from-q-to-d-data.ts` |
+| System (stepper: Collapse, Compression, Impact) | `system.tsx`, `system-steps.tsx`, `system-data.ts`                |
+| Inside Nash                                     | `inside-nash.tsx`                                                 |
+| For Leaders                                     | `for-leaders.tsx`                                                 |
+| What NashOS is                                  | `what-nashos-is.tsx`                                              |
+| FAQ                                             | `faq.tsx`, `faq-data.ts`                                          |
 
-Each stub already renders its real band wrapper and section head (copy from the
-mock-up). Replace the `<Placeholder>` with the body. When no band imports
-`placeholder.tsx` any more, delete it. Split a band into more files inside this
-folder if it helps, but do not edit files outside your row (ask instead).
+Only the homepage uses these. The inner pages `/system`, `/inside-nash` and
+`/for-leaders` still use the older components in `src/components/sections/`,
+which keep their earlier look until those pages are redesigned.
 
 There is no separate closing call-to-action band: the mock-up's closing block
 ("Run finance as one system.") is part of the footer, `src/components/site-footer.tsx`.
@@ -46,11 +48,10 @@ There is no separate closing call-to-action band: the mock-up's closing block
 
 ## Where CSS goes
 
-Do not edit `src/styles/home.css` (it is generated; phase 1 owns it). If your
-band needs a rule the mock-up does not have, put it in your own override file
-from the table above. Those files are already `@import`ed by `src/styles.css`,
-after `home.css`, so a rule there wins at equal specificity. They load globally:
-scope every rule to your band's classes.
+`src/styles/home.css` holds everything: the mock-up's rules in the mock-up's
+order, then a short block of rules added by hand for the real site at the end.
+Add a new rule to that end block. The file loads on every page (the header and
+footer need it), so scope every rule to `.hp-` classes.
 
 ## Shared pieces
 

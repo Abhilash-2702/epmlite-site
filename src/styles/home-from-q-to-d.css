@@ -1,5 +1,0 @@
-/* Overrides for the homepage band(s): From Q to D (the Ask / Test / Commit console): src/components/home/from-q-to-d.tsx.
-   Loaded after home.css (see the @import list in src/styles.css), so a rule here wins
-   at equal specificity. Use .hp-* class names only, and only for what home.css
-   cannot express (for example a Tailwind preflight difference). Leave empty if
-   nothing is needed. */
