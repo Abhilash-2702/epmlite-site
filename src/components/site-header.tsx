@@ -1,7 +1,12 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AlignRight, X, Mail, Phone } from "lucide-react";
-import nashosLogo from "@/assets/lockup-h-white.svg";
+import { NashLockup } from "@/components/nash-marks";
+import { scrollToHash } from "@/lib/scroll-to-hash";
+
+// Styled by src/styles/home.css (the homepage redesign's .hp-* classes). The
+// header renders on every page, so those styles are self-contained under the
+// .hp-site-header root.
 
 // Nav used to be four "/#hash" jumps into homepage sections, which meant
 // /system, /inside-nash and /for-leaders were 404s and none of that content
@@ -16,7 +21,7 @@ const pageLinks = [
   { to: "/pricing", label: "Pricing" },
 ] as const;
 
-// Phone renders only once a real number exists — a placeholder in a tel: link
+// Phone renders only once a real number exists: a placeholder in a tel: link
 // is worse than no link, and the NAP must match the Organization schema and
 // Google Business Profile exactly. Set to e.g. "+91 80 1234 5678".
 const PHONE_DISPLAY: string | null = null;
@@ -26,9 +31,9 @@ export function SiteHeader() {
   const { pathname } = useLocation();
   const onHome = pathname === "/";
   const [open, setOpen] = useState(false);
-  // The header used to be absolute, so nav and the Try CTA scrolled away and
-  // never came back on these long pages. It is fixed now; it stays transparent
-  // over the hero and only paints a background once the page has scrolled.
+  // Fixed, so nav and the Try CTA stay in reach on long pages. It stays
+  // transparent over the page top and paints a background once the page has
+  // scrolled or the mobile menu is open.
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -46,155 +51,122 @@ export function SiteHeader() {
     };
   }, [open]);
 
+  // The menu button only exists below 1024px; close the menu if the window
+  // grows past that, so the scroll lock cannot outlive the menu.
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onChange = () => {
+      if (mq.matches) setOpen(false);
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
     setOpen(false);
     if (!onHome) return; // let the browser handle "/#hash" cross-route nav
-    e.preventDefault();
-    const el = document.getElementById(hash);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      history.replaceState(null, "", `#${hash}`);
-    }
+    if (scrollToHash(hash)) e.preventDefault();
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-colors duration-300 ${
-        scrolled || open
-          ? "bg-background/90 backdrop-blur-md border-b border-border/60"
-          : "border-b border-transparent"
-      }`}
-    >
-      {/* Utility bar — direct contact above the fold on every page. */}
-      <div className="border-b border-border/40 bg-background/70 backdrop-blur-sm">
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-2 flex items-center justify-between gap-4 text-xs">
-          <div className="flex items-center gap-5 text-muted-foreground">
-            <a
-              href="mailto:admin@nashos.ai"
-              className="inline-flex items-center gap-1.5 hover:text-gold transition-colors"
-            >
-              <Mail className="h-3.5 w-3.5 text-gold" />
+    <header className={`hp-site-header hp-navy${scrolled || open ? " hp-is-solid" : ""}`}>
+      {/* Utility bar: direct contact above the fold on every page. */}
+      <div className="hp-util">
+        <div className="hp-wrap hp-util-in">
+          <div>
+            <a className="hp-util-mail" href="mailto:admin@nashos.ai">
+              <Mail className="hp-ic" aria-hidden="true" />
               admin@nashos.ai
             </a>
             {PHONE_DISPLAY && (
-              <a
-                href={`tel:${PHONE_E164}`}
-                className="hidden sm:inline-flex items-center gap-1.5 hover:text-gold transition-colors"
-              >
-                <Phone className="h-3.5 w-3.5 text-gold" />
+              <a className="hp-util-mail hp-hide-s" href={`tel:${PHONE_E164}`}>
+                <Phone className="hp-ic" aria-hidden="true" />
                 {PHONE_DISPLAY}
               </a>
             )}
-            <span className="hidden md:inline opacity-70">Reply within one business day</span>
+            <span className="hp-hide-s">Reply within one business day</span>
           </div>
-          <div className="flex items-center gap-5 text-muted-foreground">
-            <Link to="/demo" className="hover:text-gold transition-colors">
-              Book a demo
-            </Link>
-            <Link to="/contact" className="hidden sm:inline hover:text-gold transition-colors">
+          <div>
+            <Link to="/demo">Book a demo</Link>
+            <Link to="/contact" className="hp-hide-s">
               Contact
             </Link>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-8">
-        <Link to="/" className="shrink-0 flex items-center" aria-label="NashOS — Agentic Finance">
-          <img
-            src={nashosLogo}
-            alt="NashOS — Agentic Finance"
-            className="h-7 sm:h-8 lg:h-10 w-auto object-contain select-none"
-            draggable={false}
-          />
+      <div className="hp-wrap hp-nav-in">
+        <Link to="/" className="hp-logo" aria-label="NashOS Agentic Finance">
+          <NashLockup />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hp-nav" aria-label="Primary">
           {hashLinks.map((l) => (
             <a
               key={l.hash}
               href={onHome ? `#${l.hash}` : `/#${l.hash}`}
               onClick={(e) => handleHashClick(e, l.hash)}
-              className="nav-link"
             >
               {l.label}
             </a>
           ))}
           {pageLinks.map((l) => (
-            <Link key={l.to} to={l.to} className="nav-link" data-active={pathname === l.to}>
+            <Link key={l.to} to={l.to} data-active={pathname === l.to}>
               {l.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3 sm:gap-5">
-          <Link to="/sign-in" className="nav-link hidden sm:inline">Sign in</Link>
-          <Link
-            to="/try"
-            className="btn-outline-gold hidden sm:inline-flex items-center gap-1.5 sm:gap-2 rounded-full px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap"
-          >
-            <span className="hidden md:inline">Try with your data</span>
-            <span className="md:hidden">Try Nash</span>
-            <span aria-hidden>→</span>
+        <div className="hp-nav-actions">
+          <Link to="/sign-in" className="hp-signin">
+            Sign in
+          </Link>
+          <Link to="/try" className="hp-btn hp-btn-ghost hp-btn-sm">
+            <span className="hp-long">Try with your data</span>
+            <span className="hp-short">Try Nash</span>
+            <span aria-hidden="true">→</span>
           </Link>
           <button
             type="button"
+            className="hp-menu-btn"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
+            aria-controls="mobileMenu"
             onClick={() => setOpen((v) => !v)}
-            className="lg:hidden inline-flex items-center justify-center h-10 w-10 text-gold hover:text-gold/80 transition-colors bg-transparent border-0 outline-none focus:outline-none focus-visible:ring-0"
           >
-            {open ? <X className="h-5 w-5" /> : <AlignRight className="h-5 w-5" />}
+            {open ? (
+              <X className="hp-ic" aria-hidden="true" />
+            ) : (
+              <AlignRight className="hp-ic" aria-hidden="true" />
+            )}
           </button>
         </div>
       </div>
 
       {/* Mobile menu */}
-      <div
-        // Exact header height: 33px utility bar + 64px nav (mobile) / 80px (sm+).
-        // Tailwind's top-24/top-28 (96/112px) land 1px short and clip the border.
-        className={`lg:hidden fixed inset-x-0 top-[97px] sm:top-[113px] z-40 origin-top transition-all duration-300 ease-out ${
-          open ? "opacity-100 scale-y-100 pointer-events-auto" : "opacity-0 scale-y-95 pointer-events-none"
-        }`}
-      >
-        <div className="mx-4 sm:mx-6 rounded-2xl border border-border bg-background/95 backdrop-blur-xl shadow-2xl p-5">
-          <nav className="flex flex-col">
-            {hashLinks.map((l) => (
-              <a
-                key={l.hash}
-                href={onHome ? `#${l.hash}` : `/#${l.hash}`}
-                onClick={(e) => handleHashClick(e, l.hash)}
-                className="nav-link py-3 text-base border-b border-border/60"
-              >
-                {l.label}
-              </a>
-            ))}
-            {pageLinks.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                onClick={() => setOpen(false)}
-                className="nav-link py-3 text-base border-b border-border/60"
-              >
-                {l.label}
-              </Link>
-            ))}
-            <Link
-              to="/sign-in"
-              onClick={() => setOpen(false)}
-              className="nav-link py-3 text-base"
+      <div className="hp-mobile-menu" id="mobileMenu" hidden={!open}>
+        <nav aria-label="Mobile">
+          {hashLinks.map((l) => (
+            <a
+              key={l.hash}
+              href={onHome ? `#${l.hash}` : `/#${l.hash}`}
+              onClick={(e) => handleHashClick(e, l.hash)}
             >
-              Sign in
+              {l.label}
+            </a>
+          ))}
+          {pageLinks.map((l) => (
+            <Link key={l.to} to={l.to} onClick={() => setOpen(false)}>
+              {l.label}
             </Link>
-            <Link
-              to="/try"
-              onClick={() => setOpen(false)}
-              className="btn-outline-gold mt-3 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium"
-            >
-              <span>Try with your data</span>
-              <span aria-hidden>→</span>
-            </Link>
-          </nav>
-        </div>
+          ))}
+          <Link to="/sign-in" onClick={() => setOpen(false)}>
+            Sign in
+          </Link>
+          <Link to="/try" onClick={() => setOpen(false)} className="hp-btn hp-btn-ghost">
+            Try with your data <span aria-hidden="true">→</span>
+          </Link>
+        </nav>
       </div>
     </header>
   );

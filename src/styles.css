@@ -1,6 +1,11 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+/* Homepage redesign (2026-11): the approved mock-up's stylesheet (every class
+   .hp-*, scoped to .hp-home, .hp-site-header and .hp-site-footer). It styles
+   the homepage and the header and footer of every page. See
+   src/components/home/README.md. */
+@import "./styles/home.css";
 
 @custom-variant dark (&:is(.dark *));
 
