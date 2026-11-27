@@ -1,6 +1,14 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+/* Homepage redesign (2026-11): the approved mock-up's stylesheet (every class
+   .hp-*, scoped to .hp-home, .hp-site-header and .hp-site-footer), then one
+   override file per section owner, loaded after it so they win at equal
+   specificity. See src/components/home/README.md. */
+@import "./styles/home.css";
+@import "./styles/home-from-q-to-d.css";
+@import "./styles/home-system.css";
+@import "./styles/home-static.css";
 
 @custom-variant dark (&:is(.dark *));
 

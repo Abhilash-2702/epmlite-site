@@ -1,12 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Hero } from "@/components/hero";
-import { FromQtoDSection } from "@/components/sections/from-q-to-d-section";
-import { SystemSection } from "@/components/sections/system-section";
-import { InsideNashSection } from "@/components/sections/inside-nash-section";
-import { ForLeadersSection } from "@/components/sections/for-leaders-section";
-import { HomeContentSection, HOME_FAQ } from "@/components/sections/home-content-section";
+import { HomeHero } from "@/components/home/hero";
+import { FromQtoDBand } from "@/components/home/from-q-to-d";
+import { SystemBand } from "@/components/home/system";
+import { InsideNashBand } from "@/components/home/inside-nash";
+import { ForLeadersBand } from "@/components/home/for-leaders";
+import { WhatNashOSIsBand } from "@/components/home/what-nashos-is";
+import { FaqBand } from "@/components/home/faq";
+import { HOME_FAQ } from "@/components/home/faq-data";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -21,18 +23,24 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+// The homepage redesign (2026-11): every class is .hp-*, styled by
+// src/styles/home.css and scoped to the .hp-home wrapper. Navy and light bands
+// alternate; the left spine runs from the hero through every band into the
+// footer. See src/components/home/README.md.
 function Index() {
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-hidden">
+    <div className="hp-home">
       <SiteHeader />
-      <Hero />
-      <FromQtoDSection />
-      <SystemSection />
-      <InsideNashSection />
-      <ForLeadersSection />
-      {/* Crawlable prose + FAQ — the animated sections above carry almost no text. */}
-      <HomeContentSection />
+      <main>
+        <HomeHero />
+        <FromQtoDBand />
+        <SystemBand />
+        <InsideNashBand />
+        <ForLeadersBand />
+        <WhatNashOSIsBand />
+        <FaqBand />
+      </main>
       <SiteFooter />
-    </main>
+    </div>
   );
 }
